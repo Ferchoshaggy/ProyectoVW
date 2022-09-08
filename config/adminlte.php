@@ -313,7 +313,7 @@ return [
         ],
 
         [
-            'text' => 'Tablero',
+            'text' => 'Tablero<br>',
             'route'  => 'vista_dash',
             'icon' => 'nav-icon fas fa-tachometer-alt',
         ],
