@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashController;
 use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -30,4 +31,7 @@ Route::get('/report', [ReportesController::class,'vista_report'])->name('vista_r
 
 //Usuarios
 Route::get('/users', [UsuariosController::class,'vista_users'])->name('vista_users');
+
+//Configuracion de Usuario
+Route::get('/ConfigUser', [UserController::class,'vista_edit'])->name('edit_user');
 
