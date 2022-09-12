@@ -1,3 +1,13 @@
+<style>
+.bb{
+    background: green;
+    font-size: 150%;
+    color: #fff;
+    border-radius: 7px 7px 7px 7px;
+
+}
+
+</style>
 <?php
 
 return [
@@ -150,10 +160,10 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
+    'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
-    'layout_dark_mode' => null,
+    'layout_dark_mode' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -194,7 +204,7 @@ return [
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-dark navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -253,7 +263,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dash',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -289,12 +299,17 @@ return [
     |
     */
 
+
+
     'menu' => [
         // Navbar items:
         [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
+            'text' => '',
+            'icon' => 'fas fa-solid fa-plus',
+            'url' => '#',
+            'classes' => 'bb',
             'topnav_right' => true,
+
         ],
         [
             'type'         => 'fullscreen-widget',
