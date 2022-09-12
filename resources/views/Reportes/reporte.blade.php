@@ -10,7 +10,6 @@
 <div class="card">
     <div class="card-body" style="display: flex">
 
- <div title="IT"></div>
 
 <div style="padding-right: 10px">
 <label for="IT">IT</label><br>
