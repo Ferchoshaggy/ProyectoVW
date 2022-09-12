@@ -28,6 +28,7 @@ Route::get('/dash', [DashController::class,'vista_dash'])->name('vista_dash');
 
 //Reporte
 Route::get('/report', [ReportesController::class,'vista_report'])->name('vista_report');
+Route::get('/newReport',[ReportesController::class,'vista_newReport'])->name('vista_newReport');
 
 //Usuarios
 Route::get('/users', [UsuariosController::class,'vista_users'])->name('vista_users');

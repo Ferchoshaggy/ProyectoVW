@@ -1,11 +1,14 @@
 <style>
-.bb{
-    background: green;
-    font-size: 150%;
-    color: #fff;
-    border-radius: 7px 7px 7px 7px;
 
+.link-nav{
+    background-color: green;
+    font-size: 167%;
+    border-radius: 5px 5px 5px 5px;
+    height: 25px;
+    width: 25px;
 }
+
+
 
 </style>
 <?php
@@ -305,9 +308,9 @@ return [
         // Navbar items:
         [
             'text' => '',
-            'icon' => 'fas fa-solid fa-plus',
-            'url' => '#',
-            'classes' => 'bb',
+            'icon' => 'fas fa-solid fa-plus link-nav',
+            'route' => 'vista_newReport',
+            'classes' => '',
             'topnav_right' => true,
 
         ],
