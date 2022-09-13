@@ -7,7 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+<<<<<<< HEAD
         <title>Soporte Tecnico IT</title>
+=======
+        <title>Sistemas IT</title>
+>>>>>>> 1af9d83ec477a492e6db907f9d13861e98b74b61
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
