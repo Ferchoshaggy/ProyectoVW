@@ -6,6 +6,17 @@
 
 @section('content')
 
+<div class="card">
+    <center><h2>Editar Perfil</h2></center>
+    <div class="card-body">
+
+
+<div>
+
+</div>
+
+    </div>
+</div>
 
 
 @stop

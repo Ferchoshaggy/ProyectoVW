@@ -196,7 +196,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 <script type="text/javascript">
-//funcion de la tabla funcion de boostrap
+
+//funcion de la tabla de boostrap tenga paginador y buscador
   $(document).ready(function() {
     $('.table').DataTable({
        "language": {
@@ -205,7 +206,7 @@
     });
   });
 
-  //funcion para mostrar la contraseña
+  //funcion para mostrar la contraseña con un boton
   function mostrarPassword(){
 		var cambio = document.getElementById("contraseña");
 		if(cambio.type == "password"){
@@ -217,8 +218,9 @@
 		}
 	}
 
-    //funcion para crear contraseña aleatorias
+ //funcion para crear contraseña aleatorias
     function passRun(){
+
 const minus = "abcdefghijklmnñopqrstuvwxyz";
 const mayus = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
 
@@ -243,7 +245,13 @@ for (var i = 1; i <= 8; i++) {
 
 }
 document.getElementById('contraseña').value=contraseña;
+
     }
+
+
+
+
+
 
   </script>
 
