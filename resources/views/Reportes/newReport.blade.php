@@ -265,7 +265,7 @@ input:checked + label {
         document.getElementById("Nsoftware").checked=false;
         document.getElementById("Llave").checked=false;
         document.getElementById("Acceso").checked=false;
-        document.getElementById("Asoftware").checked=false;
+        document.getElementById("ASoftware").checked=false;
      }
 
     }

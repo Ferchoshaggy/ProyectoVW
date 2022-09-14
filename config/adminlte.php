@@ -8,6 +8,14 @@
     width: 25px;
 }
 
+.preloader{
+    background: #1AC4FA !important;
+}
+
+.img-circle{
+    padding-right: 5px  !important;
+}
+
 
 
 </style>
@@ -78,7 +86,7 @@ return [
 
     'logo' => '<b>IT</b>Sistemas',
     'logo_img' => 'img/Logo2.png',
-    'logo_img_class' => 'brand-image-xl img-circle elevation-5',
+    'logo_img_class' => 'brand-image-xs img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'SistemasLogo',
