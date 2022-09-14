@@ -163,32 +163,69 @@
 
 
 
-<!-- opcion 4 a elegir de Red y Telefonos Inteligentes -->
-
-<div id="op4rt" style="display: none">
-    <hr>
-    <label for="Apoyo Tecnico"><i class="fas fa-mobile"></i>Red y Telefonos Inteligentes</label><br>
-    <div class="op">
-        <div class="caja">
-            <input type="radio" id="android" value="Android" name="op4">
-            <label for="android"><i class="fas fa-mobile"></i>Android</label>
+    <div>
+        <hr>
+       <center><h3>Nueva Solicitud</h3></center>
+    <div class="row">
+        <div class="col-md-5">
+<label for="Usuario">Usuario</label>
+<input type="text" class="form-control" name="" value="">
         </div>
 
-        <div class="caja">
-            <input type="radio" id="mora" value="Blackberry" name="op4">
-            <label for="mora"><i class="fas fa-mobile-alt"></i>Blackberry</label>
+        <div class="col-md-5">
+            <label for="Fuente">Fuente</label>
+            <div class="form-control">
+            <input type="radio" id="web" name="fuente" value="WEB">
+            <label for="web"><i class="fas fa-globe"></i>WEB</label>
+            <input type="radio" id="tel" name="fuente" value="Telefono">
+            <label for="tel"><i class="fas fa-phone"></i>Telefono</label>
+            <input type="radio" id="email" name="fuente" value="Email">
+            <label for="email"><i class="fas fa-envelope"></i>Email</label>
+            <input type="radio" id="smg" name="fuente" value="SMG">
+            <label for="smg"><i class="fas  fa-comments"></i>SMG</label>
+            <input type="radio" id="person" name="fuente" value="En Persona">
+            <label for="person"><i class="fas fa-users"></i>En Persona</label>
+        </div>
         </div>
 
-        <div class="caja">
-            <input type="radio" id="iPhone" value="iPhone" name="op4">
-            <label for="iPhone"><i class="fas fa-mobile"></i>iPhone</label>
+        <div class="col-md-2">
+            <label for="type">Type</label>
+            <select name="type" id="type" class="form-control">
+            <option value="Pregunta">Pregunta</option>
+            <option value="Incidente">Incidente</option>
+            <option value="Incidente Importante">Incidente Importante</option>
+            <option value="Peticion de Servicio">Peticion de Servicio</option>
+            <option value="Problema">Problema</option>
+            <option value="Solicitud de Cambio">Solicitud de Cambio</option>
+
+            </select>
         </div>
 
     </div>
+<label for="Tema">Tema</label>
+<input type="text" class="form-control" name="tema">
+    </div>
+
+<div>
+<label for="descripcion">Descripcion</label>
+<textarea name="descripcion" id="descripcion" rows="5" class="form-control"></textarea>
+</div>
+
+<div class="row" style="padding-top:10px">
+    <div class="col-md-3">
+        <input type="file" name="archivo" class="btn-primary">
+    </div>
+
+    <div class="col-md-7"></div>
+
+    <div class="col-md-2">
+         <button type="submit" class="btn btn-success">Guardar</button>
+    </div>
+
 </div>
 
 
-<button type="submit">a</button>
+
 </form>
 
 
@@ -251,6 +288,25 @@ input:checked + label {
    function MostrarOP2(dato){
     if(dato=="Apoyo Tecnico"){
         document.getElementById('op2at').style.display="block";
+        document.getElementById("hardware").checked=false;
+        document.getElementById("software").checked=false;
+
+        document.getElementById('op3h').style.display="none";
+        document.getElementById("Escritorio").checked=false;
+        document.getElementById("red").checked=false;
+        document.getElementById("impresora").checked=false;
+
+        document.getElementById('op3s').style.display="none";
+        document.getElementById("DB").checked=false;
+        document.getElementById("correo").checked=false;
+        document.getElementById("Sala").checked=false;
+        document.getElementById("Sap").checked=false;
+        document.getElementById("otro").checked=false;
+
+        document.getElementById('op3hn').style.display="none";
+        document.getElementById("EscritorioN").checked=false;
+        document.getElementById("EquipoDered").checked=false;
+
     }else{
         document.getElementById('op2at').style.display="none";
         document.getElementById("hardware").checked=false;
@@ -259,6 +315,28 @@ input:checked + label {
 
      if(dato=="Solicitar Equipo"){
         document.getElementById('op2se').style.display="block";
+        document.getElementById("hardwareN").checked=false;
+        document.getElementById("Nsoftware").checked=false;
+        document.getElementById("Llave").checked=false;
+        document.getElementById("Acceso").checked=false;
+        document.getElementById("ASoftware").checked=false;
+
+        document.getElementById('op3h').style.display="none";
+        document.getElementById("Escritorio").checked=false;
+        document.getElementById("red").checked=false;
+        document.getElementById("impresora").checked=false;
+
+        document.getElementById('op3s').style.display="none";
+        document.getElementById("DB").checked=false;
+        document.getElementById("correo").checked=false;
+        document.getElementById("Sala").checked=false;
+        document.getElementById("Sap").checked=false;
+        document.getElementById("otro").checked=false;
+
+        document.getElementById('op3hn').style.display="none";
+        document.getElementById("EscritorioN").checked=false;
+        document.getElementById("EquipoDered").checked=false;
+
      }else{
         document.getElementById('op2se').style.display="none";
         document.getElementById("hardwareN").checked=false;
@@ -273,12 +351,61 @@ input:checked + label {
 
 
    function MostrarOP3(dato){
+    if(dato=="Hardware"){
+        document.getElementById("op3h").style.display="block";
+        document.getElementById("Escritorio").checked=false;
+        document.getElementById("red").checked=false;
+        document.getElementById("impresora").checked=false;
+    }else{
+        document.getElementById("op3h").style.display="none";
+        document.getElementById("Escritorio").checked=false;
+        document.getElementById("red").checked=false;
+        document.getElementById("impresora").checked=false;
+    }
+
+    if(dato=="Software"){
+        document.getElementById("op3s").style.display="block";
+        document.getElementById("DB").checked=false;
+        document.getElementById("correo").checked=false;
+        document.getElementById("Sala").checked=false;
+        document.getElementById("Sap").checked=false;
+        document.getElementById("otro").checked=false;
+
+    }else{
+        document.getElementById("op3s").style.display="none";
+        document.getElementById("DB").checked=false;
+        document.getElementById("correo").checked=false;
+        document.getElementById("Sala").checked=false;
+        document.getElementById("Sap").checked=false;
+        document.getElementById("otro").checked=false;
+    }
+
+    if(dato=="Hardware Nuevo"){
+document.getElementById("op3hn").style.display="block";
+document.getElementById("EscritorioN").checked=false;
+document.getElementById("EquipoDered").checked=false;
+    }else{
+document.getElementById("op3hn").style.display="none";
+document.getElementById("EscritorioN").checked=false;
+document.getElementById("EquipoDered").checked=false;
+
+    }
+
+    if(dato=="Nuevo Software"){
+document.getElementById("op4hn").style.display="none";
+    }
+
+    if(dato=="Restablecimiento Contraseña"){
+        document.getElementById("op4hn").style.display="none";
+    }
+
+    if(dato=="Actualizar Software"){
+        document.getElementById("op4hn").style.display="none";
+    }
+
 
    }
 
-   function MostrarOP4(dato){
-
-   }
 
    function MostrarForm(dato){
 

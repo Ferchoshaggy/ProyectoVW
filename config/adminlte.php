@@ -1,25 +1,5 @@
-<style>
-
-.link-nav{
-    background-color: green;
-    font-size: 167%;
-    border-radius: 5px 5px 5px 5px;
-    height: 25px;
-    width: 25px;
-}
-
-.preloader{
-    background: #1AC4FA !important;
-}
-
-.img-circle{
-    padding-right: 5px  !important;
-}
-
-
-
-</style>
 <?php
+
 
 return [
 
