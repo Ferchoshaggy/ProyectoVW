@@ -9,7 +9,7 @@
 
 <div class="card">
     <div class="card-body">
-        <form action="get">
+        <form action="" method="get" enctype="multipart/form-data">
 
 <!--opcion 1 la primera eleccion dependera de las demas opciones -->
 
@@ -88,12 +88,12 @@
     <label for="Apoyo Tecnico"><i class="fas fa-microchip"></i>Hardware Nuevo</label><br>
     <div class="op">
         <div class="caja">
-            <input type="radio" id="EscritorioN" name="op3" value="Escritorio/Portatil" onclick="">
+            <input type="radio" id="EscritorioN" name="op3" value="Escritorio/Portatil" onclick="MostrarForm(this.value);">
             <label for="EscritorioN"><i class="fas fa-laptop"></i>Escritorio/Portatil</label>
         </div>
 
         <div class="caja">
-            <input type="radio" id="EquipoDered" name="op3" value="Equipo de Red" onclick="">
+            <input type="radio" id="EquipoDered" name="op3" value="Equipo de Red" onclick="MostrarForm(this.value);">
             <label for="EquipoDered"><i class="fas  fa-wifi"></i>Equipo de Red</label>
         </div>
 
@@ -110,17 +110,17 @@
     <label for="Apoyo Tecnico"><i class="fas fa-microchip"></i>Hardware</label><br>
     <div class="op">
         <div class="caja">
-            <input type="radio" id="Escritorio" name="op3" value="Escritorio" onclick="">
+            <input type="radio" id="Escritorio" name="op3" value="Escritorio Portatil" onclick="MostrarForm(this.value);">
             <label for="Escritorio"><i class="fas fa-laptop"></i>Escritorio/Portatil</label>
         </div>
 
         <div class="caja">
-            <input type="radio" id="red" name="op3" value="Red y Telefonos Inteligentes" onclick="MostrarOP4(this.value);">
+            <input type="radio" id="red" name="op3" value="Red y Telefonos Inteligentes" onclick="MostrarForm(this.value);">
             <label for="red"><i class="fas fa-mobile"></i>Red y Telefonos Inteligentes</label>
         </div>
 
         <div class="caja">
-            <input type="radio" id="impresora" name="op3" value="Impresora" onclick="">
+            <input type="radio" id="impresora" name="op3" value="Impresora" onclick="MostrarForm(this.value);">
             <label for="impresora"><i class="fas fa-light fa-print"></i>Impresora</label>
         </div>
 
@@ -134,27 +134,27 @@
     <label for="Apoyo Tecnico"><i class="fas fa-microchip"></i>Software</label><br>
     <div class="op">
         <div class="caja">
-            <input type="radio" id="DB" name="op3" value="Base de Datos" onclick="">
+            <input type="radio" id="DB" name="op3" value="Base de Datos" onclick="MostrarForm(this.value);">
             <label for="DB"><i class="fas fa-database"></i>Base de Datos</label>
         </div>
 
         <div class="caja">
-            <input type="radio" id="correo" name="op3" value="Email" onclick="">
+            <input type="radio" id="correo" name="op3" value="Email" onclick="MostrarForm(this.value);">
             <label for="correo"><i class="fas  fa-envelope"></i>Email</label>
         </div>
 
         <div class="caja">
-            <input type="radio" id="Sala" name="op3" value="Office Suite" onclick="">
+            <input type="radio" id="Sala" name="op3" value="Office Suite" onclick="MostrarForm(this.value);">
             <label for="Sala"><i class="fas fa-file-word"></i>Office Suite</label>
         </div>
 
         <div class="caja">
-            <input type="radio" id="Sap" name="op3" value="SAP" onclick="">
+            <input type="radio" id="Sap" name="op3" value="SAP" onclick="MostrarForm(this.value);">
             <label for="Sap"><i class="fas fa-stream"></i>SAP</label>
         </div>
 
         <div class="caja">
-            <input type="radio" id="otro" name="op3" value="Otro" onclick="">
+            <input type="radio" id="otro" name="op3" value="Otro" onclick="MostrarForm(this.value);">
             <label for="otro"><i class="fas  fa-cog"></i>Otro</label>
         </div>
 
@@ -163,13 +163,13 @@
 
 
 
-    <div>
+    <div id="formularioN" style="display: none">
         <hr>
        <center><h3>Nueva Solicitud</h3></center>
     <div class="row">
         <div class="col-md-5">
 <label for="Usuario">Usuario</label>
-<input type="text" class="form-control" name="" value="">
+<input type="text" class="form-control" name="usuario" value="">
         </div>
 
         <div class="col-md-5">
@@ -202,6 +202,7 @@
         </div>
 
     </div>
+    <div>
 <label for="Tema">Tema</label>
 <input type="text" class="form-control" name="tema">
     </div>
@@ -221,22 +222,10 @@
     <div class="col-md-2">
          <button type="submit" class="btn btn-success">Guardar</button>
     </div>
-
 </div>
-
-
+    </div>
 
 </form>
-
-
-
-
-
-
-
-
-
-
     </div>
 </div>
 
@@ -356,11 +345,13 @@ input:checked + label {
         document.getElementById("Escritorio").checked=false;
         document.getElementById("red").checked=false;
         document.getElementById("impresora").checked=false;
+        document.getElementById("formularioN").style.display="none";
     }else{
         document.getElementById("op3h").style.display="none";
         document.getElementById("Escritorio").checked=false;
         document.getElementById("red").checked=false;
         document.getElementById("impresora").checked=false;
+        document.getElementById("formularioN").style.display="none";
     }
 
     if(dato=="Software"){
@@ -408,6 +399,38 @@ document.getElementById("op4hn").style.display="none";
 
 
    function MostrarForm(dato){
+
+    if(dato=="Escritorio/Portatil"){
+        document.getElementById("formularioN").style.display="block";
+    }
+
+    if(dato=="Equipo de Red"){
+        document.getElementById("formularioN").style.display="block";
+    }
+    if(dato=="Escritorio Portatil"){
+        document.getElementById("formularioN").style.display="block";
+    }
+    if(dato=="Red y Telefonos Inteligentes"){
+        document.getElementById("formularioN").style.display="block";
+    }
+    if(dato=="Impresora"){
+        document.getElementById("formularioN").style.display="block";
+    }
+    if(dato=="Base de Datos"){
+        document.getElementById("formularioN").style.display="block";
+    }
+    if(dato=="Email"){
+        document.getElementById("formularioN").style.display="block";
+    }
+    if(dato=="Office Suite"){
+        document.getElementById("formularioN").style.display="block";
+    }
+    if(dato=="SAP"){
+        document.getElementById("formularioN").style.display="block";
+    }
+    if(dato=="Otro"){
+        document.getElementById("formularioN").style.display="block";
+    }
 
    }
 
