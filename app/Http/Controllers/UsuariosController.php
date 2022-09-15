@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use file;
 
 class UsuariosController extends Controller
 {
@@ -11,6 +13,8 @@ class UsuariosController extends Controller
         $this->middleware('auth');
     }
     public function vista_users(){
-        return view('Usuarios.roles');
+        $users=DB::table("users")->select('*')->get();
+        $tipos=DB::table("tipo_users")->select('*')->get();
+        return view('Usuarios.roles',compact('users','tipos'));
     }
 }

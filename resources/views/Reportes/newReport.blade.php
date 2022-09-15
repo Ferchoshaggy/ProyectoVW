@@ -17,7 +17,7 @@
 <div class="op">
 
 <div class="caja">
-<input type="radio" id="soporte" name="op1" value="Apoyo Tecnico" onclick="MostrarOP2(this.value);">
+<input type="radio" id="soporte" name="op1" value="Apoyo Tecnico" onclick="MostrarOP2(this.value);" >
 <label for="soporte"><i class="fas fa-desktop"></i>Apoyo Tecnico</label>
 </div>
 
@@ -161,68 +161,87 @@
     </div>
 </div>
 
-
-
     <div id="formularioN" style="display: none">
-        <hr>
-       <center><h3>Nueva Solicitud</h3></center>
-    <div class="row">
-        <div class="col-md-5">
-<label for="Usuario">Usuario</label>
-<input type="text" class="form-control" name="usuario" value="">
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Solicitud">
+            Crear Solicitud
+          </button>
+
+
+<!-- Modal Nueva solicitud -->
+<div class="modal fade" id="Solicitud" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nueva Solicitud</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-5">
+        <label for="Usuario">Usuario</label>
+        <input type="text" class="form-control" name="usuario" value="{{old('usuario')}}">
+                </div>
+
+                <div class="col-md-5">
+                    <label for="Fuente">Fuente</label>
+                    <div class="form-control">
+                    <input type="radio" id="web" name="fuente" value="WEB">
+                    <label for="web"><i class="fas fa-globe"></i>WEB</label>
+                    <input type="radio" id="tel" name="fuente" value="Telefono">
+                    <label for="tel"><i class="fas fa-phone"></i>Telefono</label>
+                    <input type="radio" id="email" name="fuente" value="Email">
+                    <label for="email"><i class="fas fa-envelope"></i>Email</label>
+                    <input type="radio" id="smg" name="fuente" value="SMG">
+                    <label for="smg"><i class="fas  fa-comments"></i>SMG</label>
+                    <input type="radio" id="person" name="fuente" value="En Persona">
+                    <label for="person"><i class="fas fa-users"></i>En Persona</label>
+                </div>
+                </div>
+
+                <div class="col-md-2">
+                    <label for="type">Type</label>
+                    <select name="type" id="type" class="form-control">
+                    <option value="Pregunta">Pregunta</option>
+                    <option value="Incidente">Incidente</option>
+                    <option value="Incidente Importante">Incidente Importante</option>
+                    <option value="Peticion de Servicio">Peticion de Servicio</option>
+                    <option value="Problema">Problema</option>
+                    <option value="Solicitud de Cambio">Solicitud de Cambio</option>
+
+                    </select>
+                </div>
+
+            </div>
+            <div>
+        <label for="Tema">Tema</label>
+        <input type="text" class="form-control" name="tema">
+            </div>
+
+        <div>
+        <label for="descripcion">Descripcion</label>
+        <textarea name="descripcion" id="descripcion" rows="5" class="form-control"></textarea>
         </div>
 
-        <div class="col-md-5">
-            <label for="Fuente">Fuente</label>
-            <div class="form-control">
-            <input type="radio" id="web" name="fuente" value="WEB">
-            <label for="web"><i class="fas fa-globe"></i>WEB</label>
-            <input type="radio" id="tel" name="fuente" value="Telefono">
-            <label for="tel"><i class="fas fa-phone"></i>Telefono</label>
-            <input type="radio" id="email" name="fuente" value="Email">
-            <label for="email"><i class="fas fa-envelope"></i>Email</label>
-            <input type="radio" id="smg" name="fuente" value="SMG">
-            <label for="smg"><i class="fas  fa-comments"></i>SMG</label>
-            <input type="radio" id="person" name="fuente" value="En Persona">
-            <label for="person"><i class="fas fa-users"></i>En Persona</label>
-        </div>
+        <div class="row" style="padding-top:15px">
+            <div class="col-md-3">
+                <input type="file" name="archivo" class="btn-primary">
+            </div>
         </div>
 
-        <div class="col-md-2">
-            <label for="type">Type</label>
-            <select name="type" id="type" class="form-control">
-            <option value="Pregunta">Pregunta</option>
-            <option value="Incidente">Incidente</option>
-            <option value="Incidente Importante">Incidente Importante</option>
-            <option value="Peticion de Servicio">Peticion de Servicio</option>
-            <option value="Problema">Problema</option>
-            <option value="Solicitud de Cambio">Solicitud de Cambio</option>
-
-            </select>
         </div>
-
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-success">Guardar</button>
+        </div>
+      </div>
     </div>
-    <div>
-<label for="Tema">Tema</label>
-<input type="text" class="form-control" name="tema">
-    </div>
+  </div>
 
-<div>
-<label for="descripcion">Descripcion</label>
-<textarea name="descripcion" id="descripcion" rows="5" class="form-control"></textarea>
-</div>
 
-<div class="row" style="padding-top:10px">
-    <div class="col-md-3">
-        <input type="file" name="archivo" class="btn-primary">
-    </div>
-
-    <div class="col-md-7"></div>
-
-    <div class="col-md-2">
-         <button type="submit" class="btn btn-success">Guardar</button>
-    </div>
-</div>
     </div>
 
 </form>
@@ -262,8 +281,6 @@ input:checked + label {
   color: rgb(6, 190, 247);
 }
 
-
-
 </style>
 
 @stop
@@ -271,8 +288,6 @@ input:checked + label {
 @section('js')
 
 <script>
-
-
 
    function MostrarOP2(dato){
     if(dato=="Apoyo Tecnico"){
@@ -295,8 +310,10 @@ input:checked + label {
         document.getElementById('op3hn').style.display="none";
         document.getElementById("EscritorioN").checked=false;
         document.getElementById("EquipoDered").checked=false;
+        document.getElementById("formularioN").style.display="none";
 
     }else{
+        document.getElementById("formularioN").style.display="none";
         document.getElementById('op2at').style.display="none";
         document.getElementById("hardware").checked=false;
         document.getElementById("software").checked=false;
@@ -336,8 +353,6 @@ input:checked + label {
      }
 
     }
-
-
 
    function MostrarOP3(dato){
     if(dato=="Hardware"){
@@ -381,22 +396,21 @@ document.getElementById("EscritorioN").checked=false;
 document.getElementById("EquipoDered").checked=false;
 
     }
-
     if(dato=="Nuevo Software"){
-document.getElementById("op4hn").style.display="none";
+        document.getElementById("formularioN").style.display="block";
     }
 
     if(dato=="Restablecimiento Contraseña"){
-        document.getElementById("op4hn").style.display="none";
+        document.getElementById("formularioN").style.display="block";
+    }
+    if(dato=="Solicitar Acceso"){
+        document.getElementById("formularioN").style.display="block";
     }
 
     if(dato=="Actualizar Software"){
-        document.getElementById("op4hn").style.display="none";
+        document.getElementById("formularioN").style.display="block";
     }
-
-
    }
-
 
    function MostrarForm(dato){
 
@@ -431,11 +445,10 @@ document.getElementById("op4hn").style.display="none";
     if(dato=="Otro"){
         document.getElementById("formularioN").style.display="block";
     }
-
+    if(dato=="Nuevo Software"){
+        document.getElementById("formularioN").style.display="block";
+    }
    }
-
-
-
 
 </script>
 

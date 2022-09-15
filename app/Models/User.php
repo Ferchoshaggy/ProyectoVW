@@ -60,10 +60,15 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function role()
+{
+    return $this->belongsTo(TipoUser::class, 'id');
+}
+
     public function adminlte_image()
     {
         if($this->foto==null){
-            return "https://picsum.photos/300/300";
+            return asset('ImgUser/usuario.png');
         }else{
             return "fotos_users\\".$this->foto;
         }
@@ -71,7 +76,7 @@ class User extends Authenticatable
 
     public function adminlte_desc()
     {
-        return 'Administrador';
+       return $this->role->tipo;
     }
 
     public function adminlte_profile_url()

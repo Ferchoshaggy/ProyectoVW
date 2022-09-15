@@ -19,15 +19,15 @@ return new class extends Migration
             $table->string('ape_pat')->nullable();
             $table->string('ape_mat')->nullable();
             $table->string("foto")->nullable();
-            $table->integer("edad")->nullable();
-            $table->string("direccion")->nullable();
-            $table->integer('tipo_user')->nullable();
+            $table->unsignedBigInteger('tipo_user');
+            $table->foreign("tipo_user")->references("id")->on("tipo_users")->onDelete("cascade");
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+
             $table->timestamps();
         });
     }

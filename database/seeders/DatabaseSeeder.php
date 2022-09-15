@@ -8,6 +8,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\TipoUser;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,8 +21,19 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
+$usuario=['Administrador','Usuarios'];
+
+for($i=0;$i<count($usuario);$i++){
+        DB::table('tipo_users')->insert([
+            'tipo' => $usuario[$i],
+
+        ]);
+
+}
+
         DB::table('users')->insert([
             'name'  => 'Sistemas',
+            'tipo_user' => 1,
             'email'     => 'admin@gmail.com',
             'password'  => bcrypt('12345678'),
         ]);

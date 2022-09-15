@@ -36,17 +36,6 @@
         </div>
         <div class="modal-body">
             <form action="" method="POST">
-<div class="profile-img">
-<center>
-                <img class="redondeo_img" src="https://picsum.photos/300/300" id="foto" data-toggle="modal" data-toggle="modal" data-target="#ver_foto"><br>
-                <label>SIN FOTO, SE TE OTORGA UNA ALEATORIA</label><br>
-                <label>PARA AGREGA UNA NUEVA FOTO  &nbsp;  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-square" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.5 2.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                </svg></label>
-                <input type="file" name="foto" class="form-control" accept="image/*" id="foto_archivo" onchange="cambio_foto(this);">
-            </center>
-</div>
-<br>
 
 <div class="row">
     <div class="col-md-4">
@@ -111,7 +100,6 @@
             <table class="table">
                 <thead class="thead-dark">
                   <tr>
-                    <th style="text-align: center;">#</th>
                     <th style="text-align: center;">Nombre</th>
                     <th style="text-align: center;">App Paterno</th>
                     <th style="text-align: center;">App Materno</th>
@@ -121,12 +109,21 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td style="text-align: center;">1</td>
-                    <td style="text-align: center;">Mark</td>
-                    <td style="text-align: center;">Otto</td>
-                    <td style="text-align: center;">@mdo</td>
-                  </tr>
+                    @foreach ($users as $user)
+                    @foreach ($tipos as $tipo)
+                    @if ($user->tipo_user==$tipo->id)
+                    <tr>
+                        <td style="text-align: center;">{{$user->name}}</td>
+                        <td style="text-align: center;">{{$user->ape_pat}}</td>
+                        <td style="text-align: center;">{{$user->ape_mat}}</td>
+                        <td style="text-align: center;">{{$user->email}}</td>
+                        <td style="text-align: center;">{{$tipo->tipo}}</td>
+                        <td style="text-align: center;">btn</td>
+                      </tr>
+                      @endif
+                      @endforeach
+                      @endforeach
+
 
                 </tbody>
               </table>
