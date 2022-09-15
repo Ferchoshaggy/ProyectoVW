@@ -32,6 +32,7 @@ Route::get('/newReport',[ReportesController::class,'vista_newReport'])->name('vi
 
 //Usuarios
 Route::get('/users', [UsuariosController::class,'vista_users'])->name('vista_users');
+Route::post('/save_user',[UsuariosController::class,'guardar_usuario'])->name('save_users');
 
 //Configuracion de Usuario
 Route::get('/ConfigUser', [UserController::class,'vista_edit'])->name('edit_user');

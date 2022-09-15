@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\TipoUser;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,6 +18,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -61,9 +63,9 @@ class User extends Authenticatable
     ];
 
     public function role()
-{
-    return $this->belongsTo(TipoUser::class, 'id');
-}
+    {
+        return $this->belongsTo(TipoUser::class,'tipo_user');
+    }
 
     public function adminlte_image()
     {
@@ -76,7 +78,7 @@ class User extends Authenticatable
 
     public function adminlte_desc()
     {
-       return $this->role->tipo;
+        return $this->role->tipo;
     }
 
     public function adminlte_profile_url()

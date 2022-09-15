@@ -26,7 +26,7 @@
 
   <!--Modal de nuevo Usuario -->
   <div class="modal fade" id="agregarUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Nuevo Usuario</h5>
@@ -34,13 +34,15 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <form action="{{Route('save_users')}}" method="POST">
+            @csrf
         <div class="modal-body">
-            <form action="" method="POST">
+
 
 <div class="row">
     <div class="col-md-4">
     <label for="Nombre">Nombre</label>
-    <input type="text" name="nombre" id="nombre" class="form-control">
+    <input type="text" name="nombre" id="nombre" class="form-control"  onchange="validar();" >
     </div>
     <div class="col-md-4">
     <label for="App">Apellido Paterno</label>
@@ -55,41 +57,60 @@
 <div class="row">
     <div class="col-md-6">
         <label for="correo">Correo</label>
-        <input type="email" class="form-control" name="correo" id="correo">
+        <input type="email" class="form-control" name="correo" id="correo" onchange="validar();">
     </div>
+    <div class="col-md-6">
+        <label for="Tipo">Tipo de Usuario</label>
+        <select name="tipo" id="tipo" class="form-control" onchange="validar()">
+        <option selected="true" value="" disabled="disabled">Seleccione Tipo...</option>
+        <option value="1" >Administrador</option>
+        <option value="2">Usuario</option>
+        </select>
+        </div>
+</div>
+
+<div class="row">
     <div class="col-md-6">
         <label for="correo">Contraseña</label>
 <div class="input-group">
     <span class="input-group-append">
-        <button class="btn btn-default" type="button" onclick="passRun();"><span class="fa fa-random"></span></button>
+        <button class="btn btn-default" type="button" onclick="passRun(); validar();"><span class="fa fa-random"></span></button>
       </span>
-        <input type="password" class="form-control" name="contraseña" id="contraseña">
+        <input type="password" class="form-control" name="contraseña" id="contraseña" onchange="validar();">
         <span class="input-group-append">
             <button class="btn btn-default" type="button" id="show_password" onclick="mostrarPassword()"><span class="fa fa-eye-slash icon"></span></button>
           </span>
         </div>
     </div>
+
+    <div class="col-md-6">
+        <label for="correo">Repetir Contraseña</label>
+<div class="input-group">
+    <span class="input-group-append">
+        <button class="btn btn-default" type="button" onclick="passRun(); validar();"><span class="fa fa-random"></span></button>
+      </span>
+        <input type="password" class="form-control" name="Rcontraseña" id="Rcontraseña" onchange="validar();">
+        <span class="input-group-append">
+            <button class="btn btn-default" type="button" id="R_show_password" onclick="mostrarPassword2()"><span class="fa fa-eye-slash icon2"></span></button>
+          </span>
+        </div>
+    </div>
 </div>
 
+<div id="conf" style="display: none">
+    <h5 style="color: red">Las contraseñas no Coinciden</h5>
+</div>
 
-<div class="row">
-    <div class="col-md-12">
-<label for="Tipo">Tipo de Usuario</label>
-<select name="tipo" id="tipo" class="form-control">
-<option selected="true" disabled="disabled">Seleccione Tipo...</option>
-<option value="Administrador">Administrador</option>
-<option value="Usuario">Usuario</option>
-</select>
-
-    </div>
+<div id="cont" style="display: none">
+    <h5 style="color: green">Las contraseñas Coinciden</h5>
 </div>
 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-success">Guardar</button>
-        </form>
+          <button type="submit" class="btn btn-success" id="guardar" disabled>Guardar</button>
         </div>
+    </form>
       </div>
     </div>
   </div>
@@ -215,6 +236,17 @@
 		}
 	}
 
+    function mostrarPassword2(){
+		var cambio = document.getElementById("Rcontraseña");
+		if(cambio.type == "password"){
+			cambio.type = "text";
+			$('.icon2').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+		}else{
+			cambio.type = "password";
+			$('.icon2').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+		}
+	}
+
  //funcion para crear contraseña aleatorias
     function passRun(){
 
@@ -242,11 +274,41 @@ for (var i = 1; i <= 8; i++) {
 
 }
 document.getElementById('contraseña').value=contraseña;
+document.getElementById('Rcontraseña').value=contraseña;
 
     }
 
 
+function validar(){
+    var contra=document.getElementById('contraseña').value;
+    var rContra=document.getElementById('Rcontraseña').value;
+    var contraIgual=false;
 
+if(contra && rContra){
+
+
+    if(contra != rContra){
+document.getElementById("cont").style.display="none";
+document.getElementById("conf").style.display="block";
+
+    }else{
+ document.getElementById("conf").style.display="none";
+ document.getElementById("cont").style.display="block";
+ contraIgual=true;
+    }
+}
+
+let nombre=document.getElementById('nombre').value;
+let correo=document.getElementById('correo').value;
+let tipo=document.getElementById('tipo').value;
+
+
+    if(nombre && correo && tipo && contraIgual){
+   document.getElementById('guardar').disabled=false;
+    }else{
+        document.getElementById('guardar').disabled=true;
+    }
+}
 
 
 
