@@ -20,6 +20,7 @@ class UsuariosController extends Controller
 
     public function guardar_usuario(Request $request){
         $request->validate([
+            'email'=>'email|unique:email',
             'password'=>'min:8',
             ]);
 
@@ -31,6 +32,8 @@ class UsuariosController extends Controller
         "ape_pat"=>$request['appaterno'],
         "ape_mat"=>$request['apmaterno'],
         "email"=>$request['correo'],
+        "genero"=>$request['genero'],
+        "concesionaria"=>$request['concesionaria'],
         "tipo_user"=>$request['tipo'],
         "password"=>bcrypt($request['contraseña']),
 

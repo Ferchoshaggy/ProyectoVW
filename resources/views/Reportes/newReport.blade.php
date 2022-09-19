@@ -5,15 +5,28 @@
 @section('content_header')
 
 @section('content')
-
+<br>
 
 <div class="card">
     <div class="card-body">
+
+<!--alerta de guardado con exito -->
+
+@if (Session::has('message'))
+<br>
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-weight: bold;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
         <form action="" method="get" enctype="multipart/form-data">
 
 <!--opcion 1 la primera eleccion dependera de las demas opciones -->
 
-<label for="IT"><i class="fas fa-laptop"></i> IT</label>
+<label for="IT"><i class="fas fa-laptop"></i>IT</label>
 <div class="op">
 
 <div class="caja">
@@ -163,7 +176,7 @@
 
     <div id="formularioN" style="display: none">
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Solicitud">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Solicitud" onclick="ImpEle()">
             Crear Solicitud
           </button>
 
@@ -179,6 +192,8 @@
           </button>
         </div>
         <div class="modal-body">
+
+            <p id="demo"></p>
 
             <div class="row">
                 <div class="col-md-5">
@@ -449,6 +464,21 @@ document.getElementById("EquipoDered").checked=false;
         document.getElementById("formularioN").style.display="block";
     }
    }
+
+function ImpEle(){
+
+let op1=document.querySelector('input[name=op1]:checked').value;
+let op2=document.querySelector('input[name=op2]:checked').value;
+let op3=document.querySelector('input[name=op3]:checked');
+
+
+if(op3!=null){
+document.getElementById("demo").innerHTML = op1 +" > "+op2+" > "+op3.value;
+}else{
+document.getElementById("demo").innerHTML = op1 +" > "+op2;
+}
+
+}
 
 </script>
 

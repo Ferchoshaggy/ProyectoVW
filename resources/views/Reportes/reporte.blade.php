@@ -5,7 +5,7 @@
 @section('content_header')
 
 @section('content')
-
+<br>
 
 <div class="card">
     <div class="card-body">

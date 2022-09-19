@@ -36,4 +36,5 @@ Route::post('/save_user',[UsuariosController::class,'guardar_usuario'])->name('s
 
 //Configuracion de Usuario
 Route::get('/ConfigUser', [UserController::class,'vista_edit'])->name('edit_user');
+Route::post('/update_user',[UserController::class,'actualizar_user'])->name('user_update');
 

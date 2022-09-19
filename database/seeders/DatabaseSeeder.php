@@ -34,6 +34,8 @@ for($i=0;$i<count($usuario);$i++){
         DB::table('users')->insert([
             'name'  => 'Sistemas',
             'tipo_user' => 1,
+            'genero'=>'Masculino',
+            'concesionaria'=>'Fersan',
             'email'     => 'admin@gmail.com',
             'password'  => bcrypt('12345678'),
         ]);

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('ape_pat')->nullable();
             $table->string('ape_mat')->nullable();
             $table->string("foto")->nullable();
+            $table->string("genero")->nullable();
+            $table->string("concesionaria")->nullable();
             $table->unsignedBigInteger('tipo_user');
             $table->foreign("tipo_user")->references("id")->on("tipo_users")->onDelete("cascade");
             $table->string('email')->unique();

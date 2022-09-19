@@ -10,12 +10,21 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
 
 @section('content')
-
-
-
-
+<br>
 <div class="card">
     <div class="card-body">
+
+<!--alerta de Guardado con exito -->
+
+@if (Session::has('message'))
+<br>
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: serif;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
 
 <!--Boton de nuevo usuarios -->
 
@@ -42,15 +51,36 @@
 <div class="row">
     <div class="col-md-4">
     <label for="Nombre">Nombre</label>
-    <input type="text" name="nombre" id="nombre" class="form-control"  onchange="validar();" >
+    <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre')}}" onchange="validar();" >
     </div>
     <div class="col-md-4">
     <label for="App">Apellido Paterno</label>
-    <input type="text" name="appaterno" id="appaterno" class="form-control">
+    <input type="text" name="appaterno" id="appaterno" value="{{old("appaterno")}}" class="form-control">
     </div>
     <div class="col-md-4">
     <label for="Apm">Apellido Materno</label>
-    <input type="text" name="apmaterno" id="apmaterno" class="form-control">
+    <input type="text" name="apmaterno" id="apmaterno" value="{{old("apmaterno")}}" class="form-control">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+<label for="Genero">Genero</label>
+<select class="form-control" name="genero" id="genero" onchange="validar();">
+    <option selected="true" value="" disabled="disabled">Seleccione Genero...</option>
+    <option value="Femenino">Femenino</option>
+    <option value="Masculino">Masculino</option>
+</select>
+    </div>
+
+    <div class="col-md-6">
+ <label for="Cconcesionaria">Concesionaria</label>
+<select class="form-control" name="concesionaria" id="concesionaria" onchange="validar();">
+    <option selected="true" value="" disabled="disabled">Seleccione Concesionaria...</option>
+    <option value="Fersan">Fersan Motors Volkswagen</option>
+    <option value="Chaixtsu">Chaixtsu Motors Suzuki</option>
+    <option value="Navarra">SEAT Navarra Motors</option>
+</select>
     </div>
 </div>
 
@@ -126,7 +156,7 @@
                     <th style="text-align: center;">App Materno</th>
                     <th style="text-align: center;">Correo</th>
                     <th style="text-align: center;">Tipo de Usuario</th>
-                    <th style="text-align: center;">Opciones</th>
+                    <th style="text-align: center;">Concesionaria</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -139,7 +169,7 @@
                         <td style="text-align: center;">{{$user->ape_mat}}</td>
                         <td style="text-align: center;">{{$user->email}}</td>
                         <td style="text-align: center;">{{$tipo->tipo}}</td>
-                        <td style="text-align: center;">btn</td>
+                        <td style="text-align: center;">{{$user->concesionaria}}</td>
                       </tr>
                       @endif
                       @endforeach
@@ -301,16 +331,21 @@ document.getElementById("conf").style.display="block";
 let nombre=document.getElementById('nombre').value;
 let correo=document.getElementById('correo').value;
 let tipo=document.getElementById('tipo').value;
+let gen=document.getElementById('genero').value;
+let con=document.getElementById('concesionaria').value;
 
 
-    if(nombre && correo && tipo && contraIgual){
+    if(nombre && correo && tipo && contraIgual && gen && con){
    document.getElementById('guardar').disabled=false;
     }else{
         document.getElementById('guardar').disabled=true;
     }
 }
 
-
+//jquery para desvanecer el mensage
+$(".alert").fadeTo(2000, 500).slideUp(500, function(){
+    $(".alert").slideUp(500);
+});
 
   </script>
 
