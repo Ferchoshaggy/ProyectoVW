@@ -195,7 +195,7 @@ return [
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-primary elevation-2',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-black navbar-dark navbar-light',
+    'classes_topnav' => 'co navbar-dark navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -294,6 +294,9 @@ return [
 
     'menu' => [
         // Navbar items:
+        [
+          'header' => 'MENU',
+        ],
         [
             'text' => '',
             'icon' => 'fas fa-solid fa-plus link-nav fa-xs',

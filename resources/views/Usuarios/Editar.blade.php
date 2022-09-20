@@ -7,7 +7,7 @@
 @section('content')
 <br>
 <div class="card">
-    <center><h2 style="background: linear-gradient(45deg,rgb(90, 86, 86),#00A1D8);">Editar Perfil</h2></center>
+    <center><h2>Editar Perfil</h2></center>
     <div class="card-body">
 
 <form action="" method="GET" enctype="multipart/form-data">
