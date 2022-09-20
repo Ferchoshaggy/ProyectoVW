@@ -4,6 +4,9 @@
 
 @section('content_header')
 
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
+
 @section('content')
 <br>
 
@@ -65,7 +68,7 @@
     <hr>
     <label for="Apoyo Tecnico"><i class="fas fa-laptop-house"></i>Solicitar Equipo</label><br>
     <small>Solicitar hardware informático, periféricos u otros equipos de oficina</small>
-    <div class="op">
+    <div class="op row">
         <div class="caja">
             <input type="radio" id="hardwareN" name="op2" value="Hardware Nuevo" onclick="MostrarOP3(this.value);">
             <label for="hardwareN"><i class="fas fa-microchip"></i>Hardware Nuevo</label>
@@ -203,7 +206,7 @@
 
                 <div class="col-md-5">
                     <label for="Fuente">Fuente</label>
-                    <div class="form-control">
+                    <div style="border: 1px solid rgb(185, 184, 184); border-radius:0.4em;">
                     <input type="radio" id="web" name="fuente" value="WEB">
                     <label for="web"><i class="fas fa-globe"></i>WEB</label>
                     <input type="radio" id="tel" name="fuente" value="Telefono">

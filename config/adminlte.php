@@ -294,6 +294,7 @@ return [
 
     'menu' => [
         // Navbar items:
+
         [
             'text' => '',
             'icon' => 'fas fa-solid fa-plus link-nav',
@@ -304,7 +305,7 @@ return [
         ],
         [
             'type'         => 'fullscreen-widget',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
 
         // Sidebar items:
