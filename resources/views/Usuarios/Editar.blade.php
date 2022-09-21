@@ -108,15 +108,35 @@
 </div>
 
 <div class="row">
+    <div class="col-md-4">
+        <label for="correo">Contraseña Actual</label>
+        <input type="password" class="form-control" name="passAA" id="passAA" value="{{old('passAA')}}" onchange="passVerficar();">
+    </div>
 
-    <div class="col-md-3">
-        <label for="correo">Cambiar Contraseña</label>
-        <input type="password" class="form-control" name="passAA" id="passAA" value="">
+    <div class="col-md-4">
+        <label for="correo">Nueva Contraseña</label>
+        <input type="password" class="form-control" name="passN" id="passN" value="{{old('passN')}}" onchange="passVerficar();">
+    </div>
+
+    <div class="col-md-4">
+        <label for="correo">Repetir Contraseña</label>
+        <input type="password" class="form-control" name="passRN" id="passRN" value="{{old('passRN')}}" onchange="passVerficar();">
     </div>
 
 </div>
+
+<div id="conf" style="display: none">
+    <h5 style="color: red">Las contraseñas no Coinciden</h5>
+</div>
+
+<div id="cont" style="display: none">
+    <h5 style="color: green">Las contraseñas Coinciden</h5>
+</div>
+
+
+
 <br>
-<button type="submit" class="btn btn-success form-control" >Actualizar</button>
+<button type="submit" id="actualizar" class="btn btn-success form-control" >Actualizar</button>
 
     </div>
 
@@ -193,7 +213,38 @@ function cambiar_foto(file){
     }
   }
 
+function passVerficar(){
+    let PA=document.getElementById("passAA").value;
+    let PN=document.getElementById("passN").value;
+    let PR=document.getElementById("passRN").value;
 
+    if(PA!="" || PN!="" || PR!=""){
+       document.getElementById('actualizar').disabled=true;
+
+       if(PN && PR){
+
+
+if(PN != PR){
+document.getElementById("cont").style.display="none";
+document.getElementById("conf").style.display="block";
+
+}else{
+document.getElementById("conf").style.display="none";
+document.getElementById("cont").style.display="block";
+
+if(PA && PN && PR)
+document.getElementById('actualizar').disabled=false;
+}
+
+}else{
+    document.getElementById("cont").style.display="none";
+    document.getElementById("conf").style.display="none";
+}
+
+    }else{
+       document.getElementById('actualizar').disabled=false;
+    }
+}
 
 </script>
 

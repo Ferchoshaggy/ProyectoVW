@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use League\Flysystem\File;
 
 class UserController extends Controller
 {
@@ -19,7 +20,8 @@ class UserController extends Controller
         return view('Usuarios.Editar',compact('usuarios','tipos'));
     }
 
-    public function actualizar_user(){
+    public function actualizar_user(Request $request){
+
 
     }
 }

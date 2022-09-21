@@ -27,11 +27,14 @@
     margin-left: 6px !important;
 }
 .sidebar-dark-warning{
-    background: linear-gradient(180deg,rgb(60, 86, 86),#00A1D8);
+    background: linear-gradient(180deg,rgb(90, 86, 86),#00A1D8);
 }
 
 .co{
-background: linear-gradient(40deg,rgb(90, 86, 86),#00A1D8);
+background: linear-gradient(90deg,rgb(90, 86, 86),#00A1D8);
+}
+.brand-link {
+    background:rgb(90, 86, 86) !important;
 }
 
 

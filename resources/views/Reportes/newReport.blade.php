@@ -195,32 +195,46 @@
           </button>
         </div>
         <div class="modal-body">
+<div class="row">
+    <div class="col align-self-start">
+        <br>
+            <h5 id="demo"></h5>
+    </div>
 
-            <p id="demo"></p>
-
+    <div class="col align-self-end">
+        <label for="Fuente">Fuente</label>
+        <div style="border: 1px solid rgb(185, 184, 184); border-radius:0.4em;">
+        <input type="radio" id="web" name="fuente" value="WEB">
+        <label for="web"><i class="fas fa-globe"></i>WEB</label>
+        <input type="radio" id="tel" name="fuente" value="Telefono">
+        <label for="tel"><i class="fas fa-phone"></i>Telefono</label>
+        <input type="radio" id="email" name="fuente" value="Email">
+        <label for="email"><i class="fas fa-envelope"></i>Email</label>
+        <input type="radio" id="smg" name="fuente" value="SMG">
+        <label for="smg"><i class="fas  fa-comments"></i>SMG</label>
+        <input type="radio" id="person" name="fuente" value="En Persona">
+        <label for="person"><i class="fas fa-users"></i>En Persona</label>
+    </div>
+    </div>
+</div>
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-4">
         <label for="Usuario">Usuario</label>
         <input type="text" class="form-control" name="usuario" value="{{old('usuario')}}">
                 </div>
 
-                <div class="col-md-5">
-                    <label for="Fuente">Fuente</label>
-                    <div style="border: 1px solid rgb(185, 184, 184); border-radius:0.4em;">
-                    <input type="radio" id="web" name="fuente" value="WEB">
-                    <label for="web"><i class="fas fa-globe"></i>WEB</label>
-                    <input type="radio" id="tel" name="fuente" value="Telefono">
-                    <label for="tel"><i class="fas fa-phone"></i>Telefono</label>
-                    <input type="radio" id="email" name="fuente" value="Email">
-                    <label for="email"><i class="fas fa-envelope"></i>Email</label>
-                    <input type="radio" id="smg" name="fuente" value="SMG">
-                    <label for="smg"><i class="fas  fa-comments"></i>SMG</label>
-                    <input type="radio" id="person" name="fuente" value="En Persona">
-                    <label for="person"><i class="fas fa-users"></i>En Persona</label>
-                </div>
+                <div class="col-md-4">
+                    <label for="type">Tipo</label>
+                    <select name="prioridad" id="prioridad" class="form-control">
+                    <option selected="true" value="" disabled="disabled">Seleccione Tipo...</option>
+                    <option value="Pregunta">Pregunta</option>
+                    <option value="Incidente">Incidente</option>
+                    <option value="Peticion de Servicio">Peticion de Servicio</option>
+                    <option value="Solicitud de Cambio">Solicitud de Cambio</option>
+                    </select>
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <label for="type">Prioridad</label>
                     <select name="prioridad" id="prioridad" class="form-control">
                     <option selected="true" value="" disabled="disabled">Seleccione Prioridad...</option>
@@ -228,9 +242,6 @@
                     <option value="Alto">Alto</option>
                     <option value="Bajo">Bajo</option>
                     <option value="Normal">Normal</option>
-
-
-
                     </select>
                 </div>
 
@@ -242,12 +253,12 @@
 
         <div>
         <label for="descripcion">Descripcion</label>
-        <textarea name="descripcion" id="descripcion" rows="5" class="form-control"></textarea>
+        <textarea name="descripcion" id="descripcion" rows="5" class="form-control ckeditor"></textarea>
         </div>
 
         <div class="row" style="padding-top:15px">
             <div class="col-md-3">
-                <input type="file" name="archivo" class="btn-primary">
+                <input type="file" name="archivo" class="btn-primary" multiple>
             </div>
         </div>
 
@@ -305,8 +316,10 @@ input:checked + label {
 @stop
 
 @section('js')
+<script src="{{ asset('/vendors/ckeditor/ckeditor.js') }}"></script>
 
 <script>
+
 
    function MostrarOP2(dato){
     if(dato=="Apoyo Tecnico"){

@@ -14,6 +14,19 @@
 <div class="card">
     <div class="card-body">
 
+        <div class="container overflow-hidden">
+            <div class="row g-2">
+              <div class="col">
+               <div class="p-3 border bg-light"><button type="button" class="btn btn-light">Light</button></div>
+              </div>
+              <div class="col">
+                <div class="p-3 border bg-light"><button type="button" class="btn btn-light">Light</button></div>
+              </div>
+            <div class="col">
+                <div class="p-3 border bg-light"><button type="button" class="btn btn-light">Light</button></div>
+              </div>
+            </div>
+          </div>
 
     </div>
 </div>

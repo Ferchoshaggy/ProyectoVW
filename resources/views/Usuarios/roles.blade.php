@@ -1,5 +1,4 @@
 @extends('adminlte::page')
-
 @section('title', 'Usuarios')
 
 @section('content_header')
@@ -41,7 +40,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{Route('save_users')}}" method="POST">
+        <form action="{{Route('save_users')}}" method="POST" enctype="multipart/form-data">
             @csrf
         <div class="modal-body">
 
@@ -172,18 +171,12 @@
                       @endif
                       @endforeach
                       @endforeach
-
-
                 </tbody>
               </table>
 
-
         </div>
-
-
     </div>
 </div>
-
 
 
 @stop
@@ -243,7 +236,7 @@
 
 //funcion de la tabla de boostrap tenga paginador y buscador
   $(document).ready(function() {
-    $('.table').DataTable({        
+    $('.table').DataTable({
        "language": {
           "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
        }
@@ -322,6 +315,9 @@ document.getElementById("conf").style.display="block";
  document.getElementById("cont").style.display="block";
  contraIgual=true;
     }
+}else{
+    document.getElementById("cont").style.display="none";
+    document.getElementById("conf").style.display="none";
 }
 
 let nombre=document.getElementById('nombre').value;
@@ -330,10 +326,9 @@ let tipo=document.getElementById('tipo').value;
 let gen=document.getElementById('genero').value;
 let con=document.getElementById('concesionaria').value;
 
-
-    if(nombre && correo && tipo && contraIgual && gen && con){
+if(nombre && correo && tipo && contraIgual && gen && con){
    document.getElementById('guardar').disabled=false;
-    }else{
+ }else{
         document.getElementById('guardar').disabled=true;
     }
 }
