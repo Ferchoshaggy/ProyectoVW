@@ -19,4 +19,9 @@ class ReportesController extends Controller
     public function vista_newReport(){
         return view('Reportes.newReport');
     }
+     public function report_save(){
+
+    }
+
+
 }

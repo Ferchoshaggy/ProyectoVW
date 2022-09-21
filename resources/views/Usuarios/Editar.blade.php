@@ -23,15 +23,15 @@
     <div class="col-md-12" style="text-align: center; margin-bottom: 10px;">
 
         @if($usuario->foto==null)
-        <img class="redondeo_img" src="{{asset('ImgUser/usuario.png')}}" id="foto" data-toggle="modal" data-toggle="modal" data-target="#ver_foto"><br>
+        <img class="redondeo_img" src="{{asset('ImgUser/usuario.png')}}" id="foto"><br>
         <label>SIN FOTO</label><br>
         <label>PARA AGREGAR&nbsp;</label>
-        <input type="file" name="foto" class="form-control" accept="image/*" id="foto_archivo" onchange="cambio_foto(this);">
+        <input type="file" name="foto" class="form-control" accept="image/*" id="foto_archivo" onchange="cambiar_foto(this);">
         @else
-        <img class="redondeo_img" src="fotos_users\{{$dato->foto}}" id="foto" data-toggle="modal" data-toggle="modal" data-target="#ver_foto"><br>
+        <img class="redondeo_img" src="fotos_users\{{$dato->foto}}" id="foto"><br>
         <label>FOTO ACTUAL</label><br>
         <label>PARA CAMBIARLA&nbsp;</label>
-        <input type="file" name="foto" class="form-control" accept="image/*" id="foto_archivo" onchange="cambio_foto(this);">
+        <input type="file" name="foto" class="form-control" accept="image/*" id="foto_archivo" onchange="cambiar_foto(this);">
         @endif
     </div>
 
@@ -107,6 +107,16 @@
 </div>
 </div>
 
+<div class="row">
+
+    <div class="col-md-3">
+        <label for="correo">Cambiar Contraseña</label>
+        <input type="password" class="form-control" name="passAA" id="passAA" value="">
+    </div>
+
+</div>
+<br>
+<button type="submit" class="btn btn-success form-control" >Actualizar</button>
 
     </div>
 
@@ -125,7 +135,7 @@
     input[type="file"]{
           background: white;
           outline: none;
-        
+
       }
       ::-webkit-file-upload-button{
         margin-top: -20px;
@@ -161,5 +171,30 @@
 @stop
 
 @section('js')
+
+<script type="text/javascript">
+
+function cambiar_foto(file){
+    if(file.files[0]==null){
+      document.getElementById("foto").src="{{asset('ImgUser/usuario.png')}}";
+
+    }else{
+      document.getElementById("foto").src= (window.URL ? URL : webkitURL).createObjectURL(file.files[0]);
+
+    }
+    var nombre_archivo=file.files[0].name;
+    //alert(nombre_archivo);
+    if(nombre_archivo.toLowerCase().indexOf(".png")!==-1 || nombre_archivo.toLowerCase().indexOf(".jpg")!==-1 || nombre_archivo.toLowerCase().indexOf(".gif")!==-1 || nombre_archivo.toLowerCase().indexOf(".ico")!==-1 || nombre_archivo.toLowerCase().indexOf(".svg")!==-1){
+
+    }else{
+      document.getElementById("foto").src="{{asset('ImgUser/usuario.png')}}";
+      alert("la extencion de la imagen no es valido");
+      document.getElementById("foto_archivo").value="";
+    }
+  }
+
+
+
+</script>
 
 @stop

@@ -132,7 +132,7 @@ return [
 
     'usermenu_enabled' => true,
     'usermenu_header' => true,
-    'usermenu_header_class' => 'bg-primary',
+    'usermenu_header_class' => 'co',
     'usermenu_image' => true,
     'usermenu_desc' => true,
     'usermenu_profile_url' => true,
@@ -193,7 +193,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-2',
+    'classes_sidebar' => 'sidebar-dark-warning elevation-2',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'co navbar-dark navbar-light',
     'classes_topnav_nav' => 'navbar-expand',

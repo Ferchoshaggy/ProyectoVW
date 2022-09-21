@@ -221,14 +221,15 @@
                 </div>
 
                 <div class="col-md-2">
-                    <label for="type">Type</label>
-                    <select name="type" id="type" class="form-control">
-                    <option value="Pregunta">Pregunta</option>
-                    <option value="Incidente">Incidente</option>
-                    <option value="Incidente Importante">Incidente Importante</option>
-                    <option value="Peticion de Servicio">Peticion de Servicio</option>
-                    <option value="Problema">Problema</option>
-                    <option value="Solicitud de Cambio">Solicitud de Cambio</option>
+                    <label for="type">Prioridad</label>
+                    <select name="prioridad" id="prioridad" class="form-control">
+                    <option selected="true" value="" disabled="disabled">Seleccione Prioridad...</option>
+                    <option value="Emergencia">Emergencia</option>
+                    <option value="Alto">Alto</option>
+                    <option value="Bajo">Bajo</option>
+                    <option value="Normal">Normal</option>
+
+
 
                     </select>
                 </div>
