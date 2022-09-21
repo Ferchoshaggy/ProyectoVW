@@ -14,10 +14,9 @@
 
 .link-nav {
     background-color: green;
-    font-size: 167%;
+    font-size: 125%;
     border-radius: 5px 5px 5px 5px;
-    height: 25px;
-    width: 25px;
+
 }
 
 .preloader {
@@ -27,4 +26,9 @@
 .img-circle {
     margin-left: 6px !important;
 }
+.co{
+background: linear-gradient(40deg,rgb(90, 86, 86),#00A1D8);
+}
+
+
 

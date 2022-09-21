@@ -19,8 +19,8 @@
 @foreach ($tipos as $tipo)
 @if ($usuario->tipo_user==$tipo->id)
 
-<div class="row">
-    <div class="col-md-5" style="text-align: center; margin-bottom: 10px;">
+
+    <div class="col-md-12" style="text-align: center; margin-bottom: 10px;">
 
         @if($usuario->foto==null)
         <img class="redondeo_img" src="{{asset('ImgUser/usuario.png')}}" id="foto" data-toggle="modal" data-toggle="modal" data-target="#ver_foto"><br>
@@ -35,7 +35,7 @@
         @endif
     </div>
 
-    <div class="col-md-7">
+    <div class="col-md-12">
         <div class="row">
             <div class="col-md-4">
                 <label for="Nombre">Nombre</label>
@@ -104,13 +104,11 @@
         <label for="Tipo">Tipo de Usuario</label>
 
 <input type="text" name="tipo" id="tipo" class="form-control" value="{{$tipo->tipo}}" disabled>
-
-        </div>
+</div>
 </div>
 
 
     </div>
-</div>
 
 </form>
 @endif
@@ -127,6 +125,7 @@
     input[type="file"]{
           background: white;
           outline: none;
+        
       }
       ::-webkit-file-upload-button{
         margin-top: -20px;

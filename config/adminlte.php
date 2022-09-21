@@ -153,7 +153,7 @@ return [
     'layout_boxed' => null,
     'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => true,
-    'layout_fixed_footer' => null,
+    'layout_fixed_footer' => true,
     'layout_dark_mode' => false,
 
     /*
@@ -195,7 +195,7 @@ return [
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-primary elevation-2',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-dark navbar-light',
+    'classes_topnav' => 'co navbar-dark navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -294,18 +294,20 @@ return [
 
     'menu' => [
         // Navbar items:
-
+        [
+          'header' => 'MENU',
+        ],
         [
             'text' => '',
-            'icon' => 'fas fa-solid fa-plus link-nav',
+            'icon' => 'fas fa-solid fa-plus link-nav fa-xs',
             'route' => 'vista_newReport',
-            'classes' => '',
             'topnav_right' => true,
 
         ],
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => false,
+
         ],
 
         // Sidebar items:
@@ -317,17 +319,17 @@ return [
 
         [
             'text' => 'Tablero',
-            'route'  => 'vista_dash',
+            'route' => 'vista_dash',
             'icon' => 'nav-icon fas fa-tachometer-alt',
         ],
         [
             'text' => 'Reportes',
-            'route'  => 'vista_report',
+            'route' => 'vista_report',
             'icon' => 'nav-icon fas fa-copy',
         ],
         [
             'text' => 'Usuarios',
-            'route'  => 'vista_users',
+            'route' => 'vista_users',
             'icon' => 'nav-icon fas fa-fw fa-user',
         ],
 
