@@ -316,9 +316,11 @@ input:checked + label {
 @stop
 
 @section('js')
-<script src="{{ asset('/vendors/ckeditor/ckeditor.js') }}"></script>
+
 
 <script>
+
+
 
 
    function MostrarOP2(dato){
