@@ -253,7 +253,7 @@
 
         <div>
         <label for="descripcion">Descripcion</label>
-        <textarea name="descripcion" id="descripcion" rows="5" class="form-control ckeditor"></textarea>
+        <textarea name="descripcion" id="descripcion" rows="5" class="form-control"></textarea>
         </div>
 
         <div class="row" style="padding-top:15px">
@@ -319,9 +319,6 @@ input:checked + label {
 
 
 <script>
-
-
-
 
    function MostrarOP2(dato){
     if(dato=="Apoyo Tecnico"){

@@ -145,7 +145,7 @@
 
 <!-- Desplegar tabla de usuarios con Table Boostrapt -->
         <div class="table-responsive">
-            <table class="table">
+            <table class="table" style="width: 100%">
                 <thead class="thead-dark">
                   <tr>
                     <th style="text-align: center;">Nombre</th>
@@ -160,7 +160,7 @@
                     @foreach ($users as $user)
                     @foreach ($tipos as $tipo)
                     @if ($user->tipo_user==$tipo->id)
-                    <tr>
+                    <tr class="marca" onclick="pasar_id({{$user->id}});">
                         <td style="text-align: center;">{{$user->name}}</td>
                         <td style="text-align: center;">{{$user->ape_pat}}</td>
                         <td style="text-align: center;">{{$user->ape_mat}}</td>
@@ -178,6 +178,52 @@
     </div>
 </div>
 
+  <!--menu de opciones de la tabla-->
+  <div id="menu_opciones" class="visible_off " style=" padding: 20px; background-color: #6e82c2bd;">
+
+    <button type="button" class="close" style="margin-right: -17px; margin-top: -20px;" onclick="cerrar_menu();">
+       <i class="fas fa-times fas-sm"></i>
+    </button>
+
+  <button type="button" class="btn btn-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#editar_usuario" onclick="editar_user();">
+    <i class="fas fa-edit"></i>
+    Editar
+  </button>
+  <br>
+  <button class="btn btn-danger form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#eliminar_usuario" onclick="eliminar_user();" >
+    <i class="fas fa-trash"></i>
+    Eliminar
+  </button>
+</div>
+
+<!-- modal de eliminar usuario-->
+<div class="modal fade" id="eliminar_usuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Eliminar Usuario</h5>
+          </div>
+          <form action="" method="POST">
+              @csrf
+              @method('DELETE')
+              <div class="modal-body">
+                  <label style="font-weight: bold; font-size: 25px;">¿quieres eliminar al usuario?</label><br><br>
+                  <div style="text-align: center;">
+
+                      <label style=" font-weight: bold; font-size: 25px;" >Usuario: </label>
+                      <label style="color: red; font-weight: bold; font-size: 25px;" id="text_eliminar"></label>
+
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <input type="hidden" name="id_user_edit" id="id_user_edit_2">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <button class="btn btn-danger" >Eliminar</button>
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
 
 @stop
 
@@ -219,6 +265,26 @@
         border-radius: 10px;
         cursor: pointer;
       }
+
+      /*Estilo para el cuadro de opciones*/
+
+      .marca{
+        transition: 1s;
+    }
+    .marca:hover{
+        background: #8a98d6;
+        transition: 1s;
+    }
+    .visible_on{
+        display: block;
+        position: fixed;
+        background: white;
+        border-radius: 15px;
+        width: auto;
+    }
+    .visible_off{
+        display: none;
+    }
   </style>
 
 
@@ -337,6 +403,31 @@ if(nombre && correo && tipo && contraIgual && gen && con){
 $(".alert").fadeTo(2000, 500).slideUp(500, function(){
     $(".alert").slideUp(500);
 });
+
+
+//cuadro de opciones
+
+var id_user=null;
+    function pasar_id($id_tr) {
+        id_user=$id_tr;
+        var coordenadas_y=event.clientY; //odtenemos el valor de la posicion del boton
+        var coordenadas_x=event.clientX; //odtenemos el valor de la posicion del boton
+        menu_opciones.style.top=coordenadas_y-50+"px";
+        menu_opciones.style.left=coordenadas_x-50+"px";
+        menu_opciones.classList.add("visible_on");
+        menu_opciones.classList.remove("visible_off");
+      //alert($id_tr);
+    }
+    menu_opciones.addEventListener("mouseleave",function(){
+          menu_opciones.classList.remove("visible_on");
+          menu_opciones.classList.add("visible_off");
+    });
+    function cerrar_menu(){
+        menu_opciones.classList.remove("visible_on");
+        menu_opciones.classList.add("visible_off");
+    }
+
+
 
   </script>
 
