@@ -6,7 +6,7 @@ use App\Http\Controllers\DashController;
 use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +34,14 @@ Route::post('/save_report',[ReportesController::class,'report_save'])->name('rep
 //Usuarios
 Route::get('/users', [UsuariosController::class,'vista_users'])->name('vista_users');
 Route::post('/save_user',[UsuariosController::class,'guardar_usuario'])->name('save_users');
-
+Route::delete('/delete_user',[UsuariosController::class,'user_delete'])->name('user_delete');
+Route::post('/users_cambiar', [UsuariosController::class,'cambiar_users'])->name('cambiar_users');
 
 //Configuracion de Usuario
 Route::get('/ConfigUser', [UserController::class,'vista_edit'])->name('edit_user');
 Route::post('/update_user',[UserController::class,'actualizar_user'])->name('user_update');
+
+
+//buscar datos
+Route::get("/search_user/{id}",[SearchController::class,'userSearch'])->name('UserSearch');
 

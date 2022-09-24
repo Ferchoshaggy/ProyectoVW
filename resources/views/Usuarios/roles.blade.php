@@ -11,16 +11,38 @@
 <div class="card">
     <div class="card-body">
 
-<!--alerta de Guardado con exito -->
+<!--alertas -->
 
 @if (Session::has('message'))
 <br>
-<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: serif;">
+
+@if(Session::get('message')== "Usuario Guardado con Éxito")
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
     {{ Session::get('message') }}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
+@endif
+
+@if(Session::get('message')== "Se Elimino correctamente el Usuario")
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+@if(Session::get('message')== "Se cambio Al Usuario con Exito")
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
 @endif
 
 <!--Boton de nuevo usuarios -->
@@ -65,8 +87,8 @@
 <label for="Genero">Genero</label>
 <select class="form-control" name="genero" id="genero" onchange="validar();">
     <option selected="true" value="" disabled="disabled">Seleccione Genero...</option>
-    <option value="Femenino">Femenino</option>
-    <option value="Masculino">Masculino</option>
+    <option value="Femenino" @if (old('genero') == "Femenino") {{ 'selected' }} @endif>Femenino</option>
+    <option value="Masculino" @if (old('genero') == "Masculino") {{ 'selected' }} @endif>Masculino</option>
 </select>
     </div>
 
@@ -74,9 +96,9 @@
  <label for="Cconcesionaria">Concesionaria</label>
 <select class="form-control" name="concesionaria" id="concesionaria" onchange="validar();">
     <option selected="true" value="" disabled="disabled">Seleccione Concesionaria...</option>
-    <option value="Fersan">Fersan Motors Volkswagen</option>
-    <option value="Chaixtsu">Chaixtsu Motors Suzuki</option>
-    <option value="Navarra">SEAT Navarra Motors</option>
+    <option value="Fersan"  @if (old('concesionaria') == "Fersan") {{ 'selected' }} @endif>Fersan Motors Volkswagen</option>
+    <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
+    <option value="Navarra"  @if (old('concesionaria') == "Navarra") {{ 'selected' }} @endif>SEAT Navarra Motors</option>
 </select>
     </div>
 </div>
@@ -84,14 +106,15 @@
 <div class="row">
     <div class="col-md-6">
         <label for="correo">Correo</label>
-        <input type="email" class="form-control" name="correo" id="correo" onchange="validar();">
+        <input type="email" class="form-control" name="correo" id="correo" value="{{old("correo")}}" onchange="validar();">
     </div>
+
     <div class="col-md-6">
         <label for="Tipo">Tipo de Usuario</label>
         <select name="tipo" id="tipo" class="form-control" onchange="validar()">
         <option selected="true" value="" disabled="disabled">Seleccione Tipo...</option>
-        <option value="1" >Administrador</option>
-        <option value="2">Usuario</option>
+        <option value="1" @if (old('tipo') == "1") {{ 'selected' }} @endif>Administrador</option>
+        <option value="2" @if (old('tipo') == "2") {{ 'selected' }} @endif>Usuario</option>
         </select>
         </div>
 </div>
@@ -108,6 +131,9 @@
             <button class="btn btn-default" type="button" id="show_password" onclick="mostrarPassword()"><span class="fa fa-eye-slash icon"></span></button>
           </span>
         </div>
+        @error('contraseña')
+        <p class="form-text text-danger">La contrasela debe tener 8 o mas digitos</p>
+         @enderror
     </div>
 
     <div class="col-md-6">
@@ -178,6 +204,7 @@
     </div>
 </div>
 
+
   <!--menu de opciones de la tabla-->
   <div id="menu_opciones" class="visible_off " style=" padding: 20px; background-color: #6e82c2bd;">
 
@@ -185,40 +212,85 @@
        <i class="fas fa-times fas-sm"></i>
     </button>
 
-  <button type="button" class="btn btn-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#editar_usuario" onclick="editar_user();">
+  <button type="button" class="btn btn-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#editar_usuario" onclick="cambiar_user();">
     <i class="fas fa-edit"></i>
     Editar
   </button>
   <br>
-  <button class="btn btn-danger form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#eliminar_usuario" onclick="eliminar_user();" >
+  <button class="btn btn-danger form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#eliminar_usuario" onclick="datos_delete();" >
     <i class="fas fa-trash"></i>
     Eliminar
   </button>
 </div>
+
 
 <!-- modal de eliminar usuario-->
 <div class="modal fade" id="eliminar_usuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Eliminar Usuario</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
           </div>
-          <form action="" method="POST">
+          <form action="{{Route('user_delete')}}" method="POST">
               @csrf
               @method('DELETE')
               <div class="modal-body">
-                  <label style="font-weight: bold; font-size: 25px;">¿quieres eliminar al usuario?</label><br><br>
+                <label style="font-family: cursive; font-size: 25px; display:flex; justify-content: center;align-items: center; height: 100%;">¿Quieres Eliminar al Usuario?</label><br><br>
                   <div style="text-align: center;">
-
-                      <label style=" font-weight: bold; font-size: 25px;" >Usuario: </label>
-                      <label style="color: red; font-weight: bold; font-size: 25px;" id="text_eliminar"></label>
-
+                      <label style="font-family: cursive; font-size: 25px;" id="labeleliminar"></label><br>
+                      <label style="font-family: cursive; font-size: 25px;" id="labelcorreo"></label>
                   </div>
               </div>
               <div class="modal-footer">
-                  <input type="hidden" name="id_user_edit" id="id_user_edit_2">
+                  <input type="hidden" name="id_user" id="id_user">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                   <button class="btn btn-danger" >Eliminar</button>
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
+
+
+<!-- modal de Editar usuario-->
+<div class="modal fade" id="editar_usuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Cambiar Usuario</h5>
+          </div>
+          <form action="{{ Route('cambiar_users')}}" method="POST">
+              @csrf
+              <div class="modal-body">
+
+                  <div class="row" >
+<div class="col-md-12">
+    <label for="Cconcesionaria">Concesionaria</label>
+<select class="form-control" name="concesionaria" id="concesionaria">
+    <option selected="true" value="" disabled="disabled">Seleccione Concesionaria...</option>
+    <option value="Fersan"  @if (old('concesionaria') == "Fersan") {{ 'selected' }} @endif>Fersan Motors Volkswagen</option>
+    <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
+    <option value="Navarra"  @if (old('concesionaria') == "Navarra") {{ 'selected' }} @endif>SEAT Navarra Motors</option>
+</select>
+</div>
+ </div>
+
+ <div class="row" >
+    <div class="col-md-12">
+        <label for="Tipo">Tipo de Usuario</label>
+        <select name="tipo" id="tipo" class="form-control">
+        <option selected="true" value="" disabled="disabled">Seleccione Tipo...</option>
+        <option value="1" @if (old('tipo') == "1") {{ 'selected' }} @endif>Administrador</option>
+        <option value="2" @if (old('tipo') == "2") {{ 'selected' }} @endif>Usuario</option>
+        </select>
+    </div>
+     </div>
+
+              </div>
+              <div class="modal-footer">
+                  <input type="hidden" name="id_user_edit" id="id_user_edit">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                  <button class="btn btn-success " id="button_2">Actualizar</button>
               </div>
           </form>
       </div>
@@ -427,8 +499,53 @@ var id_user=null;
         menu_opciones.classList.add("visible_off");
     }
 
+    function datos_delete(){
+
+$.ajax({
+  url: "{{url('/search_user')}}"+'/'+id_user,
+  dataType: "json",
+  //context: document.body
+}).done(function(datosUser) {
+
+  if(datosUser==null){
+    document.getElementById("labeleliminar").innerHTML=null;
+    document.getElementById("id_user").value=null;
+  }else{
+    document.getElementById("labeleliminar").innerHTML=datosUser.name;
+    document.getElementById("labelcorreo").innerHTML=datosUser.email;
+    document.getElementById("id_user").value=datosUser.id;
+
+  }
+
+});
+
+}
+
+function cambiar_user(){
+
+$.ajax({
+    url: "{{url('/search_user')}}"+'/'+id_user,
+  dataType: "json",
+  //context: document.body
+}).done(function(datosUser) {
+
+  if(datosUser==null){
+    document.getElementById("concesionaria").value=null;
+    document.getElementById("tipo").value=null;
+    document.getElementById("id_user_edit").value=null;
+
+  }else{
+
+    document.getElementById("concesionaria").value=datosUser.concesionaria;
+    document.getElementById("tipo").value=datosUser.tipo_user;
+    document.getElementById("id_user_edit").value=datosUser.id;
 
 
+  }
+
+});
+
+}
   </script>
 
 @stop

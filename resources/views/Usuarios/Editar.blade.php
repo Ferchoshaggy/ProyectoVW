@@ -13,7 +13,36 @@
     <center><h2>Editar Perfil</h2></center>
     <div class="card-body">
 
-<form action="" method="GET" enctype="multipart/form-data">
+
+<!--alerta de Guardado con exito -->
+
+@if (Session::has('message'))
+<br>
+
+@if(Session::get('message')== "Datos Actualizados con Exito")
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+@if(Session::get('message')== "La Contraseña Actual No es correcta")
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+
+@endif
+
+
+
+<form action="{{Route('user_update')}}" method="POST" enctype="multipart/form-data">
 @csrf
 @foreach ($usuarios as $usuario)
 @foreach ($tipos as $tipo)
@@ -28,7 +57,7 @@
         <label>PARA AGREGAR&nbsp;</label>
         <input type="file" name="foto" class="form-control" accept="image/*" id="foto_archivo" onchange="cambiar_foto(this);">
         @else
-        <img class="redondeo_img" src="fotos_users\{{$dato->foto}}" id="foto"><br>
+        <img class="redondeo_img" src="imgUser/{{$usuario->foto}}" id="foto"><br>
         <label>FOTO ACTUAL</label><br>
         <label>PARA CAMBIARLA&nbsp;</label>
         <input type="file" name="foto" class="form-control" accept="image/*" id="foto_archivo" onchange="cambiar_foto(this);">
@@ -72,26 +101,17 @@
 
 <div class="col-md-6">
          <label for="Cconcesionaria">Concesionaria</label>
-        <select class="form-control" name="concesionaria" id="concesionaria">
             @if($usuario->concesionaria=="Fersan")
-            <option value="Fersan">Fersan Motors Volkswagen</option>
-            <option value="Chaixtsu">Chaixtsu Motors Suzuki</option>
-            <option value="Navarra">SEAT Navarra Motors</option>
+            <input type="text" value="Fersan Motors Volkswagen" class="form-control" name="concesionaria" id="concesionaria" disabled>
 
             @elseif ($usuario->concesionaria=="Chaixtsu")
-            <option value="Chaixtsu">Chaixtsu Motors Suzuki</option>
-            <option value="Fersan">Fersan Motors Volkswagen</option>
-            <option value="Navarra">SEAT Navarra Motors</option>
+            <input type="text" value="Chaixtsu Motors Suzuki" class="form-control" name="concesionaria" id="concesionaria" disabled>
 
             @elseif($usuario->concesionaria=="Navarra")
-            <option value="Navarra">SEAT Navarra Motors</option>
-            <option value="Fersan">Fersan Motors Volkswagen</option>
-            <option value="Chaixtsu">Chaixtsu Motors Suzuki</option>
+            <input type="text" value="SEAT Navarra Motors" class="form-control" name="concesionaria" id="concesionaria" disabled>
 
             @else
             @endif
-
-        </select>
             </div>
 </div>
 
@@ -193,6 +213,11 @@
 @section('js')
 
 <script type="text/javascript">
+
+//jquery para desvanecer el mensage
+$(".alert").fadeTo(2000, 500).slideUp(500, function(){
+    $(".alert").slideUp(500);
+});
 
 function cambiar_foto(file){
     if(file.files[0]==null){

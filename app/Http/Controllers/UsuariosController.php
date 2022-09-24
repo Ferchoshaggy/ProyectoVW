@@ -20,8 +20,7 @@ class UsuariosController extends Controller
 
     public function guardar_usuario(Request $request){
         $request->validate([
-            'email'=>'email|unique:email',
-            'password'=>'min:8',
+            'contraseña'=>'min:8',
             ]);
 
         $maxId = DB::table('users')->max('id');
@@ -40,7 +39,31 @@ class UsuariosController extends Controller
         ]);
 
         return redirect()->back()->with(['message' => 'Usuario Guardado con Éxito', 'color' => 'success']);
+    }
+    public function user_delete(Request $request){
+        try {
 
+            if($request["id_user"]!=0){
+                DB::table("users")->where("id",$request["id_user"])->delete();
+                }
+
+                return redirect()->back()->with(['message' => "Se Elimino correctamente el Usuario", 'color' => 'success']);
+
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+
+            }
+    function cambiar_users(Request $request){
+        try {
+            DB::table("users")->where("id",$request["id_user_edit"])->update([
+                "concesionaria"=> $request["concesionaria"],
+                "tipo_user"=> $request["tipo"],
+            ]);
+            return redirect()->back()->with(['message' => "Se cambio Al Usuario con Exito", 'color' => 'success']);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
 
     }
 }

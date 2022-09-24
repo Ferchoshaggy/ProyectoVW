@@ -218,10 +218,12 @@
     </div>
 </div>
             <div class="row">
+@foreach ($usuario as $user)
                 <div class="col-md-4">
         <label for="Usuario">Usuario</label>
-        <input type="text" class="form-control" name="usuario" value="{{old('usuario')}}">
+        <input type="text" class="form-control" name="usuario" value="{{$user->name}} {{$user->ape_pat}} {{$user->ape_mat}}" disabled>
                 </div>
+@endforeach
 
                 <div class="col-md-4">
                     <label for="type">Tipo</label>

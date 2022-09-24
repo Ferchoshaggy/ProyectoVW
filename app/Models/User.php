@@ -72,7 +72,7 @@ class User extends Authenticatable
         if($this->foto==null){
             return asset('ImgUser/usuario.png');
         }else{
-            return "fotos_users\\".$this->foto;
+            return "imgUser\\".$this->foto;
         }
     }
 

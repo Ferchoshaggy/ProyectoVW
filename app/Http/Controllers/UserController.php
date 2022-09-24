@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use League\Flysystem\File;
+use file;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -22,6 +23,68 @@ class UserController extends Controller
 
     public function actualizar_user(Request $request){
 
+        $foto_delete=DB::table("users")->where("id",Auth::user()->id)->first();
+
+        $time = date("d-m-Y")."-".time();
+
+        if($request['foto']!=null){
+
+            //eliminar la foto si es que existe
+            if($foto_delete->foto!=null){
+                $rute_fotos=public_path().'\imgUser\\'.$foto_delete->foto;
+                file::delete($rute_fotos);
+            }
+            //guardamos la nueva
+            $foto = $time.''.rand(11111,99999).'foto'.$foto_delete->id.$request['foto']->getClientOriginalExtension();
+            $destinationPath = public_path().'/imgUser';
+            $file_image = $request->file('foto');
+            $file_image->move($destinationPath,$foto);
+            //$foto="/up_file_participantes_eventos/".$time;
+        }else{
+            $foto=$foto_delete->foto;
+        }
+
+        $user=auth::user();
+        $userPassword=$user->password;
+
+        if($request->passAA !=""){
+
+            $request->validate([
+                'passN'=>'min:8',
+                ]);
+
+        $nuewPass=$request->passN;
+
+        if(Hash::check($request->passAA,$userPassword)){
+
+            $user->password=hash::make($request->passN);
+            DB::table("users")->where("id",Auth::user()->id)->update([
+                "name"=>$request['nombre'],
+                "ape_pat"=>$request['appaterno'],
+                "ape_mat"=>$request['apmaterno'],
+                "foto"=>$foto,
+                "genero"=>$request['genero'],
+                "password"=>$user->password,
+            ]);
+        }else{
+            return redirect()->back()->with(['message' => "La Contraseña Actual No es correcta ", 'color' => 'danger']);
+        }
+
+        }else{
+            DB::table("users")->where("id",Auth::user()->id)->update([
+                "name"=>$request['nombre'],
+                "ape_pat"=>$request['appaterno'],
+                "ape_mat"=>$request['apmaterno'],
+                "foto"=>$foto,
+                "genero"=>$request['genero'],
+
+            ]);
+
+
+        }
+
+ return redirect()->back()->with(['message' => "Datos Actualizados con Exito", 'color' => 'success']);
 
     }
+
 }
