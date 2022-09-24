@@ -209,7 +209,7 @@
   <div id="menu_opciones" class="visible_off " style=" padding: 20px; background-color: #6e82c2bd;">
 
     <button type="button" class="close" style="margin-right: -17px; margin-top: -20px;" onclick="cerrar_menu();">
-       <i class="fas fa-times fas-sm"></i>
+       <i class="fas fa-times fa-xs"></i>
     </button>
 
   <button type="button" class="btn btn-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#editar_usuario" onclick="cambiar_user();">
