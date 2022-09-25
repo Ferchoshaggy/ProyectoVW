@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="background-image: url(/img/Fondo.png); background-size: cover;
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="background-image: url(./img/Fondo.png); background-size: cover;
     background-repeat:no-repeat;
     background-position: center center; background-attachment: fixed; ">
     <head>
