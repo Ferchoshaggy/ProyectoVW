@@ -186,7 +186,7 @@
                     @foreach ($users as $user)
                     @foreach ($tipos as $tipo)
                     @if ($user->tipo_user==$tipo->id)
-                    <tr class="marca" onclick="pasar_id({{$user->id}});">
+                    <tr class="marca" @if(Auth::user()->tipo_user==1) onclick="pasar_id({{$user->id}});" @endif>
                         <td style="text-align: center;">{{$user->name}}</td>
                         <td style="text-align: center;">{{$user->ape_pat}}</td>
                         <td style="text-align: center;">{{$user->ape_mat}}</td>
@@ -272,6 +272,8 @@
     <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
     <option value="Navarra"  @if (old('concesionaria') == "Navarra") {{ 'selected' }} @endif>SEAT Navarra Motors</option>
 </select>
+
+
 </div>
  </div>
 

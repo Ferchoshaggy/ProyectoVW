@@ -14,19 +14,23 @@
 <div class="card">
     <div class="card-body">
 
-        <div class="container overflow-hidden">
-            <div class="row g-2">
-              <div class="col">
-               <div class="p-3 border bg-light"><button type="button" class="btn btn-light">Light</button></div>
-              </div>
-              <div class="col">
-                <div class="p-3 border bg-light"><button type="button" class="btn btn-light">Light</button></div>
-              </div>
-            <div class="col">
-                <div class="p-3 border bg-light"><button type="button" class="btn btn-light">Light</button></div>
-              </div>
-            </div>
-          </div>
+<div class="cajaP">
+
+<div class="cajaH">
+    <button class="btn form-control">Todos</button>
+    <img src="{{asset('img/2tickets.png')}}" alt="" class="add">
+</div>
+
+<div class="cajaH">
+    <button class="btn form-control">Abiertos</button>
+</div>
+
+<div class="cajaH">
+    <button class="btn form-control">Cerrados</button>
+</div>
+
+
+</div>
 
     </div>
 </div>
@@ -37,6 +41,24 @@
 @section('css')
 
 <style>
+
+.cajaP{
+display: flex;
+justify-content: center;
+}
+.cajaH{
+flex: auto;
+margin: 0 10px;
+justify-content: center;
+}
+.add{
+
+        background-repeat:no-repeat;
+        height:60px;
+        width:70px;
+        background-size: 50px 50px;
+        background-position:center;
+}
 
 </style>
 

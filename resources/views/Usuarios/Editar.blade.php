@@ -224,7 +224,7 @@ function cambiar_foto(file){
       document.getElementById("foto").src="{{asset('ImgUser/usuario.png')}}";
 
     }else{
-      document.getElementById("foto").src= (window.URL ? URL : webkitURL).createObjectURL(file.files[0]);
+     document.getElementById("foto").src= (window.URL ? URL : webkitURL).createObjectURL(file.files[0]);
 
     }
     var nombre_archivo=file.files[0].name;
@@ -232,6 +232,7 @@ function cambiar_foto(file){
     if(nombre_archivo.toLowerCase().indexOf(".png")!==-1 || nombre_archivo.toLowerCase().indexOf(".jpg")!==-1 || nombre_archivo.toLowerCase().indexOf(".gif")!==-1 || nombre_archivo.toLowerCase().indexOf(".ico")!==-1 || nombre_archivo.toLowerCase().indexOf(".svg")!==-1){
 
     }else{
+
       document.getElementById("foto").src="{{asset('ImgUser/usuario.png')}}";
       alert("la extencion de la imagen no es valido");
       document.getElementById("foto_archivo").value="";

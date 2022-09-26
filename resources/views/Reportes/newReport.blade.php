@@ -17,7 +17,7 @@
 
 @if (Session::has('message'))
 <br>
-<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-weight: bold;">
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-weight: cursive;">
     {{ Session::get('message') }}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -25,8 +25,8 @@
 </div>
 @endif
 
-        <form action="" method="get" enctype="multipart/form-data">
-
+        <form action="{{Route('report_save')}}" method="post" enctype="multipart/form-data">
+@csrf
 <!--opcion 1 la primera eleccion dependera de las demas opciones -->
 
 <label for="IT"><i class="fas fa-laptop"></i>IT</label>
@@ -219,6 +219,11 @@
 </div>
             <div class="row">
 @foreach ($usuario as $user)
+
+
+<input class="form-control" type="hidden" name="idPerfil"
+value="{{ Auth::user()->id}}">
+
                 <div class="col-md-4">
         <label for="Usuario">Usuario</label>
         <input type="text" class="form-control" name="usuario" value="{{$user->name}} {{$user->ape_pat}} {{$user->ape_mat}}" disabled>
@@ -227,7 +232,7 @@
 
                 <div class="col-md-4">
                     <label for="type">Tipo</label>
-                    <select name="prioridad" id="prioridad" class="form-control">
+                    <select name="tipo" id="tipo" class="form-control">
                     <option selected="true" value="" disabled="disabled">Seleccione Tipo...</option>
                     <option value="Pregunta">Pregunta</option>
                     <option value="Incidente">Incidente</option>
@@ -321,6 +326,11 @@ input:checked + label {
 
 
 <script>
+
+    //jquery para desvanecer el mensage
+$(".alert").fadeTo(2000, 500).slideUp(500, function(){
+    $(".alert").slideUp(500);
+});
 
    function MostrarOP2(dato){
     if(dato=="Apoyo Tecnico"){

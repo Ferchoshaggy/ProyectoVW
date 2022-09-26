@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateTipoUsersTable extends Migration
 {
@@ -16,7 +17,7 @@ class CreateTipoUsersTable extends Migration
         Schema::create('tipo_users', function (Blueprint $table) {
             $table->id();
             $table->string('tipo');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 

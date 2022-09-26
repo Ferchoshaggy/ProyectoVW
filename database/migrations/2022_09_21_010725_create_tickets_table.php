@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateTicketsTable extends Migration
 {
@@ -27,8 +28,8 @@ class CreateTicketsTable extends Migration
             $table->text("descripcion")->nullable();
             $table->string("archivo")->nullable();
             $table->string("status")->nullable();
-            $table->uuid("uuid")->unique()->index();
-            $table->timestamps();
+            $table->string("codigo")->unique()->index();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
