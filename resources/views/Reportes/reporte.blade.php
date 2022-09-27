@@ -17,20 +17,22 @@
 <div class="cajaP">
 
 <div class="cajaH">
-    <button class="btn form-control">Todos</button>
-    <img src="{{asset('img/2tickets.png')}}" alt="" class="add">
+    <button class="btn" id="todo"><img src="{{asset('img/2tickets.png')}}" alt="todo" class="add">Todos</button>
 </div>
 
 <div class="cajaH">
-    <button class="btn form-control">Abiertos</button>
+
+    <button class="btn"><img src="{{asset('img/abierto.png')}}" alt="" class="add">Abiertos</button>
 </div>
 
 <div class="cajaH">
-    <button class="btn form-control">Cerrados</button>
+    <button class="btn"><img src="{{asset('img/cerrado.png')}}" alt="" class="add">Cerrados</button>
 </div>
 
-
 </div>
+<hr>
+
+
 
     </div>
 </div>
@@ -54,10 +56,13 @@ justify-content: center;
 .add{
 
         background-repeat:no-repeat;
-        height:60px;
+        height:70px;
         width:70px;
         background-size: 50px 50px;
         background-position:center;
+}
+.btn{
+    flex: auto;
 }
 
 </style>
