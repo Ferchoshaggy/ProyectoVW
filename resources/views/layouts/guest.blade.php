@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="background-image: url(./img/Fondo.png); background-size: cover;
+
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="background: linear-gradient(180deg,rgb(30, 231, 238),#00A1D8,rgb(174, 58, 228)); background-size: cover;
     background-repeat:no-repeat;
     background-position: center center; background-attachment: fixed; ">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
 
         <title>Sistemas IT</title>
 

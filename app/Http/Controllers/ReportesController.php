@@ -16,7 +16,9 @@ class ReportesController extends Controller
     }
 
     public function vista_report(){
-        return view('Reportes.reporte');
+        $reportes=DB::table('tickets')->select('*')->get();
+        $users=DB::table('users')->select('*')->get();
+        return view('Reportes.reporte',compact("reportes","users"));
     }
     public function vista_newReport(){
         $usuario=DB::table("users")->where("id",Auth::user()->id)->get();
@@ -34,7 +36,7 @@ class ReportesController extends Controller
         }else if($users->concesionaria=="Navarra"){
             $inic="NMIT-";
         }
-       $clave=$inic.$fecha.$hora.'-'.rand(00000,99999);
+       $clave=$inic.$fecha.$hora.'-'.rand(000,999);
 
         DB::table("tickets")->insert([
         "opcion1"=>$request['op1'],
