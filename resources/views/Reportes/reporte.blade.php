@@ -49,7 +49,7 @@
             @foreach ($reportes as $reporte)
             @foreach ($users as $user )
             @if ($reporte->usuario==$user->id)
-          <tr>
+          <tr class="marca" @if(Auth::user()->tipo_user==1) onclick="pasar_id({{$reporte->id}});" @endif>
             <td style="text-align: center;">{{$reporte->codigo}}</td>
             <td style="text-align: center;">{{$user->name}} {{$user->ape_pat}}</td>
             <td style="text-align: center;">{{$reporte->tipo}}</td>
