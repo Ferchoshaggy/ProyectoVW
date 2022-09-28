@@ -131,8 +131,8 @@
         </div>
 
         <div class="caja">
-            <input type="radio" id="red" name="op3" value="Red y Telefonos Inteligentes" onclick="MostrarForm(this.value);">
-            <label for="red"><i class="fas fa-mobile"></i>Red y Telefonos Inteligentes</label>
+            <input type="radio" id="red" name="op3" value="Red y Telefonos" onclick="MostrarForm(this.value);">
+            <label for="red"><i class="fas fa-mobile"></i>Red y Telefonos</label>
         </div>
 
         <div class="caja">
@@ -165,15 +165,60 @@
         </div>
 
         <div class="caja">
-            <input type="radio" id="Sap" name="op3" value="SAP" onclick="MostrarForm(this.value);">
-            <label for="Sap"><i class="fas fa-stream"></i>SAP</label>
+            <input type="radio" id="dms" name="op3" value="DMS" onclick="MostrarForm(this.value);">
+            <label for="dms"><i class="fas fa-stream"></i>DMS</label>
         </div>
 
         <div class="caja">
-            <input type="radio" id="otro" name="op3" value="Otro" onclick="MostrarForm(this.value);">
-            <label for="otro"><i class="fas  fa-cog"></i>Otro</label>
+            <input type="radio" id="adp" name="op3" value="Aplicaciones de Planta" onclick="MostrarOP4(this.value);">
+            <label for="adp"><i class="fas fa-car"></i>Aplicaciones de Planta</label>
         </div>
 
+        <div class="caja">
+            <input type="radio" id="otro" name="op3" value="Otro" onclick="MostrarOP4(this.value);">
+            <label for="otro"><i class="fas fa-cog"></i>Otro</label>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- opcion 4 a elegir de app de planta -->
+
+<div id="op4a" style="display:block">
+    <hr>
+    <label for="Apoyo Tecnico"><i class="fas fa-car"></i>Aplicaciones de Planta</label><br>
+    <div class="op">
+        <div class="caja">
+            <input type="radio" id="vw" name="op4" value="Volkswagen" onclick="MostrarForm(this.value);">
+            <label for="vw"><i class="fas fa-database"></i>Volkswagen</label>
+        </div>
+
+        <div class="caja">
+            <input type="radio" id="seat" name="op4" value="SEAT" onclick="MostrarForm(this.value);">
+            <label for="seat"><i class="fas fa-envelope"></i>SEAT</label>
+        </div>
+
+        <div class="caja">
+            <input type="radio" id="Suzuki" name="op4" value="Suzuki" onclick="MostrarForm(this.value);">
+            <label for="Suzuki"><i class="fas fa-file-word"></i>Suzuki</label>
+        </div>
+
+    </div>
+</div>
+
+<!-- opcion 4 a elegir otros-->
+
+<div id="op4o" style="display:block">
+    <hr>
+    <label for="Apoyo Tecnico"><i class="fas fa-cog"></i>Otros</label><br>
+    <div class="op">
+        <div class="caja">
+            <input type="radio" id="camaras" name="op4" value="Camaras" onclick="MostrarForm(this.value);">
+            <label for="camaras"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-video-fill" viewBox="0 0 16 16" style="margin: 0 5px">
+                <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z"/>
+              </svg>Revicion de Camaras</label>
+        </div>
     </div>
 </div>
 
@@ -390,13 +435,17 @@ if(tipo && prioridad && tema && descripcion && fue){
         document.getElementById("DB").checked=false;
         document.getElementById("correo").checked=false;
         document.getElementById("Sala").checked=false;
-        document.getElementById("Sap").checked=false;
+        document.getElementById("dms").checked=false;
         document.getElementById("otro").checked=false;
+        document.getElementById("adp").checked=false;
 
         document.getElementById('op3hn').style.display="none";
         document.getElementById("EscritorioN").checked=false;
         document.getElementById("EquipoDered").checked=false;
         document.getElementById("formularioN").style.display="none";
+
+        document.getElementById("op4o").style.display="none";
+        document.getElementById("vw").checked=false;
 
     }else{
         document.getElementById("formularioN").style.display="none";
@@ -460,16 +509,18 @@ if(tipo && prioridad && tema && descripcion && fue){
         document.getElementById("DB").checked=false;
         document.getElementById("correo").checked=false;
         document.getElementById("Sala").checked=false;
-        document.getElementById("Sap").checked=false;
+        document.getElementById("dms").checked=false;
         document.getElementById("otro").checked=false;
+        document.getElementById("adp").checked=false;
 
     }else{
         document.getElementById("op3s").style.display="none";
         document.getElementById("DB").checked=false;
         document.getElementById("correo").checked=false;
         document.getElementById("Sala").checked=false;
-        document.getElementById("Sap").checked=false;
+        document.getElementById("dms").checked=false;
         document.getElementById("otro").checked=false;
+        document.getElementById("adp").checked=false;
     }
 
     if(dato=="Hardware Nuevo"){
@@ -510,7 +561,7 @@ document.getElementById("EquipoDered").checked=false;
     if(dato=="Escritorio Portatil"){
         document.getElementById("formularioN").style.display="block";
     }
-    if(dato=="Red y Telefonos Inteligentes"){
+    if(dato=="Red y Telefonos"){
         document.getElementById("formularioN").style.display="block";
     }
     if(dato=="Impresora"){
@@ -525,7 +576,7 @@ document.getElementById("EquipoDered").checked=false;
     if(dato=="Office Suite"){
         document.getElementById("formularioN").style.display="block";
     }
-    if(dato=="SAP"){
+    if(dato=="DMS"){
         document.getElementById("formularioN").style.display="block";
     }
     if(dato=="Otro"){

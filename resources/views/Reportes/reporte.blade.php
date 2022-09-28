@@ -13,7 +13,7 @@
 <div class="card">
     <div class="card-body">
 
-        <ul class="nav nav-pills cajaP">
+        <ul class="nav cajaP">
             <li class="nav-item cajaH">
               <a class="nav-link active btn btn2" id="table-todo" data-toggle="tab" href="#tableT" role="tab" aria-controls="tableT" aria-selected="false"><img src="{{asset('img/2tickets.png')}}" alt="todo" class="add">Todos</a>
             </li>
@@ -34,7 +34,7 @@
 
 <!-- tabla para los reportes -->
 <div class="table-responsive">
-    <table class="table">
+    <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
             <th style="text-align: center;">Ticket ID</th>
@@ -76,7 +76,7 @@
 <div class="tab-pane fade"  id="tableA" role="tabpanel" aria-labelledby="table-abierto">
     <!-- tabla para los reportes -->
 <div class="table-responsive">
-    <table class="table">
+    <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
             <th style="text-align: center;">Ticket ID</th>
@@ -115,7 +115,7 @@
 <div class="tab-pane fade"  id="tableC" role="tabpanel" aria-labelledby="table-cerrado">
         <!-- tabla para los reportes -->
 <div class="table-responsive">
-    <table class="table">
+    <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
             <th style="text-align: center;">Ticket ID</th>
@@ -249,6 +249,7 @@ align-items: center;
     flex: auto;
 }
 
+
 /*Estilo para el cuadro de opciones*/
 
       .marca{
@@ -268,20 +269,7 @@ align-items: center;
     .visible_off{
         display: none;
     }
-/*estilo active*/
-.nav-link {
-            color: green;
-        }
 
-        .nav-item>a:hover {
-            color: green;
-        }
-
-        /*code to change background color*/
-        .navbar-nav>.active>a {
-            background-color: #C0C0C0;
-            color: green;
-        }
 
 </style>
 
@@ -312,7 +300,6 @@ align-items: center;
 $(".alert").fadeTo(2000, 500).slideUp(500, function(){
     $(".alert").slideUp(500);
 });
-
 //cuadro de opciones
 
 var id_ticket=null;
