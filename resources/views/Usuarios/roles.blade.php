@@ -340,7 +340,7 @@
         cursor: pointer;
       }
 
-      /*Estilo para el cuadro de opciones*/
+/*Estilo para el cuadro de opciones*/
 
       .marca{
         transition: 1s;

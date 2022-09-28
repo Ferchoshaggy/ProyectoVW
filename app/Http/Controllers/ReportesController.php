@@ -57,6 +57,11 @@ class ReportesController extends Controller
         return redirect()->back()->with(['message' => "Ticket Levantado Con Exito", 'color' => 'success']);
 
     }
+function cambiar_status(){
 
+}
+function ticket_delete(){
+
+}
 
 }

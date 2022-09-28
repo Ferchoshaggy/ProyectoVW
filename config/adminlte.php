@@ -113,8 +113,8 @@ return [
             'path' => 'img/Logo2.png',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation_wobble',
-            'width' => 100,
-            'height' => 100,
+            'width' => 200,
+            'height' => 200,
         ],
     ],
 

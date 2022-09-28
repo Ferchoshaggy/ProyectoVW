@@ -204,15 +204,15 @@
     <div class="col align-self-end">
         <label for="Fuente">Fuente</label>
         <div style="border: 1px solid rgb(185, 184, 184); border-radius:0.4em;">
-        <input type="radio" id="web" name="fuente" value="WEB">
+        <input type="radio" id="web" name="fuente" value="WEB" onchange="validarT();">
         <label for="web"><i class="fas fa-globe"></i>WEB</label>
-        <input type="radio" id="tel" name="fuente" value="Telefono">
+        <input type="radio" id="tel" name="fuente" value="Telefono" onchange="validarT();">
         <label for="tel"><i class="fas fa-phone"></i>Telefono</label>
-        <input type="radio" id="email" name="fuente" value="Email">
+        <input type="radio" id="email" name="fuente" value="Email" onchange="validarT();">
         <label for="email"><i class="fas fa-envelope"></i>Email</label>
-        <input type="radio" id="smg" name="fuente" value="SMG">
+        <input type="radio" id="smg" name="fuente" value="SMG" onchange="validarT();">
         <label for="smg"><i class="fas  fa-comments"></i>SMG</label>
-        <input type="radio" id="person" name="fuente" value="En Persona">
+        <input type="radio" id="person" name="fuente" value="En Persona" onchange="validarT();">
         <label for="person"><i class="fas fa-users"></i>En Persona</label>
     </div>
     </div>
@@ -226,53 +226,53 @@ value="{{ Auth::user()->id}}">
 
                 <div class="col-md-4">
         <label for="Usuario">Usuario</label>
-        <input type="text" class="form-control" name="usuario" value="{{$user->name}} {{$user->ape_pat}} {{$user->ape_mat}}" disabled>
+        <input type="text" class="form-control" name="usuario" id="usuario" value="{{$user->name}} {{$user->ape_pat}} {{$user->ape_mat}}" disabled>
                 </div>
 @endforeach
 
                 <div class="col-md-4">
                     <label for="type">Tipo</label>
-                    <select name="tipo" id="tipo" class="form-control">
+                    <select name="tipo" id="tipo" class="form-control" onchange="validarT();">
                     <option selected="true" value="" disabled="disabled">Seleccione Tipo...</option>
-                    <option value="Pregunta">Pregunta</option>
-                    <option value="Incidente">Incidente</option>
-                    <option value="Peticion de Servicio">Peticion de Servicio</option>
-                    <option value="Solicitud de Cambio">Solicitud de Cambio</option>
+                    <option value="Pregunta" @if (old('tipo') == "Pregunta") {{ 'selected' }} @endif>Pregunta</option>
+                    <option value="Incidente" @if (old('tipo') == "Incidente") {{ 'selected' }} @endif>Incidente</option>
+                    <option value="Peticion de Servicio" @if (old('tipo') == "Peticion de Servicio") {{ 'selected' }} @endif>Peticion de Servicio</option>
+                    <option value="Solicitud de Cambio" @if (old('tipo') == "Solicitud de Cambio") {{ 'selected' }} @endif>Solicitud de Cambio</option>
                     </select>
                 </div>
 
                 <div class="col-md-4">
                     <label for="type">Prioridad</label>
-                    <select name="prioridad" id="prioridad" class="form-control">
+                    <select name="prioridad" id="prioridad" class="form-control" onchange="validarT();">
                     <option selected="true" value="" disabled="disabled">Seleccione Prioridad...</option>
-                    <option value="Emergencia">Emergencia</option>
-                    <option value="Alto">Alto</option>
-                    <option value="Bajo">Bajo</option>
-                    <option value="Normal">Normal</option>
+                    <option value="Emergencia" @if (old('tipo') == "Emergencia") {{ 'selected' }} @endif>Emergencia</option>
+                    <option value="Alto" @if (old('tipo') == "Alto") {{ 'selected' }} @endif>Alto</option>
+                    <option value="Bajo" @if (old('tipo') == "Bajo") {{ 'selected' }} @endif>Bajo</option>
+                    <option value="Normal" @if (old('tipo') == "Normal") {{ 'selected' }} @endif>Normal</option>
                     </select>
                 </div>
 
             </div>
             <div>
         <label for="Tema">Tema</label>
-        <input type="text" class="form-control" name="tema">
+        <input type="text" class="form-control" name="tema" id="tema" onchange="validarT();">
             </div>
 
         <div>
         <label for="descripcion">Descripcion</label>
-        <textarea name="descripcion" id="descripcion" rows="5" class="form-control"></textarea>
+        <textarea name="descripcion" id="descripcion" rows="5" class="form-control" onchange="validarT();"></textarea>
         </div>
 
         <div class="row" style="padding-top:15px">
-            <div class="col-md-3">
-                <input type="file" name="archivo" class="btn-primary" multiple>
+            <div class="col-md-6">
+                <input type="file" name="archivo" class="form-control">
             </div>
         </div>
 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-success">Guardar</button>
+          <button type="submit" class="btn btn-success" id="btnsave" disabled>Guardar</button>
         </div>
       </div>
     </div>
@@ -291,6 +291,27 @@ value="{{ Auth::user()->id}}">
 @section('css')
 
 <style>
+ input[type="file"]{
+          background: white;
+          outline: none;
+
+      }
+      ::-webkit-file-upload-button{
+        margin-top: -20px;
+        margin-left: -12px;
+        background: #00A1D8;
+        color: white;
+        height: 35px;
+        border: none;
+        outline: none;
+        font-weight: bolder;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      ::-webkit-file-upload-button:hover{
+        background: #111111;
+      }
+
     i{
         margin: 0 5px;
     }
@@ -331,6 +352,28 @@ input:checked + label {
 $(".alert").fadeTo(2000, 500).slideUp(500, function(){
     $(".alert").slideUp(500);
 });
+
+function validarT(){
+let fuente=document.getElementsByName('fuente');
+
+for(i = 0; i < fuente.length; i++) {
+                if(fuente[i].checked)
+        var fue=fuente[i].value;
+            }
+
+let tipo=document.getElementById('tipo').value;
+let prioridad=document.getElementById('prioridad').value;
+let tema=document.getElementById('tema').value;
+let descripcion=document.getElementById('descripcion').value;
+
+if(tipo && prioridad && tema && descripcion && fue){
+    document.getElementById('btnsave').disabled=false;
+}else{
+    document.getElementById('btnsave').disabled=true;
+}
+
+
+}
 
    function MostrarOP2(dato){
     if(dato=="Apoyo Tecnico"){

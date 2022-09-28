@@ -12,4 +12,8 @@ class SearchController extends Controller
         $datosUser=DB::table("users")->where("id",$id)->first();
         return json_encode($datosUser);
     }
+    public function ticketSearch($id){
+      $datosTicket=DB::table('tickets')->where("id",$id)->first();
+      return json_encode($datosTicket);
+    }
 }

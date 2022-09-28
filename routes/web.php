@@ -31,6 +31,10 @@ Route::get('/report', [ReportesController::class,'vista_report'])->name('vista_r
 Route::get('/newReport',[ReportesController::class,'vista_newReport'])->name('vista_newReport');
 Route::post('/save_report',[ReportesController::class,'report_save'])->name('report_save');
 
+//tickets
+Route::post('/change_status',[ReportesController::class,'cambiar_status'])->name('cambiar_status');
+Route::delete('/delete_ticket',[ReportesController::class,'ticket_delete'])->name('ticket_delete');
+
 //Usuarios
 Route::get('/users', [UsuariosController::class,'vista_users'])->name('vista_users');
 Route::post('/save_user',[UsuariosController::class,'guardar_usuario'])->name('save_users');
@@ -41,7 +45,7 @@ Route::post('/users_cambiar', [UsuariosController::class,'cambiar_users'])->name
 Route::get('/ConfigUser', [UserController::class,'vista_edit'])->name('edit_user');
 Route::post('/update_user',[UserController::class,'actualizar_user'])->name('user_update');
 
-
 //buscar datos
 Route::get("/search_user/{id}",[SearchController::class,'userSearch'])->name('UserSearch');
+
 
