@@ -56,10 +56,25 @@ class UsuariosController extends Controller
             }
     function cambiar_users(Request $request){
         try {
+if($request["concesionaria"]==null){
+    DB::table("users")->where("id",$request["id_user_edit"])->update([
+        "tipo_user"=> $request["tipo"],
+    ]);
+}
+if($request["tipo"]==null){
+    DB::table("users")->where("id",$request["id_user_edit"])->update([
+        "concesionaria"=> $request["concesionaria"],
+    ]);
+
+}
+if($request["consecionaria"]!=null && $request["tipo"]!=null){
+
             DB::table("users")->where("id",$request["id_user_edit"])->update([
                 "concesionaria"=> $request["concesionaria"],
                 "tipo_user"=> $request["tipo"],
             ]);
+}
+
             return redirect()->back()->with(['message' => "Se cambio Al Usuario con Exito", 'color' => 'success']);
         } catch (\Throwable $th) {
             //throw $th;

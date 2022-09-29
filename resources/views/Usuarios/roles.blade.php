@@ -266,8 +266,8 @@
                   <div class="row" >
 <div class="col-md-12">
     <label for="Cconcesionaria">Concesionaria</label>
-<select class="form-control" name="concesionaria" id="concesionaria">
-    <option selected="true" value="" disabled="disabled">Seleccione Concesionaria...</option>
+<select class="form-control" name="concesionaria" id="concesionaria" onchange="veriEdit();">
+    <option selected="true" value="" >Seleccione Concesionaria...</option>
     <option value="Fersan"  @if (old('concesionaria') == "Fersan") {{ 'selected' }} @endif>Fersan Motors Volkswagen</option>
     <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
     <option value="Navarra"  @if (old('concesionaria') == "Navarra") {{ 'selected' }} @endif>SEAT Navarra Motors</option>
@@ -280,8 +280,8 @@
  <div class="row" >
     <div class="col-md-12">
         <label for="Tipo">Tipo de Usuario</label>
-        <select name="tipo" id="tipo" class="form-control">
-        <option selected="true" value="" disabled="disabled">Seleccione Tipo...</option>
+        <select name="tipo" id="tipo" class="form-control" onchange="veriEdit();">
+        <option selected="true" value="">Seleccione Tipo...</option>
         <option value="1" @if (old('tipo') == "1") {{ 'selected' }} @endif>Administrador</option>
         <option value="2" @if (old('tipo') == "2") {{ 'selected' }} @endif>Usuario</option>
         </select>
@@ -292,7 +292,7 @@
               <div class="modal-footer">
                   <input type="hidden" name="id_user_edit" id="id_user_edit">
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                  <button class="btn btn-success " id="button_2">Actualizar</button>
+                  <button class="btn btn-success " id="buttonA" disabled>Actualizar</button>
               </div>
           </form>
       </div>
@@ -532,14 +532,12 @@ $.ajax({
 }).done(function(datosUser) {
 
   if(datosUser==null){
-    document.getElementById("concesionaria").value=null;
-    document.getElementById("tipo").value=null;
+
     document.getElementById("id_user_edit").value=null;
 
   }else{
 
-    document.getElementById("concesionaria").value=datosUser.concesionaria;
-    document.getElementById("tipo").value=datosUser.tipo_user;
+
     document.getElementById("id_user_edit").value=datosUser.id;
 
 
@@ -548,6 +546,18 @@ $.ajax({
 });
 
 }
+
+function veriEdit(){
+let tipo=document.getElementById("tipo").value;
+let con=document.getElementById("concesionaria").value;
+
+if(tipo || con){
+document.getElementById("buttonA").disabled=true;
+}
+document.getElementById("buttonA").disabled=false;
+}
+
+
   </script>
 
 @stop

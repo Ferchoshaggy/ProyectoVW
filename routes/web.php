@@ -26,6 +26,7 @@ Route::get('/', function () {
 //Tablero
 Route::get('/dash', [DashController::class,'vista_dash'])->name('vista_dash');
 
+
 //Reporte
 Route::get('/report', [ReportesController::class,'vista_report'])->name('vista_report');
 Route::get('/newReport',[ReportesController::class,'vista_newReport'])->name('vista_newReport');

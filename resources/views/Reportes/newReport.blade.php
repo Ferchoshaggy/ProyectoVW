@@ -664,14 +664,15 @@ function ImpEle(){
 let op1=document.querySelector('input[name=op1]:checked').value;
 let op2=document.querySelector('input[name=op2]:checked').value;
 let op3=document.querySelector('input[name=op3]:checked');
+let op4=document.querySelector('input[name=op4]:checked')
 
-
-if(op3!=null){
-document.getElementById("demo").innerHTML = op1 +" > "+op2+" > "+op3.value;
+if(op4!=null){
+document.getElementById("demo").innerHTML = op1 +" > "+op2+" > "+op3.value+ " > "+op4.value;
+}else if(op3!=null){
+    document.getElementById("demo").innerHTML = op1 +" > "+op2+" > "+op3.value;
 }else{
 document.getElementById("demo").innerHTML = op1 +" > "+op2;
 }
-
 }
 
 </script>

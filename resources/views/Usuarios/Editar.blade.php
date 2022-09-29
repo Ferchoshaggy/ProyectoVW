@@ -126,24 +126,31 @@
 <input type="text" name="tipo" id="tipo" class="form-control" value="{{$tipo->tipo}}" disabled>
 </div>
 </div>
+<br>
 
-<div class="row">
-    <div class="col-md-4">
-        <label for="correo">Contraseña Actual</label>
-        <input type="password" class="form-control" name="passAA" id="passAA" value="{{old('passAA')}}" onchange="passVerficar();">
-    </div>
+<button type="button" class="accordion form-control" onclick="divD()">Cambiar Contraseña</button>
+<div class="panel">
 
-    <div class="col-md-4">
-        <label for="correo">Nueva Contraseña</label>
-        <input type="password" class="form-control" name="passN" id="passN" value="{{old('passN')}}" onchange="passVerficar();">
-    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="correo">Contraseña Actual</label>
+            <input type="password" class="form-control" name="passAA" id="passAA" value="{{old('passAA')}}" onchange="passVerficar();">
+        </div>
 
-    <div class="col-md-4">
-        <label for="correo">Repetir Contraseña</label>
-        <input type="password" class="form-control" name="passRN" id="passRN" value="{{old('passRN')}}" onchange="passVerficar();">
+        <div class="col-md-4">
+            <label for="correo">Nueva Contraseña</label>
+            <input type="password" class="form-control" name="passN" id="passN" value="{{old('passN')}}" onchange="passVerficar();">
+        </div>
+
+        <div class="col-md-4">
+            <label for="correo">Repetir Contraseña</label>
+            <input type="password" class="form-control" name="passRN" id="passRN" value="{{old('passRN')}}" onchange="passVerficar();">
+        </div>
+
     </div>
 
 </div>
+
 
 <div id="conf" style="display: none">
     <h5 style="color: red">Las contraseñas no Coinciden</h5>
@@ -205,6 +212,49 @@
         border-radius: 10px;
         cursor: pointer;
       }
+/*Div desplegable */
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 8px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+button.accordion:after {
+    content: '\02795';
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+button.accordion.active:after {
+    content: "\2796";
+}
+
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.6s ease-in-out;
+    opacity: 0;
+}
+
+div.panel.show {
+    opacity: 1;
+    max-height: 500px;
+}
   </style>
 
 
@@ -213,6 +263,18 @@
 @section('js')
 
 <script type="text/javascript">
+
+function divD(){
+    var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+  }
+}
+}
 
 //jquery para desvanecer el mensage
 $(".alert").fadeTo(2000, 500).slideUp(500, function(){

@@ -53,7 +53,7 @@
             @foreach ($reportes as $reporte)
             @foreach ($users as $user )
             @if ($reporte->usuario==$user->id)
-          <tr class="marca" @if(Auth::user()->tipo_user==1) onclick="pasar_id({{$reporte->id}});" @endif>
+          <tr class="marca" onclick="pasar_id({{$reporte->id}});">
             <td style="text-align: center;">{{$reporte->codigo}}</td>
             <td style="text-align: center;">{{$user->name}} {{$user->ape_pat}}</td>
             <td style="text-align: center;">{{$reporte->tipo}}</td>
@@ -96,7 +96,7 @@
             @foreach ($users as $user )
             @if ($reporte->status=="Abierto")
             @if ($reporte->usuario==$user->id)
-          <tr class="marca" @if(Auth::user()->tipo_user==1) onclick="pasar_id({{$reporte->id}});" @endif>
+          <tr class="marca" onclick="pasar_id({{$reporte->id}});">
             <td style="text-align: center;">{{$reporte->codigo}}</td>
             <td style="text-align: center;">{{$user->name}} {{$user->ape_pat}}</td>
             <td style="text-align: center;">{{$reporte->tipo}}</td>
@@ -139,7 +139,7 @@
             @foreach ($users as $user )
             @if ($reporte->status=="Cerrado")
             @if ($reporte->usuario==$user->id)
-          <tr class="marca" @if(Auth::user()->tipo_user==1) onclick="pasar_id({{$reporte->id}});" @endif>
+          <tr class="marca" onclick="pasar_id({{$reporte->id}});">
             <td style="text-align: center;">{{$reporte->codigo}}</td>
             <td style="text-align: center;">{{$user->name}} {{$user->ape_pat}}</td>
             <td style="text-align: center;">{{$reporte->tipo}}</td>
@@ -166,6 +166,9 @@
        <i class="fas fa-times fa-xs"></i>
     </button>
 
+
+
+    @if(Auth::user()->tipo_user==1)
   <button type="button" class="btn btn-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#cerrar_ticket" onclick="cambiarC_ticket();">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
         <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
@@ -173,22 +176,31 @@
     Cerrado
   </button>
   <br>
+@endif
+
+@if(Auth::user()->tipo_user==1)
   <button class="btn btn-success form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#abierto_ticket" onclick="cambiarA_ticket();">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-unlock-fill" viewBox="0 0 16 16">
-        <path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2z"/>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text-fill" viewBox="0 0 16 16">
+        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
       </svg>
-    Abierto
+    Escribir
   </button>
   <br>
+@endif
+
   <button class="btn btn-info form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#ver_ticket" onclick="ver_tickte();" >
     <i class="fas fa-eye"></i>
     Ver
   </button>
   <br>
+
+  @if(Auth::user()->tipo_user==1)
   <button class="btn btn-danger form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#borrar_ticket" onclick="tickte_delete();" >
     <i class="fas fa-trash"></i>
     Borrar
   </button>
+  @endif
+
 </div>
 
 <!-- modal de eliminar ticket-->
