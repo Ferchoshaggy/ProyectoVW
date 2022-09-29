@@ -58,11 +58,28 @@ class ReportesController extends Controller
         return redirect()->back()->with(['message' => "Ticket Levantado Con Exito", 'color' => 'success']);
 
     }
-function cambiar_status(){
-
+function cambiar_status(Request $request){
+try{
+    DB::table("tickets")->where("id",$request["id_ticket"])->update([
+        "status"=> "Cerrado",
+    ]);
+    return redirect()->back()->with(['message' => "Se Cambio el Ticket Correctamente", 'color' => 'success']);
+}catch(\Throwable $th) {
+    //throw $th;
 }
-function ticket_delete(){
+}
+function ticket_delete(Request $request){
+    try {
 
+        if($request["id_ticket"]!=0){
+            DB::table("tickets")->where("id",$request["id_ticket"])->delete();
+            }
+
+            return redirect()->back()->with(['message' => "Se Elimino correctamente el Ticket", 'color' => 'success']);
+
+    } catch (\Throwable $th) {
+        //throw $th;
+    }
 }
 
 }

@@ -48,5 +48,5 @@ Route::post('/update_user',[UserController::class,'actualizar_user'])->name('use
 
 //buscar datos
 Route::get("/search_user/{id}",[SearchController::class,'userSearch'])->name('UserSearch');
-
+Route::get("/ticket_search/{id}",[SearchController::class,'ticketSearch'])->name('TicketSearch');
 

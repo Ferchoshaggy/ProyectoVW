@@ -199,7 +199,7 @@
 
         <div class="caja">
             <input type="radio" id="Suzuki" name="op4" value="Suzuki" onclick="MostrarForm(this.value);">
-            <label for="Suzuki"><i class="fas fa-file-word"></i>Suzuki</label>
+            <label for="Suzuki"><i><img src="{{asset('img/logotipos/suzuki.png')}}" alt="Suzuki" height="30px" width="30px"></i>Suzuki</label>
         </div>
 
     </div>
@@ -378,9 +378,10 @@ input[type="radio"] {
     justify-content: center;
 
 }
-input:checked + label {
+input:checked + label{
   color: rgb(6, 190, 247);
 }
+
 
 </style>
 

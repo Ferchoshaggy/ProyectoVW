@@ -13,6 +13,31 @@
 <div class="card">
     <div class="card-body">
 
+ <!--alertas -->
+
+@if (Session::has('message'))
+<br>
+
+@if(Session::get('message')== "Se Elimino correctamente el Ticket")
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+@if(Session::get('message')== "Se Cambio el Ticket Correctamente")
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+@endif
+
         <ul class="nav cajaP">
             <li class="nav-item cajaH">
               <a class="nav-link active btn btn2" id="table-todo" data-toggle="tab" href="#tableT" role="tab" aria-controls="tableT" aria-selected="false"><img src="{{asset('img/2tickets.png')}}" alt="todo" class="add">Todos</a>
@@ -169,17 +194,17 @@
 
 
     @if(Auth::user()->tipo_user==1)
-  <button type="button" class="btn btn-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#cerrar_ticket" onclick="cambiarC_ticket();">
+  <button type="button" class="btn btn-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#cerrar_ticket" onclick="cambiar_ticket();">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
         <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
       </svg>
-    Cerrado
+    Cerrar
   </button>
   <br>
 @endif
 
 @if(Auth::user()->tipo_user==1)
-  <button class="btn btn-success form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#abierto_ticket" onclick="cambiarA_ticket();">
+  <button class="btn btn-success form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#abierto_ticket" onclick="responder_ticket();">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text-fill" viewBox="0 0 16 16">
         <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
       </svg>
@@ -210,14 +235,14 @@
           <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
           </div>
-          <form action="" method="POST">
+          <form action="{{Route('ticket_delete')}}" method="POST">
               @csrf
               @method('DELETE')
               <div class="modal-body">
-                <label style="font-family: cursive; font-size: 25px; display:flex; justify-content: center;align-items: center; height: 100%;">¿Quieres Eliminar El ticket?</label><br><br>
+                <label style="font-family: cursive; font-size: 25px; display:flex; justify-content: center;align-items: center; height: 100%;">¿Quieres Eliminar El ticket?</label><br>
                   <div style="text-align: center;">
                       <label style="font-family: cursive; font-size: 25px;" id="labeleliminar"></label><br>
-                      <label style="font-family: cursive; font-size: 25px;" id="labelusuario"></label>
+                      <label style="font-family: cursive; font-size: 25px;" id="labeltema"></label>
                   </div>
               </div>
               <div class="modal-footer">
@@ -230,6 +255,32 @@
     </div>
   </div>
 
+  <!-- modal de cambiar ticket-->
+<div class="modal fade" id="cerrar_ticket" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Cambiar Status</h5>
+          </div>
+          <form action="{{Route('cambiar_status')}}" method="POST">
+              @csrf
+              <div class="modal-body">
+                <label style="font-family: cursive; font-size: 25px; display:flex; justify-content: center;align-items: center; height: 100%;">¿Quieres Cambiar el Status del Ticket?</label><br>
+                  <div style="text-align: center;">
+                      <label style="font-family: cursive; font-size: 25px;" id="labelcambiar"></label><br>
+                      <label style="font-family: cursive; font-size: 25px;" id="labeltema2"></label><br>
+                      <label style="font-family: cursive; font-size: 25px;" id="labelstatus"></label>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <input type="hidden" name="id_ticket" id="id_ticket2">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <button class="btn btn-danger" >Cambiar</button>
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -340,6 +391,52 @@ var id_ticket=null;
         menu_opciones.classList.remove("visible_on");
         menu_opciones.classList.add("visible_off");
     }
+
+function tickte_delete(){
+
+$.ajax({
+  url: "{{url('/ticket_search')}}"+'/'+id_ticket,
+  dataType: "json",
+  //context: document.body
+}).done(function(datosTicket) {
+
+  if(datosTicket==null){
+    document.getElementById("labeleliminar").innerHTML=null;
+    document.getElementById("labeltema").innerHTML=null;
+    document.getElementById("id_ticket").value=null;
+  }else{
+    document.getElementById("labeleliminar").innerHTML=datosTicket.codigo;
+    document.getElementById("labeltema").innerHTML=datosTicket.tema;
+    document.getElementById("id_ticket").value=datosTicket.id;
+
+  }
+
+});
+
+}
+
+function cambiar_ticket(){
+    $.ajax({
+  url: "{{url('/ticket_search')}}"+'/'+id_ticket,
+  dataType: "json",
+  //context: document.body
+}).done(function(datosTicket) {
+
+  if(datosTicket==null){
+    document.getElementById("labelcambiar").innerHTML=null;
+    document.getElementById("labeltema2").innerHTML=null;
+    document.getElementById("labelstatus").innerHTML=null;
+    document.getElementById("id_ticket2").value=null;
+  }else{
+    document.getElementById("labelcambiar").innerHTML=datosTicket.codigo;
+    document.getElementById("labeltema2").innerHTML=datosTicket.tema;
+    document.getElementById("labelstatus").innerHTML="El tickets esta: "+datosTicket.status;
+    document.getElementById("id_ticket2").value=datosTicket.id;
+
+  }
+
+});
+}
 
 </script>
 
