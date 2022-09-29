@@ -42,6 +42,7 @@ class ReportesController extends Controller
         "opcion1"=>$request['op1'],
         "opcion2"=>$request['op2'],
         "opcion3"=>$request['op3'],
+        "opcion4"=>$request['op4'],
         "usuario"=>$request['idPerfil'],
         "fuente"=>$request['fuente'],
         "tipo"=>$request['tipo'],

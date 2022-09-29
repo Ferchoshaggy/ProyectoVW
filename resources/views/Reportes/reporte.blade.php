@@ -21,6 +21,9 @@
               <a class="nav-link btn btn2" id="table-abirto" data-toggle="tab" href="#tableA" role="tab" aria-controls="tableA" aria-selected="false"><img src="{{asset('img/abierto.png')}}" alt="abierto" class="add">Abiertos</a>
             </li>
             <li class="nav-item cajaH">
+                <a class="nav-link btn btn2" id="table-revision" data-toggle="tab" href="#tableR" role="tab" aria-controls="tableR" aria-selected="false"><img src="{{asset('img/espera.png')}}" alt="revicion" class="add">Contestados</a>
+              </li>
+            <li class="nav-item cajaH">
                 <a class="nav-link btn btn2" id="table-cerrado" data-toggle="tab" href="#tableC" role="tab" aria-controls="tableC" aria-selected="false"><img src="{{asset('img/cerrado.png')}}" alt="cerrado" class="add">Cerrado</a>
               </li>
           </ul>
@@ -110,6 +113,10 @@
       </table>
 
 </div>
+</div>
+
+<div class="tab-pane fade" id="tableR" role="tabpanel" aria-labelledby="table-revision">
+    rf
 </div>
 
 <div class="tab-pane fade"  id="tableC" role="tabpanel" aria-labelledby="table-cerrado">

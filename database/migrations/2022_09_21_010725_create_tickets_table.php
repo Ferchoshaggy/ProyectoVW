@@ -19,6 +19,7 @@ class CreateTicketsTable extends Migration
             $table->string("opcion1");
             $table->string("opcion2");
             $table->string("opcion3")->nullable();
+            $table->string("opcion4")->nullable();
             $table->unsignedBigInteger("usuario");
             $table->foreign("usuario")->references("id")->on("users")->onDelete("cascade");
             $table->string("fuente")->nullable();

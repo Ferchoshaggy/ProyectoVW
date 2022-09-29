@@ -66,7 +66,7 @@
 
 <div id="op2se" style="display: none">
     <hr>
-    <label for="Apoyo Tecnico"><i class="fas fa-laptop-house"></i>Solicitar Equipo</label><br>
+    <label for="Solicitar equipo"><i class="fas fa-laptop-house"></i>Solicitar Equipo</label><br>
     <small>Solicitar hardware informático, periféricos u otros equipos de oficina</small>
     <div class="op row">
         <div class="caja">
@@ -101,7 +101,7 @@
 
 <div id="op3hn" style="display: none">
     <hr>
-    <label for="Apoyo Tecnico"><i class="fas fa-microchip"></i>Hardware Nuevo</label><br>
+    <label for="HarwareN"><i class="fas fa-microchip"></i>Hardware Nuevo</label><br>
     <div class="op">
         <div class="caja">
             <input type="radio" id="EscritorioN" name="op3" value="Escritorio/Portatil" onclick="MostrarForm(this.value);">
@@ -113,8 +113,6 @@
             <label for="EquipoDered"><i class="fas  fa-wifi"></i>Equipo de Red</label>
         </div>
 
-
-
     </div>
 </div>
 
@@ -123,7 +121,7 @@
 
 <div id="op3h" style="display: none">
     <hr>
-    <label for="Apoyo Tecnico"><i class="fas fa-microchip"></i>Hardware</label><br>
+    <label for="Hardware"><i class="fas fa-microchip"></i>Hardware</label><br>
     <div class="op">
         <div class="caja">
             <input type="radio" id="Escritorio" name="op3" value="Escritorio Portatil" onclick="MostrarForm(this.value);">
@@ -147,7 +145,7 @@
 
 <div id="op3s" style="display:none">
     <hr>
-    <label for="Apoyo Tecnico"><i class="fas fa-microchip"></i>Software</label><br>
+    <label for="Software"><i class="fas fa-microchip"></i>Software</label><br>
     <div class="op">
         <div class="caja">
             <input type="radio" id="DB" name="op3" value="Base de Datos" onclick="MostrarForm(this.value);">
@@ -185,9 +183,9 @@
 
 <!-- opcion 4 a elegir de app de planta -->
 
-<div id="op4a" style="display:block">
+<div id="op4a" style="display:none">
     <hr>
-    <label for="Apoyo Tecnico"><i class="fas fa-car"></i>Aplicaciones de Planta</label><br>
+    <label for="ADP"><i class="fas fa-car"></i>Aplicaciones de Planta</label><br>
     <div class="op">
         <div class="caja">
             <input type="radio" id="vw" name="op4" value="Volkswagen" onclick="MostrarForm(this.value);">
@@ -209,7 +207,7 @@
 
 <!-- opcion 4 a elegir otros-->
 
-<div id="op4o" style="display:block">
+<div id="op4o" style="display:none">
     <hr>
     <label for="Apoyo Tecnico"><i class="fas fa-cog"></i>Otros</label><br>
     <div class="op">
@@ -452,6 +450,13 @@ if(tipo && prioridad && tema && descripcion && fue){
         document.getElementById('op2at').style.display="none";
         document.getElementById("hardware").checked=false;
         document.getElementById("software").checked=false;
+
+        document.getElementById("op4a").style.display="none";
+        document.getElementById("op4o").style.display="none";
+        document.getElementById("vw").checked=false;
+        document.getElementById("seat").checked=false;
+        document.getElementById("Suzuki").checked=false;
+        document.getElementById("camaras").checked=false;
             }
 
      if(dato=="Solicitar Equipo"){
@@ -485,6 +490,13 @@ if(tipo && prioridad && tema && descripcion && fue){
         document.getElementById("Llave").checked=false;
         document.getElementById("Acceso").checked=false;
         document.getElementById("ASoftware").checked=false;
+
+        document.getElementById("op4a").style.display="none";
+        document.getElementById("op4o").style.display="none";
+        document.getElementById("vw").checked=false;
+        document.getElementById("seat").checked=false;
+        document.getElementById("Suzuki").checked=false;
+        document.getElementById("camaras").checked=false;
      }
 
     }
@@ -502,6 +514,15 @@ if(tipo && prioridad && tema && descripcion && fue){
         document.getElementById("red").checked=false;
         document.getElementById("impresora").checked=false;
         document.getElementById("formularioN").style.display="none";
+
+        document.getElementById("op4o").style.display="none";
+        document.getElementById("camaras").checked=false;
+
+        document.getElementById("op4a").style.display="none";
+        document.getElementById("vw").checked=false;
+        document.getElementById("seat").checked=false;
+        document.getElementById("Suzuki").checked=false;
+
     }
 
     if(dato=="Software"){
@@ -521,6 +542,14 @@ if(tipo && prioridad && tema && descripcion && fue){
         document.getElementById("dms").checked=false;
         document.getElementById("otro").checked=false;
         document.getElementById("adp").checked=false;
+
+        document.getElementById("op4o").style.display="none";
+        document.getElementById("camaras").checked=false;
+
+        document.getElementById("op4a").style.display="none";
+        document.getElementById("vw").checked=false;
+        document.getElementById("seat").checked=false;
+        document.getElementById("Suzuki").checked=false;
     }
 
     if(dato=="Hardware Nuevo"){
@@ -569,15 +598,23 @@ document.getElementById("EquipoDered").checked=false;
     }
     if(dato=="Base de Datos"){
         document.getElementById("formularioN").style.display="block";
+        document.getElementById("op4a").style.display="none";
+        document.getElementById("op4o").style.display="none";
     }
     if(dato=="Email"){
         document.getElementById("formularioN").style.display="block";
+        document.getElementById("op4a").style.display="none";
+        document.getElementById("op4o").style.display="none";
     }
     if(dato=="Office Suite"){
         document.getElementById("formularioN").style.display="block";
+        document.getElementById("op4a").style.display="none";
+        document.getElementById("op4o").style.display="none";
     }
     if(dato=="DMS"){
         document.getElementById("formularioN").style.display="block";
+        document.getElementById("op4a").style.display="none";
+        document.getElementById("op4o").style.display="none";
     }
     if(dato=="Otro"){
         document.getElementById("formularioN").style.display="block";
@@ -585,7 +622,42 @@ document.getElementById("EquipoDered").checked=false;
     if(dato=="Nuevo Software"){
         document.getElementById("formularioN").style.display="block";
     }
+    if(dato=="Volkswagen"){
+        document.getElementById("formularioN").style.display="block";
+    }
+    if(dato=="SEAT"){
+        document.getElementById("formularioN").style.display="block";
+    }
+    if(dato=="Suzuki"){
+        document.getElementById("formularioN").style.display="block";
+    }
+    if(dato=="Camaras"){
+        document.getElementById("formularioN").style.display="block";
+    }
    }
+
+function  MostrarOP4(dato){
+    if(dato=="Aplicaciones de Planta"){
+        document.getElementById("op4a").style.display="block";
+        document.getElementById("vw").checked=false;
+        document.getElementById("seat").checked=false;
+        document.getElementById("Suzuki").checked=false;
+    }else{
+        document.getElementById("op4a").style.display="none";
+        document.getElementById("vw").checked=false;
+        document.getElementById("seat").checked=false;
+        document.getElementById("Suzuki").checked=false;
+        document.getElementById("formularioN").style.display="none";
+    }
+    if(dato=="Otro"){
+        document.getElementById("op4o").style.display="block";
+        document.getElementById("camaras").checked=false;
+    }else{
+        document.getElementById("op4o").style.display="none";
+        document.getElementById("camaras").checked=false;
+        document.getElementById("formularioN").style.display="none";
+    }
+}
 
 function ImpEle(){
 
