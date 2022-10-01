@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use file;
+use Illuminate\Support\Facades\Mail;
 
 class UsuariosController extends Controller
 {
@@ -26,6 +27,7 @@ class UsuariosController extends Controller
         $maxId = DB::table('users')->max('id');
         DB::statement('ALTER TABLE users AUTO_INCREMENT=' . intval($maxId + 1) . ';');
 
+
         DB::table('users')->insert([
         "name"=>$request['nombre'],
         "ape_pat"=>$request['appaterno'],
@@ -37,6 +39,8 @@ class UsuariosController extends Controller
         "password"=>bcrypt($request['contraseña']),
 
         ]);
+
+
 
         return redirect()->back()->with(['message' => 'Usuario Guardado con Éxito', 'color' => 'success']);
     }

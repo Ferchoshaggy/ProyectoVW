@@ -12,25 +12,35 @@
 <div class="card">
     <div class="card-body">
 
-    </div>
-</div>
 
+
+<?php $total_registros=0; ?>
+@foreach ($tickets as $ticket)
+<?php $total_registros++; ?>
+@endforeach
 
 <div class="row">
-<div class="col-lg-4 col-md-6" style="background-color:white;">
-<div style="height:80%"><h1 class="num">15</h1></div>
+<div class="col-md-4" style="background-color:white;">
+<div style="height:80%"><h1 class="num">{{$total_registros}}</h1></div>
 <p style="text-align: center;height:20%">Total de registros</p>
 </div>
 
-    <div class="col-lg-4 col-md-6">
+    <div class="col-md-4">
         <div id="container" style="margin-right: 0px; margin-left: 0px;"></div>
     </div>
 
+    <div class="col-md-4">
+        <div id="container2" style="margin-right: 0px; margin-left: 0px;"></div>
+    </div>
 </div>
 
+<br>
+<div class="row">
+        <div class="col-md-12" id="container3" style="margin-right: 0px; margin-left: 0px;"></div>
+</div>
 
-
-
+</div>
+</div>
 @stop
 
 @section('css')
@@ -61,28 +71,29 @@
 <script src="https://code.highcharts.com/modules/pattern-fill.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+<?php
 
-<script type='text/javascript'>
+echo "<script type='text/javascript'>
 
-Highcharts.chart('container', {
+Highcharts.chart('container2', {
                     colors: ['#01BAF2', '#71BF45', '#FAA74B', '#B37CD2'],
                     chart: {
                         type: 'pie'
                     },
                     title: {
-                        text: '<p class="texto_grande">Tickets</p>'
+                        text: 'Prioridad'
                     },
                     tooltip: {
                         valueSuffix: '%'
                     },
                     lang: {
-                        downloadPNG:"Descargar en PNG",
-                        downloadJPEG:"Descargar en JPEG",
-                        downloadPDF:"Descargar en PDF",
-                        downloadSVG:"Descargar en SVG",
-                        printChart:"Imprimir Grafica",
-                        exitFullscreen:"Salir de Pantalla Completa",
-                        viewFullscreen:"Ver en Pantalla Completa"
+                        downloadPNG:'Descargar en PNG',
+                        downloadJPEG:'Descargar en JPEG',
+                        downloadPDF:'Descargar en PDF',
+                        downloadSVG:'Descargar en SVG',
+                        printChart:'Imprimir Grafica',
+                        exitFullscreen:'Salir de Pantalla Completa',
+                        viewFullscreen:'Ver en Pantalla Completa'
                     },
                     plotOptions: {
                         pie: {
@@ -96,26 +107,250 @@ Highcharts.chart('container', {
                         }
                     },
                     series: [{
-                        name: 'Percentage',
-                        colorByPoint: false,
+                        name: 'Porcentaje',
+                        colorByPoint: true,
                         innerSize: '75%',
-                        data: [{
-                            name: 'Tickets Abiertos',
-                            color: '#FF9300',
-                            y: 10
-                        }, {
-                            name: 'Tickets Cerrados',
-                            color: '#63AE00',
-                            y: 25
-                        }, {
-                            name: 'Tickets Respondidos',
-                            color: '#00A7C6',
-                            y: 15
-                        }]
-                    }]
-                });
+                        data: [";
+$emergencia=0;
+$alto=0;
+$normal=0;
+$bajo=0;
+foreach($tickets as $ticket){
+    if($ticket->prioridad=="Emergencia"){
+ $emergencia++;
+    }
+if($ticket->prioridad=="Alto"){
+    $alto++;
+}
+if($ticket->prioridad=="Normal"){
+    $normal++;
+}
+if($ticket->prioridad=="Bajo"){
+    $bajo++;
+}
+}
+                     echo  "{
+                            name: 'Emergencia',
+                            color: '#FF0707',
+                            y: $emergencia
+                        },";
+                        echo  "{
+                            name: 'Alto',
+                            color: '#F2C407',
+                            y: $alto
+                        },";
+                        echo  "{
+                            name: 'Normal',
+                            color: '#ABF207',
+                            y: $normal
+                        },";
+                        echo  "{
+                            name: 'Bajo',
+                            color: '#07D6F2',
+                            y: $bajo
+                        },";
 
-</script>
+
+     echo "]
+                }]
+
+            });
+        ";
+
+        echo "
+
+
+        </script>";
+
+?>
+
+<?php
+
+echo "<script type='text/javascript'>
+
+Highcharts.chart('container', {
+                    colors: ['#01BAF2', '#71BF45', '#FAA74B', '#B37CD2'],
+                    chart: {
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Tickets'
+                    },
+                    tooltip: {
+                        valueSuffix: '%'
+                    },
+                    lang: {
+                        downloadPNG:'Descargar en PNG',
+                        downloadJPEG:'Descargar en JPEG',
+                        downloadPDF:'Descargar en PDF',
+                        downloadSVG:'Descargar en SVG',
+                        printChart:'Imprimir Grafica',
+                        exitFullscreen:'Salir de Pantalla Completa',
+                        viewFullscreen:'Ver en Pantalla Completa'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.name}: {y} %'
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    series: [{
+                        name: 'Porcentaje',
+                        colorByPoint: true,
+                        innerSize: '75%',
+                        data: [";
+$cerrados=0;
+$abiertos=0;
+$contestados=0;
+foreach($tickets as $ticket){
+    if($ticket->status=="Abierto"){
+$abiertos++;
+    }
+if($ticket->status=="Cerrado"){
+    $cerrados++;
+}
+if($ticket->status=="Respondidos"){
+    $contestados++;
+}
+}
+                     echo  "{
+                            name: 'Tickets Abiertos',
+                            color: '#63AE00',
+                            y: $abiertos
+                        },";
+                        echo  "{
+                            name: 'Tickets Cerrados',
+                            color: '#FA2E1A',
+                            y: $cerrados
+                        },";
+                        echo  "{
+                            name: 'Tickets Respondidos',
+                            color: '#F0F305',
+                            y: $contestados
+                        },";
+
+
+     echo "]
+                }]
+
+            });
+        ";
+
+        echo "
+
+
+        </script>";
+
+?>
+
+<?php
+
+echo "<script type='text/javascript'>
+const chart = Highcharts.chart('container3', {
+    title: {
+        text: 'Solictudes por Categoria'
+    },
+    xAxis: {
+        categories: [
+        'Apoyo Tecnico>Hardware>Escritorio/portatil',
+        'Apoyo Tecnico>Hardware>Red y Telefonos',
+        'Apoyo Tecnico>Hardware>Impresora',
+        'Apoyo Tecnico>Software>Base de Datos',
+        'Apoyo Tecnico>Software>Email',
+        'Apoyo Tecnico>Software>Office Suite',
+        'Apoyo Tecnico>Software>DMS',
+        'Apoyo Tecnico>Software>Aplicaciones de Planta>Volkswagen',
+        'Apoyo Tecnico>Software>Aplicaciones de Planta>SEAT',
+        'Apoyo Tecnico>Software>Aplicaciones de Planta>Suzuki',
+        'Apoyo Tecnico>Software>Otros>Revicion de Camaras',
+        'Solicitar Equipo>Harware Nuevo>Escritorio/Portatil',
+        'Solicitar Equipo>Harware Nuevo>Equipo de Red',
+        'Solicitar Equipo>Nuevo Software',
+        'Solicitar Equipo>Restablecimiento de Contraseña',
+        'Solicitar Equipo>Solicitar Acceso',
+        'Solicitar Equipo>Actualizar Software']
+    },
+         series: [{
+        type: 'column',
+        name: 'Total',
+        colorByPoint: true,
+        data:";
+
+$ahe=0;
+$ahrt=0;
+$ahi=0;
+$asbd=0;
+$ase=0;
+$asos=0;
+$asd=0;
+$asapv=0;
+$asaps=0;
+$asadps=0;
+$asorc=0;
+$shnep=0;
+$shne=0;
+$sns=0;
+$src=0;
+$ssa=0;
+$sas=0;
+foreach($tickets as $ticket){
+
+    //Primer if
+
+    if($ticket->opcion3=="Escritorio Portatil"){
+$ahe++;
+    }else if($ticket->opcion3=="Red y Telefonos"){
+$ahrt++;
+    }else if($ticket->opcion3=="Impresora"){
+$ahi++;
+    }else if($ticket->opcion3=="Base de Datos"){
+$asbd++;
+    }else if($ticket->opcion3=="Email"){
+$ase++;
+    }else if($ticket->opcion3=="Office Suite"){
+$asos++;
+    }else if($ticket->opcion3=="DMS"){
+$asd++;
+    }else if($ticket->opcion4=="Volkswagen"){
+$asapv++;
+    }else if($ticket->opcion4=="SEAT"){
+$asaps++;
+    }else if($ticket->opcion4=="Suzuki"){
+$asadps++;
+    }else if($ticket->opcion4=="Camaras"){
+$asorc++;
+    }else if($ticket->opcion3=="Escritorio/Portatil"){
+$shnep++;
+    }else if($ticket->opcion3=="Equipo de Red"){
+$shne++;
+    }else if($ticket->opcion2=="Nuevo Software"){
+$sns++;
+    }else if($ticket->opcion2=="Restablecimiento Contraseña"){
+$src++;
+    }else if($ticket->opcion2=="Solicitar Acceso"){
+$ssa++;
+    }else if($ticket->opcion2=="Actualizar Software"){
+$sas++;
+    }
+
+ }
+
+    echo" [$ahe, $ahrt, $ahi, $asbd, $ase, $asos, $asd, $asapv,$asaps, $asadps, $asorc, $shnep, $shne,$sns,$src,$ssa,$sas],";
+
+    echo"  showInLegend: false
+
+    }]
+});
+
+
+</script>";
+
+?>
 
 
 @stop

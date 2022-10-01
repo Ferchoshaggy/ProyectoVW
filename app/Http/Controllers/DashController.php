@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Tickets;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\View;
-
+use Illuminate\Support\Composer;
+use Illuminate\Support\Facades\DB;
 class DashController extends Controller
 {
     public function __construct()
@@ -14,7 +15,8 @@ class DashController extends Controller
     }
 
     public function vista_dash(){
-        return view('Index');
+        $tickets=DB::table('tickets')->select('*')->get();
+        return view('Index',compact('tickets'));
     }
 
 
