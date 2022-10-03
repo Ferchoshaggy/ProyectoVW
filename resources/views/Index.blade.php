@@ -214,7 +214,7 @@ $abiertos++;
 if($ticket->status=="Cerrado"){
     $cerrados++;
 }
-if($ticket->status=="Respondidos"){
+if($ticket->status=="Contestado"){
     $contestados++;
 }
 }
@@ -229,7 +229,7 @@ if($ticket->status=="Respondidos"){
                             y: $cerrados
                         },";
                         echo  "{
-                            name: 'Tickets Respondidos',
+                            name: 'Tickets Contestados',
                             color: '#F0F305',
                             y: $contestados
                         },";

@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use File;
 
-use function Ramsey\Uuid\v1;
 
 class ReportesController extends Controller
 {
@@ -26,6 +26,22 @@ class ReportesController extends Controller
     }
      public function report_save(Request $request){
         $users=DB::table("users")->where("id",Auth::user()->id)->select("concesionaria")->first();
+
+
+        if($request['archivo']!=null){
+            $file = $request->file('archivo');
+            $nombre = $file->getClientOriginalName();
+            $nombre2 = time()."".$nombre;
+            $destinationPath = public_path().'/imgTicket';
+        }else{
+            $nombre2=null;
+        }
+        if($request['archivo']!=null){
+            $file_image = $request->file('archivo');
+            $file_image->move($destinationPath,$nombre2);
+        }
+
+
         $fecha=date('dmy');
         $hora = now("America/Mexico_City")->isoFormat('Hmm');
 
@@ -38,6 +54,7 @@ class ReportesController extends Controller
         }
        $clave=$inic.$fecha.$hora.'-'.rand(000,999);
 
+
         DB::table("tickets")->insert([
         "opcion1"=>$request['op1'],
         "opcion2"=>$request['op2'],
@@ -49,13 +66,19 @@ class ReportesController extends Controller
         "prioridad"=>$request['prioridad'],
         "tema"=>$request['tema'],
         "descripcion"=>$request['descripcion'],
-       // "archivo"=>$doc,
+        "archivo"=>$nombre2,
         "status"=>"Abierto",
-        "codigo"=>$clave,
 
         ]);
 
+        $ticketId = DB::getPdo()->lastInsertId();
+        $clave=$inic.$fecha.$hora.'-'.$ticketId;
+        DB::table("tickets")->where("id",$ticketId)->update([
+            "codigo"=>$clave,
+        ]);
+
         return redirect()->back()->with(['message' => "Ticket Levantado Con Exito", 'color' => 'success']);
+
 
     }
 function cambiar_status(Request $request){
@@ -68,18 +91,31 @@ try{
     //throw $th;
 }
 }
+
 function ticket_delete(Request $request){
     try {
 
         if($request["id_ticket"]!=0){
-            DB::table("tickets")->where("id",$request["id_ticket"])->delete();
+$archivo_delete=DB::table("tickets")->where("id",$request["id_ticket"])->first();
+
+if($archivo_delete->archivo!=null){
+    $rute_archivo=public_path('imgTicket/'.$archivo_delete->archivo);
+    File::delete($rute_archivo);
+}
+
+    DB::table("tickets")->where("id",$request["id_ticket"])->delete();
             }
 
-            return redirect()->back()->with(['message' => "Se Elimino correctamente el Ticket", 'color' => 'success']);
+      return redirect()->back()->with(['message' => "Se Elimino correctamente el Ticket", 'color' => 'success']);
 
     } catch (\Throwable $th) {
         //throw $th;
     }
+}
+
+function reply_report(){
+
+    return view("Reportes.replyReport");
 }
 
 }

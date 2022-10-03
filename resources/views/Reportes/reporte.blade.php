@@ -86,8 +86,10 @@
             <td style="text-align: center;">{{$reporte->tema}}</td>
             @if($reporte->status=="Abierto")
             <td style="text-align: center; background:rgb(67, 177, 67)">{{$reporte->status}}</td>
-            @else
+            @elseif($reporte->status=="Cerrado")
             <td style="text-align: center; background:rgb(245, 80, 80)">{{$reporte->status}}</td>
+            @else
+            <td style="text-align: center; background:rgb(247, 148, 1)">{{$reporte->status}}</td>
             @endif
             <td style="text-align: center;">{{$reporte->created_at}}</td>
           </tr>
@@ -141,7 +143,42 @@
 </div>
 
 <div class="tab-pane fade" id="tableR" role="tabpanel" aria-labelledby="table-revision">
-    rf
+        <!-- tabla para los reportes -->
+        <div class="table-responsive">
+            <table class="table table-sm">
+                <thead class="thead-dark">
+                  <tr>
+                    <th style="text-align: center;">Ticket ID</th>
+                    <th style="text-align: center;">Solicita</th>
+                    <th style="text-align: center;">Tipo</th>
+                    <th style="text-align: center;">Prioridad</th>
+                    <th style="text-align: center;">Tema</th>
+                    <th style="text-align: center;">Status</th>
+                    <th style="text-align: center;">Creacion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @foreach ($reportes as $reporte)
+                    @foreach ($users as $user )
+                    @if ($reporte->status=="Contestado")
+                    @if ($reporte->usuario==$user->id)
+                  <tr class="marca" onclick="pasar_id({{$reporte->id}});">
+                    <td style="text-align: center;">{{$reporte->codigo}}</td>
+                    <td style="text-align: center;">{{$user->name}} {{$user->ape_pat}}</td>
+                    <td style="text-align: center;">{{$reporte->tipo}}</td>
+                    <td style="text-align: center;">{{$reporte->prioridad}}</td>
+                    <td style="text-align: center;">{{$reporte->tema}}</td>
+                    <td style="text-align: center; background:rgb(247, 148, 1)">{{$reporte->status}}</td>
+                    <td style="text-align: center;">{{$reporte->created_at}}</td>
+                  </tr>
+                  @endif
+                  @endif
+                  @endforeach
+                  @endforeach
+                </tbody>
+              </table>
+
+        </div>
 </div>
 
 <div class="tab-pane fade"  id="tableC" role="tabpanel" aria-labelledby="table-cerrado">
@@ -199,16 +236,6 @@
         <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
       </svg>
     Cerrar
-  </button>
-  <br>
-@endif
-
-@if(Auth::user()->tipo_user==1)
-  <button class="btn btn-success form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#abierto_ticket" onclick="responder_ticket();">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text-fill" viewBox="0 0 16 16">
-        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
-      </svg>
-    Escribir
   </button>
   <br>
 @endif

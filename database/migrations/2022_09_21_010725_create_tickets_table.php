@@ -29,7 +29,7 @@ class CreateTicketsTable extends Migration
             $table->text("descripcion")->nullable();
             $table->string("archivo")->nullable();
             $table->string("status")->nullable();
-            $table->string("codigo")->unique()->index();
+            $table->string("codigo")->nullable()->unique()->index();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
