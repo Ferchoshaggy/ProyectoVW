@@ -12,8 +12,6 @@
 <div class="card">
     <div class="card-body">
 
-
-
 <?php $total_registros=0; ?>
 @foreach ($tickets as $ticket)
 <?php $total_registros++; ?>
@@ -59,7 +57,6 @@
   text-transform: uppercase;
     }
 </style>
-
 
 @stop
 
@@ -150,7 +147,6 @@ if($ticket->prioridad=="Bajo"){
                             y: $bajo
                         },";
 
-
      echo "]
                 }]
 
@@ -161,9 +157,7 @@ if($ticket->prioridad=="Bajo"){
 
 
         </script>";
-
 ?>
-
 <?php
 
 echo "<script type='text/javascript'>
@@ -234,7 +228,6 @@ if($ticket->status=="Contestado"){
                             y: $contestados
                         },";
 
-
      echo "]
                 }]
 
@@ -243,9 +236,7 @@ if($ticket->status=="Contestado"){
 
         echo "
 
-
         </script>";
-
 ?>
 
 <?php
@@ -300,7 +291,7 @@ $ssa=0;
 $sas=0;
 foreach($tickets as $ticket){
 
-    //Primer if
+//if finales
 
     if($ticket->opcion3=="Escritorio Portatil"){
 $ahe++;
@@ -339,7 +330,6 @@ $sas++;
     }
 
  }
-
     echo" [$ahe, $ahrt, $ahi, $asbd, $ase, $asos, $asd, $asapv,$asaps, $asadps, $asorc, $shnep, $shne,$sns,$src,$ssa,$sas],";
 
     echo"  showInLegend: false
@@ -347,10 +337,7 @@ $sas++;
     }]
 });
 
-
 </script>";
-
 ?>
-
 
 @stop

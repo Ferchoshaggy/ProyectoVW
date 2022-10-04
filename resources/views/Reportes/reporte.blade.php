@@ -35,7 +35,6 @@
     </button>
 </div>
 @endif
-
 @endif
 
         <ul class="nav cajaP">
@@ -56,9 +55,7 @@
 <hr>
 
 <div class="tab-content" id="myTabContent">
-
 <div class="tab-pane fade show active" id="tableT" role="tabpanel" aria-labelledby="table-todo">
-
 
 <!-- tabla para los reportes -->
 <div class="table-responsive">
@@ -240,6 +237,7 @@
   <br>
 @endif
 
+
   <button class="btn btn-info form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#ver_ticket" onclick="ver_tickte();" >
     <i class="fas fa-eye"></i>
     Ver
@@ -309,9 +307,120 @@
     </div>
   </div>
 
+<!-- Modal datos-->
+<div class="modal fade" id="ver_ticket" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+      <div style="display: flex;"><img src="{{asset('img/2tickets.png')}}" alt="tickets" height="50px" width="55px"><h5 class="titulo">Ticket</h5><label class="titulo" for="idticket" id="idticket"></label></div>
+      </div>
+      <div class="modal-body">
+
+        <div class="row">
+
+            <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-6">
+            <b>Usuario:</b>
+              </div>
+              <div class="col-sm-6">
+            <span>Sistemas</span>
+              </div>
+            </div>
+            </div>
+
+            <div class="col-sm-6">
+            <div class="row">
+            <div class="col-sm-6">
+            <b>Categorias:</b>
+            </div>
+            <div class="col-sm-6">
+            <span>05/10/2022</span>
+            </div>
+            </div>
+            </div>
+
+             </div>
+    <hr>
+
+       <div class="row">
+
+<div class="col-sm-6">
+<div class="row">
+  <div class="col-sm-6">
+<b>Status:</b>
+  </div>
+  <div class="col-sm-6">
+<span>Open</span>
+  </div>
+</div>
+</div>
+
+<div class="col-sm-6">
+<div class="row">
+<div class="col-sm-6">
+<b>Prioridad:</b>
+</div>
+<div class="col-sm-6">
+<span>Baja</span>
+</div>
+</div>
+</div>
+
+       </div>
+<hr>
+       <div class="row">
+
+        <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-6">
+        <b>Tema:</b>
+          </div>
+          <div class="col-sm-6">
+        <span>TEMAS</span>
+          </div>
+        </div>
+        </div>
+
+        <div class="col-sm-6">
+        <div class="row">
+        <div class="col-sm-6">
+        <b>Fecha de Creacion:</b>
+        </div>
+        <div class="col-sm-6">
+        <span>05/10/2022</span>
+        </div>
+        </div>
+        </div>
+
+         </div>
+<hr>
+
+<div class="row">
+
+  <div class="col-sm-12">
+  <div class="row">
+    <div class="col-sm-3">
+  <b>Descripcion:</b>
+    </div>
+    <div class="col-sm-9">
+  <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia ipsum corporis beatae ipsa ab. Officiis quos eaque dolorem culpa, asperiores magnam numquam repellat similique accusantium dolores voluptatum animi! Quisquam, eos.</span>
+    </div>
+  </div>
+  </div>
 
 
 
+   </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Responder</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 </div>
@@ -323,6 +432,11 @@
 
 <style>
 /*botones de los navs */
+.titulo{
+    margin-left: 7px;
+    line-height: 2.5;
+
+}
 
 .cajaP{
 display: flex;
