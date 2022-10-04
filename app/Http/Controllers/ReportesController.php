@@ -16,8 +16,12 @@ class ReportesController extends Controller
     }
 
     public function vista_report(){
+      if(Auth::user()->tipo_user===1){  
         $reportes=DB::table('tickets')->select('*')->get();
-        $users=DB::table('users')->select('*')->get();
+}else if(Auth::user()->tipo_user===2){
+    $reportes=DB::table('tickets')->where("usuario",Auth::user()->id)->get();
+}
+$users=DB::table('users')->select('*')->get();
         return view('Reportes.reporte',compact("reportes","users"));
     }
     public function vista_newReport(){

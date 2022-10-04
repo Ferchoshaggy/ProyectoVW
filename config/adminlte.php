@@ -312,15 +312,10 @@ return [
 
         // Sidebar items:
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-
-        [
             'text' => 'Tablero',
             'route' => 'vista_dash',
             'icon' => 'nav-icon fas fa-tachometer-alt',
+            'can'  => 'Administrador',
         ],
         [
             'text' => 'Reportes',
@@ -331,6 +326,7 @@ return [
             'text' => 'Usuarios',
             'route' => 'vista_users',
             'icon' => 'nav-icon fas fa-fw fa-user',
+            'can'  => 'Administrador',
         ],
 
                             ],
