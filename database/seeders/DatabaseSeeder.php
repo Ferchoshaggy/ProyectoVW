@@ -40,6 +40,13 @@ for($i=0;$i<count($usuario);$i++){
             'password'  => bcrypt('12345678'),
         ]);
 
-
+        DB::table('users')->insert([
+            'name'  => 'Usuario',
+            'tipo_user' => 2,
+            'genero'=>'Masculino',
+            'concesionaria'=>'Navarra',
+            'email'     => 'usuario@gmail.com',
+            'password'  => bcrypt('12345678'),
+        ]);
     }
 }

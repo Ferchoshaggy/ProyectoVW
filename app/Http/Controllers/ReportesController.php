@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use File;
-
+use PDF;
 
 class ReportesController extends Controller
 {
@@ -16,7 +16,7 @@ class ReportesController extends Controller
     }
 
     public function vista_report(){
-      if(Auth::user()->tipo_user===1){  
+      if(Auth::user()->tipo_user===1){
         $reportes=DB::table('tickets')->select('*')->get();
 }else if(Auth::user()->tipo_user===2){
     $reportes=DB::table('tickets')->where("usuario",Auth::user()->id)->get();
@@ -120,6 +120,13 @@ if($archivo_delete->archivo!=null){
 function reply_report(){
 
     return view("Reportes.replyReport");
+}
+
+function report_pdf(){
+
+        $pdf = PDF::loadView('Reportes.Reporte_PDF_CM')->setPaper('A4',"portrait");
+        return $pdf->stream('ejemplo.pdf');
+
 }
 
 }

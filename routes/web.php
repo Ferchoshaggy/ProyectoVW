@@ -38,12 +38,11 @@ Route::get('/users', [UsuariosController::class,'vista_users'])->name('vista_use
 Route::get('/redirects',[DashController::class,'index'])->name('index_vista');
 
 
-
-
 //Reporte
 Route::get('/report', [ReportesController::class,'vista_report'])->name('vista_report');
 Route::get('/newReport',[ReportesController::class,'vista_newReport'])->name('vista_newReport');
 Route::post('/save_report',[ReportesController::class,'report_save'])->name('report_save');
+Route::get('/pdf_report',[ReportesController::class,'report_pdf'])->name('report_pdf');
 
 //tickets
 Route::post('/change_status',[ReportesController::class,'cambiar_status'])->name('cambiar_status');
