@@ -189,17 +189,17 @@
     <div class="op">
         <div class="caja">
             <input type="radio" id="vw" name="op4" value="Volkswagen" onclick="MostrarForm(this.value);">
-            <label for="vw"><i class="fas fa-database"></i>Volkswagen</label>
+            <label for="vw"><i><img src="{{asset('img/logotipos/volk.png')}}" alt="volkswagen" height="25px" width="25px"></i>Volkswagen</label>
         </div>
 
         <div class="caja">
             <input type="radio" id="seat" name="op4" value="SEAT" onclick="MostrarForm(this.value);">
-            <label for="seat"><i class="fas fa-envelope"></i>SEAT</label>
+            <label for="seat"><i><img src="{{asset('img/logotipos/seat.png')}}" alt="Seat" height="25px" width="25px"></i>SEAT</label>
         </div>
 
         <div class="caja">
             <input type="radio" id="Suzuki" name="op4" value="Suzuki" onclick="MostrarForm(this.value);">
-            <label for="Suzuki"><i><img src="{{asset('img/logotipos/suzuki.png')}}" alt="Suzuki" height="30px" width="30px"></i>Suzuki</label>
+            <label for="Suzuki"><i><img src="{{asset('img/logotipos/suzuki.png')}}" alt="Suzuki" height="25px" width="25px"></i>Suzuki</label>
         </div>
 
     </div>

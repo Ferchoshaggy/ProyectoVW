@@ -123,8 +123,10 @@ function reply_report(){
 }
 
 function report_pdf(){
+    $tickets=DB::table('tickets')->select('*')->get();
+    $users=DB::table('users')->select('*')->get();
 
-        $pdf = PDF::loadView('Reportes.Reporte_PDF_CM')->setPaper('A4',"portrait");
+        $pdf = PDF::loadView('Reportes.Reporte_PDF_CM',compact('tickets','users'))->setPaper('A4',"portrait");
         return $pdf->stream('ejemplo.pdf');
 
 }
