@@ -460,9 +460,7 @@ align-items: center;
     flex: auto;
 }
 
-
 /*Estilo para el cuadro de opciones*/
-
       .marca{
         transition: 1s;
     }
@@ -480,7 +478,9 @@ align-items: center;
     .visible_off{
         display: none;
     }
-
+.paginate_button{
+    position:sticky;
+}
 
 </style>
 

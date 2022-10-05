@@ -7,6 +7,7 @@ use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SearchController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,20 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::group(['middleware' => ['auth', 'admin']], function () {
+
 //Tablero
 Route::get('/dash', [DashController::class,'vista_dash'])->name('vista_dash');
+
+//usuario
+Route::get('/users', [UsuariosController::class,'vista_users'])->name('vista_users');
+
+});
+
+//redirect login
+Route::get('/redirects',[DashController::class,'index'])->name('index_vista');
+
+
 
 
 //Reporte
@@ -37,7 +50,6 @@ Route::post('/change_status',[ReportesController::class,'cambiar_status'])->name
 Route::delete('/delete_ticket',[ReportesController::class,'ticket_delete'])->name('ticket_delete');
 
 //Usuarios
-Route::get('/users', [UsuariosController::class,'vista_users'])->name('vista_users');
 Route::post('/save_user',[UsuariosController::class,'guardar_usuario'])->name('save_users');
 Route::delete('/delete_user',[UsuariosController::class,'user_delete'])->name('user_delete');
 Route::post('/users_cambiar', [UsuariosController::class,'cambiar_users'])->name('cambiar_users');

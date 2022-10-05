@@ -14,6 +14,16 @@ class DashController extends Controller
         $this->middleware('auth');
     }
 
+    public function index(){
+        $role = Auth::user()->tipo_user;
+        $checkrole = explode(',', $role);
+        if (in_array(1, $checkrole)) {
+            return redirect('/dash');
+        } else {
+            return redirect('/report');
+        }
+    }
+
     public function vista_dash(){
         $tickets=DB::table('tickets')->select('*')->get();
         return view('Index',compact('tickets'));
