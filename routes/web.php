@@ -43,11 +43,12 @@ Route::get('/report', [ReportesController::class,'vista_report'])->name('vista_r
 Route::get('/newReport',[ReportesController::class,'vista_newReport'])->name('vista_newReport');
 Route::post('/save_report',[ReportesController::class,'report_save'])->name('report_save');
 Route::get('/pdf_report',[ReportesController::class,'report_pdf'])->name('report_pdf');
+Route::get('/replyreport/{id}',[ReportesController::class,'reply_report'])->name('reply_report');
 
 //tickets
 Route::post('/change_status',[ReportesController::class,'cambiar_status'])->name('cambiar_status');
 Route::delete('/delete_ticket',[ReportesController::class,'ticket_delete'])->name('ticket_delete');
-Route::get('/repryReport/{id}',[ReportesController::class,'reply_report'])->name('reply_report');
+Route::get('/ticket/{id}/download', [ReportesController::class,'descargarA'])->name('descargarA');
 
 //Usuarios
 Route::post('/save_user',[UsuariosController::class,'guardar_usuario'])->name('save_users');

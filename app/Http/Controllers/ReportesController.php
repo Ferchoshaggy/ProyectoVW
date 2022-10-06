@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use File;
 use PDF;
+use PhpParser\Node\Stmt\Catch_;
+use PhpParser\Node\Stmt\TryCatch;
 
 class ReportesController extends Controller
 {
@@ -47,7 +49,7 @@ $users=DB::table('users')->select('*')->get();
 
 
         $fecha=date('dmy');
-        $hora = now("America/Mexico_City")->isoFormat('Hmm');
+       // $hora = now("America/Mexico_City")->isoFormat('Hmm');
 
         if($users->concesionaria=="Fersan"){
           $inic="FMIT-";
@@ -56,7 +58,7 @@ $users=DB::table('users')->select('*')->get();
         }else if($users->concesionaria=="Navarra"){
             $inic="NMIT-";
         }
-       $clave=$inic.$fecha.$hora.'-'.rand(000,999);
+
 
 
         DB::table("tickets")->insert([
@@ -76,7 +78,7 @@ $users=DB::table('users')->select('*')->get();
         ]);
 
         $ticketId = DB::getPdo()->lastInsertId();
-        $clave=$inic.$fecha.$hora.'-'.$ticketId;
+        $clave=$inic.$fecha.'-'.$ticketId;
         DB::table("tickets")->where("id",$ticketId)->update([
             "codigo"=>$clave,
         ]);
@@ -118,8 +120,15 @@ if($archivo_delete->archivo!=null){
 }
 
 function reply_report($id){
+    $ticket=DB::table('tickets')->where("id",$id)->first();
+    $users=DB::table('users')->select("*")->get();
+    return view('Reportes.replyReport',compact('ticket','users'));
+}
 
-    return view("Reportes.replyReport");
+function descargarA($id){
+    $doc=DB::table("tickets")->where('id',$id)->first();
+    $pahtToFile=public_path("imgTicket/". $doc->archivo);
+    return response()->download($pahtToFile);
 }
 
 function report_pdf(){
