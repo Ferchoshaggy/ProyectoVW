@@ -47,6 +47,7 @@ Route::get('/pdf_report',[ReportesController::class,'report_pdf'])->name('report
 //tickets
 Route::post('/change_status',[ReportesController::class,'cambiar_status'])->name('cambiar_status');
 Route::delete('/delete_ticket',[ReportesController::class,'ticket_delete'])->name('ticket_delete');
+Route::get('/repryReport/{id}',[ReportesController::class,'reply_report'])->name('reply_report');
 
 //Usuarios
 Route::post('/save_user',[UsuariosController::class,'guardar_usuario'])->name('save_users');

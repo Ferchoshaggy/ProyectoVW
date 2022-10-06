@@ -117,12 +117,13 @@ if($archivo_delete->archivo!=null){
     }
 }
 
-function reply_report(){
+function reply_report($id){
 
     return view("Reportes.replyReport");
 }
 
 function report_pdf(){
+
     $tickets=DB::table('tickets')->select('*')->get();
     $users=DB::table('users')->select('*')->get();
 
