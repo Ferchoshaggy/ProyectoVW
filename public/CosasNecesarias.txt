@@ -1,0 +1,10 @@
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.office365.com
+MAIL_PORT=587
+MAIL_USERNAME=Syst3m.VW404@outlook.com
+MAIL_PASSWORD=evpuvgaqgffhlrng
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=Syst3m.VW404@outlook.com
+MAIL_FROM_NAME="SISTEMAS"
+
+Syst3m.VW404@outlook.com
