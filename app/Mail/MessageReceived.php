@@ -11,23 +11,23 @@ class MessageReceived extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
+    public $datos;
+    public $subject;
+    public $modulo;
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
+    public function __construct($titulo,$data,$modulo)
+    {
+        $this->datos = $data;
+        $this->subject=$titulo;
+        $this->modulo=$modulo;
+}
+
     public function build()
     {
-        return $this->view('emails.message-received');
+if($this->modulo=="users"){
+    return $this->view('emails.message-received');
+}
+
+
     }
 }

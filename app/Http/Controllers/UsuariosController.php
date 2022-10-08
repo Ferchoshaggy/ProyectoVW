@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use file;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\MessageReceived;
 
 class UsuariosController extends Controller
 {
@@ -20,6 +21,8 @@ class UsuariosController extends Controller
     }
 
     public function guardar_usuario(Request $request){
+
+        try {
         $request->validate([
             'contraseña'=>'min:8',
             ]);
@@ -40,10 +43,24 @@ class UsuariosController extends Controller
 
         ]);
 
+        $data=["email"=>$request['correo'],"password"=>$request['contraseña']];
+        Mail::to($request['correo'])->send(new MessageReceived("Usuario Creado",$data,"users"));
+
+      /*  if (Mail::failures()) {
+             return response()->Fail('Sorry! Please try again latter');
+        }else{
+             return response()->success('Great! Successfully send in your mail');
+           }
+*/
 
 
         return redirect()->back()->with(['message' => 'Usuario Guardado con Éxito', 'color' => 'success']);
+
+    } catch (\Exception $e) {
+        return redirect()->back()->with(['message' => "Algo salio mal, intente de nuevo", 'color' => 'warning']);
     }
+    }
+
     public function user_delete(Request $request){
         try {
 
