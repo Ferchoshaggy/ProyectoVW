@@ -483,6 +483,7 @@ $(".alert").fadeTo(2000, 500).slideUp(500, function(){
 
 var id_user=null;
     function pasar_id($id_tr) {
+
         id_user=$id_tr;
         var coordenadas_y=event.clientY; //odtenemos el valor de la posicion del boton
         var coordenadas_x=event.clientX; //odtenemos el valor de la posicion del boton

@@ -126,7 +126,12 @@
     <div class="col-sm-9">
     <a href="{{Route('descargarA',$ticket->id)}}" class="btn" style="background: rgb(42, 149, 192); color:white">Descargar</a>
     </div>
+@else
+<div class="col-sm-9">
+<span>El usuario no Agrego ningun Archivo</span>
+</div>
 @endif
+
     </div>
     </div>
 
