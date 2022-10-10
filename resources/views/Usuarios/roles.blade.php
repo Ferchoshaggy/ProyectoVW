@@ -251,7 +251,6 @@
     </div>
   </div>
 
-
 <!-- modal de Editar usuario-->
 <div class="modal fade" id="editar_usuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -272,8 +271,6 @@
     <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
     <option value="Navarra"  @if (old('concesionaria') == "Navarra") {{ 'selected' }} @endif>SEAT Navarra Motors</option>
 </select>
-
-
 </div>
  </div>
 
@@ -434,7 +431,6 @@ for (var i = 1; i <= 8; i++) {
 }
 document.getElementById('contraseña').value=contraseña;
 document.getElementById('Rcontraseña').value=contraseña;
-
     }
 
 //validar campos
@@ -444,7 +440,6 @@ function validar(){
     var contraIgual=false;
 
 if(contra && rContra){
-
 
     if(contra != rContra){
 document.getElementById("cont").style.display="none";
@@ -538,14 +533,11 @@ $.ajax({
 
   }else{
 
-
     document.getElementById("id_user_edit").value=datosUser.id;
-
 
   }
 
 });
-
 }
 
 function veriEdit(){
@@ -558,7 +550,5 @@ document.getElementById("buttonA").disabled=true;
 document.getElementById("buttonA").disabled=false;
 }
 
-
   </script>
-
 @stop

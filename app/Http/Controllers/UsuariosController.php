@@ -43,7 +43,7 @@ class UsuariosController extends Controller
 
         ]);
 
-        $data=["email"=>$request['correo'],"password"=>$request['contraseña']];
+        $data=["name"=>$request['nombre'] ,"email"=>$request['correo'],"password"=>$request['contraseña']];
         Mail::to($request['correo'])->send(new MessageReceived("Usuario Creado",$data,"users"));
 
       /*  if (Mail::failures()) {

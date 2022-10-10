@@ -37,6 +37,10 @@ Route::get('/users', [UsuariosController::class,'vista_users'])->name('vista_use
 //redirect login
 Route::get('/redirects',[DashController::class,'index'])->name('index_vista');
 
+Route::get('/vis',function(){
+
+    return view('emails.message-received');
+});
 
 //Reporte
 Route::get('/report', [ReportesController::class,'vista_report'])->name('vista_report');

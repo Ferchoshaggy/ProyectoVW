@@ -1,5 +1,4 @@
 @extends('adminlte::page')
-
 @section('title', 'Contestar')
 
 @section('content_header')
@@ -134,10 +133,15 @@
 
     </div>
     </div>
-
     </div>
+<hr>
 
+<div id=""></div>
 
+<br>
+<div class="col-12">
+<textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+</div>
 
 <div class="col-12">
     <button type="submit" class="btn btn-success float-right">Responder</button>

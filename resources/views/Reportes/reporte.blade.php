@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 @section('content')
 <br>
@@ -51,8 +52,134 @@
                 <a class="nav-link btn btn2" id="table-cerrado" data-toggle="tab" href="#tableC" role="tab" aria-controls="tableC" aria-selected="false"><img src="{{asset('img/cerrado.png')}}" alt="cerrado" class="add">Cerrado</a>
               </li>
           </ul>
-
 <hr>
+<div style="padding-bottom: 10px">
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal_pdf"><i class="fas  fa-file-pdf-o" style="padding-right: 5px"></i>PDF</button>
+<button class="btn btn-success" data-toggle="modal" data-target="#modal_xls"><i class="fas fa-file-excel-o" style="padding-right: 5px"></i>EXCEL</button>
+</div>
+
+  <!-- Modal Descargar PDF-->
+  <div class="modal fade" id="modal_pdf" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Filtros PDF</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+    <form action="" method="get">
+        @csrf
+
+<div class="row">
+<div class="col-md-6">
+<label for="fechaMIN">Fecha Minima</label>
+<input type="date" class="form-control" name="fechamin">
+</div>
+<div class="col-md-6">
+    <label for="fechaMAX">Fecha Maxima</label>
+    <input type="date" class="form-control" name="fechamax">
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+<label for="diseño">Diseños</label>
+<select class="form-control" name="diseño">
+    <option selected="true" value="" disabled="disabled">Diseños a Escoger...</option>
+    <option value="Fersan"  @if (old('concesionaria') == "Fersan") {{ 'selected' }} @endif>Fersan Motors Volkswagen</option>
+    <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
+    <option value="Navarra"  @if (old('concesionaria') == "Navarra") {{ 'selected' }} @endif>SEAT Navarra Motors</option>
+</select>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+    <label for="diseño">Filtracion</label>
+    <select class="form-control" name="filtracion">
+        <option selected="true" value="" disabled="disabled">Seleccione La filtracion...</option>
+        <option>Sin filtracion</option>
+        <option value="Abierto">Status Abierto</option>
+        <option value="Cerrado">Status Cerrado</option>
+        <option value="Contestado">Status Contestado</option>
+    </select>
+    </div>
+    </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary">Visualizar PDF</button>
+          </div>
+        </div>
+    </form>
+      </div>
+    </div>
+
+
+ <!-- Modal Descargar Excel-->
+ <div class="modal fade" id="modal_xls" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Filtros Excel</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+    <form action="" method="get">
+        @csrf
+
+<div class="row">
+<div class="col-md-6">
+<label for="fechaMIN">Fecha Minima</label>
+<input type="date" class="form-control" name="fechamin">
+</div>
+<div class="col-md-6">
+    <label for="fechaMAX">Fecha Maxima</label>
+    <input type="date" class="form-control" name="fechamax">
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+<label for="diseño">Diseños</label>
+<select class="form-control" name="diseño">
+    <option selected="true" value="" disabled="disabled">Diseños a Escoger...</option>
+    <option value="Fersan"  @if (old('concesionaria') == "Fersan") {{ 'selected' }} @endif>Fersan Motors Volkswagen</option>
+    <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
+    <option value="Navarra"  @if (old('concesionaria') == "Navarra") {{ 'selected' }} @endif>SEAT Navarra Motors</option>
+</select>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+    <label for="diseño">Filtracion</label>
+    <select class="form-control" name="filtracion">
+        <option selected="true" value="" disabled="disabled">Seleccione La filtracion...</option>
+        <option>Sin filtracion</option>
+        <option value="Abierto">Status Abierto</option>
+        <option value="Cerrado">Status Cerrado</option>
+        <option value="Contestado">Status Contestado</option>
+    </select>
+    </div>
+    </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary">Descargar Excel</button>
+          </div>
+        </div>
+    </form>
+      </div>
+    </div>
+
+
 
 <div class="tab-content" id="myTabContent">
 <div class="tab-pane fade show active" id="tableT" role="tabpanel" aria-labelledby="table-todo">
@@ -306,6 +433,8 @@
       </div>
     </div>
   </div>
+
+
 
 </div>
 </div>
