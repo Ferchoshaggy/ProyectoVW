@@ -314,13 +314,13 @@ return [
         [
             'text' => 'Tablero',
             'route' => 'vista_dash',
-            'icon' => 'nav-icon fas fa-tachometer-alt',
+            'icon' => 'nav-icon fas fa-chart-line',
             'can'  => 'Administrador',
         ],
         [
-            'text' => 'Reportes',
+            'text' => 'Tickets',
             'route' => 'vista_report',
-            'icon' => 'nav-icon fas fa-copy',
+            'icon' => 'nav-icon fas fa-ticket-alt',
         ],
         [
             'text' => 'Usuarios',

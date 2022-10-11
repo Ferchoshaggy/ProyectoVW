@@ -7,9 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use File;
 use PDF;
-use PhpParser\Node\Stmt\Catch_;
-use PhpParser\Node\Stmt\TryCatch;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MessageReceived;
 class ReportesController extends Controller
 {
     public function __construct()
@@ -31,7 +30,7 @@ $users=DB::table('users')->select('*')->get();
         return view('Reportes.newReport',compact("usuario"));
     }
      public function report_save(Request $request){
-        $users=DB::table("users")->where("id",Auth::user()->id)->select("concesionaria")->first();
+        $users=DB::table("users")->where("id",Auth::user()->id)->select("concesionaria","name")->first();
 
 
         if($request['archivo']!=null){
@@ -47,8 +46,7 @@ $users=DB::table('users')->select('*')->get();
             $file_image->move($destinationPath,$nombre2);
         }
 
-
-        $fecha=date('dmy');
+        $rand=rand(0000000,9999999);
        // $hora = now("America/Mexico_City")->isoFormat('Hmm');
 
         if($users->concesionaria=="Fersan"){
@@ -58,7 +56,6 @@ $users=DB::table('users')->select('*')->get();
         }else if($users->concesionaria=="Navarra"){
             $inic="NMIT-";
         }
-
 
 
         DB::table("tickets")->insert([
@@ -78,12 +75,18 @@ $users=DB::table('users')->select('*')->get();
         ]);
 
         $ticketId = DB::getPdo()->lastInsertId();
-        $clave=$inic.$fecha.'-'.$ticketId;
+        $clave=$inic.$rand.'-'.$ticketId;
         DB::table("tickets")->where("id",$ticketId)->update([
             "codigo"=>$clave,
         ]);
 
+        $fec=DB::table("tickets")->where("id",$ticketId)->select("created_at")->first();
+/*
+        $data=["name"=>$users->name,"fecha"=>$fec->created_at];
+        Mail::to("Syst3m.VW404@outlook.com")->send(new MessageReceived("Ticket Creado",$data,"ticket"));
+*/
         return redirect()->back()->with(['message' => "Ticket Levantado Con Exito", 'color' => 'success']);
+
 
 
     }
@@ -123,6 +126,18 @@ function reply_report($id){
     $ticket=DB::table('tickets')->where("id",$id)->first();
     $users=DB::table('users')->select("*")->get();
     return view('Reportes.replyReport',compact('ticket','users'));
+}
+
+function ticket_reply(Request $request){
+try{
+
+    DB::table("tickets")->where("id",$request["tickid"])->update([
+
+    ]);
+
+}catch(\Throwable $th) {
+
+}
 }
 
 function descargarA($id){

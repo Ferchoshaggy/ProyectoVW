@@ -53,6 +53,7 @@ Route::get('/replyreport/{id}',[ReportesController::class,'reply_report'])->name
 Route::post('/change_status',[ReportesController::class,'cambiar_status'])->name('cambiar_status');
 Route::delete('/delete_ticket',[ReportesController::class,'ticket_delete'])->name('ticket_delete');
 Route::get('/ticket/{id}/download', [ReportesController::class,'descargarA'])->name('descargarA');
+Route::post('/ticket_reply',[ReportesController::class,'ticket_reply'])->name('ticket_reply');
 
 //Usuarios
 Route::post('/save_user',[UsuariosController::class,'guardar_usuario'])->name('save_users');

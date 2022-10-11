@@ -27,6 +27,9 @@ class MessageReceived extends Mailable
 if($this->modulo=="users"){
     return $this->view('emails.message-received');
 }
+if($this->modulo=="ticket"){
+return $this->view('emails.ticket_levantado');
+}
 
 
     }

@@ -43,13 +43,13 @@
               <a class="nav-link active btn btn2" id="table-todo" data-toggle="tab" href="#tableT" role="tab" aria-controls="tableT" aria-selected="false"><img src="{{asset('img/2tickets.png')}}" alt="todo" class="add">Todos</a>
             </li>
             <li class="nav-item cajaH">
-              <a class="nav-link btn btn2" id="table-abirto" data-toggle="tab" href="#tableA" role="tab" aria-controls="tableA" aria-selected="false"><img src="{{asset('img/abierto.png')}}" alt="abierto" class="add">Abiertos</a>
+              <a class="nav-link btn btn2" id="table-abirto" data-toggle="tab" href="#tableA" role="tab" aria-controls="tableA" aria-selected="false"><img src="{{asset('img/abierto.png')}}" alt="abierto" class="add">Sin Resolver</a>
             </li>
             <li class="nav-item cajaH">
                 <a class="nav-link btn btn2" id="table-revision" data-toggle="tab" href="#tableR" role="tab" aria-controls="tableR" aria-selected="false"><img src="{{asset('img/espera.png')}}" alt="revicion" class="add">Contestados</a>
               </li>
             <li class="nav-item cajaH">
-                <a class="nav-link btn btn2" id="table-cerrado" data-toggle="tab" href="#tableC" role="tab" aria-controls="tableC" aria-selected="false"><img src="{{asset('img/cerrado.png')}}" alt="cerrado" class="add">Cerrado</a>
+                <a class="nav-link btn btn2" id="table-cerrado" data-toggle="tab" href="#tableC" role="tab" aria-controls="tableC" aria-selected="false"><img src="{{asset('img/cerrado.png')}}" alt="cerrado" class="add">Resueltos</a>
               </li>
           </ul>
 <hr>
@@ -224,7 +224,6 @@
       </table>
 
 </div>
-
 </div>
 
 <div class="tab-pane fade"  id="tableA" role="tabpanel" aria-labelledby="table-abierto">
@@ -352,8 +351,6 @@
        <i class="fas fa-times fa-xs"></i>
     </button>
 
-
-
     @if(Auth::user()->tipo_user==1)
   <button type="button" class="btn btn-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#cerrar_ticket" onclick="cambiar_ticket();">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
@@ -363,7 +360,6 @@
   </button>
   <br>
 @endif
-
 
   <button class="btn btn-info form-control" style="margin-bottom: 10px; font-weight: bold;" onclick="ver_tickte();" >
     <i class="fas fa-eye"></i>
@@ -433,8 +429,6 @@
       </div>
     </div>
   </div>
-
-
 
 </div>
 </div>
@@ -564,7 +558,7 @@ $.ajax({
 }
 
 function ver_tickte(){
-    window.location.href ="/replyreport/"+id_ticket;
+    window.location.href ="{{url('/replyreport')}}/"+id_ticket;
 }
 
 function cambiar_ticket(){
