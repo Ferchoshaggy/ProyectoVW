@@ -40,22 +40,22 @@
 
         <ul class="nav cajaP">
             <li class="nav-item cajaH">
-              <a class="nav-link active btn btn2" id="table-todo" data-toggle="tab" href="#tableT" role="tab" aria-controls="tableT" aria-selected="false"><img src="{{asset('img/2tickets.png')}}" alt="todo" class="add">Todos</a>
+              <a class="nav-link active btn btn2" id="table-todo" data-toggle="tab" href="#tableT" role="tab" aria-controls="tableT" aria-selected="false"><img src="{{asset('img/editar.png')}}" alt="todo" class="add">Todos</a>
             </li>
             <li class="nav-item cajaH">
-              <a class="nav-link btn btn2" id="table-abirto" data-toggle="tab" href="#tableA" role="tab" aria-controls="tableA" aria-selected="false"><img src="{{asset('img/abierto.png')}}" alt="abierto" class="add">Abiertos</a>
+              <a class="nav-link btn btn2" id="table-abirto" data-toggle="tab" href="#tableA" role="tab" aria-controls="tableA" aria-selected="false"><img src="{{asset('img/prohibido.png')}}" alt="abierto" class="add">Sin Resolver</a>
             </li>
             <li class="nav-item cajaH">
-                <a class="nav-link btn btn2" id="table-revision" data-toggle="tab" href="#tableR" role="tab" aria-controls="tableR" aria-selected="false"><img src="{{asset('img/espera.png')}}" alt="revicion" class="add">Contestados</a>
+                <a class="nav-link btn btn2" id="table-revision" data-toggle="tab" href="#tableR" role="tab" aria-controls="tableR" aria-selected="false"><img src="{{asset('img/temporizador.png')}}" alt="revicion" class="add">Contestados</a>
               </li>
             <li class="nav-item cajaH">
-                <a class="nav-link btn btn2" id="table-cerrado" data-toggle="tab" href="#tableC" role="tab" aria-controls="tableC" aria-selected="false"><img src="{{asset('img/cerrado.png')}}" alt="cerrado" class="add">Cerrado</a>
+                <a class="nav-link btn btn2" id="table-cerrado" data-toggle="tab" href="#tableC" role="tab" aria-controls="tableC" aria-selected="false"><img src="{{asset('img/seguro.png')}}" alt="cerrado" class="add">Resueltos</a>
               </li>
           </ul>
 <hr>
 <div style="padding-bottom: 10px">
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal_pdf"><i class="fas  fa-file-pdf-o" style="padding-right: 5px"></i>PDF</button>
-<button class="btn btn-success" data-toggle="modal" data-target="#modal_xls"><i class="fas fa-file-excel-o" style="padding-right: 5px"></i>EXCEL</button>
+<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal_pdf"><i class="fas  fa-file-pdf-o" style="padding-right: 5px"></i>PDF</button>
+<button class="btn btn-outline-success" data-toggle="modal" data-target="#modal_xls"><i class="fas fa-file-excel-o" style="padding-right: 5px"></i>EXCEL</button>
 </div>
 
   <!-- Modal Descargar PDF-->
@@ -224,7 +224,6 @@
       </table>
 
 </div>
-
 </div>
 
 <div class="tab-pane fade"  id="tableA" role="tabpanel" aria-labelledby="table-abierto">
@@ -346,16 +345,14 @@
 
 
 <!--menu de opciones de la tabla-->
-<div id="menu_opciones" class="visible_off " style=" padding: 20px; background-color: #6e82c2bd;">
+<div id="menu_opciones" class="visible_off " style=" padding: 20px; background-color: rgba(211, 223, 249, 0.86);">
 
     <button type="button" class="close" style="margin-right: -17px; margin-top: -20px;" onclick="cerrar_menu();">
-       <i class="fas fa-times fa-xs"></i>
+       <i class="fas fa-times fa-xs" style="width: 22; height:22;"></i>
     </button>
 
-
-
     @if(Auth::user()->tipo_user==1)
-  <button type="button" class="btn btn-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#cerrar_ticket" onclick="cambiar_ticket();">
+  <button type="button" class="btn btn-outline-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#cerrar_ticket" onclick="cambiar_ticket();">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
         <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
       </svg>
@@ -364,15 +361,14 @@
   <br>
 @endif
 
-
-  <button class="btn btn-info form-control" style="margin-bottom: 10px; font-weight: bold;" onclick="ver_tickte();" >
+  <button class="btn btn-outline-info form-control" style="margin-bottom: 10px; font-weight: bold;" onclick="ver_tickte();" >
     <i class="fas fa-eye"></i>
     Ver
   </button>
   <br>
 
   @if(Auth::user()->tipo_user==1)
-  <button class="btn btn-danger form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#borrar_ticket" onclick="tickte_delete();" >
+  <button class="btn btn-outline-danger form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#borrar_ticket" onclick="tickte_delete();" >
     <i class="fas fa-trash"></i>
     Borrar
   </button>
@@ -434,8 +430,6 @@
     </div>
   </div>
 
-
-
 </div>
 </div>
 </div>
@@ -463,6 +457,7 @@ align-items: center;
         width:50px;
         background-size: 50px 50px;
         background-position:center;
+        padding-right: 5px;
 }
 .btn2{
     flex: auto;
