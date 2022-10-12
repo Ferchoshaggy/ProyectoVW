@@ -15,7 +15,6 @@
 @csrf
 
 <div class="row">
-
     <div class="col-sm-6">
     <div class="row">
       <div class="col-sm-6">
@@ -24,6 +23,8 @@
       <div class="col-sm-6">
 @foreach ($users as $user)
 @if($ticket->usuario==$user->id)
+<input type="hidden" name="tickid" value="{{$ticket->id}}">
+
     <span id="user">{{$user->name}}</span>
 @endif
 @endforeach
@@ -136,11 +137,11 @@
     </div>
 <hr>
 
-<div id=""></div>
+<div id="respuestas"></div>
 
 <br>
 <div class="col-12">
-<textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+<textarea name="descripcion" id="descripcion" cols="30" rows="10" class="form-control"></textarea>
 </div>
 
 <div class="col-12">
@@ -165,5 +166,6 @@
 @stop
 
 @section('js')
+
 
 @stop

@@ -47,7 +47,7 @@
 
 <!--Boton de nuevo usuarios -->
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregarUser">
+<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#agregarUser">
     Nuevo Usuario
   </button>
   <br><br>
