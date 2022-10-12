@@ -10,6 +10,9 @@ use PDF;
 use PhpParser\Node\Stmt\Catch_;
 use PhpParser\Node\Stmt\TryCatch;
 
+use App\Exports\TicketsExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class ReportesController extends Controller
 {
     public function __construct()
@@ -131,13 +134,53 @@ function descargarA($id){
     return response()->download($pahtToFile);
 }
 
-function report_pdf(){
+function report_pdf(Request $request){
+/*
+    fechamin
+fechamax
+diseño
+filtracion
+*/
 
-    $tickets=DB::table('tickets')->select('*')->get();
+    if ($request['filtracion']=="todos") {
+        $tickets=DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->get();
+    }else{
+        $tickets=DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where("status",$request['filtracion'])->get();
+    }
+    
     $users=DB::table('users')->select('*')->get();
+    $diseno=$request['diseño'];
+    $fechamin=$request['fechamin'];
+    $fechamax=$request['fechamax'];
+    $filtracion=$request['filtracion'];
 
-        $pdf = PDF::loadView('Reportes.Reporte_PDF_CM',compact('tickets','users'))->setPaper('A4',"portrait");
-        return $pdf->stream('ejemplo.pdf');
+    $pdf = PDF::loadView('Reportes.Reporte_PDF',compact('tickets','users','diseno','fechamin','fechamax','filtracion'))->setPaper(array(0,0,1537,1989));
+    return $pdf->stream("PDF_".$diseno."_".$filtracion.'.pdf');
+
+}
+
+function report_excel(Request $request){
+/*
+    fechamin
+fechamax
+diseño
+filtracion
+*/
+
+    if ($request['filtracion']=="todos") {
+        $tickets=DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->get();
+    }else{
+        $tickets=DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where("status",$request['filtracion'])->get();
+    }
+    
+    $users=DB::table('users')->select('*')->get();
+    $diseno=$request['diseño'];
+    $fechamin=$request['fechamin'];
+    $fechamax=$request['fechamax'];
+    $filtracion=$request['filtracion'];
+
+    return Excel::download(new TicketsExport($fechamin,$fechamax,$diseno,$filtracion,$tickets,$users),"EXCEL_".$diseno."_".$filtracion.".xlsx");
+    //return $pdf->stream('ejemplo.pdf');
 
 }
 

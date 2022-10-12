@@ -69,7 +69,7 @@
             </button>
           </div>
           <div class="modal-body">
-    <form action="" method="get">
+    <form action="{{url('/pdf_report')}}" method="POST" target="_blank">
         @csrf
 
 <div class="row">
@@ -100,7 +100,7 @@
     <label for="diseño">Filtracion</label>
     <select class="form-control" name="filtracion">
         <option selected="true" value="" disabled="disabled">Seleccione La filtracion...</option>
-        <option>Sin filtracion</option>
+        <option value="todos">Sin filtracion</option>
         <option value="Abierto">Status Abierto</option>
         <option value="Cerrado">Status Cerrado</option>
         <option value="Contestado">Status Contestado</option>
@@ -130,7 +130,7 @@
             </button>
           </div>
           <div class="modal-body">
-    <form action="" method="get">
+    <form action="{{url('/excel_report')}}" method="POST" target="_blank">
         @csrf
 
 <div class="row">
@@ -161,7 +161,7 @@
     <label for="diseño">Filtracion</label>
     <select class="form-control" name="filtracion">
         <option selected="true" value="" disabled="disabled">Seleccione La filtracion...</option>
-        <option>Sin filtracion</option>
+        <option value="todos">Sin filtracion</option>
         <option value="Abierto">Status Abierto</option>
         <option value="Cerrado">Status Cerrado</option>
         <option value="Contestado">Status Contestado</option>
@@ -564,7 +564,7 @@ $.ajax({
 }
 
 function ver_tickte(){
-    window.location.href ="/replyreport/"+id_ticket;
+    window.location.href ="{{url('/replyreport')}}/"+id_ticket;
 }
 
 function cambiar_ticket(){
