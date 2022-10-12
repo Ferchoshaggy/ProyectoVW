@@ -53,10 +53,12 @@
               </li>
           </ul>
 <hr>
+@if (Auth::user()->tipo_user==1)
 <div style="padding-bottom: 10px">
 <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal_pdf"><i class="fas  fa-file-pdf-o" style="padding-right: 5px"></i>PDF</button>
 <button class="btn btn-outline-success" data-toggle="modal" data-target="#modal_xls"><i class="fas fa-file-excel-o" style="padding-right: 5px"></i>EXCEL</button>
 </div>
+@endif
 
   <!-- Modal Descargar PDF-->
   <div class="modal fade" id="modal_pdf" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -75,18 +77,18 @@
 <div class="row">
 <div class="col-md-6">
 <label for="fechaMIN">Fecha Minima</label>
-<input type="date" class="form-control" name="fechamin">
+<input type="date" class="form-control" name="fechamin" id="fmin1" onchange="validar_pdf()">
 </div>
 <div class="col-md-6">
     <label for="fechaMAX">Fecha Maxima</label>
-    <input type="date" class="form-control" name="fechamax">
+    <input type="date" class="form-control" name="fechamax" id="fmax1" onchange="validar_pdf()">
 </div>
 </div>
 
 <div class="row">
 <div class="col-md-12">
 <label for="diseño">Diseños</label>
-<select class="form-control" name="diseño">
+<select class="form-control" name="diseño" id="diseño1" onchange="validar_pdf()">
     <option selected="true" value="" disabled="disabled">Diseños a Escoger...</option>
     <option value="Fersan"  @if (old('concesionaria') == "Fersan") {{ 'selected' }} @endif>Fersan Motors Volkswagen</option>
     <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
@@ -98,7 +100,7 @@
 <div class="row">
     <div class="col-md-12">
     <label for="diseño">Filtracion</label>
-    <select class="form-control" name="filtracion">
+    <select class="form-control" name="filtracion" id="filtracion1" onchange="validar_pdf()">
         <option selected="true" value="" disabled="disabled">Seleccione La filtracion...</option>
         <option value="todos">Sin filtracion</option>
         <option value="Abierto">Status Abierto</option>
@@ -106,12 +108,12 @@
         <option value="Contestado">Status Contestado</option>
     </select>
     </div>
-    </div>
+</div>
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button class="btn btn-primary">Visualizar PDF</button>
+            <button class="btn btn-primary" id="viewPDF" disabled>Visualizar PDF</button>
           </div>
         </div>
     </form>
@@ -136,18 +138,18 @@
 <div class="row">
 <div class="col-md-6">
 <label for="fechaMIN">Fecha Minima</label>
-<input type="date" class="form-control" name="fechamin">
+<input type="date" class="form-control" name="fechamin" id="fmin2" onchange="validar_xls()">
 </div>
 <div class="col-md-6">
     <label for="fechaMAX">Fecha Maxima</label>
-    <input type="date" class="form-control" name="fechamax">
+    <input type="date" class="form-control" name="fechamax" id="fmax2" onchange="validar_xls()">
 </div>
 </div>
 
 <div class="row">
 <div class="col-md-12">
 <label for="diseño">Diseños</label>
-<select class="form-control" name="diseño">
+<select class="form-control" name="diseño" id="diseño2" onchange="validar_xls()">
     <option selected="true" value="" disabled="disabled">Diseños a Escoger...</option>
     <option value="Fersan"  @if (old('concesionaria') == "Fersan") {{ 'selected' }} @endif>Fersan Motors Volkswagen</option>
     <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
@@ -159,7 +161,7 @@
 <div class="row">
     <div class="col-md-12">
     <label for="diseño">Filtracion</label>
-    <select class="form-control" name="filtracion">
+    <select class="form-control" name="filtracion" id="filtracion2" onchange="validar_xls()">
         <option selected="true" value="" disabled="disabled">Seleccione La filtracion...</option>
         <option value="todos">Sin filtracion</option>
         <option value="Abierto">Status Abierto</option>
@@ -172,7 +174,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button class="btn btn-primary">Descargar Excel</button>
+            <button class="btn btn-primary" id="viewXLS" disabled>Descargar Excel</button>
           </div>
         </div>
     </form>
@@ -583,6 +585,34 @@ function cambiar_ticket(){
   }
 
 });
+}
+
+function validar_pdf(){
+let fecmin=document.getElementById('fmin1').value;
+let fecmax=document.getElementById('fmax1').value;
+let diseño=document.getElementById('diseño1').value;
+let filtro=document.getElementById('filtracion1').value;
+
+if(fecmin && fecmax && diseño && filtro){
+    document.getElementById('viewPDF').disabled=false;
+}else{
+    document.getElementById('viewPDF').disabled=true;
+}
+
+}
+
+function validar_xls(){
+let fecmin=document.getElementById('fmin2').value;
+let fecmax=document.getElementById('fmax2').value;
+let diseño=document.getElementById('diseño2').value;
+let filtro=document.getElementById('filtracion2').value;
+
+if(fecmin && fecmax && diseño && filtro){
+    document.getElementById('viewXLS').disabled=false;
+}else{
+    document.getElementById('viewXLS').disabled=true;
+}
+
 }
 
 </script>

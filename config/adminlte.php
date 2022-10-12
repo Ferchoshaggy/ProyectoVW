@@ -325,7 +325,7 @@ return [
         [
             'text' => 'Usuarios',
             'route' => 'vista_users',
-            'icon' => 'nav-icon fas fa-fw fa-user',
+            'icon' => 'nav-icon fas fa-users',
             'can'  => 'Administrador',
         ],
 
