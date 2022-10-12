@@ -7,11 +7,21 @@
 </head>
 <body style="background-color: #E8E7E2; padding-top: 10px; padding-bottom: 10px;">
 
-<div style="position: relative; display: inline-block; text-align: center;">
+<div style="margin-right: 25%; margin-left: 25%; margin-top: 20px; margin-bottom:20px; border-radius: 10px; background-color: white;">
 
-    <img src="{{url('formatos/e-r.png')}}" style="display:block;margin-left: auto; margin-right: auto;">
+@if ($datos['empresa']=="Fersan")
+    <img src="{{url(img/imgemail/EncaFM.png)}}" alt="fersan">
+@endif
 
-<div style=" position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+@if ($datos['empresa']=="Chaixtsu")
+    <img src="{{url(img/imgemail/EncaCM.png)}}" alt="chaixtsu">
+@endif
+
+@if ($datos['empresa']=="Navarra")
+    <img src="{{url(img/imgemail/EncaNM.png)}}" alt="navarra">
+@endif
+
+<div style="margin-bottom: 20px; text-align: center;">
     <h1>Bienvenido al Sistema de tickets</h1>
     <label>Hola {{$datos['name']}} Bienvenid@ al Sistema de levantamiento de incidencias y soporte tecnico del area de sistemas</label><br>
     <label for="">Este es tu correo: {{$datos['email']}} </label><br>
@@ -25,6 +35,17 @@
    </div>
 </div>
 
+@if ($datos['empresa']=="Fersan")
+    <img src="{{url(img/imgemail/SupFM.png)}}" alt="fersan">
+@endif
+
+@if ($datos['empresa']=="Chaixtsu")
+    <img src="{{url(img/imgemail/SupCM.png)}}" alt="chaixtsu">
+@endif
+
+@if ($datos['empresa']=="Navarra")
+    <img src="{{url(img/imgemail/SupNM.png)}}" alt="navarra">
+@endif
 
 </div>
 
