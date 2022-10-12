@@ -46,8 +46,9 @@ Route::get('/vis',function(){
 Route::get('/report', [ReportesController::class,'vista_report'])->name('vista_report');
 Route::get('/newReport',[ReportesController::class,'vista_newReport'])->name('vista_newReport');
 Route::post('/save_report',[ReportesController::class,'report_save'])->name('report_save');
-Route::get('/pdf_report',[ReportesController::class,'report_pdf'])->name('report_pdf');
+Route::post('/pdf_report',[ReportesController::class,'report_pdf'])->name('report_pdf');
 Route::get('/replyreport/{id}',[ReportesController::class,'reply_report'])->name('reply_report');
+Route::post('/excel_report',[ReportesController::class,'report_excel'])->name('report_excel');
 
 //tickets
 Route::post('/change_status',[ReportesController::class,'cambiar_status'])->name('cambiar_status');
