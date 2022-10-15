@@ -66,17 +66,9 @@
 
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-4">
-                <label for="Nombre">Nombre</label>
-                <input type="text" name="nombre" id="nombre" class="form-control" value="{{$usuario->name}}" >
-                </div>
-                <div class="col-md-4">
-                <label for="App">Apellido Paterno</label>
-                <input type="text" name="appaterno" id="appaterno" value="{{$usuario->ape_pat}}" class="form-control">
-                </div>
-                <div class="col-md-4">
-                <label for="Apm">Apellido Materno</label>
-                <input type="text" name="apmaterno" id="apmaterno" value="{{$usuario->ape_mat}}" class="form-control">
+            <div class="col-md-12">
+                <label for="Nombre">Nombre Completo</label>
+                <input type="text" name="nombre" id="nombre" class="form-control" value="{{$usuario->name}}" disabled>
                 </div>
         </div>
 

@@ -206,7 +206,7 @@
             @if ($reporte->usuario==$user->id)
           <tr class="marca" onclick="pasar_id({{$reporte->id}});">
             <td style="text-align: center;">{{$reporte->codigo}}</td>
-            <td style="text-align: center;">{{$user->name}} {{$user->ape_pat}}</td>
+            <td style="text-align: center;">{{$user->name}}</td>
             <td style="text-align: center;">{{$reporte->tipo}}</td>
             <td style="text-align: center;">{{$reporte->prioridad}}</td>
             <td style="text-align: center;">{{$reporte->tema}}</td>
@@ -250,7 +250,7 @@
             @if ($reporte->usuario==$user->id)
           <tr class="marca" onclick="pasar_id({{$reporte->id}});">
             <td style="text-align: center;">{{$reporte->codigo}}</td>
-            <td style="text-align: center;">{{$user->name}} {{$user->ape_pat}}</td>
+            <td style="text-align: center;">{{$user->name}}</td>
             <td style="text-align: center;">{{$reporte->tipo}}</td>
             <td style="text-align: center;">{{$reporte->prioridad}}</td>
             <td style="text-align: center;">{{$reporte->tema}}</td>
@@ -289,7 +289,7 @@
                     @if ($reporte->usuario==$user->id)
                   <tr class="marca" onclick="pasar_id({{$reporte->id}});">
                     <td style="text-align: center;">{{$reporte->codigo}}</td>
-                    <td style="text-align: center;">{{$user->name}} {{$user->ape_pat}}</td>
+                    <td style="text-align: center;">{{$user->name}}</td>
                     <td style="text-align: center;">{{$reporte->tipo}}</td>
                     <td style="text-align: center;">{{$reporte->prioridad}}</td>
                     <td style="text-align: center;">{{$reporte->tema}}</td>
@@ -328,7 +328,7 @@
             @if ($reporte->usuario==$user->id)
           <tr class="marca" onclick="pasar_id({{$reporte->id}});">
             <td style="text-align: center;">{{$reporte->codigo}}</td>
-            <td style="text-align: center;">{{$user->name}} {{$user->ape_pat}}</td>
+            <td style="text-align: center;">{{$user->name}}</td>
             <td style="text-align: center;">{{$reporte->tipo}}</td>
             <td style="text-align: center;">{{$reporte->prioridad}}</td>
             <td style="text-align: center;">{{$reporte->tema}}</td>

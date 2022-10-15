@@ -60,8 +60,6 @@ class UserController extends Controller
             $user->password=hash::make($request->passN);
             DB::table("users")->where("id",Auth::user()->id)->update([
                 "name"=>$request['nombre'],
-                "ape_pat"=>$request['appaterno'],
-                "ape_mat"=>$request['apmaterno'],
                 "foto"=>$foto,
                 "genero"=>$request['genero'],
                 "password"=>$user->password,
@@ -73,8 +71,6 @@ class UserController extends Controller
         }else{
             DB::table("users")->where("id",Auth::user()->id)->update([
                 "name"=>$request['nombre'],
-                "ape_pat"=>$request['appaterno'],
-                "ape_mat"=>$request['apmaterno'],
                 "foto"=>$foto,
                 "genero"=>$request['genero'],
 

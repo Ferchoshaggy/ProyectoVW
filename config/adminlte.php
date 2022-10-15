@@ -328,6 +328,12 @@ return [
             'icon' => 'nav-icon fas fa-users',
             'can'  => 'Administrador',
         ],
+        [
+            'text' => 'Inventario',
+            'route' => 'vista_inven',
+            'icon' => 'nav-icon fas fa-clipboard',
+            'can'  => 'Administrador',
+        ],
 
                             ],
 

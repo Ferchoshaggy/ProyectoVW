@@ -269,7 +269,7 @@ value="{{ Auth::user()->id}}">
 
                 <div class="col-md-4">
         <label for="Usuario">Usuario</label>
-        <input type="text" class="form-control" name="usuario" id="usuario" value="{{$user->name}} {{$user->ape_pat}} {{$user->ape_mat}}" disabled>
+        <input type="text" class="form-control" name="usuario" id="usuario" value="{{$user->name}}" disabled>
                 </div>
 @endforeach
 

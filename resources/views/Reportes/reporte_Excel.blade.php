@@ -72,7 +72,7 @@
                   @if ($reporte->usuario==$user->id)
                 <tr class="marca" onclick="pasar_id({{$reporte->id}});">
                   <td style="text-align: center; font-size: 15px;">{{$reporte->codigo}}</td>
-                  <td style="text-align: center; font-size: 15px;">{{$user->name}} {{$user->ape_pat}}</td>
+                  <td style="text-align: center; font-size: 15px;">{{$user->name}}</td>
                   <td style="text-align: center; font-size: 15px;">{{$reporte->tipo}}</td>
                   <td style="text-align: center; font-size: 15px;">{{$reporte->prioridad}}</td>
                   <td style="text-align: center; font-size: 15px;">{{$reporte->tema}}</td>

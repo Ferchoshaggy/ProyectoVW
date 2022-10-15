@@ -13,10 +13,10 @@
       margin: 0;
       padding: 0;
       font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
-            
+
     }
 @if($diseno=="Fersan")
-  body{   
+  body{
         font-size: 12px;
         background-color: red;
         width: 2048px;
@@ -29,7 +29,7 @@
         background-repeat: no-repeat;
     }
 @elseif($diseno=="Chaixtsu")
-  body{   
+  body{
         font-size: 12px;
         background-color: red;
         width: 2048px;
@@ -42,7 +42,7 @@
         background-repeat: no-repeat;
     }
 @elseif($diseno=="Navarra")
-  body{   
+  body{
         font-size: 12px;
         background-color: red;
         width: 2048px;
@@ -55,7 +55,7 @@
         background-repeat: no-repeat;
     }
 @endif
-        
+
 </style>
 <body >
   <header>
@@ -68,7 +68,7 @@
       </div>
     </div>
     <br><br>
-    
+
     <div style="margin: 50px;">
       <table class="table" style=" width: 100%; margin-top: 265px; border: black 3px solid;" cellspacing="0" cellpadding="0">
           <thead >
@@ -90,7 +90,7 @@
               @if ($reporte->usuario==$user->id)
             <tr class="marca" onclick="pasar_id({{$reporte->id}});">
               <td style="text-align: center; font-size: 30px;">{{$reporte->codigo}}</td>
-              <td style="text-align: center; font-size: 30px;">{{$user->name}} {{$user->ape_pat}}</td>
+              <td style="text-align: center; font-size: 30px;">{{$user->name}}</td>
               <td style="text-align: center; font-size: 30px;">{{$reporte->tipo}}</td>
               <td style="text-align: center; font-size: 30px;">{{$reporte->prioridad}}</td>
               <td style="text-align: center; font-size: 30px;  width: 500px;">
@@ -113,7 +113,7 @@
           </tbody>
       </table>
     </div>
-    
+
 <!--
     <div style="background-color: red;">
       @for($i=0; $i<=300; $i++)

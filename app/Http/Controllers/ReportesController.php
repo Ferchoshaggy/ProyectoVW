@@ -91,10 +91,10 @@ $users=DB::table('users')->select('*')->get();
         ]);
 
         $fec=DB::table("tickets")->where("id",$ticketId)->select("created_at")->first();
-/*
+
         $data=["name"=>$users->name,"fecha"=>$fec->created_at];
         Mail::to("Syst3m.VW404@outlook.com")->send(new MessageReceived("Ticket Creado",$data,"ticket"));
-*/
+
         return redirect()->back()->with(['message' => "Ticket Levantado Con Exito", 'color' => 'success']);
 
 
@@ -169,7 +169,7 @@ filtracion
     }else{
         $tickets=DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where("status",$request['filtracion'])->get();
     }
-    
+
     $users=DB::table('users')->select('*')->get();
     $diseno=$request['diseño'];
     $fechamin=$request['fechamin'];
@@ -194,7 +194,7 @@ filtracion
     }else{
         $tickets=DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where("status",$request['filtracion'])->get();
     }
-    
+
     $users=DB::table('users')->select('*')->get();
     $diseno=$request['diseño'];
     $fechamin=$request['fechamin'];

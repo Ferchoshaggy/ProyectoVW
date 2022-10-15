@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use file;
+use PhpParser\Node\Stmt\Catch_;
+use PhpParser\Node\Stmt\TryCatch;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MessageReceived;
 
@@ -33,8 +35,6 @@ class UsuariosController extends Controller
 
         DB::table('users')->insert([
         "name"=>$request['nombre'],
-        "ape_pat"=>$request['appaterno'],
-        "ape_mat"=>$request['apmaterno'],
         "email"=>$request['correo'],
         "genero"=>$request['genero'],
         "concesionaria"=>$request['concesionaria'],
@@ -45,8 +45,8 @@ class UsuariosController extends Controller
 
         $data=["name"=>$request['nombre'] ,"email"=>$request['correo'],"password"=>$request['contraseña'],"empresa"=>$request['concesionaria']];
         Mail::to($request['correo'])->send(new MessageReceived("Usuario Creado",$data,"users"));
-
-      /*  if (Mail::failures()) {
+/*
+       if (Mail::failures()) {
              return response()->Fail('Sorry! Please try again latter');
         }else{
              return response()->success('Great! Successfully send in your mail');

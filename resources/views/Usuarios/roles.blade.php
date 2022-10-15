@@ -68,17 +68,9 @@
 
 
 <div class="row">
-    <div class="col-md-4">
-    <label for="Nombre">Nombre</label>
+    <div class="col-md-12">
+    <label for="Nombre">Nombre Completo</label>
     <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre')}}" onchange="validar();" >
-    </div>
-    <div class="col-md-4">
-    <label for="App">Apellido Paterno</label>
-    <input type="text" name="appaterno" id="appaterno" value="{{old("appaterno")}}" class="form-control">
-    </div>
-    <div class="col-md-4">
-    <label for="Apm">Apellido Materno</label>
-    <input type="text" name="apmaterno" id="apmaterno" value="{{old("apmaterno")}}" class="form-control">
     </div>
 </div>
 
@@ -175,8 +167,6 @@
                 <thead class="thead-dark">
                   <tr>
                     <th style="text-align: center;">Nombre</th>
-                    <th style="text-align: center;">App Paterno</th>
-                    <th style="text-align: center;">App Materno</th>
                     <th style="text-align: center;">Correo</th>
                     <th style="text-align: center;">Tipo de Usuario</th>
                     <th style="text-align: center;">Concesionaria</th>
@@ -188,8 +178,6 @@
                     @if ($user->tipo_user==$tipo->id)
                     <tr class="marca" @if(Auth::user()->tipo_user==1) onclick="pasar_id({{$user->id}});" @endif>
                         <td style="text-align: center;">{{$user->name}}</td>
-                        <td style="text-align: center;">{{$user->ape_pat}}</td>
-                        <td style="text-align: center;">{{$user->ape_mat}}</td>
                         <td style="text-align: center;">{{$user->email}}</td>
                         <td style="text-align: center;">{{$tipo->tipo}}</td>
                         <td style="text-align: center;">{{$user->concesionaria}}</td>

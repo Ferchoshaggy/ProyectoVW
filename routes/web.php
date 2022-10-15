@@ -7,6 +7,7 @@ use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\InventoryController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -69,3 +70,5 @@ Route::post('/update_user',[UserController::class,'actualizar_user'])->name('use
 Route::get("/search_user/{id}",[SearchController::class,'userSearch'])->name('UserSearch');
 Route::get("/ticket_search/{id}",[SearchController::class,'ticketSearch'])->name('TicketSearch');
 
+//Inventario
+Route::get('/inventory',[InventoryController::class,'vista_inventario'])->name('vista_inven');
