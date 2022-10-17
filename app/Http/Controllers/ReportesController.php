@@ -75,7 +75,7 @@ $users=DB::table('users')->select('*')->get();
         "opcion3"=>$request['op3'],
         "opcion4"=>$request['op4'],
         "usuario"=>$request['idPerfil'],
-        "fuente"=>$request['fuente'],
+        //"fuente"=>$request['fuente'],
         "tipo"=>$request['tipo'],
         "prioridad"=>$request['prioridad'],
         "tema"=>$request['tema'],
@@ -142,8 +142,10 @@ function reply_report($id){
 function ticket_reply(Request $request){
 try{
 
+for($i=0;$i<count($request['file']);$i++){
 
-
+dd($request['file'][$i]);
+}
 
 }catch(\Throwable $th) {
 

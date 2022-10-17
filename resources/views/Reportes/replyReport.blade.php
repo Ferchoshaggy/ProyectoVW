@@ -149,7 +149,7 @@
             <a class="btn btn-primary text-light" role="button" aria-disabled="false">Agregar Archivos o Imagenes</a>
 
         </label>
-        <input type="file" name="file[]" accept=".pdf" id="attachment" style="visibility: hidden; position: absolute;" multiple/>
+        <input type="file" name="file[]"  id="attachment" style="visibility: hidden; position: absolute;" multiple/>
 
     </p>
     <p id="files-area">

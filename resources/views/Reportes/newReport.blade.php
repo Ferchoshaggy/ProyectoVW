@@ -243,7 +243,7 @@
         <br>
             <h5 id="demo"></h5>
     </div>
-
+<!--
     <div class="col align-self-end">
         <label for="Fuente">Fuente</label>
         <div style="border: 1px solid rgb(185, 184, 184); border-radius:0.4em;">
@@ -259,6 +259,7 @@
         <label for="person"><i class="fas fa-users"></i>En Persona</label>
     </div>
     </div>
+-->
 </div>
             <div class="row">
 @foreach ($usuario as $user)
@@ -398,19 +399,20 @@ $(".alert").fadeTo(2000, 500).slideUp(500, function(){
 });
 
 function validarT(){
+ /*
 let fuente=document.getElementsByName('fuente');
 
 for(i = 0; i < fuente.length; i++) {
                 if(fuente[i].checked)
         var fue=fuente[i].value;
             }
-
+*/
 let tipo=document.getElementById('tipo').value;
 let prioridad=document.getElementById('prioridad').value;
 let tema=document.getElementById('tema').value;
 let descripcion=document.getElementById('descripcion').value;
 
-if(tipo && prioridad && tema && descripcion && fue){
+if(tipo && prioridad && tema && descripcion){
     document.getElementById('btnsave').disabled=false;
 }else{
     document.getElementById('btnsave').disabled=true;

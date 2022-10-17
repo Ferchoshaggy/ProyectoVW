@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string("concesionaria")->nullable();
             $table->unsignedBigInteger('tipo_user');
             $table->foreign("tipo_user")->references("id")->on("tipo_users")->onDelete("cascade");
+            $table->unsignedBigInteger('id_inventario')->nullable();
+            $table->foreign("id_inventario")->references("id")->on("inventories");
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
