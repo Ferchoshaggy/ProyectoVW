@@ -57,6 +57,7 @@ Route::delete('/delete_ticket',[ReportesController::class,'ticket_delete'])->nam
 Route::get('/ticket/{id}/download', [ReportesController::class,'descargarA'])->name('descargarA');
 Route::post('/ticket_reply',[ReportesController::class,'ticket_reply'])->name('ticket_reply');
 
+
 //Usuarios
 Route::post('/save_user',[UsuariosController::class,'guardar_usuario'])->name('save_users');
 Route::delete('/delete_user',[UsuariosController::class,'user_delete'])->name('user_delete');

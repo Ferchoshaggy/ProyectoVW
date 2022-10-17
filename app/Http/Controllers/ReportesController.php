@@ -18,6 +18,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MessageReceived;
+use Illuminate\Support\Facades\Storage;
 
 class ReportesController extends Controller
 {
@@ -141,14 +142,16 @@ function reply_report($id){
 function ticket_reply(Request $request){
 try{
 
-    DB::table("tickets")->where("id",$request["tickid"])->update([
 
-    ]);
+
 
 }catch(\Throwable $th) {
 
 }
 }
+
+
+
 
 function descargarA($id){
     $doc=DB::table("tickets")->where('id',$id)->first();
