@@ -304,7 +304,7 @@ value="{{ Auth::user()->id}}">
 
         <div>
         <label for="descripcion">Descripcion</label>
-        <textarea name="descripcion" id="descripcion" rows="5" class="form-control" onchange="validarT();"></textarea>
+        <textarea name="descripcion" id="descripcion"  rows="1" class="form-control" onchange="validarT();"></textarea>
         </div>
 
         <div class="row" style="padding-top:15px">
@@ -383,6 +383,18 @@ input:checked + label{
   color: rgb(6, 190, 247);
 }
 
+textarea {
+  background-color:rgba(white,0.2);
+  border:solid 1px transparent;
+  color:darken(invert($black),10%);
+  overflow:hidden;
+  width:600px;
+  font-size:2em;
+  &:focus {
+    background-color:rgba(white,0.3);
+    border-color:darken(lightblue,40%);
+  }
+}
 
 </style>
 
@@ -392,6 +404,17 @@ input:checked + label{
 
 
 <script>
+
+    //para el textarea sea responsiva
+    $('textarea').on('change keydown paste', function(e){
+    var text = $(this).val();
+    var lineBreaksCount = text.replace(/[^\n]/g, "").length;
+    if( e.keyCode == 13 ) {
+      lineBreaksCount++;
+    }
+    $(this).attr('rows', lineBreaksCount+1);
+});
+
 
     //jquery para desvanecer el mensage
 $(".alert").fadeTo(2000, 500).slideUp(500, function(){
