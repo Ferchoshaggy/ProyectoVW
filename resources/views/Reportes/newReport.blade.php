@@ -308,8 +308,15 @@ value="{{ Auth::user()->id}}">
         </div>
 
         <div class="row" style="padding-top:15px">
-            <div class="col-md-6">
-                <input type="file" name="archivo" class="form-control">
+            <div class="col-md-12">
+                <div class='file-input'>
+                    <input type='file' name="archivo" class="form-control">
+                    <span class='button'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+                      <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+                      <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+                    </svg></span>
+                    <span class='label' data-js-label>No file selected</label>
+                  </div>
             </div>
         </div>
 
@@ -395,6 +402,57 @@ textarea {
     border-color:darken(lightblue,40%);
   }
 }
+/*para el inputfile*/
+
+
+.file-input {
+  text-align: left;
+  background: #fff;
+  padding: 10px;
+  width: 100%px;
+  position: relative;
+  border-radius: 3px ;
+  border: 0.4px solid rgba(0, 0, 0, 0.205);
+
+}
+
+.file-input > [type='file'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 10;
+  cursor: pointer;
+
+}
+
+.file-input > .button {
+  display: inline-block;
+  cursor: pointer;
+  background: #eee;
+  padding: 8px 16px;
+  border-radius: 2px;
+  margin-right: 8px;
+
+}
+
+.file-input:hover > .button {
+  background: dodgerblue;
+  color: white;
+}
+
+.file-input > .label {
+  color: #333;
+  white-space: nowrap;
+  opacity: .3;
+
+}
+
+.file-input.-chosen > .label {
+  opacity: 1;
+}
 
 </style>
 
@@ -404,6 +462,28 @@ textarea {
 
 
 <script>
+
+ //input file
+ var inputs = document.querySelectorAll('.file-input')
+
+for (var i = 0, len = inputs.length; i < len; i++) {
+  customInput(inputs[i])
+}
+
+function customInput (el) {
+  const fileInput = el.querySelector('[type="file"]')
+  const label = el.querySelector('[data-js-label]')
+
+  fileInput.onchange =
+  fileInput.onmouseout = function () {
+    if (!fileInput.value) return
+
+    var value = fileInput.value.replace(/^.*[\\\/]/, '')
+    el.className += ' -chosen'
+    label.innerText = value
+  }
+}
+
 
     //para el textarea sea responsiva
     $('textarea').on('change keydown paste', function(e){

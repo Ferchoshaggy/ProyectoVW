@@ -40,7 +40,7 @@
 
         <ul class="nav cajaP">
             <li class="nav-item cajaH">
-              <a class="nav-link active btn btn2" id="table-todo" data-toggle="tab" href="#tableT" role="tab" aria-controls="tableT" aria-selected="false"><img src="{{asset('img/editar.png')}}" alt="todo" class="add">Todos</a>
+              <a class="nav-link active btn btn2" id="table-todo" data-toggle="tab" href="#tableT" role="tab" aria-controls="tableT" aria-selected="true"><img src="{{asset('img/editar.png')}}" alt="todo" class="add">Todos</a>
             </li>
             <li class="nav-item cajaH">
               <a class="nav-link btn btn2" id="table-abirto" data-toggle="tab" href="#tableA" role="tab" aria-controls="tableA" aria-selected="false"><img src="{{asset('img/prohibido.png')}}" alt="abierto" class="add">Sin Resolver</a>

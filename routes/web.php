@@ -40,7 +40,7 @@ Route::get('/redirects',[DashController::class,'index'])->name('index_vista');
 
 Route::get('/vis',function(){
 
-    return view('emails.message-received');
+    return view('welcome');
 });
 
 //Reporte

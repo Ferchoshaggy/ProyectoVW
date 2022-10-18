@@ -19,6 +19,8 @@ class CreateReplyticketsTable extends Migration
             $table->string('image_url')->nullable();
             $table->unsignedBigInteger("id_ticket");
             $table->foreign("id_ticket")->references("id")->on("tickets")->onDelete("cascade");
+            $table->unsignedBigInteger("id_user");
+            $table->foreign("id_user")->references("id")->on("users")->onDelete("cascade");
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }

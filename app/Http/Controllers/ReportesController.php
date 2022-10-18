@@ -142,10 +142,13 @@ function reply_report($id){
 function ticket_reply(Request $request){
 try{
 
-for($i=0;$i<count($request['file']);$i++){
 
-dd($request['file'][$i]);
-}
+DB::table('replytickets')->insert([
+'replica'=>$request['descripcion'],
+'image_url'=>$request['archivo'],
+'id_ticket'=>$request['tickid'],
+'id_user'=>$request['userid']
+]);
 
 }catch(\Throwable $th) {
 
