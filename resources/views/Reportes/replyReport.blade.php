@@ -2,11 +2,32 @@
 @section('title', 'Contestar')
 
 @section('content_header')
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 @section('content')
 <br>
 <div class="card">
     <div class="card-body">
+
+ @if (Session::has('message'))
+<br>
+
+@if(Session::get('message')== "Se Mando la Contestacion con Exito")
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+
+@endif
+
+
 <div>
     <div style="display: flex;"><img src="{{asset('img/2tickets.png')}}" alt="tickets" height="50px" width="55px"><h5>{{$ticket->codigo}}</h5></div>
 </div>
@@ -133,8 +154,13 @@
     </div>
     </div>
 <hr>
+@foreach ($replys as $reply)
+<div class="row">
 
-<div id="respuestas"></div>
+
+</div>
+@endforeach
+
 <form action="{{route('ticket_reply')}}" method="post">
     @csrf
 
@@ -150,7 +176,7 @@
       <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
       <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
     </svg></span>
-    <span class='label' data-js-label>No file selected</label>
+    <span class='label' data-js-label>No file selected (optional)</label>
   </div>
 </div>
 
@@ -159,7 +185,12 @@
 <div class="col-12">
     <input type="hidden" name="tickid" value="{{$ticket->id}}">
     <input type="hidden" name="userid" value="{{Auth::user()->id}}">
+
+    @if ($ticket->status=="Cerrado")
+    <p class="float-right">Ticket Cerrado Ya no puedes Mandar Respuesta</p>
+    @else
     <button type="submit" class="btn btn-success float-right" style="margin: 0 0 10px 10px">Responder</button>
+    @endif
 </div>
 
 </form>
@@ -240,11 +271,20 @@ textarea {
   opacity: 1;
 }
 
+/*estilo contenedor*/
+
+
+
 </style>
 @stop
 
 @section('js')
 <script>
+
+  //jquery para desvanecer el mensage
+  $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+    $(".alert").slideUp(500);
+});
 
     //para el textarea sea responsiva
     $('textarea').on('change keydown paste', function(e){
