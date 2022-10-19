@@ -15,7 +15,7 @@ class CreateReplyticketsTable extends Migration
     {
         Schema::create('replytickets', function (Blueprint $table) {
             $table->id();
-            $table->string('replica')->nullable();
+            $table->text('replica')->nullable();
             $table->string('image_url')->nullable();
             $table->unsignedBigInteger("id_ticket");
             $table->foreign("id_ticket")->references("id")->on("tickets")->onDelete("cascade");

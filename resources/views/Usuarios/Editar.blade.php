@@ -68,7 +68,7 @@
         <div class="row">
             <div class="col-md-12">
                 <label for="Nombre">Nombre Completo</label>
-                <input type="text" name="nombre" id="nombre" class="form-control" value="{{$usuario->name}}" disabled>
+                <input type="text" name="nombre" id="nombre" class="form-control" value="{{$usuario->name}}" readonly>
                 </div>
         </div>
 
@@ -94,13 +94,13 @@
 <div class="col-md-6">
          <label for="Cconcesionaria">Concesionaria</label>
             @if($usuario->concesionaria=="Fersan")
-            <input type="text" value="Fersan Motors Volkswagen" class="form-control" name="concesionaria" id="concesionaria" disabled>
+            <input type="text" value="Fersan Motors Volkswagen" class="form-control" name="concesionaria" id="concesionaria" readonly>
 
             @elseif ($usuario->concesionaria=="Chaixtsu")
-            <input type="text" value="Chaixtsu Motors Suzuki" class="form-control" name="concesionaria" id="concesionaria" disabled>
+            <input type="text" value="Chaixtsu Motors Suzuki" class="form-control" name="concesionaria" id="concesionaria" readonly>
 
             @elseif($usuario->concesionaria=="Navarra")
-            <input type="text" value="SEAT Navarra Motors" class="form-control" name="concesionaria" id="concesionaria" disabled>
+            <input type="text" value="SEAT Navarra Motors" class="form-control" name="concesionaria" id="concesionaria" readonly>
 
             @else
             @endif
@@ -110,12 +110,12 @@
 <div class="row">
     <div class="col-md-6">
         <label for="correo">Correo</label>
-        <input type="email" class="form-control" name="correo" id="correo" value="{{$usuario->email}}" disabled>
+        <input type="email" class="form-control" name="correo" id="correo" value="{{$usuario->email}}" readonly>
     </div>
     <div class="col-md-6">
         <label for="Tipo">Tipo de Usuario</label>
 
-<input type="text" name="tipo" id="tipo" class="form-control" value="{{$tipo->tipo}}" disabled>
+<input type="text" name="tipo" id="tipo" class="form-control" value="{{$tipo->tipo}}" readonly>
 </div>
 </div>
 <br>

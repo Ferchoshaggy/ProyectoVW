@@ -92,10 +92,10 @@ $users=DB::table('users')->select('*')->get();
         ]);
 
         $fec=DB::table("tickets")->where("id",$ticketId)->select("created_at")->first();
-
+/*
         $data=["name"=>$users->name,"fecha"=>$fec->created_at,"empresa"=>$users->concesionaria];
         Mail::to("Syst3m.VW404@outlook.com")->send(new MessageReceived("Ticket Creado",$data,"ticket"));
-
+*/
         return redirect()->back()->with(['message' => "Ticket Levantado Con Exito", 'color' => 'success']);
 
 
@@ -117,10 +117,18 @@ function ticket_delete(Request $request){
 
         if($request["id_ticket"]!=0){
 $archivo_delete=DB::table("tickets")->where("id",$request["id_ticket"])->first();
+$reply_delete=DB::table('replytickets')->where("id_ticket",$request["id_ticket"])->get();
 
 if($archivo_delete->archivo!=null){
     $rute_archivo=public_path('imgTicket/'.$archivo_delete->archivo);
     File::delete($rute_archivo);
+}
+
+foreach($reply_delete as $replys_delete){
+if($replys_delete->image_url!=null){
+    $rute_archivo=public_path('imgTicket/'.$replys_delete->image_url);
+    File::delete($rute_archivo);
+}
 }
 
     DB::table("tickets")->where("id",$request["id_ticket"])->delete();
@@ -143,17 +151,29 @@ function reply_report($id){
 function ticket_reply(Request $request){
 try{
 
+    if($request['archivo']!=null){
+        $file = $request->file('archivo');
+        $nombre = $file->getClientOriginalName();
+        $nombre2 = time()."".$nombre;
+        $destinationPath = public_path().'/imgTicket';
+    }else{
+        $nombre2=null;
+    }
+    if($request['archivo']!=null){
+        $file_image = $request->file('archivo');
+        $file_image->move($destinationPath,$nombre2);
+    }
+
 
 DB::table('replytickets')->insert([
 'replica'=>$request['descripcion'],
-'image_url'=>$request['archivo'],
+'image_url'=>$nombre2,
 'id_ticket'=>$request['tickid'],
 'id_user'=>$request['userid']
 ]);
 
 DB::table('tickets')->where('id',$request['tickid'])->update([
     "status"=> "Contestado",
-
 ]);
 
 return redirect()->back()->with(['message' => "Se Mando la Contestacion con Exito", 'color' => 'success']);
