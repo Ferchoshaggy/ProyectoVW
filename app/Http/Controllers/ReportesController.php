@@ -136,7 +136,8 @@ if($archivo_delete->archivo!=null){
 function reply_report($id){
     $ticket=DB::table('tickets')->where("id",$id)->first();
     $users=DB::table('users')->select("*")->get();
-    return view('Reportes.replyReport',compact('ticket','users'));
+    $replys=DB::table('replytickets')->where("id_ticket",$id)->get();
+    return view('Reportes.replyReport',compact('ticket','users','replys'));
 }
 
 function ticket_reply(Request $request){
@@ -149,6 +150,14 @@ DB::table('replytickets')->insert([
 'id_ticket'=>$request['tickid'],
 'id_user'=>$request['userid']
 ]);
+
+DB::table('tickets')->where('id',$request['tickid'])->update([
+    "status"=> "Contestado",
+
+]);
+
+return redirect()->back()->with(['message' => "Se Mando la Contestacion con Exito", 'color' => 'success']);
+
 
 }catch(\Throwable $th) {
 

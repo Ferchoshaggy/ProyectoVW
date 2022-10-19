@@ -33,6 +33,8 @@ Route::get('/dash', [DashController::class,'vista_dash'])->name('vista_dash');
 //usuario
 Route::get('/users', [UsuariosController::class,'vista_users'])->name('vista_users');
 
+//Inventario
+Route::get('/inventory',[InventoryController::class,'vista_inventario'])->name('vista_inven');
 });
 
 //redirect login
@@ -72,4 +74,4 @@ Route::get("/search_user/{id}",[SearchController::class,'userSearch'])->name('Us
 Route::get("/ticket_search/{id}",[SearchController::class,'ticketSearch'])->name('TicketSearch');
 
 //Inventario
-Route::get('/inventory',[InventoryController::class,'vista_inventario'])->name('vista_inven');
+
