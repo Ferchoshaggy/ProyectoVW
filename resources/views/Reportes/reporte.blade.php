@@ -561,7 +561,8 @@ $.ajax({
 }
 
 function ver_tickte(){
-    window.location.href ="{{url('/replyreport')}}/"+id_ticket;
+
+ location.href ="{{url('/replyreport')}}/"+id_ticket;
 }
 
 function cambiar_ticket(){

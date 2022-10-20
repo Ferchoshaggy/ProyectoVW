@@ -163,7 +163,7 @@
     @if ($user->foto==null)
    <center><img src="{{asset('ImgUser/usuario.png')}}" height="40px" width="40px"></center>
      @else
-     <center><img src="{{asset('ImgUser/usuario.png')}}" height="40px" width="40px"></center>
+    <center><img src="{{url('ImgUser')}}/{{$user->foto}}" height="40px" width="40px"></center>
     @endif
     @endif
     @endforeach
@@ -322,6 +322,12 @@ textarea {
 @stop
 
 @section('js')
+<!-- estos son para la tabla-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+
 <script>
 
   //jquery para desvanecer el mensage

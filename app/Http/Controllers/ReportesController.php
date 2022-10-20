@@ -141,11 +141,13 @@ if($replys_delete->image_url!=null){
     }
 }
 
-function reply_report($id){
+public function reply_report($id){
     $ticket=DB::table('tickets')->where("id",$id)->first();
     $users=DB::table('users')->select("*")->get();
     $replys=DB::table('replytickets')->where("id_ticket",$id)->get();
-    return view('Reportes.replyReport',compact('ticket','users','replys'));
+
+
+  return view('Reportes.replyReport',compact('ticket','users','replys'));
 }
 
 function ticket_reply(Request $request){

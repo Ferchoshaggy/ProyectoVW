@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use file;
+use File;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -31,11 +31,11 @@ class UserController extends Controller
 
             //eliminar la foto si es que existe
             if($foto_delete->foto!=null){
-                $rute_fotos=public_path().'/imgUser/'.$foto_delete->foto;
-                file::delete($rute_fotos);
+                $rute_fotos=public_path('imgUser/'.$foto_delete->foto);
+                File::delete($rute_fotos);
             }
             //guardamos la nueva
-            $foto = $time.''.rand(000,999).'foto'.$foto_delete->id.$request['foto']->getClientOriginalExtension();
+            $foto = $time.''.rand(000,999).'foto'.$foto_delete->id.".".$request['foto']->getClientOriginalExtension();
             $destinationPath = public_path().'/imgUser';
             $file_image = $request->file('foto');
             $file_image->move($destinationPath,$foto);
