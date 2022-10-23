@@ -70,4 +70,5 @@ Route::get("/search_user/{id}",[SearchController::class,'userSearch'])->name('Us
 Route::get("/ticket_search/{id}",[SearchController::class,'ticketSearch'])->name('TicketSearch');
 
 //Inventario
+Route::post("/update_inventory",[InventoryController::class,"inventory_up"])->name('inventory_up');
 

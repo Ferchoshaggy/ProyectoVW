@@ -13,6 +13,30 @@
 <div class="card">
     <div class="card-body">
 
+ @if (Session::has('message'))
+<br>
+
+@if(Session::get('message')== "Se Importo el Excel con exito")
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+@if(Session::get('message')== "Hubo Un error en la importacion del excel")
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+@endif
+
+
 <button class="btn btn-outline-primary" data-toggle="modal" data-target="#ModalForm">Nuevo Registro</button>
 <button class="btn btn-outline-warning" data-toggle="modal" data-target="#ModalCarga">Importar Excel</button>
 <br><br>
@@ -27,7 +51,7 @@
             <th style="text-align: center;">Marca</th>
             <th style="text-align: center;">Modelo</th>
             <th style="text-align: center;">No.de serie</th>
-            <th style="text-align: center;">Procesaro</th>
+            <th style="text-align: center;">Procesador</th>
             <th style="text-align: center;">Ghz</th>
             <th style="text-align: center;">Disco</th>
             <th style="text-align: center;">Mem Ram</th>
@@ -68,7 +92,54 @@
           </tr>
         </thead>
         <tbody>
-
+@foreach ($datos as $dato)
+<tr>
+    <th style="text-align: center;">Nombre</th>
+    <th style="text-align: center;">Puesto</th>
+    <th style="text-align: center;">Departamento</th>
+    <th style="text-align: center;">Marca</th>
+    <th style="text-align: center;">Modelo</th>
+    <th style="text-align: center;">No.de serie</th>
+    <th style="text-align: center;">Procesaro</th>
+    <th style="text-align: center;">Ghz</th>
+    <th style="text-align: center;">Disco</th>
+    <th style="text-align: center;">Mem Ram</th>
+    <th style="text-align: center;"></th>
+    <th style="text-align: center;">{{$dato->Monitor}}</th>
+    <th style="text-align: center;">Marca</th>
+    <th style="text-align: center;">Modelo</th>
+    <th style="text-align: center;">Adicional</th>
+    <th style="text-align: center;">Nomenclatura</th>
+    <th style="text-align: center;">I-Portal</th>
+    <th style="text-align: center;">Correo de Planta</th>
+    <th style="text-align: center;">Correo Institucional</th>
+    <th style="text-align: center;">Portal de Distribuidores</th>
+    <th style="text-align: center;">GEKO</th>
+    <th style="text-align: center;">Clave Telefonica</th>
+    <th style="text-align: center;">IP</th>
+    <th style="text-align: center;">SIF</th>
+    <th style="text-align: center;">POC</th>
+    <th style="text-align: center;">NADCOM</th>
+    <th style="text-align: center;">SAGA</th>
+    <th style="text-align: center;">Modelo de Impresora</th>
+    <th style="text-align: center;">Fecha compra</th>
+    <th style="text-align: center;">Factura</th>
+    <th style="text-align: center;">Garantia</th>
+    <th style="text-align: center;">Grupo Fortinet</th>
+    <th style="text-align: center;">CPU o laptop</th>
+    <th style="text-align: center;">Usuario de red</th>
+    <th style="text-align: center;">Programas Instalados</th>
+    <th style="text-align: center;">VNC</th>
+    <th style="text-align: center;">Adobe</th>
+    <th style="text-align: center;">GDS</th>
+    <th style="text-align: center;">Antivirus</th>
+    <th style="text-align: center;">Office</th>
+    <th style="text-align: center;">Mantenimiento</th>
+    <th style="text-align: center;">Usuario de GDS</th>
+    <th style="text-align: center;">Regulador</th>
+    <th style="text-align: center;">Marca Modelo</th>
+  </tr>
+@endforeach
         </tbody>
       </table>
 </div>
@@ -96,7 +167,7 @@
 <div class="col-md-6">
     <div class="wrapper" style="padding: 40px; text-align:center;">
         <h5>Importar Excel</h5>
-        <form action="get" method="">
+        <form action="{{Route('inventory_up')}}" method="POST" enctype="multipart/form-data">
             @csrf
         <input type="file" id="file-input" name="archivo" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange="submit();">
         <label for="file-input">
@@ -184,6 +255,12 @@
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
 
 <script>
+  //jquery para desvanecer el mensage
+  $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+    $(".alert").slideUp(500);
+});
+
+
 //funcion de la tabla de boostrap tenga paginador y buscador
 $(document).ready(function() {
     $('.table').DataTable({

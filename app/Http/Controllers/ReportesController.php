@@ -153,6 +153,7 @@ public function reply_report($id){
 function ticket_reply(Request $request){
 try{
 
+
     if($request['archivo']!=null){
         $file = $request->file('archivo');
         $nombre = $file->getClientOriginalName();
