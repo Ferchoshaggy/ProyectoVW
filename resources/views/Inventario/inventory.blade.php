@@ -94,50 +94,50 @@
         <tbody>
 @foreach ($datos as $dato)
 <tr>
-    <th style="text-align: center;">Nombre</th>
-    <th style="text-align: center;">Puesto</th>
-    <th style="text-align: center;">Departamento</th>
-    <th style="text-align: center;">Marca</th>
-    <th style="text-align: center;">Modelo</th>
-    <th style="text-align: center;">No.de serie</th>
-    <th style="text-align: center;">Procesaro</th>
-    <th style="text-align: center;">Ghz</th>
-    <th style="text-align: center;">Disco</th>
-    <th style="text-align: center;">Mem Ram</th>
-    <th style="text-align: center;"></th>
+    <th style="text-align: center;">{{$dato->Nombre_de_Usuario}}</th>
+    <th style="text-align: center;">{{$dato->Puesto}}</th>
+    <th style="text-align: center;">{{$dato->Departamento}}</th>
+    <th style="text-align: center;">{{$dato->Marca}}</th>
+    <th style="text-align: center;">{{$dato->Modelo}}</th>
+    <th style="text-align: center;">{{$dato->No_de_Serie}}</th>
+    <th style="text-align: center;">{{$dato->Procesador}}</th>
+    <th style="text-align: center;">{{$dato->Ghz}}</th>
+    <th style="text-align: center;">{{$dato->Disco}}</th>
+    <th style="text-align: center;">{{$dato->Mem_Ram}}</th>
+    <th style="text-align: center;">{{$dato->Sistema_Operativo}}</th>
     <th style="text-align: center;">{{$dato->Monitor}}</th>
-    <th style="text-align: center;">Marca</th>
-    <th style="text-align: center;">Modelo</th>
-    <th style="text-align: center;">Adicional</th>
-    <th style="text-align: center;">Nomenclatura</th>
-    <th style="text-align: center;">I-Portal</th>
-    <th style="text-align: center;">Correo de Planta</th>
-    <th style="text-align: center;">Correo Institucional</th>
-    <th style="text-align: center;">Portal de Distribuidores</th>
-    <th style="text-align: center;">GEKO</th>
-    <th style="text-align: center;">Clave Telefonica</th>
-    <th style="text-align: center;">IP</th>
-    <th style="text-align: center;">SIF</th>
-    <th style="text-align: center;">POC</th>
-    <th style="text-align: center;">NADCOM</th>
-    <th style="text-align: center;">SAGA</th>
-    <th style="text-align: center;">Modelo de Impresora</th>
-    <th style="text-align: center;">Fecha compra</th>
-    <th style="text-align: center;">Factura</th>
-    <th style="text-align: center;">Garantia</th>
-    <th style="text-align: center;">Grupo Fortinet</th>
-    <th style="text-align: center;">CPU o laptop</th>
-    <th style="text-align: center;">Usuario de red</th>
-    <th style="text-align: center;">Programas Instalados</th>
-    <th style="text-align: center;">VNC</th>
-    <th style="text-align: center;">Adobe</th>
-    <th style="text-align: center;">GDS</th>
-    <th style="text-align: center;">Antivirus</th>
-    <th style="text-align: center;">Office</th>
-    <th style="text-align: center;">Mantenimiento</th>
-    <th style="text-align: center;">Usuario de GDS</th>
-    <th style="text-align: center;">Regulador</th>
-    <th style="text-align: center;">Marca Modelo</th>
+    <th style="text-align: center;">{{$dato->Marca_Monitor}}</th>
+    <th style="text-align: center;">{{$dato->Modelo_Monitor}}</th>
+    <th style="text-align: center;">{{$dato->ADICIONAL}}</th>
+    <th style="text-align: center;">{{$dato->Nomenclatura}}</th>
+    <th style="text-align: center;">{{$dato->I_Portal}}</th>
+    <th style="text-align: center;">{{$dato->Correo_de_Planta}}</th>
+    <th style="text-align: center;">{{$dato->Correo_Institucional}}</th>
+    <th style="text-align: center;">{{$dato->Portal_de_Distribuidores}}</th>
+    <th style="text-align: center;">{{$dato->GEKO}}</th>
+    <th style="text-align: center;">{{$dato->Clave_Telefonica}}</th>
+    <th style="text-align: center;">{{$dato->IP}}</th>
+    <th style="text-align: center;">{{$dato->SIF}}</th>
+    <th style="text-align: center;">{{$dato->POC}}</th>
+    <th style="text-align: center;">{{$dato->NADCOM}}</th>
+    <th style="text-align: center;">{{$dato->SAGA}}</th>
+    <th style="text-align: center;">{{$dato->Modelo_de_impresora}}</th>
+    <th style="text-align: center;">{{$dato->FECHA_COMPRA}}</th>
+    <th style="text-align: center;">{{$dato->FACTURA}}</th>
+    <th style="text-align: center;">{{$dato->GARANTIA}}</th>
+    <th style="text-align: center;">{{$dato->GRUPO_FORTINET}}</th>
+    <th style="text-align: center;">{{$dato->CPU_O_LAPTOP}}</th>
+    <th style="text-align: center;">{{$dato->USUARIO_DE_RED}}</th>
+    <th style="text-align: center;">{{$dato->Programas_instalados}}</th>
+    <th style="text-align: center;">{{$dato->VNC}}</th>
+    <th style="text-align: center;">{{$dato->Adobe}}</th>
+    <th style="text-align: center;">{{$dato->GDS}}</th>
+    <th style="text-align: center;">{{$dato->Antivirus}}</th>
+    <th style="text-align: center;">{{$dato->OFFICE}}</th>
+    <th style="text-align: center;">{{$dato->MANTENIMIENTO}}</th>
+    <th style="text-align: center;">{{$dato->USUARIO_DE_GDS}}</th>
+    <th style="text-align: center;">{{$dato->REGULADOR}}</th>
+    <th style="text-align: center;">{{$dato->MARCA_MODELO}}</th>
   </tr>
 @endforeach
         </tbody>
@@ -159,7 +159,7 @@
 <div class="row">
 <div class="col-md-6">
 <div style="padding: 40px; text-align:center;">
-<button type="button" class="btn btn-outline-info form-control">Plantilla</button>
+    <a href="#" class="btn btn-outline-info form-control">Plantilla</a>
 </div>
 </div>
 
@@ -169,7 +169,7 @@
         <h5>Importar Excel</h5>
         <form action="{{Route('inventory_up')}}" method="POST" enctype="multipart/form-data">
             @csrf
-        <input type="file" id="file-input" name="archivo" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange="submit();">
+        <input type="file" id="file-input" name="archivo" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
         <label for="file-input">
            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
                 <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
@@ -178,7 +178,6 @@
               <span></span>
         </label>
         <i class="fa fa-times-circle remove"></i>
-        </form>
       </div>
 </div>
 
@@ -187,9 +186,10 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="submit" id="ImpXls" class="btn btn-primary" disabled>Importar</button>
         </div>
+    </form>
       </div>
     </div>
   </div>
@@ -280,14 +280,30 @@ $('document').ready(function(){
 
   // on file change
   $file.on('change', function(event){
-    var fileName = $file.val().split( '\\' ).pop();
+    var fileName = $file.val().split( '.' ).pop();
+    var fileExt= fileName.split('.').pop();
+    fileExt  = fileExt.toLowerCase();
+
+    switch (fileExt) {
+			case 'xlsx':
+			case 'xlsm':
+			case 'xlsb':
+			case 'xls': break;
+			default:
+				this.value = ''; // reset del valor
+				fileName="";
+      alert('El archivo no tiene la extensión adecuada');
+		}
+
     if( fileName ){
       console.log($file)
       $labelText.text(fileName);
       $labelRemove.show();
+      document.getElementById('ImpXls').disabled=false;
     }else{
       $labelText.text(labelDefault);
       $labelRemove.hide();
+      document.getElementById('ImpXls').disabled=true;
     }
   });
 
@@ -297,8 +313,11 @@ $('document').ready(function(){
     $labelText.text(labelDefault);
     $labelRemove.hide();
     console.log($file)
+    document.getElementById('ImpXls').disabled=true;
   });
 })
+
+
 
 </script>
 

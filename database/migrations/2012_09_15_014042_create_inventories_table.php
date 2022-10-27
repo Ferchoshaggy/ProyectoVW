@@ -31,7 +31,7 @@ class CreateInventoriesTable extends Migration
             $table->string('Modelo_Monitor');
             $table->string('ADICIONAL');
             $table->string('Nomenclatura');
-            $table->string('I-Portal');
+            $table->string('I_Portal');
             $table->string('Correo_de_Planta');
             $table->string('Correo_Institucional')->unique();
             $table->string('Portal_de Distribuidores');
