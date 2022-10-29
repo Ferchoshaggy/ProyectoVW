@@ -21,7 +21,7 @@ use Importable;
     public function model(array $row)
     {
 
-//dd($row);
+ //dd($row);
         return new inventory([
            'Nombre_de_Usuario' => $row['nombre_de_usuario'] ?? null,
            'Puesto' => $row["puesto"] ?? null,
@@ -42,7 +42,7 @@ use Importable;
            'I_Portal' => $row["i_portal"] ?? null,
            'Correo_de_Planta' => $row["correo_de_planta"] ?? null,
            'Correo_Institucional' => $row["correo_institucional"] ?? null,
-           'Portal_de Distribuidores' => $row["portal_de_distribuidores"] ?? null,
+           'Portal_de_Distribuidores' => $row["portal_de_distribuidores"] ?? null,
            'GEKO' => $row["geko"] ?? null,
            'Clave_Telefonica' => $row["clave_telefonica"] ?? null,
            'IP' => $row["ip"] ?? null,

@@ -28,7 +28,7 @@ class inventory extends Model
     'I_Portal' ,
     'Correo_de_Planta' ,
     'Correo_Institucional' ,
-    'Portal_de Distribuidores' ,
+    'Portal_de_Distribuidores' ,
     'GEKO' ,
     'Clave_Telefonica' ,
     'IP' ,

@@ -25,7 +25,7 @@
 </div>
 @endif
 
-@if(Session::get('message')== "Hubo Un error en la importacion del excel")
+@if(Session::get('message')== "Algo salio mal, Revisa tu excel con las reglas")
 <div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
     {{ Session::get('message') }}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -93,7 +93,7 @@
         </thead>
         <tbody>
 @foreach ($datos as $dato)
-<tr>
+<tr class="marca" onclick="pasar_id({{$dato->id}});">
     <th style="text-align: center;">{{$dato->Nombre_de_Usuario}}</th>
     <th style="text-align: center;">{{$dato->Puesto}}</th>
     <th style="text-align: center;">{{$dato->Departamento}}</th>
@@ -119,7 +119,7 @@
     <th style="text-align: center;">{{$dato->IP}}</th>
     <th style="text-align: center;">{{$dato->SIF}}</th>
     <th style="text-align: center;">{{$dato->POC}}</th>
-    <th style="text-align: center;">{{$dato->NADCOM}}</th>
+    <th style="text-align: center;">{{$dato->NADCON}}</th>
     <th style="text-align: center;">{{$dato->SAGA}}</th>
     <th style="text-align: center;">{{$dato->Modelo_de_impresora}}</th>
     <th style="text-align: center;">{{$dato->FECHA_COMPRA}}</th>
@@ -128,7 +128,7 @@
     <th style="text-align: center;">{{$dato->GRUPO_FORTINET}}</th>
     <th style="text-align: center;">{{$dato->CPU_O_LAPTOP}}</th>
     <th style="text-align: center;">{{$dato->USUARIO_DE_RED}}</th>
-    <th style="text-align: center;">{{$dato->Programas_instalados}}</th>
+    <th style="text-align: center;">{{$dato->Programas_Instalados}}</th>
     <th style="text-align: center;">{{$dato->VNC}}</th>
     <th style="text-align: center;">{{$dato->Adobe}}</th>
     <th style="text-align: center;">{{$dato->GDS}}</th>
@@ -142,6 +142,29 @@
 @endforeach
         </tbody>
       </table>
+</div>
+
+<!--menu de opciones de la tabla-->
+<div id="menu_opciones" class="visible_off " style=" padding: 20px; background-color: #6e82c2bd;">
+
+    <button type="button" class="close" style="margin-right: -17px; margin-top: -20px;" onclick="cerrar_menu();">
+       <i class="fas fa-times fa-xs"></i>
+    </button>
+
+  <button type="button" class="btn btn-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#editar_dato">
+    <i class="fas fa-edit"></i>
+    Editar
+  </button>
+  <br>
+  <button class="btn btn-danger form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#eliminar_dato"  >
+    <i class="fas fa-trash"></i>
+    Eliminar
+  </button>
+  <br>
+  <button class="btn btn-danger form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#pdf_dato"  >
+    <i class="fas fa-trash"></i>
+    Generar Responsiba
+  </button>
 </div>
 
 <!-- Modal de importar -->
@@ -159,7 +182,7 @@
 <div class="row">
 <div class="col-md-6">
 <div style="padding: 40px; text-align:center;">
-    <a href="#" class="btn btn-outline-info form-control">Plantilla</a>
+    <a href="{{Route('descarga_plantilla')}}" class="btn btn-outline-info form-control">Plantilla</a>
 </div>
 </div>
 
@@ -244,6 +267,26 @@
   cursor:pointer;
   display:none;
 }
+
+/*Estilo para el cuadro de opciones*/
+
+.marca{
+        transition: 1s;
+    }
+    .marca:hover{
+        background: #8a98d6;
+        transition: 1s;
+    }
+    .visible_on{
+        display: block;
+        position: fixed;
+        background: white;
+        border-radius: 15px;
+        width: auto;
+    }
+    .visible_off{
+        display: none;
+    }
 </style>
 @stop
 
@@ -317,7 +360,28 @@ $('document').ready(function(){
   });
 })
 
+//cuadro de opciones
 
+var id_dato=null;
+    function pasar_id($id_tr) {
+
+        id_dato=$id_tr;
+        var coordenadas_y=event.clientY; //odtenemos el valor de la posicion del boton
+        var coordenadas_x=event.clientX; //odtenemos el valor de la posicion del boton
+        menu_opciones.style.top=coordenadas_y-50+"px";
+        menu_opciones.style.left=coordenadas_x-50+"px";
+        menu_opciones.classList.add("visible_on");
+        menu_opciones.classList.remove("visible_off");
+      //alert($id_tr);
+    }
+    menu_opciones.addEventListener("mouseleave",function(){
+          menu_opciones.classList.remove("visible_on");
+          menu_opciones.classList.add("visible_off");
+    });
+    function cerrar_menu(){
+        menu_opciones.classList.remove("visible_on");
+        menu_opciones.classList.add("visible_off");
+    }
 
 </script>
 

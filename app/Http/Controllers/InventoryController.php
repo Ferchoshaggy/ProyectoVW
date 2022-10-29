@@ -16,10 +16,20 @@ class InventoryController extends Controller
     }
 
 public function inventory_up(Request $request){
+try{
+    Excel::import(new InventoryImport,$request->file('archivo'));
+    return redirect()->back()->with(['message' => "Se Importo el Excel con exito", 'color' => 'success']);
 
-
-Excel::import(new InventoryImport,$request->file('archivo'));
-return redirect()->back()->with(['message' => "Se Importo el Excel con exito", 'color' => 'success']);
-
+}catch (\Exception $e) {
+  return $e;
+    //return redirect()->back()->with(['message' => "Algo salio mal, Revisa tu excel con las reglas", 'color' => 'warning']);
 }
+}
+
+public function descarga_plantilla(){
+    $pahtToFile=public_path("Plantilla.rar");
+    return response()->download($pahtToFile);
+}
+
+
 }

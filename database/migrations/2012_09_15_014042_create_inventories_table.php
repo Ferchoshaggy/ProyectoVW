@@ -33,8 +33,8 @@ class CreateInventoriesTable extends Migration
             $table->string('Nomenclatura');
             $table->string('I_Portal');
             $table->string('Correo_de_Planta');
-            $table->string('Correo_Institucional')->unique();
-            $table->string('Portal_de Distribuidores');
+            $table->string('Correo_Institucional');
+            $table->string('Portal_de_Distribuidores');
             $table->string('GEKO');
             $table->string('Clave_Telefonica');
             $table->string('IP');

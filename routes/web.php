@@ -71,4 +71,4 @@ Route::get("/ticket_search/{id}",[SearchController::class,'ticketSearch'])->name
 
 //Inventario
 Route::post("/update_inventory",[InventoryController::class,"inventory_up"])->name('inventory_up');
-
+Route::get('/download_plantilla',[InventoryController::class,"descarga_plantilla"])->name('descarga_plantilla');
