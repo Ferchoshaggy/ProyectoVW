@@ -55,7 +55,7 @@
 <hr>
 @if (Auth::user()->tipo_user==1)
 <div style="padding-bottom: 10px">
-<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal_pdf"><i class="fas  fa-file-pdf-o" style="padding-right: 5px"></i>PDF</button>
+<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal_pdf"><i class="fas fa-file-pdf-o" style="padding-right: 5px"></i>PDF</button>
 <button class="btn btn-outline-success" data-toggle="modal" data-target="#modal_xls"><i class="fas fa-file-excel-o" style="padding-right: 5px"></i>EXCEL</button>
 </div>
 @endif
