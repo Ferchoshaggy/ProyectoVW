@@ -21,14 +21,29 @@ try{
     return redirect()->back()->with(['message' => "Se Importo el Excel con exito", 'color' => 'success']);
 
 }catch (\Exception $e) {
-  return $e;
-    //return redirect()->back()->with(['message' => "Algo salio mal, Revisa tu excel con las reglas", 'color' => 'warning']);
+
+    return redirect()->back()->with(['message' => "Algo salio mal, Revisa tu excel con las reglas", 'color' => 'warning']);
 }
 }
 
 public function descarga_plantilla(){
     $pahtToFile=public_path("Plantilla.rar");
     return response()->download($pahtToFile);
+}
+
+public function delete_inv(Request $request){
+try{
+DB::table('inventories')->where("id",$request['id_inv'])->delete();
+
+return redirect()->back()->with(['message' => "Registro Eliminado con Exito", 'color' => 'success']);
+
+} catch (\Throwable $th) {
+    //throw $th;
+}
+}
+
+public function edit_invdate(){
+
 }
 
 

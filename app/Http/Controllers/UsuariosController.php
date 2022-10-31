@@ -45,14 +45,6 @@ class UsuariosController extends Controller
 
         $data=["name"=>$request['nombre'] ,"email"=>$request['correo'],"password"=>$request['contraseña'],"empresa"=>$request['concesionaria']];
         Mail::to($request['correo'])->send(new MessageReceived("Usuario Creado",$data,"users"));
-/*
-       if (Mail::failures()) {
-             return response()->Fail('Sorry! Please try again latter');
-        }else{
-             return response()->success('Great! Successfully send in your mail');
-           }
-*/
-
 
         return redirect()->back()->with(['message' => 'Usuario Guardado con Éxito', 'color' => 'success']);
 

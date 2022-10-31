@@ -16,4 +16,8 @@ class SearchController extends Controller
       $datosTicket=DB::table('tickets')->where("id",$id)->first();
       return json_encode($datosTicket);
     }
+    public function inventorySearch($id){
+        $datoinv=DB::table('inventories')->where("id",$id)->first();
+        return json_encode($datoinv);
+    }
 }

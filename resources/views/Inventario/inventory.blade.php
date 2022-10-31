@@ -34,6 +34,15 @@
 </div>
 @endif
 
+@if(Session::get('message')== "Registro Eliminado con Exito")
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
 @endif
 
 
@@ -151,12 +160,12 @@
        <i class="fas fa-times fa-xs"></i>
     </button>
 
-  <button type="button" class="btn btn-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#editar_dato">
+  <button type="button" class="btn btn-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#editar_dato" onclick="datoinv_update();">
     <i class="fas fa-edit"></i>
     Editar
   </button>
   <br>
-  <button class="btn btn-danger form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#eliminar_dato"  >
+  <button class="btn btn-danger form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#eliminar_dato" onclick="datoinv_delete();">
     <i class="fas fa-trash"></i>
     Eliminar
   </button>
@@ -219,28 +228,260 @@
 
 <!-- Modal de crear -->
 <div class="modal fade" id="ModalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-xl" >
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Nuevo Registro</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
         </div>
+  <form action="{{Route('dateinv_save')}}" method="POST">
+    @csrf
+        <div class="modal-body">
+
+<div class="row">
+<div class="col-md-3">
+<label for="Nombre">Nombre de Usuario:</label>
+<input type="text" name="nombre_user" class="form-control">
+</div>
+<div class="col-md-3">
+    <label for="puesto">Puesto:</label>
+    <input type="text" name="puesto" class="form-control">
+</div>
+<div class="col-md-3">
+    <label for="depa">Departamento:</label>
+    <input type="text" name="departamento" class="form-control">
+</div>
+<div class="col-md-3">
+    <label for="marca_cpu">Cpu Marca:</label>
+    <input type="text" name="marca_cpu" class="form-control">
+</div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+    <label for="modelo cpu">Cpu Modelo:</label>
+    <input type="text" name="modelo_cpu" class="form-control">
+    </div>
+    <div class="col-md-3">
+        <label for="serie">No.de serie:</label>
+        <input type="text" name="no_serie" class="form-control">
+    </div>
+    <div class="col-md-3">
+        <label for="procesador">Procesador:</label>
+        <input type="text" name="procesador" class="form-control">
+    </div>
+    <div class="col-md-3">
+        <label for="ghz">GHZ:</label>
+        <input type="text" name="ghz" class="form-control">
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+        <label for="disco">Disco:</label>
+        <input type="text" name="disco" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label for="memoria ram">memoria ram:</label>
+            <input type="text" name="memo_ram" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label for="Sistema Operativo">Sistema Operativo:</label>
+            <input type="text" name="sistema_op" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label for="monitor">Monitor:</label>
+            <input type="text" name="monitor" class="form-control">
+        </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-3">
+            <label for="modelo cpu">Monitor marca:</label>
+            <input type="text" name="monitor_marca" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="modelomonitor">Monitor Modelo:</label>
+                <input type="text" name="monitor_modelo" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="adicional">Adicional:</label>
+                <input type="text" name="adicional" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="nomenclatura">Nomenclatura:</label>
+                <input type="text" name="nomenclatura" class="form-control">
+            </div>
+            </div>
+
+    <div class="row">
+        <div class="col-md-3">
+        <label for="I-Portal">I-Portal:</label>
+        <input type="text" name="iportal" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label for="correodeplanta">Correo de Planta:</label>
+            <input type="text" name="correo_plant" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label for="correoinstitucional">Correo Institucional:</label>
+            <input type="text" name="correo_inst" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label for="portaldistribuidores">Portal de Distribuidores:</label>
+            <input type="text" name="portal_dist" class="form-control">
+        </div>
+        </div>
+
+
+    <div class="row">
+        <div class="col-md-3">
+        <label for="geko">GEKO:</label>
+        <input type="text" name="geko" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label for="claveTelefonica">Clave Telefonica:</label>
+            <input type="text" name="clave_tel" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label for="ip">IP:</label>
+            <input type="text" name="ip" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label for="sif">SIF:</label>
+            <input type="text" name="sif" class="form-control">
+        </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+            <label for="POC">POC:</label>
+            <input type="text" name="poc" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="nadcon">NADCON:</label>
+                <input type="text" name="nadcon" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="saga">SAGA:</label>
+                <input type="text" name="saga" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="modeloimpresora">Modelo de Impresora:</label>
+                <input type="text" name="modelo_imp" class="form-control">
+            </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                <label for="fechacompra">Fecha de Compra:</label>
+                <input type="text" name="fec_compra" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="factura">Factura:</label>
+                    <input type="text" name="factura" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="garantia">Garantia:</label>
+                    <input type="text" name="garantia" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="grupofortinet">Grupo Fortinet:</label>
+                    <input type="text" name="grup_forti" class="form-control">
+                </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                    <label for="cpulaptop">Cpu o Laptop:</label>
+                    <input type="text" name="cpu_lap" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="usuariored">Usuario de Red:</label>
+                        <input type="text" name="usuario_red" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="programasinstalados">Programas Instalados:</label>
+                        <input type="text" name="pro_inst" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="vnc">VNC:</label>
+                        <input type="text" name="vnc" class="form-control">
+                    </div>
+                    </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                <label for="adobe">Adobe:</label>
+                <input type="text" name="adobe" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="gds">GDS:</label>
+                    <input type="text" name="gds" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="Antivirus">Antivirus:</label>
+                    <input type="text" name="antivirus" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="office">Office:</label>
+                    <input type="text" name="office" class="form-control">
+                </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                    <label for="mantenimiento">Mantenimiento:</label>
+                    <input type="text" name="mantenimineto" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="usuariogds">Usuario de GDS:</label>
+                        <input type="text" name="user_gds" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="Regulador">Regulador:</label>
+                        <input type="text" name="regulador" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="marcamodelo">Marca Modelo:</label>
+                        <input type="text" name="marca_modelo" class="form-control">
+                    </div>
+                    </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button class="btn btn-success">Guardar</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal de editar -->
+<div class="modal fade" id="editar_dato" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Registro</h5>
+        </div>
+   <form action="{{Route('edit_invdate')}}" method="POST">
+    @csrf
         <div class="modal-body">
 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-success">Editar</button>
         </div>
+    </form>
       </div>
     </div>
   </div>
 
 <!-- Modal de Eliminar -->
 <div class="modal fade" id="eliminar_dato" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Eliminar Registro</h5>
@@ -248,13 +489,24 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <form action="{{Route('delete_inv')}}" method="POST">
+            @csrf
+            @method('DELETE')
 
-        </div>
+        <div class="modal-body">
+<Label style="font-family: cursive; font-size: 25px; display:flex; justify-content: center;align-items: center; height: 100%;">¿Seguro Que deseas Eliminiar A?</Label>
+<div style="text-align: center">
+<label style="font-family: cursive; font-size: 25px;" id="labelnombre"></label><br>
+<label style="font-family: cursive; font-size: 25px;" id="labelpuesto"></label><br>
+<label style="font-family: cursive; font-size: 25px;" id="labelcorreo"></label>
+</div>
+</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Eliminar</button>
+            <input type="hidden" name="id_inv" id="id_inv">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button class="btn btn-danger">Eliminar</button>
         </div>
+    </form>
       </div>
     </div>
   </div>
@@ -403,6 +655,31 @@ var id_dato=null;
         menu_opciones.classList.remove("visible_on");
         menu_opciones.classList.add("visible_off");
     }
+
+
+    function datoinv_delete(){
+
+$.ajax({
+  url: "{{url('/inv_search')}}"+'/'+id_dato,
+  dataType: "json",
+  //context: document.body
+}).done(function(datoinv) {
+
+  if(datoinv==null){
+    document.getElementById("labelnombre").innerHTML=null;
+    document.getElementById("labelpuesto").innerHTML=null;
+    document.getElementById('labelcorreo').innerHTML=null;
+    document.getElementById("id_inv").value=null;
+  }else{
+    document.getElementById("labelnombre").innerHTML=datoinv.Nombre_de_Usuario;
+    document.getElementById("labelpuesto").innerHTML=datoinv.Puesto;
+    document.getElementById('labelcorreo').innerHTML=datoinv.Correo_Institucional;
+    document.getElementById("id_inv").value=datoinv.id;
+
+  }
+
+});
+}
 
 </script>
 
