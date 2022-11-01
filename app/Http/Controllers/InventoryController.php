@@ -9,6 +9,11 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class InventoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     function vista_inventario(){
 
     $datos=DB::table('inventories')->select("*")->get();
