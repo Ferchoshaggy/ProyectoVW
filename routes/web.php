@@ -60,6 +60,7 @@ Route::post('/ticket_reply',[ReportesController::class,'ticket_reply'])->name('t
 Route::post('/save_user',[UsuariosController::class,'guardar_usuario'])->name('save_users');
 Route::delete('/delete_user',[UsuariosController::class,'user_delete'])->name('user_delete');
 Route::post('/users_cambiar', [UsuariosController::class,'cambiar_users'])->name('cambiar_users');
+Route::post('/reset_password',[UsuariosController::class,'res_pass'])->name('res_pass');
 
 //Configuracion de Usuario
 Route::get('/ConfigUser', [UserController::class,'vista_edit'])->name('edit_user');

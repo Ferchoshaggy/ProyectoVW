@@ -69,7 +69,21 @@ class UsuariosController extends Controller
         }
 
             }
-    function cambiar_users(Request $request){
+
+function res_pass(Request $request){
+if(strlen($request["nue_pass"])>=8){
+
+DB::table('users')->where("id",$request["id_userp"])->update([
+"password"=>$request["nue_pass"],
+]);
+
+return redirect()->back()->with(['message' => "Contraseña Restaurada con Exito", 'color' => 'success']);
+}
+return redirect()->back()->with(['message' => "Error la contraseña Debe Tener minimo 8 caracteres", 'color' => 'warning']);
+
+}
+
+   function cambiar_users(Request $request){
         try {
 
 if($request["consecionaria"]!=null && $request["tipo"]!=null){
@@ -91,8 +105,6 @@ if($request["tipo"]==null){
     ]);
 
 }
-
-
             return redirect()->back()->with(['message' => "Se cambio Al Usuario con Exito", 'color' => 'success']);
         } catch (\Throwable $th) {
             //throw $th;

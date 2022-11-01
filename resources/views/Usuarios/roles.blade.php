@@ -1,6 +1,5 @@
 @extends('adminlte::page')
 @section('title', 'Usuarios')
-
 @section('content_header')
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
@@ -35,6 +34,24 @@
 @endif
 
 @if(Session::get('message')== "Se cambio Al Usuario con Exito")
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+@if(Session::get('message')== "Contraseña Restaurada con Exito")
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+@if(Session::get('message')== "Error la contraseña Debe Tener minimo 8 caracteres")
 <div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
     {{ Session::get('message') }}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -224,6 +241,11 @@
     <i class="fas fa-trash"></i>
     Eliminar
   </button>
+  <br>
+  <button class="btn btn-info form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#reset_pass" onclick="reset_pass();" >
+    <i class="fas fa-trash"></i>
+    Resetear Password
+  </button>
 </div>
 
 
@@ -248,6 +270,44 @@
                   <input type="hidden" name="id_user" id="id_user">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                   <button class="btn btn-danger" >Eliminar</button>
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal de restaurar contraeña-->
+<div class="modal fade" id="reset_pass" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Restablecer Contraseña</h5>
+          </div>
+          <form action="{{Route('res_pass')}}" method="POST">
+              @csrf
+              <div class="modal-body">
+               <div style="align-items: center">
+                <label for="Nueva">Nueva Contraseña</label>
+                <input type="password" name="nue_pass" id="nue_pass" class="form-control" onchange="resetval()">
+               </div>
+               <div style="align-items: center">
+                <label for="Nueva">Repetir Contraseña</label>
+                <input type="password" name="re_nue_pass" id="re_nue_pass" class="form-control" onchange="resetval()">
+               </div>
+
+               <div id="confa" style="display: none">
+                <h5 style="color: red">Las contraseñas no Coinciden</h5>
+            </div>
+
+            <div id="contr" style="display: none">
+                <h5 style="color: green">Las contraseñas Coinciden</h5>
+            </div>
+
+              </div>
+              <div class="modal-footer">
+                  <input type="hidden" name="id_userp" id="id_userp">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <button class="btn btn-success" id="passrest" disabled>Restablecer</button>
               </div>
           </form>
       </div>
@@ -553,13 +613,55 @@ document.getElementById("buttonA").disabled=true;
 document.getElementById("buttonA").disabled=false;
 }
 
+function reset_pass(){
+    $.ajax({
+    url: "{{url('/search_user')}}"+'/'+id_user,
+  dataType: "json",
+  //context: document.body
+}).done(function(datosUser) {
 
+  if(datosUser==null){
+    document.getElementById("id_userp").value=null;
+  }else{
+    document.getElementById("id_userp").value=datosUser.id;
+  }
+
+});
+}
+
+function resetval(){
+    var pn=document.getElementById("nue_pass").value,
+        contrasIgual=false;
+        pnr=document.getElementById("re_nue_pass").value;
+
+        if(pn && pnr){
+
+if(pn != pnr){
+document.getElementById("contr").style.display="none";
+document.getElementById("confa").style.display="block";
+
+}else{
+document.getElementById("confa").style.display="none";
+document.getElementById("contr").style.display="block";
+contrasIgual=true;
+}
+
+}else{
+document.getElementById("contr").style.display="none";
+document.getElementById("confa").style.display="none";
+}
+
+if(contrasIgual){
+   document.getElementById('passrest').disabled=false;
+ }else{
+        document.getElementById('passrest').disabled=true;
+    }
+
+
+}
+
+//conseguir el correo
     $('#correo').change(function(){
-
-console.log($(this).val());
-
-
-console.log($('#correo option:selected').text());
 document.getElementById("correo2").value=$('#correo option:selected').text();
 
 })

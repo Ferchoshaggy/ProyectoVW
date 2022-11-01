@@ -72,9 +72,10 @@
                         @endif
                         -->
 
-                        <x-jet-button>
+<button class="btn btn-dark" style="width: 100%; color:white">
                             {{ __('Ingresar') }}
-                        </x-jet-button>
+</button>
+
                     </div>
                 </div>
             </form>
