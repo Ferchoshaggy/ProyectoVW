@@ -17,9 +17,10 @@ class UsuariosController extends Controller
         $this->middleware('auth');
     }
     public function vista_users(){
+        $inventarios=DB::table("inventories")->select('*')->get();
         $users=DB::table("users")->select('*')->get();
         $tipos=DB::table("tipo_users")->select('*')->get();
-        return view('Usuarios.roles',compact('users','tipos'));
+        return view('Usuarios.roles',compact('users','tipos','inventarios'));
     }
 
     public function guardar_usuario(Request $request){
@@ -35,17 +36,18 @@ class UsuariosController extends Controller
 
         DB::table('users')->insert([
         "name"=>$request['nombre'],
-        "email"=>$request['correo'],
+        "id_inventario"=>$request['correo'],
+        "email"=>$request['correo2'],
         "genero"=>$request['genero'],
         "concesionaria"=>$request['concesionaria'],
         "tipo_user"=>$request['tipo'],
         "password"=>bcrypt($request['contraseña']),
 
         ]);
-
-        $data=["name"=>$request['nombre'] ,"email"=>$request['correo'],"password"=>$request['contraseña'],"empresa"=>$request['concesionaria']];
+/*
+        $data=["name"=>$request['nombre'] ,"email"=>$request['correo2'],"password"=>$request['contraseña'],"empresa"=>$request['concesionaria']];
         Mail::to($request['correo'])->send(new MessageReceived("Usuario Creado",$data,"users"));
-
+*/
         return redirect()->back()->with(['message' => 'Usuario Guardado con Éxito', 'color' => 'success']);
 
     } catch (\Exception $e) {

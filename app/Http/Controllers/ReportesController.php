@@ -187,9 +187,6 @@ return redirect()->back()->with(['message' => "Se Mando la Contestacion con Exit
 }
 }
 
-
-
-
 function descargarA($id){
     $doc=DB::table("tickets")->where('id',$id)->first();
     $pahtToFile=public_path("imgTicket/". $doc->archivo);

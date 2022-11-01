@@ -96,11 +96,26 @@
 </div>
 
 <div class="row">
+
+<div class="col-md-6">
+    <label for="correo">Correo</label>
+
+        <select name="correo" id="correo" class="form-control" onchange="validar();">
+            <option selected="true" value="" disabled="disabled">Selecione Correo</option>
+            @foreach ($inventarios as $inv)
+
+            <option value="{{$inv->id}}">{{$inv->Correo_Institucional}}</option>
+
+            @endforeach
+        </select>
+<input type="hidden" name="correo2" id="correo2">
+</div>
+<!--
     <div class="col-md-6">
         <label for="correo">Correo</label>
         <input type="email" class="form-control" name="correo" id="correo" value="{{old("correo")}}" onchange="validar();">
     </div>
-
+-->
     <div class="col-md-6">
         <label for="Tipo">Tipo de Usuario</label>
         <select name="tipo" id="tipo" class="form-control" onchange="validar()">
@@ -537,6 +552,18 @@ document.getElementById("buttonA").disabled=true;
 }
 document.getElementById("buttonA").disabled=false;
 }
+
+
+    $('#correo').change(function(){
+
+console.log($(this).val());
+
+
+console.log($('#correo option:selected').text());
+document.getElementById("correo2").value=$('#correo option:selected').text();
+
+})
+
 
   </script>
 @stop

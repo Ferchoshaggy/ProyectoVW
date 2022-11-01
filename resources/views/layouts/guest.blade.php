@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="background: linear-gradient(180deg,#f73030,rgba(85, 67, 67, 0.603),rgb(30, 118, 252)); background-size: cover;
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="background: linear-gradient(180deg,rgb(30, 118, 252),rgba(85, 67, 67, 0.603),#f73030); background-size: cover;
     background-repeat:no-repeat;
     background-position: center center; background-attachment: fixed; ">
     <head>
