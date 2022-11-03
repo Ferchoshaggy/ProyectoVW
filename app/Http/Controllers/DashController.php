@@ -24,9 +24,14 @@ class DashController extends Controller
         }
     }
 
-    public function vista_dash(){
-        $tickets=DB::table('tickets')->select('*')->get();
-        return view('Index',compact('tickets'));
+    public function vista_dash(Request $request){
+
+        if($request['fechaMin'] && $request['fechaMax']){
+            $tickets=DB::table('tickets')->whereDate("created_at",">=",$request['fechaMin'])->whereDate("created_at","<=",$request['fechaMax'])->get();
+        }else{
+            $tickets=DB::table('tickets')->select('*')->get();
+        }
+return view('Index',compact('tickets'));
     }
 
 

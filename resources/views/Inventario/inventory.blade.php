@@ -8,6 +8,8 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
+
 @section('content')
 <br>
 <div class="card">
@@ -163,7 +165,7 @@
 </div>
 
 <!--menu de opciones de la tabla-->
-<div id="menu_opciones" class="visible_off " style=" padding: 20px; background-color: #6e82c2bd;">
+<div id="menu_opciones" class="visible_off " style=" padding: 25px; background-color: #6e82c2bd;">
 
     <button type="button" class="close" style="margin-right: -17px; margin-top: -20px;" onclick="cerrar_menu();">
        <i class="fas fa-times fa-xs"></i>
@@ -241,7 +243,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Nuevo Registro</h5>
-          <abbr title="No es Necesario llenar todos los campos"><i class="far fa-question-circle float-right" style="font-size:30px;"></i></abbr>
+          <i class="far fa-question-circle float-right" style="font-size:30px;" onclick="window.alert('No es Necesario llenar todos los campos')"></i>
         </div>
   <form action="{{Route('dateinv_save')}}" method="POST">
     @csrf
@@ -552,7 +554,6 @@
 }
 
 /*Estilo para el cuadro de opciones*/
-
 .marca{
         transition: 1s;
     }
@@ -584,8 +585,9 @@
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
 
 <script>
+
   //jquery para desvanecer el mensage
-  $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+  $(".alert").fadeTo(5000, 500).slideUp(500, function(){
     $(".alert").slideUp(500);
 });
 

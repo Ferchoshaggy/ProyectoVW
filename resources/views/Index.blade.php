@@ -12,6 +12,28 @@
 <div class="card">
     <div class="card-body">
 
+<button type="button" class="accordion form-control" onclick="divD()">Filtrar por Fecha</button>
+<div class="panel">
+<form action="{{Route('vista_dash')}}" method="get">
+@csrf
+@method('POST')
+    <div class="row">
+        <div class="col-md-3">
+        <label for="fmin">Fecha Minima:</label>
+        <input type="date" class="form-control" name="fechaMin">
+        </div>
+        <div class="col-md-3">
+        <label for="fmax">Fecha Maxima</label>
+        <input type="date" class="form-control" name="fechaMax">
+        </div>
+        <div class="col-md-3">
+        <button class="btn btn-success" style="margin-top: 30px">Buscar</button>
+        </div>
+    </div>
+</form>
+</div>
+<br>
+
 <?php $total_registros=0; ?>
 @foreach ($tickets as $ticket)
 <?php $total_registros++; ?>
@@ -56,6 +78,49 @@
   font-family: "Cursive";
   text-transform: uppercase;
     }
+/*Div desplegable */
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 8px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+button.accordion:after {
+    content: '\1F4C5';
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+button.accordion.active:after {
+    content: "\1F4C5";
+}
+
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.4s ease-in-out;
+    opacity: 0;
+}
+
+div.panel.show {
+    opacity: 1;
+    max-height: 500px;
+}
 </style>
 
 @stop
@@ -339,5 +404,19 @@ $sas++;
 
 </script>";
 ?>
+
+<script>
+    function divD(){
+    var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+  }
+}
+}
+</script>
 
 @stop

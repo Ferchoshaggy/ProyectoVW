@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 //Tablero
 Route::get('/dash', [DashController::class,'vista_dash'])->name('vista_dash');
 
+
 //usuario
 Route::get('/users', [UsuariosController::class,'vista_users'])->name('vista_users');
 

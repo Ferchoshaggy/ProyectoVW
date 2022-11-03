@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 @section('content')
 <br>
@@ -71,7 +72,7 @@
 
   <!--Modal de nuevo Usuario -->
   <div class="modal fade" id="agregarUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Nuevo Usuario</h5>
@@ -111,21 +112,18 @@
 </select>
     </div>
 </div>
-
+<input type="hidden" name="correo2" id="correo2">
 <div class="row">
 
-<div class="col-md-6">
-    <label for="correo">Correo</label>
-
-        <select name="correo" id="correo" class="form-control" onchange="validar();">
-            <option selected="true" value="" disabled="disabled">Selecione Correo</option>
+<div class="col-md-6" style="margin-bottom: 10px;">
+    <label class="form-label">Correo</label>
+        <select name="correo" id="correo" class="js-example-basic-single form-control" style="width: 100%; height: 15px;" onchange="validar();">
+            <option selected disabled>Selecciona Correo...</option>
             @foreach ($inventarios as $inv)
-
             <option value="{{$inv->id}}">{{$inv->Correo_Institucional}}</option>
-
             @endforeach
         </select>
-<input type="hidden" name="correo2" id="correo2">
+
 </div>
 <!--
     <div class="col-md-6">
@@ -226,7 +224,7 @@
 
 
   <!--menu de opciones de la tabla-->
-  <div id="menu_opciones" class="visible_off " style=" padding: 20px; background-color: #6e82c2bd;">
+  <div id="menu_opciones" class="visible_off " style=" padding: 25px; background-color: #6e82c2bd;">
 
     <button type="button" class="close" style="margin-right: -17px; margin-top: -20px;" onclick="cerrar_menu();">
        <i class="fas fa-times fa-xs"></i>
@@ -436,6 +434,19 @@
     .paginate_button{
     position:sticky;
 }
+.select2-selection__rendered {
+      line-height: 31px !important;
+    }
+    .select2-container .select2-selection--single {
+          height: 35px !important;
+    }
+    .select2-selection__arrow {
+          height: 34px !important;
+    }
+
+    .select2-selection__rendered{
+        margin-top: -5px !important;
+    }
   </style>
 
 
@@ -448,8 +459,14 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+<!-- este es para el selected2-->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script type="text/javascript">
+
+$('.js-example-basic-single').select2({
+            dropdownParent: $('#agregarUser') //este se agrega para que se despliegue bien en el modal.
+        });
 
 //funcion de la tabla de boostrap tenga paginador y buscador
   $(document).ready(function() {
@@ -458,6 +475,7 @@
           "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
        }
     });
+
   });
 
   //funcion para mostrar la contraseña con un boton
