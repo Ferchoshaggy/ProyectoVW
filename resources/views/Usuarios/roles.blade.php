@@ -288,12 +288,26 @@
               <div class="modal-body">
                <div style="align-items: center">
                 <label for="Nueva">Nueva Contraseña</label>
-                <input type="password" name="nue_pass" id="nue_pass" class="form-control" onchange="resetval()">
-               </div>
-               <div style="align-items: center">
-                <label for="Nueva">Repetir Contraseña</label>
-                <input type="password" name="re_nue_pass" id="re_nue_pass" class="form-control" onchange="resetval()">
-               </div>
+
+<div class="input-group">
+
+    <input type="password" name="nue_pass" id="nue_pass" class="form-control" onchange="resetval()">
+        <span class="input-group-append">
+            <button class="btn btn-default" type="button" onclick="mostrarPassword3()"><span class="fa fa-eye-slash icon3"></span></button>
+        </span>
+        </div>
+  </div>
+
+    <div style="align-items: center">
+    <label for="Nueva">Repetir Contraseña</label>
+    <div class="input-group">
+
+        <input type="password" name="re_nue_pass" id="re_nue_pass" class="form-control" onchange="resetval()">
+            <span class="input-group-append">
+                <button class="btn btn-default" type="button" onclick="mostrarPassword4()"><span class="fa fa-eye-slash icon4"></span></button>
+            </span>
+            </div>
+    </div>
 
                <div id="confa" style="display: none">
                 <h5 style="color: red">Las contraseñas no Coinciden</h5>
@@ -466,6 +480,28 @@
 		}else{
 			cambio.type = "password";
 			$('.icon2').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+		}
+	}
+
+    function mostrarPassword3(){
+		var cambio = document.getElementById("nue_pass");
+		if(cambio.type == "password"){
+			cambio.type = "text";
+			$('.icon3').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+		}else{
+			cambio.type = "password";
+			$('.icon3').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+		}
+	}
+
+    function mostrarPassword4(){
+		var cambio = document.getElementById("re_nue_pass");
+		if(cambio.type == "password"){
+			cambio.type = "text";
+			$('.icon4').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+		}else{
+			cambio.type = "password";
+			$('.icon4').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
 		}
 	}
 

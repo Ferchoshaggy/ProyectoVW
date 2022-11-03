@@ -74,7 +74,7 @@ function res_pass(Request $request){
 if(strlen($request["nue_pass"])>=8){
 
 DB::table('users')->where("id",$request["id_userp"])->update([
-"password"=>$request["nue_pass"],
+"password"=>bcrypt($request["nue_pass"]),
 ]);
 
 return redirect()->back()->with(['message' => "Contraseña Restaurada con Exito", 'color' => 'success']);

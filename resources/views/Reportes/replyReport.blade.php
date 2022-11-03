@@ -203,6 +203,12 @@
 <form action="{{route('ticket_reply')}}" method="post" enctype="multipart/form-data">
     @csrf
 
+    @foreach ($users as $user)
+@if($ticket->usuario==$user->id)
+    <input type="hidden" name="email_tick" value="{{$user->email}}">
+@endif
+@endforeach
+
 <br>
 <div class="col-12">
 <textarea name="descripcion" id="descripcion" rows="1" class="form-control"></textarea>

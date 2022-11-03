@@ -43,6 +43,15 @@
 </div>
 @endif
 
+@if(Session::get('message')== "Registro Guardado con Exito")
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
 @endif
 
 
@@ -232,6 +241,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Nuevo Registro</h5>
+          <abbr title="No es Necesario llenar todos los campos"><i class="far fa-question-circle float-right" style="font-size:30px;"></i></abbr>
         </div>
   <form action="{{Route('dateinv_save')}}" method="POST">
     @csrf
@@ -432,7 +442,7 @@
                 <div class="row">
                     <div class="col-md-3">
                     <label for="mantenimiento">Mantenimiento:</label>
-                    <input type="text" name="mantenimineto" class="form-control">
+                    <input type="text" name="mantenimiento" class="form-control">
                     </div>
                     <div class="col-md-3">
                         <label for="usuariogds">Usuario de GDS:</label>
