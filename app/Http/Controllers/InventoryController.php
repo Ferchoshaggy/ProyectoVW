@@ -49,7 +49,7 @@ return redirect()->back()->with(['message' => "Registro Eliminado con Exito", 'c
 public function edit_invdate(Request $request){
 try{
 
-    DB::table('inventories')->where("id",$request['id_inv'])->update([
+    DB::table('inventories')->where("id",$request['id_invE'])->update([
         "Nombre_de_Usuario"=>$request['nombre_user'] ?? "N/A",
         "Puesto"=>$request['puesto'] ?? "N/A",
         "Departamento"=>$request['departamento'] ?? "N/A",

@@ -504,6 +504,7 @@
 
         </div>
         <div class="modal-footer">
+            <input type="hidden" name="id_invE" id="id_invE">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
           <button class="btn btn-success">Editar</button>
         </div>
@@ -693,7 +694,7 @@ var id_dato=null;
     }
 
 
-    function datoinv_delete(){
+ function datoinv_delete(){
 
 $.ajax({
   url: "{{url('/inv_search')}}"+'/'+id_dato,
@@ -717,6 +718,110 @@ $.ajax({
 });
 }
 
+function datoinv_update(){
+
+$.ajax({
+  url: "{{url('/inv_search')}}"+'/'+id_dato,
+  dataType: "json",
+  //context: document.body
+}).done(function(datoinv) {
+
+  if(datoinv==null){
+    document.getElementById("id_invE").value=null;
+    document.getElementById("nombre_user").value=null;
+    document.getElementById("puesto").value=null;
+    document.getElementById("departamento").value=null;
+    document.getElementById("marca_cpu").value=null;
+    document.getElementById("modelo_cpu").value=null;
+    document.getElementById("no_serie").value=null;
+    document.getElementById("procesador").value=null;
+    document.getElementById("ghz").value=null;
+    document.getElementById("disco").value=null;
+    document.getElementById("memo_ram").value=null;
+    document.getElementById("sistema_op").value=null;
+    document.getElementById("monitor").value=null;
+    document.getElementById("monitor_marca").value=null;
+    document.getElementById("monitor_modelo").value=null;
+    document.getElementById("adicional").value=null;
+    document.getElementById("nomenclatura").value=null;
+    document.getElementById("iportal").value=null;
+    document.getElementById("correo_plant").value=null;
+    document.getElementById("correo_inst").value=null;
+    document.getElementById("portal_dist").value=null;
+    document.getElementById("geko").value=null;
+    document.getElementById("clave_tel").value=null;
+    document.getElementById("ip").value=null;
+    document.getElementById("sif").value=null;
+    document.getElementById("poc").value=null;
+    document.getElementById("nadcon").value=null;
+    document.getElementById("saga").value=null;
+    document.getElementById("modelo_imp").value=null;
+    document.getElementById("fec_compra").value=null;
+    document.getElementById("factura").value=null;
+    document.getElementById("garantia").value=null;
+    document.getElementById("grup_forti").value=null;
+    document.getElementById("cpu_lap").value=null;
+    document.getElementById("usuario_red").value=null;
+    document.getElementById("pro_inst").value=null;
+    document.getElementById("vnc").value=null;
+    document.getElementById("adobe").value=null;
+    document.getElementById("gds").value=null;
+    document.getElementById("antivirus").value=null;
+    document.getElementById("office").value=null;
+    document.getElementById("mantenimiento").value=null;
+    document.getElementById("user_gds").value=null;
+    document.getElementById("regulador").value=null;
+    document.getElementById("marca_modelo").value=null;
+  }else{
+    document.getElementById("id_invE").value=datoinv.id;
+    document.getElementById("nombre_user").value=datoinv;
+    document.getElementById("puesto").value=null;
+    document.getElementById("departamento").value=null;
+    document.getElementById("marca_cpu").value=null;
+    document.getElementById("modelo_cpu").value=null;
+    document.getElementById("no_serie").value=null;
+    document.getElementById("procesador").value=null;
+    document.getElementById("ghz").value=null;
+    document.getElementById("disco").value=null;
+    document.getElementById("memo_ram").value=null;
+    document.getElementById("sistema_op").value=null;
+    document.getElementById("monitor").value=null;
+    document.getElementById("monitor_marca").value=null;
+    document.getElementById("monitor_modelo").value=null;
+    document.getElementById("adicional").value=null;
+    document.getElementById("nomenclatura").value=null;
+    document.getElementById("iportal").value=null;
+    document.getElementById("correo_plant").value=null;
+    document.getElementById("correo_inst").value=null;
+    document.getElementById("portal_dist").value=null;
+    document.getElementById("geko").value=null;
+    document.getElementById("clave_tel").value=null;
+    document.getElementById("ip").value=null;
+    document.getElementById("sif").value=null;
+    document.getElementById("poc").value=null;
+    document.getElementById("nadcon").value=null;
+    document.getElementById("saga").value=null;
+    document.getElementById("modelo_imp").value=null;
+    document.getElementById("fec_compra").value=null;
+    document.getElementById("factura").value=null;
+    document.getElementById("garantia").value=null;
+    document.getElementById("grup_forti").value=null;
+    document.getElementById("cpu_lap").value=null;
+    document.getElementById("usuario_red").value=null;
+    document.getElementById("pro_inst").value=null;
+    document.getElementById("vnc").value=null;
+    document.getElementById("adobe").value=null;
+    document.getElementById("gds").value=null;
+    document.getElementById("antivirus").value=null;
+    document.getElementById("office").value=null;
+    document.getElementById("mantenimiento").value=null;
+    document.getElementById("user_gds").value=null;
+    document.getElementById("regulador").value=null;
+    document.getElementById("marca_modelo").value=null;
+  }
+
+});
+}
 </script>
 
 @stop
