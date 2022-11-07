@@ -226,21 +226,21 @@
   <!--menu de opciones de la tabla-->
   <div id="menu_opciones" class="visible_off " style=" padding: 25px; background-color: #6e82c2bd;">
 
-    <button type="button" class="close" style="margin-right: -17px; margin-top: -20px;" onclick="cerrar_menu();">
-       <i class="fas fa-times fa-xs"></i>
-    </button>
+<button type="button" class="close" style="margin-right: -17px; margin-top: -20px;" onclick="cerrar_menu();">
+    <i class="fas fa-times fa-xs"></i>
+</button>
 
-  <button type="button" class="btn btn-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#editar_usuario" onclick="cambiar_user();">
+<button class="btn btn-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#editar_usuario" onclick="cambiar_user();">
     <i class="fas fa-edit"></i>
     Editar
   </button>
   <br>
-  <button class="btn btn-danger form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#eliminar_usuario" onclick="datos_delete();" >
+<button class="btn btn-danger form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#eliminar_usuario" onclick="datos_delete();" >
     <i class="fas fa-trash"></i>
     Eliminar
   </button>
   <br>
-  <button class="btn btn-info form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#reset_pass" onclick="reset_pass();" >
+<button class="btn btn-info form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#reset_pass" onclick="reset_pass();" >
     <i class="fas fa-trash"></i>
     Resetear Password
   </button>
@@ -595,7 +595,6 @@ $(".alert").fadeTo(2000, 500).slideUp(500, function(){
 
 
 //cuadro de opciones
-
 var id_user=null;
     function pasar_id($id_tr) {
 

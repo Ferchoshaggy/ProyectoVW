@@ -26,17 +26,12 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
-
 //Tablero
 Route::get('/dash', [DashController::class,'vista_dash'])->name('vista_dash');
-
-
 //usuario
 Route::get('/users', [UsuariosController::class,'vista_users'])->name('vista_users');
-
 //Inventario
 Route::get('/inventory',[InventoryController::class,'vista_inventario'])->name('vista_inven');
-
 });
 
 //redirect login
@@ -77,4 +72,3 @@ Route::get('/download_plantilla',[InventoryController::class,"descarga_plantilla
 Route::get("/inv_search/{id}",[SearchController::class,'inventorySearch'])->name('inventorySearch');
 Route::delete('/delete_invdate',[InventoryController::class,'delete_inv'])->name('delete_inv');
 Route::post("/edit_dateinv",[InventoryController::class,'edit_invdate'])->name('edit_invdate');
-Route::post("/save_invdate",[InventoryController::class,'dateinv_save'])->name('dateinv_save');

@@ -45,7 +45,7 @@
 </div>
 @endif
 
-@if(Session::get('message')== "Registro Guardado con Exito")
+@if(Session::get('message')== "Registro Editado con Exito")
 <div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
     {{ Session::get('message') }}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -56,8 +56,6 @@
 
 @endif
 
-
-<button class="btn btn-outline-primary" data-toggle="modal" data-target="#ModalForm">Nuevo Registro</button>
 <button class="btn btn-outline-warning" data-toggle="modal" data-target="#ModalCarga">Importar Excel</button>
 <br><br>
 
@@ -235,254 +233,279 @@
     </div>
   </div>
 
-<!-- Modal de crear -->
-<div class="modal fade" id="ModalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" >
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Nuevo Registro</h5>
-          <i class="far fa-question-circle float-right" style="font-size:30px;" onclick="window.alert('No es Necesario llenar todos los campos')"></i>
-        </div>
-  <form action="{{Route('dateinv_save')}}" method="POST">
-    @csrf
-        <div class="modal-body">
-
-<div class="row">
-<div class="col-md-3">
-<label for="Nombre">Nombre de Usuario:</label>
-<input type="text" name="nombre_user" class="form-control">
-</div>
-<div class="col-md-3">
-    <label for="puesto">Puesto:</label>
-    <input type="text" name="puesto" class="form-control">
-</div>
-<div class="col-md-3">
-    <label for="depa">Departamento:</label>
-    <input type="text" name="departamento" class="form-control">
-</div>
-<div class="col-md-3">
-    <label for="marca_cpu">Cpu Marca:</label>
-    <input type="text" name="marca_cpu" class="form-control">
-</div>
-</div>
-
-<div class="row">
-    <div class="col-md-3">
-    <label for="modelo cpu">Cpu Modelo:</label>
-    <input type="text" name="modelo_cpu" class="form-control">
-    </div>
-    <div class="col-md-3">
-        <label for="serie">No.de serie:</label>
-        <input type="text" name="no_serie" class="form-control">
-    </div>
-    <div class="col-md-3">
-        <label for="procesador">Procesador:</label>
-        <input type="text" name="procesador" class="form-control">
-    </div>
-    <div class="col-md-3">
-        <label for="ghz">GHZ:</label>
-        <input type="text" name="ghz" class="form-control">
-    </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-3">
-        <label for="disco">Disco:</label>
-        <input type="text" name="disco" class="form-control">
-        </div>
-        <div class="col-md-3">
-            <label for="memoria ram">memoria ram:</label>
-            <input type="text" name="memo_ram" class="form-control">
-        </div>
-        <div class="col-md-3">
-            <label for="Sistema Operativo">Sistema Operativo:</label>
-            <input type="text" name="sistema_op" class="form-control">
-        </div>
-        <div class="col-md-3">
-            <label for="monitor">Monitor:</label>
-            <input type="text" name="monitor" class="form-control">
-        </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-3">
-            <label for="modelo cpu">Monitor marca:</label>
-            <input type="text" name="monitor_marca" class="form-control">
-            </div>
-            <div class="col-md-3">
-                <label for="modelomonitor">Monitor Modelo:</label>
-                <input type="text" name="monitor_modelo" class="form-control">
-            </div>
-            <div class="col-md-3">
-                <label for="adicional">Adicional:</label>
-                <input type="text" name="adicional" class="form-control">
-            </div>
-            <div class="col-md-3">
-                <label for="nomenclatura">Nomenclatura:</label>
-                <input type="text" name="nomenclatura" class="form-control">
-            </div>
-            </div>
-
-    <div class="row">
-        <div class="col-md-3">
-        <label for="I-Portal">I-Portal:</label>
-        <input type="text" name="iportal" class="form-control">
-        </div>
-        <div class="col-md-3">
-            <label for="correodeplanta">Correo de Planta:</label>
-            <input type="text" name="correo_plant" class="form-control">
-        </div>
-        <div class="col-md-3">
-            <label for="correoinstitucional">Correo Institucional:</label>
-            <input type="text" name="correo_inst" class="form-control">
-        </div>
-        <div class="col-md-3">
-            <label for="portaldistribuidores">Portal de Distribuidores:</label>
-            <input type="text" name="portal_dist" class="form-control">
-        </div>
-        </div>
-
-
-    <div class="row">
-        <div class="col-md-3">
-        <label for="geko">GEKO:</label>
-        <input type="text" name="geko" class="form-control">
-        </div>
-        <div class="col-md-3">
-            <label for="claveTelefonica">Clave Telefonica:</label>
-            <input type="text" name="clave_tel" class="form-control">
-        </div>
-        <div class="col-md-3">
-            <label for="ip">IP:</label>
-            <input type="text" name="ip" class="form-control">
-        </div>
-        <div class="col-md-3">
-            <label for="sif">SIF:</label>
-            <input type="text" name="sif" class="form-control">
-        </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3">
-            <label for="POC">POC:</label>
-            <input type="text" name="poc" class="form-control">
-            </div>
-            <div class="col-md-3">
-                <label for="nadcon">NADCON:</label>
-                <input type="text" name="nadcon" class="form-control">
-            </div>
-            <div class="col-md-3">
-                <label for="saga">SAGA:</label>
-                <input type="text" name="saga" class="form-control">
-            </div>
-            <div class="col-md-3">
-                <label for="modeloimpresora">Modelo de Impresora:</label>
-                <input type="text" name="modelo_imp" class="form-control">
-            </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3">
-                <label for="fechacompra">Fecha de Compra:</label>
-                <input type="text" name="fec_compra" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="factura">Factura:</label>
-                    <input type="text" name="factura" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="garantia">Garantia:</label>
-                    <input type="text" name="garantia" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="grupofortinet">Grupo Fortinet:</label>
-                    <input type="text" name="grup_forti" class="form-control">
-                </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-3">
-                    <label for="cpulaptop">Cpu o Laptop:</label>
-                    <input type="text" name="cpu_lap" class="form-control">
-                    </div>
-                    <div class="col-md-3">
-                        <label for="usuariored">Usuario de Red:</label>
-                        <input type="text" name="usuario_red" class="form-control">
-                    </div>
-                    <div class="col-md-3">
-                        <label for="programasinstalados">Programas Instalados:</label>
-                        <input type="text" name="pro_inst" class="form-control">
-                    </div>
-                    <div class="col-md-3">
-                        <label for="vnc">VNC:</label>
-                        <input type="text" name="vnc" class="form-control">
-                    </div>
-                    </div>
-
-            <div class="row">
-                <div class="col-md-3">
-                <label for="adobe">Adobe:</label>
-                <input type="text" name="adobe" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="gds">GDS:</label>
-                    <input type="text" name="gds" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="Antivirus">Antivirus:</label>
-                    <input type="text" name="antivirus" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="office">Office:</label>
-                    <input type="text" name="office" class="form-control">
-                </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-3">
-                    <label for="mantenimiento">Mantenimiento:</label>
-                    <input type="text" name="mantenimiento" class="form-control">
-                    </div>
-                    <div class="col-md-3">
-                        <label for="usuariogds">Usuario de GDS:</label>
-                        <input type="text" name="user_gds" class="form-control">
-                    </div>
-                    <div class="col-md-3">
-                        <label for="Regulador">Regulador:</label>
-                        <input type="text" name="regulador" class="form-control">
-                    </div>
-                    <div class="col-md-3">
-                        <label for="marcamodelo">Marca Modelo:</label>
-                        <input type="text" name="marca_modelo" class="form-control">
-                    </div>
-                    </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button class="btn btn-success">Guardar</button>
-        </div>
-    </form>
-      </div>
-    </div>
-  </div>
 
 <!-- Modal de editar -->
 <div class="modal fade" id="editar_dato" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Editar Registro</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
    <form action="{{Route('edit_invdate')}}" method="POST">
     @csrf
         <div class="modal-body">
 
+<label for="">Datos Personales</label>
+<div style="background-color: #8080808c; border-radius: 5px" >
+
+<div class="row" style="padding: 0 10px 0 10px">
+<div class="col-md-6">
+    <label for="Nombre">Nombre de Usuario:</label>
+    <input type="text" name="nombre_user" id="nombre_user" class="form-control">
+</div>
+<div class="col-md-3">
+    <label for="puesto">Puesto:</label>
+    <input type="text" name="puesto" id="puesto" class="form-control">
+</div>
+<div class="col-md-3">
+    <label for="depa">Departamento:</label>
+    <input type="text" name="departamento" id="departamento" class="form-control">
+</div>
+</div>
+
+<div class="row" style="padding: 0 10px 0 10px">
+    <div class="col-md-6">
+        <label for="I-Portal">I-Portal:</label>
+        <input type="text" name="iportal" id="iportal" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label for="correodeplanta">Correo de Planta:</label>
+            <input type="text" name="correo_plant" id="correo_plant" class="form-control">
+        </div>
+</div>
+
+<div class="row" style="padding: 0 10px 10px 10px">
+    <div class="col-md-5">
+        <label for="correoinstitucional">Correo Institucional:</label>
+        <input type="text" name="correo_inst" id="correo_inst" class="form-control">
+    </div>
+    <div class="col-md-4">
+        <label for="usuariogds">Usuario de GDS:</label>
+        <input type="text" name="user_gds" id="user_gds" class="form-control">
+    </div>
+    <div class="col-md-3">
+        <label for="usuariored">Usuario de Red:</label>
+        <input type="text" name="usuario_red" id="usuario_red" class="form-control">
+    </div>
+</div>
+</div>
+
+<label for="" style="padding: 10px 0 0px 0">Equipo</label>
+<div style="background-color: #8080808c; border-radius: 5px">
+<div class="row" style="padding: 0 10px 0px 10px">
+    <div class="col-md-4">
+        <label for="cpulaptop">Cpu o Laptop:</label>
+        <input type="text" name="cpu_lap" id="cpu_lap" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <label for="marca_cpu">Marca:</label>
+            <input type="text" name="marca_cpu" id="marca_cpu" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <label for="modelo cpu">Modelo:</label>
+            <input type="text" name="modelo_cpu" id="modelo_cpu" class="form-control">
+            </div>
+</div>
+
+<div class="row" style="padding: 0 10px 10px 10px">
+    <div class="col-md-12">
+        <label for="serie">No.de Serie:</label>
+        <input type="text" name="no_serie" id="no_serie" class="form-control">
+    </div>
+</div>
+</div>
+
+<label for="" style="padding: 10px 0 0px 0">Caracteristicas del equipo</label>
+<div style="background-color: #8080808c; border-radius: 5px">
+<div class="row" style="padding: 0 10px 0 10px">
+
+    <div class="col-md-4">
+        <label for="procesador">Procesador:</label>
+        <input type="text" name="procesador" id="procesador" class="form-control">
+    </div>
+    <div class="col-md-4">
+        <label for="ghz">GHZ:</label>
+        <input type="text" name="ghz" id="ghz" class="form-control">
+    </div>
+    <div class="col-md-4">
+        <label for="disco">Disco:</label>
+        <input type="text" name="disco" id="disco" class="form-control">
+        </div>
+</div>
+
+<div class="row" style="padding: 0 10px 0 10px">
+    <div class="col-md-3">
+        <label for="memoria ram">Memoria RAM:</label>
+        <input type="text" name="memo_ram" id="memo_ram" class="form-control">
+    </div>
+    <div class="col-md-4">
+        <label for="Sistema Operativo">Sistema Operativo:</label>
+        <input type="text" name="sistema_op" id="sistema_op" class="form-control">
+    </div>
+    <div class="col-md-5">
+        <label for="programasinstalados">Programas Instalados:</label>
+        <input type="text" name="pro_inst" id="pro_inst" class="form-control">
+    </div>
+</div>
+
+<div class="row" style="padding: 0 10px 0 10px">
+    <div class="col-md-4">
+        <label for="vnc">VNC:</label>
+        <input type="text" name="vnc" id="vnc" class="form-control">
+    </div>
+    <div class="col-md-4">
+        <label for="adobe">Adobe:</label>
+        <input type="text" name="adobe" id="adobe" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <label for="gds">GDS:</label>
+            <input type="text" name="gds" id="gds" class="form-control">
+        </div>
+</div>
+
+<div class="row" style="padding: 0 10px 10px 10px">
+    <div class="col-md-6">
+        <label for="Antivirus">Antivirus:</label>
+        <input type="text" name="antivirus" id="antivirus" class="form-control">
+    </div>
+    <div class="col-md-6">
+        <label for="office">Office:</label>
+        <input type="text" name="office" id="office" class="form-control">
+    </div>
+</div>
+</div>
+
+<label for="" style="padding: 10px 0 0px 0">Monitor(si cuenta con uno)</label>
+<div style="background-color: #8080808c; border-radius: 5px">
+<div class="row" style="padding: 0 10px 10px 10px">
+    <div class="col-md-4">
+        <label for="monitor">Monitor:</label>
+        <input type="text" name="monitor" id="monitor" class="form-control">
+    </div>
+    <div class="col-md-4">
+    <label for="modelo cpu">Marca:</label>
+    <input type="text" name="monitor_marca" id="monitor_marca" class="form-control">
+    </div>
+    <div class="col-md-4">
+        <label for="modelomonitor">Modelo:</label>
+        <input type="text" name="monitor_modelo" id="monitor_modelo" class="form-control">
+    </div>
+</div>
+</div>
+
+<label for="" style="padding: 10px 0 0px 0">Informacion Adicional</label>
+<div style="background-color: #8080808c; border-radius: 5px">
+
+<div class="row" style="padding: 0 10px 0 10px">
+    <div class="col-md-4">
+        <label for="fechacompra">Fecha de Compra:</label>
+        <input type="text" name="fec_compra" id="fec_compra" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <label for="factura">Factura:</label>
+            <input type="text" name="factura" id="factura" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <label for="garantia">Garantia:</label>
+            <input type="text" name="garantia" id="garantia" class="form-control">
+        </div>
+</div>
+
+<div class="row" style="padding: 0 10px 0 10px">
+    <div class="col-md-6">
+        <label for="adicional">Adicional:</label>
+        <input type="text" name="adicional" id="adicional" class="form-control">
+    </div>
+    <div class="col-md-6">
+        <label for="nomenclatura">Nomenclatura:</label>
+        <input type="text" name="nomenclatura" id="nomenclatura" class="form-control">
+    </div>
+</div>
+
+<div class="row" style="padding: 0 10px 0 10px">
+    <div class="col-md-3">
+        <label for="portaldistribuidores">Portal de Distribuidores:</label>
+        <input type="text" name="portal_dist" id="portal_dist" class="form-control">
+    </div>
+    <div class="col-md-3">
+    <label for="geko">GEKO:</label>
+    <input type="text" name="geko" id="geko" class="form-control">
+    </div>
+    <div class="col-md-6">
+        <label for="claveTelefonica">Clave Telefonica:</label>
+        <input type="text" name="clave_tel" id="clave_tel" class="form-control">
+    </div>
+</div>
+
+<div class="row" style="padding: 0 10px 0 10px">
+    <div class="col-md-6">
+        <label for="ip">IP:</label>
+        <input type="text" name="ip" id="ip" class="form-control">
+    </div>
+    <div class="col-md-3">
+        <label for="sif">SIF:</label>
+        <input type="text" name="sif" id="sif" class="form-control">
+    </div>
+    <div class="col-md-3">
+    <label for="POC">POC:</label>
+    <input type="text" name="poc" id="poc" class="form-control">
+    </div>
+</div>
+
+<div class="row" style="padding: 0 10px 0 10px">
+    <div class="col-md-4">
+        <label for="nadcon">NADCON:</label>
+        <input type="text" name="nadcon" id="nadcon" class="form-control">
+    </div>
+    <div class="col-md-4">
+        <label for="saga">SAGA:</label>
+        <input type="text" name="saga" id="saga" class="form-control">
+    </div>
+    <div class="col-md-4">
+        <label for="grupofortinet">Grupo Fortinet:</label>
+        <input type="text" name="grup_forti" id="grup_forti" class="form-control">
+    </div>
+</div>
+
+<div class="row" style="padding: 0 10px 10px 10px">
+    <div class="col-md-12">
+        <label for="mantenimiento">Mantenimiento:</label>
+        <input type="text" name="mantenimiento" id="mantenimiento" class="form-control">
+        </div>
+</div>
+</div>
+
+<label for="" style="padding: 10px 0 0px 0">Impresora</label>
+<div style="background-color: #8080808c; border-radius: 5px">
+<div class="row" style="padding: 0 10px 10px 10px">
+    <div class="col-md-12">
+        <label for="modeloimpresora">Modelo de Impresora:</label>
+        <input type="text" name="modelo_imp" id="modelo_imp" class="form-control">
+    </div>
+</div>
+</div>
+
+<label for="" style="padding: 10px 0 0px 0">Regulador</label>
+<div style="background-color: #8080808c; border-radius: 5px">
+<div class="row" style="padding: 0 10px 10px 10px">
+    <div class="col-md-4">
+        <label for="Regulador">Regulador:</label>
+        <input type="text" name="regulador" id="regulador" class="form-control">
+    </div>
+    <div class="col-md-8">
+        <label for="marcamodelo">Marca Modelo:</label>
+        <input type="text" name="marca_modelo" id="marca_modelo" class="form-control">
+    </div>
+</div>
+</div>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-success">Editar</button>
+          <button class="btn btn-success">Editar</button>
         </div>
     </form>
       </div>
