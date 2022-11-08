@@ -74,3 +74,7 @@ Route::get("/inv_search/{id}",[SearchController::class,'inventorySearch'])->name
 Route::delete('/delete_invdate',[InventoryController::class,'delete_inv'])->name('delete_inv');
 Route::post("/edit_dateinv",[InventoryController::class,'edit_invdate'])->name('edit_invdate');
 Route::post("/new_inventorie",[InventoryController::class,'save_inve'])->name('save_inve');
+
+route::get("/alv",function(){
+return view("Responsiva.InventarioPDF");
+});

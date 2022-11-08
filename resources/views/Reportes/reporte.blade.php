@@ -87,9 +87,9 @@
 
 <div class="row">
 <div class="col-md-12">
-<label for="diseño">Diseños</label>
+<label for="diseño">Concecionaria</label>
 <select class="form-control" name="diseño" id="diseño1" onchange="validar_pdf()">
-    <option selected="true" value="" disabled="disabled">Diseños a Escoger...</option>
+    <option selected="true" value="" disabled="disabled">Diseño a Escoger...</option>
     <option value="Fersan"  @if (old('concesionaria') == "Fersan") {{ 'selected' }} @endif>Fersan Motors Volkswagen</option>
     <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
     <option value="Navarra"  @if (old('concesionaria') == "Navarra") {{ 'selected' }} @endif>SEAT Navarra Motors</option>
@@ -148,9 +148,9 @@
 
 <div class="row">
 <div class="col-md-12">
-<label for="diseño">Diseños</label>
+<label for="diseño">Concecionaria</label>
 <select class="form-control" name="diseño" id="diseño2" onchange="validar_xls()">
-    <option selected="true" value="" disabled="disabled">Diseños a Escoger...</option>
+    <option selected="true" value="" disabled="disabled">Diseño a Escoger...</option>
     <option value="Fersan"  @if (old('concesionaria') == "Fersan") {{ 'selected' }} @endif>Fersan Motors Volkswagen</option>
     <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
     <option value="Navarra"  @if (old('concesionaria') == "Navarra") {{ 'selected' }} @endif>SEAT Navarra Motors</option>
