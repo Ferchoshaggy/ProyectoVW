@@ -54,8 +54,18 @@
 </div>
 @endif
 
+@if(Session::get('message')== "Registro Guardado con Exito")
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 @endif
 
+@endif
+
+<button class="btn btn-outline-info" data-toggle="modal" data-target="#ModalNew">Agregar Registro</button>
 <button class="btn btn-outline-warning" data-toggle="modal" data-target="#ModalCarga">Importar Excel</button>
 <br><br>
 
@@ -196,7 +206,6 @@
           </button>
         </div>
         <div class="modal-body">
-
 <div class="row">
 <div class="col-md-6">
 <div style="padding: 40px; text-align:center;">
@@ -233,6 +242,283 @@
     </div>
   </div>
 
+  <!-- Modal de agregar-->
+<div class="modal fade" id="ModalNew" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Registro</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{Route('save_inve')}}" method="POST">
+            @csrf
+        <div class="modal-body">
+
+            <label for="">Datos Personales</label>
+            <div style="background-color: #8080808c; border-radius: 5px" >
+
+            <div class="row" style="padding: 0 10px 0 10px">
+            <div class="col-md-6">
+                <label for="Nombre">Nombre de Usuario:</label>
+                <input type="text" name="nombre_user" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="puesto">Puesto:</label>
+                <input type="text" name="puesto" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="depa">Departamento:</label>
+                <input type="text" name="departamento" class="form-control">
+            </div>
+            </div>
+
+            <div class="row" style="padding: 0 10px 0 10px">
+                <div class="col-md-6">
+                    <label for="I-Portal">I-Portal:</label>
+                    <input type="text" name="iportal" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="correodeplanta">Correo de Planta:</label>
+                        <input type="text" name="correo_plant" class="form-control">
+                    </div>
+            </div>
+
+            <div class="row" style="padding: 0 10px 10px 10px">
+                <div class="col-md-5">
+                    <label for="correoinstitucional">Correo Institucional:</label>
+                    <input type="text" name="correo_inst" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="usuariogds">Usuario de GDS:</label>
+                    <input type="text" name="user_gds" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="usuariored">Usuario de Red:</label>
+                    <input type="text" name="usuario_red" class="form-control">
+                </div>
+            </div>
+            </div>
+
+            <label for="" style="padding: 10px 0 0px 0">Equipo</label>
+            <div style="background-color: #8080808c; border-radius: 5px">
+            <div class="row" style="padding: 0 10px 0px 10px">
+                <div class="col-md-4">
+                    <label for="cpulaptop">Cpu o Laptop:</label>
+                    <input type="text" name="cpu_lap" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="marca_cpu">Marca:</label>
+                        <input type="text" name="marca_cpu" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="modelo cpu">Modelo:</label>
+                        <input type="text" name="modelo_cpu" class="form-control">
+                        </div>
+            </div>
+
+            <div class="row" style="padding: 0 10px 10px 10px">
+                <div class="col-md-12">
+                    <label for="serie">No.de Serie:</label>
+                    <input type="text" name="no_serie" class="form-control">
+                </div>
+            </div>
+            </div>
+
+            <label for="" style="padding: 10px 0 0px 0">Caracteristicas del equipo</label>
+            <div style="background-color: #8080808c; border-radius: 5px">
+            <div class="row" style="padding: 0 10px 0 10px">
+
+                <div class="col-md-4">
+                    <label for="procesador">Procesador:</label>
+                    <input type="text" name="procesador" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="ghz">GHZ:</label>
+                    <input type="text" name="ghz" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="disco">Disco:</label>
+                    <input type="text" name="disco" class="form-control">
+                    </div>
+            </div>
+
+            <div class="row" style="padding: 0 10px 0 10px">
+                <div class="col-md-3">
+                    <label for="memoria ram">Memoria RAM:</label>
+                    <input type="text" name="memo_ram" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="Sistema Operativo">Sistema Operativo:</label>
+                    <input type="text" name="sistema_op" class="form-control">
+                </div>
+                <div class="col-md-5">
+                    <label for="programasinstalados">Programas Instalados:</label>
+                    <input type="text" name="pro_inst" class="form-control">
+                </div>
+            </div>
+
+            <div class="row" style="padding: 0 10px 0 10px">
+                <div class="col-md-4">
+                    <label for="vnc">VNC:</label>
+                    <input type="text" name="vnc" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="adobe">Adobe:</label>
+                    <input type="text" name="adobe" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="gds">GDS:</label>
+                        <input type="text" name="gds" class="form-control">
+                    </div>
+            </div>
+
+            <div class="row" style="padding: 0 10px 10px 10px">
+                <div class="col-md-6">
+                    <label for="Antivirus">Antivirus:</label>
+                    <input type="text" name="antivirus" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="office">Office:</label>
+                    <input type="text" name="office" class="form-control">
+                </div>
+            </div>
+            </div>
+
+            <label for="" style="padding: 10px 0 0px 0">Monitor(si cuenta con uno)</label>
+            <div style="background-color: #8080808c; border-radius: 5px">
+            <div class="row" style="padding: 0 10px 10px 10px">
+                <div class="col-md-4">
+                    <label for="monitor">Monitor:</label>
+                    <input type="text" name="monitor" class="form-control">
+                </div>
+                <div class="col-md-4">
+                <label for="modelo cpu">Marca:</label>
+                <input type="text" name="monitor_marca" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="modelomonitor">Modelo:</label>
+                    <input type="text" name="monitor_modelo" class="form-control">
+                </div>
+            </div>
+            </div>
+
+            <label for="" style="padding: 10px 0 0px 0">Informacion Adicional</label>
+            <div style="background-color: #8080808c; border-radius: 5px">
+
+            <div class="row" style="padding: 0 10px 0 10px">
+                <div class="col-md-4">
+                    <label for="fechacompra">Fecha de Compra:</label>
+                    <input type="text" name="fec_compra" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="factura">Factura:</label>
+                        <input type="text" name="factura" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="garantia">Garantia:</label>
+                        <input type="text" name="garantia" class="form-control">
+                    </div>
+            </div>
+
+            <div class="row" style="padding: 0 10px 0 10px">
+                <div class="col-md-6">
+                    <label for="adicional">Adicional:</label>
+                    <input type="text" name="adicional" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="nomenclatura">Nomenclatura:</label>
+                    <input type="text" name="nomenclatura" class="form-control">
+                </div>
+            </div>
+
+            <div class="row" style="padding: 0 10px 0 10px">
+                <div class="col-md-3">
+                    <label for="portaldistribuidores">Portal de Distribuidores:</label>
+                    <input type="text" name="portal_dist" class="form-control">
+                </div>
+                <div class="col-md-3">
+                <label for="geko">GEKO:</label>
+                <input type="text" name="geko" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="claveTelefonica">Clave Telefonica:</label>
+                    <input type="text" name="clave_tel" class="form-control">
+                </div>
+            </div>
+
+            <div class="row" style="padding: 0 10px 0 10px">
+                <div class="col-md-6">
+                    <label for="ip">IP:</label>
+                    <input type="text" name="ip" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="sif">SIF:</label>
+                    <input type="text" name="sif" class="form-control">
+                </div>
+                <div class="col-md-3">
+                <label for="POC">POC:</label>
+                <input type="text" name="poc" class="form-control">
+                </div>
+            </div>
+
+            <div class="row" style="padding: 0 10px 0 10px">
+                <div class="col-md-4">
+                    <label for="nadcon">NADCON:</label>
+                    <input type="text" name="nadcon" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="saga">SAGA:</label>
+                    <input type="text" name="saga" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="grupofortinet">Grupo Fortinet:</label>
+                    <input type="text" name="grup_forti" class="form-control">
+                </div>
+            </div>
+
+            <div class="row" style="padding: 0 10px 10px 10px">
+                <div class="col-md-12">
+                    <label for="mantenimiento">Mantenimiento:</label>
+                    <input type="text" name="mantenimiento" class="form-control">
+                    </div>
+            </div>
+            </div>
+
+            <label for="" style="padding: 10px 0 0px 0">Impresora</label>
+            <div style="background-color: #8080808c; border-radius: 5px">
+            <div class="row" style="padding: 0 10px 10px 10px">
+                <div class="col-md-12">
+                    <label for="modeloimpresora">Modelo de Impresora:</label>
+                    <input type="text" name="modelo_imp" class="form-control">
+                </div>
+            </div>
+            </div>
+
+            <label for="" style="padding: 10px 0 0px 0">Regulador</label>
+            <div style="background-color: #8080808c; border-radius: 5px">
+            <div class="row" style="padding: 0 10px 10px 10px">
+                <div class="col-md-4">
+                    <label for="Regulador">Regulador:</label>
+                    <input type="text" name="regulador" class="form-control">
+                </div>
+                <div class="col-md-8">
+                    <label for="marcamodelo">Marca Modelo:</label>
+                    <input type="text" name="marca_modelo" class="form-control">
+                </div>
+            </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button class="btn btn-success">Guardar</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
 
 <!-- Modal de editar -->
 <div class="modal fade" id="editar_dato" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -774,50 +1060,50 @@ $.ajax({
     document.getElementById("marca_modelo").value=null;
   }else{
     document.getElementById("id_invE").value=datoinv.id;
-    document.getElementById("nombre_user").value=datoinv;
-    document.getElementById("puesto").value=null;
-    document.getElementById("departamento").value=null;
-    document.getElementById("marca_cpu").value=null;
-    document.getElementById("modelo_cpu").value=null;
-    document.getElementById("no_serie").value=null;
-    document.getElementById("procesador").value=null;
-    document.getElementById("ghz").value=null;
-    document.getElementById("disco").value=null;
-    document.getElementById("memo_ram").value=null;
-    document.getElementById("sistema_op").value=null;
-    document.getElementById("monitor").value=null;
-    document.getElementById("monitor_marca").value=null;
-    document.getElementById("monitor_modelo").value=null;
-    document.getElementById("adicional").value=null;
-    document.getElementById("nomenclatura").value=null;
-    document.getElementById("iportal").value=null;
-    document.getElementById("correo_plant").value=null;
-    document.getElementById("correo_inst").value=null;
-    document.getElementById("portal_dist").value=null;
-    document.getElementById("geko").value=null;
-    document.getElementById("clave_tel").value=null;
-    document.getElementById("ip").value=null;
-    document.getElementById("sif").value=null;
-    document.getElementById("poc").value=null;
-    document.getElementById("nadcon").value=null;
-    document.getElementById("saga").value=null;
-    document.getElementById("modelo_imp").value=null;
-    document.getElementById("fec_compra").value=null;
-    document.getElementById("factura").value=null;
-    document.getElementById("garantia").value=null;
-    document.getElementById("grup_forti").value=null;
-    document.getElementById("cpu_lap").value=null;
-    document.getElementById("usuario_red").value=null;
-    document.getElementById("pro_inst").value=null;
-    document.getElementById("vnc").value=null;
-    document.getElementById("adobe").value=null;
-    document.getElementById("gds").value=null;
-    document.getElementById("antivirus").value=null;
-    document.getElementById("office").value=null;
-    document.getElementById("mantenimiento").value=null;
-    document.getElementById("user_gds").value=null;
-    document.getElementById("regulador").value=null;
-    document.getElementById("marca_modelo").value=null;
+    document.getElementById("nombre_user").value=datoinv.Nombre_de_Usuario;
+    document.getElementById("puesto").value=datoinv.Puesto;
+    document.getElementById("departamento").value=datoinv.Departamento;
+    document.getElementById("marca_cpu").value=datoinv.Marca;
+    document.getElementById("modelo_cpu").value=datoinv.Modelo;
+    document.getElementById("no_serie").value=datoinv.No_de_Serie;
+    document.getElementById("procesador").value=datoinv.Procesador;
+    document.getElementById("ghz").value=datoinv.Ghz;
+    document.getElementById("disco").value=datoinv.Disco;
+    document.getElementById("memo_ram").value=datoinv.Mem_Ram;
+    document.getElementById("sistema_op").value=datoinv.Sistema_Operativo;
+    document.getElementById("monitor").value=datoinv.Monitor;
+    document.getElementById("monitor_marca").value=datoinv.Marca_Monitor;
+    document.getElementById("monitor_modelo").value=datoinv.Modelo_Monitor;
+    document.getElementById("adicional").value=datoinv.ADICIONAL;
+    document.getElementById("nomenclatura").value=datoinv.Nomenclatura;
+    document.getElementById("iportal").value=datoinv.I_Portal;
+    document.getElementById("correo_plant").value=datoinv.Correo_de_Planta;
+    document.getElementById("correo_inst").value=datoinv.Correo_Institucional;
+    document.getElementById("portal_dist").value=datoinv.Portal_de_Distribuidores;
+    document.getElementById("geko").value=datoinv.GEKO;
+    document.getElementById("clave_tel").value=datoinv.Clave_Telefonica;
+    document.getElementById("ip").value=datoinv.IP;
+    document.getElementById("sif").value=datoinv.SIF;
+    document.getElementById("poc").value=datoinv.POC;
+    document.getElementById("nadcon").value=datoinv.NADCON;
+    document.getElementById("saga").value=datoinv.SAGA;
+    document.getElementById("modelo_imp").value=datoinv.Modelo_de_impresora;
+    document.getElementById("fec_compra").value=datoinv.FECHA_COMPRA;
+    document.getElementById("factura").value=datoinv.FACTURA;
+    document.getElementById("garantia").value=datoinv.GARANTIA;
+    document.getElementById("grup_forti").value=datoinv.GRUPO_FORTINET;
+    document.getElementById("cpu_lap").value=datoinv.CPU_O_LAPTOP;
+    document.getElementById("usuario_red").value=datoinv.USUARIO_DE_RED;
+    document.getElementById("pro_inst").value=datoinv.Programas_Instalados;
+    document.getElementById("vnc").value=datoinv.VNC;
+    document.getElementById("adobe").value=datoinv.Adobe;
+    document.getElementById("gds").value=datoinv.GDS;
+    document.getElementById("antivirus").value=datoinv.Antivirus;
+    document.getElementById("office").value=datoinv.OFFICE;
+    document.getElementById("mantenimiento").value=datoinv.MANTENIMIENTO;
+    document.getElementById("user_gds").value=datoinv.USUARIO_DE_GDS;
+    document.getElementById("regulador").value=datoinv.REGULADOR;
+    document.getElementById("marca_modelo").value=datoinv.MARCA_MODELO;
   }
 
 });

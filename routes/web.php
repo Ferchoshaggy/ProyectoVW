@@ -8,6 +8,7 @@ use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\InventoryController;
+use App\Imports\InventoryImport;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -72,3 +73,4 @@ Route::get('/download_plantilla',[InventoryController::class,"descarga_plantilla
 Route::get("/inv_search/{id}",[SearchController::class,'inventorySearch'])->name('inventorySearch');
 Route::delete('/delete_invdate',[InventoryController::class,'delete_inv'])->name('delete_inv');
 Route::post("/edit_dateinv",[InventoryController::class,'edit_invdate'])->name('edit_invdate');
+Route::post("/new_inventorie",[InventoryController::class,'save_inve'])->name('save_inve');
