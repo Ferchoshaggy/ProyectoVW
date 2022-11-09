@@ -6,6 +6,7 @@ use App\Imports\InventoryImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 
 class InventoryController extends Controller
@@ -160,6 +161,14 @@ try{
 }catch(\Throwable $th){
 
 }
+}
+
+public function responsive_pdf(Request $request){
+$fecha=date('d-m-y');
+    $diseno=$request['diseño'];
+    $inventario=DB::table('inventories')->where("id",$request['id_userI'])->first();
+    $pdf = PDF::loadView('Responsiva.InventarioPDF',compact('inventario','diseno','fecha'))->setPaper(array(0,0,1910,2450));
+    return $pdf->stream("PDF_".$diseno.'.pdf');
 }
 
 

@@ -189,7 +189,7 @@
     Eliminar
   </button>
   <br>
-  <button class="btn btn-info form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#pdf_dato"  >
+  <button class="btn btn-info form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#pdf_dato" onclick="datoinv_pdf();" >
     <i class="fas fa-file-pdf-o"></i>
     Generar Responsiba
   </button>
@@ -241,6 +241,41 @@
       </div>
     </div>
   </div>
+
+<!-- Modal responsiva-->
+<div class="modal fade" id="pdf_dato" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Generar Responsiva</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{Route('responsive_pdf')}}" method="POST">
+        @csrf
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+            <label for="diseño">Concecionaria</label>
+            <select class="form-control" name="diseño" id="diseño1" onchange="validar_pdf()">
+                <option selected="true" value="" disabled="disabled">Diseño a Escoger...</option>
+                <option value="Fersan"  @if (old('concesionaria') == "Fersan") {{ 'selected' }} @endif>Fersan Motors Volkswagen</option>
+                <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
+                <option value="Navarra"  @if (old('concesionaria') == "Navarra") {{ 'selected' }} @endif>SEAT Navarra Motors</option>
+            </select>
+            </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <input type="hidden" id="id_userI" name="id_userI">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button class="btn btn-primary" id="viewPDF" disabled>Generar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
 
   <!-- Modal de agregar-->
 <div class="modal fade" id="ModalNew" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1004,6 +1039,24 @@ $.ajax({
 });
 }
 
+function datoinv_pdf(){
+
+$.ajax({
+  url: "{{url('/inv_search')}}"+'/'+id_dato,
+  dataType: "json",
+  //context: document.body
+}).done(function(datoinv) {
+
+  if(datoinv==null){
+    document.getElementById("id_userI").value=null;
+  }else{
+    document.getElementById("id_userI").value=datoinv.id;
+
+  }
+
+});
+}
+
 function datoinv_update(){
 
 $.ajax({
@@ -1107,6 +1160,16 @@ $.ajax({
   }
 
 });
+}
+
+function validar_pdf(){
+let diseño=document.getElementById('diseño1').value;
+if(diseño){
+    document.getElementById('viewPDF').disabled=false;
+}else{
+    document.getElementById('viewPDF').disabled=true;
+}
+
 }
 </script>
 
