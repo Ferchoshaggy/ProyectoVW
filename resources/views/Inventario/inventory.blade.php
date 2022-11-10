@@ -252,7 +252,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{Route('responsive_pdf')}}" method="POST">
+      <form action="{{Route('responsive_pdf')}}" method="POST" target="_blank">
         @csrf
       <div class="modal-body">
         <div class="row">
