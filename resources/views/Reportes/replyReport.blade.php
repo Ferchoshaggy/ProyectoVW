@@ -5,7 +5,6 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
 
-
 @section('content')
 
 <br>
@@ -25,7 +24,6 @@
 @endif
 
 @endif
-
 
 <div>
     <div style="display: flex;"><img src="{{asset('img/2tickets.png')}}" alt="tickets" height="50px" width="55px"><h5>{{$ticket->codigo}}</h5></div>
@@ -289,7 +287,6 @@ textarea {
   cursor: pointer;
 
 }
-
 .file-input > .button {
   display: inline-block;
   cursor: pointer;
@@ -321,7 +318,6 @@ textarea {
     border-left: black 1px dashed;
     border-right: black 1px dashed;
 }
-
 
 </style>
 @stop

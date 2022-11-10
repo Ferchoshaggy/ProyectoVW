@@ -116,9 +116,7 @@
     </div>
 </div>
 
-
 <!-- opcion 3 a elegir de hardware -->
-
 <div id="op3h" style="display: none">
     <hr>
     <label for="Hardware"><i class="fas fa-microchip"></i>Hardware</label><br>
@@ -142,7 +140,6 @@
 </div>
 
 <!-- opcion 3 a elegir de software -->
-
 <div id="op3s" style="display:none">
     <hr>
     <label for="Software"><i class="fas fa-microchip"></i>Software</label><br>
@@ -182,7 +179,6 @@
 
 
 <!-- opcion 4 a elegir de app de planta -->
-
 <div id="op4a" style="display:none">
     <hr>
     <label for="ADP"><i class="fas fa-car"></i>Aplicaciones de Planta</label><br>
@@ -206,7 +202,6 @@
 </div>
 
 <!-- opcion 4 a elegir otros-->
-
 <div id="op4o" style="display:none">
     <hr>
     <label for="Apoyo Tecnico"><i class="fas fa-cog"></i>Otros</label><br>
@@ -329,13 +324,10 @@ value="{{ Auth::user()->id}}">
     </div>
   </div>
 
-
     </div>
-
 </form>
     </div>
 </div>
-
 
 @stop
 
@@ -520,7 +512,6 @@ if(tipo && prioridad && tema && descripcion){
 }else{
     document.getElementById('btnsave').disabled=true;
 }
-
 
 }
 
@@ -782,6 +773,5 @@ document.getElementById("demo").innerHTML = op1 +" > "+op2;
 }
 
 </script>
-
 
 @stop

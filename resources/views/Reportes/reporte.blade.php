@@ -181,8 +181,6 @@
       </div>
     </div>
 
-
-
 <div class="tab-content" id="myTabContent">
 <div class="tab-pane fade show active" id="tableT" role="tabpanel" aria-labelledby="table-todo">
 
@@ -263,7 +261,6 @@
           @endforeach
         </tbody>
       </table>
-
 </div>
 </div>
 
@@ -344,7 +341,6 @@
 
 </div>
 </div>
-
 
 <!--menu de opciones de la tabla-->
 <div id="menu_opciones" class="visible_off " style=" padding: 25px; background-color: #6e82c2bd;">
@@ -613,10 +609,8 @@ if(fecmin && fecmax && diseño && filtro){
 }else{
     document.getElementById('viewXLS').disabled=true;
 }
-
 }
 
 </script>
-
 
 @stop
