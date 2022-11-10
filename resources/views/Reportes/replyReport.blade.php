@@ -264,7 +264,6 @@ textarea {
 }
 
 /* estilos para el file*/
-
 .file-input {
   text-align: left;
   background: #fff;

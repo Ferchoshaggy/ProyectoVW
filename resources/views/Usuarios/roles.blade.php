@@ -84,7 +84,6 @@
             @csrf
         <div class="modal-body">
 
-
 <div class="row">
     <div class="col-md-12">
     <label for="Nombre">Nombre Completo</label>
@@ -190,7 +189,6 @@
     </div>
   </div>
 
-
 <!-- Desplegar tabla de usuarios con Table Boostrapt -->
         <div class="table-responsive">
             <table class="table" style="width: 100%">
@@ -222,7 +220,6 @@
     </div>
 </div>
 
-
   <!--menu de opciones de la tabla-->
   <div id="menu_opciones" class="visible_off " style=" padding: 25px; background-color: #6e82c2bd;">
 
@@ -245,7 +242,6 @@
     Resetear Password
   </button>
 </div>
-
 
 <!-- modal de eliminar usuario-->
 <div class="modal fade" id="eliminar_usuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -359,7 +355,6 @@
         </select>
     </div>
      </div>
-
               </div>
               <div class="modal-footer">
                   <input type="hidden" name="id_user_edit" id="id_user_edit">
@@ -413,7 +408,6 @@
       }
 
 /*Estilo para el cuadro de opciones*/
-
       .marca{
         transition: 1s;
     }
@@ -443,12 +437,10 @@
     .select2-selection__arrow {
           height: 34px !important;
     }
-
     .select2-selection__rendered{
         margin-top: -5px !important;
     }
   </style>
-
 
 @stop
 
@@ -475,7 +467,6 @@ $('.js-example-basic-single').select2({
           "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
        }
     });
-
   });
 
   //funcion para mostrar la contraseña con un boton
@@ -487,8 +478,7 @@ $('.js-example-basic-single').select2({
 		}else{
 			cambio.type = "password";
 			$('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
-		}
-	}
+		}}
 
     function mostrarPassword2(){
 		var cambio = document.getElementById("Rcontraseña");
@@ -593,7 +583,6 @@ $(".alert").fadeTo(2000, 500).slideUp(500, function(){
     $(".alert").slideUp(500);
 });
 
-
 //cuadro de opciones
 var id_user=null;
     function pasar_id($id_tr) {
@@ -635,7 +624,6 @@ $.ajax({
   }
 
 });
-
 }
 
 function cambiar_user(){
@@ -647,13 +635,9 @@ $.ajax({
 }).done(function(datosUser) {
 
   if(datosUser==null){
-
     document.getElementById("id_user_edit").value=null;
-
   }else{
-
     document.getElementById("id_user_edit").value=datosUser.id;
-
   }
 
 });
@@ -712,8 +696,6 @@ if(contrasIgual){
  }else{
         document.getElementById('passrest').disabled=true;
     }
-
-
 }
 
 //conseguir el correo
@@ -721,7 +703,6 @@ if(contrasIgual){
 document.getElementById("correo2").value=$('#correo option:selected').text();
 
 })
-
 
   </script>
 @stop

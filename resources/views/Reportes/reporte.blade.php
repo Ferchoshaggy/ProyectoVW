@@ -120,7 +120,6 @@
       </div>
     </div>
 
-
  <!-- Modal Descargar Excel-->
  <div class="modal fade" id="modal_xls" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -299,7 +298,6 @@
                   @endforeach
                 </tbody>
               </table>
-
         </div>
 </div>
 
@@ -495,8 +493,6 @@ align-items: center;
 <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
 
-
-
 <script type="text/javascript">
 
 //funcion de la tabla de boostrap tenga paginador y buscador
@@ -550,14 +546,12 @@ $.ajax({
     document.getElementById("labeleliminar").innerHTML=datosTicket.codigo;
     document.getElementById("labeltema").innerHTML=datosTicket.tema;
     document.getElementById("id_ticket").value=datosTicket.id;
-
   }
 
 });
 }
 
 function ver_tickte(){
-
  location.href ="{{url('/replyreport')}}/"+id_ticket;
 }
 
@@ -580,7 +574,6 @@ function cambiar_ticket(){
     document.getElementById("id_ticket2").value=datosTicket.id;
 
   }
-
 });
 }
 
@@ -595,7 +588,6 @@ if(fecmin && fecmax && diseño && filtro){
 }else{
     document.getElementById('viewPDF').disabled=true;
 }
-
 }
 
 function validar_xls(){

@@ -13,7 +13,6 @@
     <center><h2>Editar Perfil</h2></center>
     <div class="card-body">
 
-
 <!--alerta de Guardado con exito -->
 
 @if (Session::has('message'))
@@ -37,17 +36,13 @@
 </div>
 @endif
 
-
 @endif
-
-
 
 <form action="{{Route('user_update')}}" method="POST" enctype="multipart/form-data">
 @csrf
 @foreach ($usuarios as $usuario)
 @foreach ($tipos as $tipo)
 @if ($usuario->tipo_user==$tipo->id)
-
 
     <div class="col-md-12" style="text-align: center; margin-bottom: 10px;">
 
@@ -143,7 +138,6 @@
 
 </div>
 
-
 <div id="conf" style="display: none">
     <h5 style="color: red">Las contraseñas no Coinciden</h5>
 </div>
@@ -152,11 +146,8 @@
     <h5 style="color: green">Las contraseñas Coinciden</h5>
 </div>
 
-
-
 <br>
 <button type="submit" id="actualizar" class="btn btn-success form-control" >Actualizar</button>
-
     </div>
 
 </form>
@@ -174,7 +165,6 @@
     input[type="file"]{
           background: white;
           outline: none;
-
       }
       ::-webkit-file-upload-button{
         margin-top: -20px;
@@ -242,13 +232,11 @@ div.panel {
     transition: 0.6s ease-in-out;
     opacity: 0;
 }
-
 div.panel.show {
     opacity: 1;
     max-height: 500px;
 }
   </style>
-
 
 @stop
 
@@ -265,8 +253,7 @@ for (i = 0; i < acc.length; i++) {
         this.classList.toggle("active");
         this.nextElementSibling.classList.toggle("show");
   }
-}
-}
+}}
 
 //jquery para desvanecer el mensage
 $(".alert").fadeTo(2000, 500).slideUp(500, function(){
@@ -302,7 +289,6 @@ function passVerficar(){
        document.getElementById('actualizar').disabled=true;
 
        if(PN && PR){
-
 
 if(PN != PR){
 document.getElementById("cont").style.display="none";

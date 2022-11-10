@@ -177,7 +177,6 @@
     </div>
 </div>
 
-
 <!-- opcion 4 a elegir de app de planta -->
 <div id="op4a" style="display:none">
     <hr>
@@ -221,7 +220,6 @@
             Crear Solicitud
           </button>
 
-
 <!-- Modal Nueva solicitud -->
 <div class="modal fade" id="Solicitud" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
@@ -258,7 +256,6 @@
 </div>
             <div class="row">
 @foreach ($usuario as $user)
-
 
 <input class="form-control" type="hidden" name="idPerfil"
 value="{{ Auth::user()->id}}">
@@ -328,7 +325,6 @@ value="{{ Auth::user()->id}}">
 </form>
     </div>
 </div>
-
 @stop
 
 @section('css')
@@ -364,7 +360,6 @@ input[type="radio"] {
 }
 
 .caja{
-
     margin: 0 10px;
     display: flex;
     align-items: center;
@@ -372,7 +367,6 @@ input[type="radio"] {
 }
 
 .op{
-
     display: flex;
     align-items:center;
     justify-content: center;
@@ -395,8 +389,6 @@ textarea {
   }
 }
 /*para el inputfile*/
-
-
 .file-input {
   text-align: left;
   background: #fff;
@@ -405,7 +397,6 @@ textarea {
   position: relative;
   border-radius: 3px ;
   border: 0.4px solid rgba(0, 0, 0, 0.205);
-
 }
 
 .file-input > [type='file'] {
@@ -417,7 +408,6 @@ textarea {
   opacity: 0;
   z-index: 10;
   cursor: pointer;
-
 }
 
 .file-input > .button {
@@ -427,7 +417,6 @@ textarea {
   padding: 8px 16px;
   border-radius: 2px;
   margin-right: 8px;
-
 }
 
 .file-input:hover > .button {
@@ -439,19 +428,15 @@ textarea {
   color: #333;
   white-space: nowrap;
   opacity: .3;
-
 }
 
 .file-input.-chosen > .label {
   opacity: 1;
 }
-
 </style>
 
 @stop
-
 @section('js')
-
 
 <script>
 
@@ -476,7 +461,6 @@ function customInput (el) {
   }
 }
 
-
     //para el textarea sea responsiva
     $('textarea').on('change keydown paste', function(e){
     var text = $(this).val();
@@ -486,7 +470,6 @@ function customInput (el) {
     }
     $(this).attr('rows', lineBreaksCount+1);
 });
-
 
     //jquery para desvanecer el mensage
 $(".alert").fadeTo(2000, 500).slideUp(500, function(){
@@ -512,7 +495,6 @@ if(tipo && prioridad && tema && descripcion){
 }else{
     document.getElementById('btnsave').disabled=true;
 }
-
 }
 
    function MostrarOP2(dato){
@@ -771,7 +753,6 @@ document.getElementById("demo").innerHTML = op1 +" > "+op2+" > "+op3.value+ " > 
 document.getElementById("demo").innerHTML = op1 +" > "+op2;
 }
 }
-
 </script>
 
 @stop

@@ -8,8 +8,6 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
-
 @section('content')
 <br>
 <div class="card">
@@ -212,7 +210,6 @@
     <a href="{{Route('descarga_plantilla')}}" class="btn btn-outline-info form-control">Plantilla</a>
 </div>
 </div>
-
 
 <div class="col-md-6">
     <div class="wrapper" style="padding: 40px; text-align:center;">
@@ -866,7 +863,6 @@
     </div>
   </div>
 
-
 </div>
 </div>
 
@@ -1051,7 +1047,6 @@ $.ajax({
     document.getElementById("id_userI").value=null;
   }else{
     document.getElementById("id_userI").value=datoinv.id;
-
   }
 
 });
