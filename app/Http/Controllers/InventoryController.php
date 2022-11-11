@@ -95,6 +95,12 @@ DB::table('inventories')->insert([
     "USUARIO_DE_GDS"=>$request['user_gds'] ?? "N/A",
     "REGULADOR"=>$request['regulador'] ?? "N/A",
     "MARCA_MODELO"=>$request['marca_modelo'] ?? "N/A",
+    "teclado_serie"=>$request['tec_ser'] ?? "N/A",
+    "teclado_marca"=>$request['tec_mar'] ?? "N/A",
+    "teclado_modelo"=>$request['tec_mod'] ?? "N/A",
+    "raton_serie"=>$request['rat_ser'] ?? "N/A",
+    "raton_marca"=>$request['rat_mar'] ?? "N/A",
+    "raton_modelo"=>$request['rat_mod'] ?? "N/A",
 ]);
 
 return redirect()->back()->with(['message' => "Registro Guardado con Exito", 'color' => 'success']);
@@ -153,7 +159,12 @@ try{
         "USUARIO_DE_GDS"=>$request['user_gds'] ?? "N/A",
         "REGULADOR"=>$request['regulador'] ?? "N/A",
         "MARCA_MODELO"=>$request['marca_modelo'] ?? "N/A",
-
+        "teclado_serie"=>$request['tec_ser'] ?? "N/A",
+        "teclado_marca"=>$request['tec_mar'] ?? "N/A",
+        "teclado_modelo"=>$request['tec_mod'] ?? "N/A",
+        "raton_serie"=>$request['rat_ser'] ?? "N/A",
+        "raton_marca"=>$request['rat_mar'] ?? "N/A",
+        "raton_modelo"=>$request['rat_mod'] ?? "N/A",
         ]);
 
  return redirect()->back()->with(['message' => "Registro Editado con Exito", 'color' => 'success']);

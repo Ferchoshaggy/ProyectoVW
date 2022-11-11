@@ -66,7 +66,13 @@ use Importable;
            'MANTENIMIENTO' => $row["mantenimiento"] ?? "N/A",
            'USUARIO_DE_GDS' => $row["usuario_de_gds"] ?? "N/A",
            'REGULADOR' => $row["regulador"] ?? "N/A",
-           'MARCA_MODELO' => $row["marca_modelo"] ?? "N/A"
+           'MARCA_MODELO' => $row["marca_modelo"] ?? "N/A",
+           'teclado_serie' => $row["teclado_serie"] ?? "N/A",
+           'teclado_marca' => $row["teclado_marca"] ?? "N/A",
+           'teclado_modelo' => $row["teclado_modelo"] ?? "N/A",
+           'raton_serie' => $row["raton_serie"] ?? "N/A",
+           'raton_marca' => $row["raton_marca"] ?? "N/A",
+           'raton_modelo' => $row["raton_modelo"] ?? "N/A",
         ]);
     }
 }

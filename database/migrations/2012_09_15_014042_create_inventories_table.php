@@ -59,6 +59,12 @@ class CreateInventoriesTable extends Migration
             $table->string('USUARIO_DE_GDS');
             $table->string('REGULADOR');
             $table->string('MARCA_MODELO');
+            $table->string('teclado_serie');
+            $table->string('teclado_marca');
+            $table->string('teclado_modelo');
+            $table->string('raton_serie');
+            $table->string('raton_marca');
+            $table->string('raton_modelo');
             $table->timestamps();
         });
     }

@@ -53,5 +53,11 @@ class inventory extends Model
     'USUARIO_DE_GDS',
     'REGULADOR' ,
     'MARCA_MODELO',
+    'teclado_serie',
+    'teclado_marca',
+    'teclado_modelo',
+    'raton_serie',
+    'raton_marca',
+    'raton_modelo',
 ];
 }

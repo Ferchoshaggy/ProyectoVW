@@ -77,18 +77,18 @@
             <td class="tit" colspan="4" style="width: auto;text-align: center;">Puesto</td>
         </tr>
         <tr>
-            <td colspan="4" style="width: auto;text-align: center;">nombre nombre apellido apellido</td>
-            <td rowspan="2" colspan="4" style="width: auto;text-align: center;">encargado de refacciones</td>
+            <td colspan="4" style="width: auto;text-align: center;">{{$inventario->Nombre_de_Usuario}}</td>
+            <td rowspan="2" colspan="4" style="width: auto;text-align: center;">{{$inventario->Puesto}}</td>
         </tr>
         <tr>
             <td class="tit" colspan="2" style="width: auto;">Departamento</td>
-            <td colspan="2" style="width: auto; text-align: center;">refacciones</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->Departamento}}</td>
         </tr>
         <tr>
             <td class="tit" colspan="8" style="width: auto; text-align: center;">Correo Electronico</td>
         </tr>
         <tr>
-            <td colspan="8" style="width: auto; text-align: center;">nombre.apellido@empresa-ixtapaluca.com.mx</td>
+            <td colspan="8" style="width: auto; text-align: center;">{{$inventario->Correo_Institucional}}</td>
         </tr>
         <tr>
             <td class="tit" colspan="8" style="width: auto;">Caracteristicas del Equipo</td>
@@ -101,48 +101,48 @@
         </tr>
         <tr>
             <td class="tit" colspan="2" style="width: auto;">CPU</td>
-            <td colspan="2" style="width: auto; text-align: center;">4CE7789HNBD</td>
-            <td colspan="2" style="width: auto; text-align: center;">HP</td>
-            <td colspan="2" style="width: auto; text-align: center;">HP 250 G4</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->No_de_Serie}}</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->Marca}}</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->Modelo}}</td>
         </tr>
         <tr>
             <td class="tit" colspan="2" style="width: auto;">Monitor</td>
-            <td colspan="2" style="width: auto; text-align: center;">N/A</td>
-            <td colspan="2" style="width: auto; text-align: center;">GHIA</td>
-            <td colspan="2" style="width: auto; text-align: center;">SO228G</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->Monitor}}</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->Marca_Monitor}}</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->Modelo_Monitor}}</td>
         </tr>
         <tr>
             <td class="tit" colspan="2" style="width: auto;">Teclado</td>
-            <td colspan="2" style="width: auto; text-align: center;">4CE7789HNBD</td>
-            <td colspan="2" style="width: auto; text-align: center;">HP</td>
-            <td colspan="2" style="width: auto; text-align: center;">HP 250 G4</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->teclado_serie}}</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->teclado_marca}}</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->teclado_modelo}}</td>
         </tr>
         <tr>
             <td class="tit" colspan="2" style="width: auto;">Raton</td>
-            <td colspan="2" style="width: auto; text-align: center;">4CE7789HNBD</td>
-            <td colspan="2" style="width: auto; text-align: center;">HP</td>
-            <td colspan="2" style="width: auto; text-align: center;">HP 250 G4</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->raton_serie}}</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->raton_marca}}</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->raton_modelo}}</td>
         </tr>
         <tr>
             <td class="tit" colspan="2" style="width: auto;">Impresora</td>
-            <td colspan="6" style="width: auto; text-align: center;">4CE7789HNBD</td>
+            <td colspan="6" style="width: auto; text-align: center;">{{$inventario->Modelo_de_impresora}}</td>
         </tr>
         <tr>
             <td class="tit" colspan="2" style="width: auto;">No-break o Regulador</td>
-            <td colspan="6" style="width: auto; text-align: center;">4CE7789HNBD</td>
+            <td colspan="6" style="width: auto; text-align: center;">{{$inventario->MARCA_MODELO}}</td>
         </tr>
         <tr>
             <td class="tit" colspan="2" style="width: auto;">Computadora Escritorio o Laptop</td>
-            <td colspan="6" style="width: auto; text-align: center;">Laptop</td>
+            <td colspan="6" style="width: auto; text-align: center;">{{$inventario->CPU_O_LAPTOP}}</td>
         </tr>
         <tr>
             <td class="tit" colspan="2" style="width: auto; text-align: center;">Procesador</td>
-            <td class="tit" style="width: auto; text-align: center;">Intel core i5</td>
-            <td class="tit" style="width: auto; text-align: center;">3.20ghz</td>
-            <td class="tit" style="width: auto; text-align: center;">Mem_ram</td>
-            <td class="tit" style="width: auto; text-align: center;">4 GB</td>
-            <td class="tit" style="width: auto; text-align: center;">H.D</td>
-            <td class="tit" style="width: auto; text-align: center;">1 TERA</td>
+            <td class="tit" style="width: auto; text-align: center;">{{$inventario->Procesador}}</td>
+            <td class="tit" style="width: auto; text-align: center;">{{$inventario->Ghz}}</td>
+            <td class="tit" style="width: auto; text-align: center;">Mem Ram</td>
+            <td class="tit" style="width: auto; text-align: center;">{{$inventario->Mem_Ram}}</td>
+            <td class="tit" style="width: auto; text-align: center;">H.D/SSD</td>
+            <td class="tit" style="width: auto; text-align: center;">{{$inventario->Disco}}</td>
         </tr>
         <tr>
             <td class="tit" colspan="2" style="width: auto; text-align: center;">Programas</td>
@@ -152,37 +152,37 @@
         </tr>
         <tr>
             <td colspan="2" style="width: auto; text-align: center;"></td>
-            <td colspan="2" style="width: auto; text-align: center;">Windows 10</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->Sistema_Operativo}}</td>
             <td colspan="2" style="width: auto; text-align: center;">IP</td>
-            <td colspan="2" style="width: auto; text-align: center;">192.100.100.0</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->IP}}</td>
         </tr>
         <tr>
-            <td colspan="2" style="width: auto; text-align: center;">VNC</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->VNC}}</td>
             <td colspan="2" style="width: auto; text-align: center;"></td>
-            <td colspan="2" style="width: auto; text-align: center;">Usuario</td>
-            <td colspan="2" style="width: auto; text-align: center;">alguien 2</td>
+            <td colspan="2" style="width: auto; text-align: center;">Usuario GDS</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->USUARIO_DE_GDS}}</td>
         </tr>
         <tr>
-            <td colspan="2" style="width: auto; text-align: center;">Acrobat</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->Adobe}}</td>
             <td colspan="2" style="width: auto; text-align: center;"></td>
-            <td colspan="2" style="width: auto; text-align: center;">Contraeña</td>
-            <td colspan="2" style="width: auto; text-align: center;">N/A</td>
+            <td colspan="2" style="width: auto; text-align: center;"></td>
+            <td colspan="2" style="width: auto; text-align: center;"></td>
         </tr>
         <tr>
-            <td colspan="2" style="width: auto; text-align: center;">GDS</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->GDS}}</td>
             <td colspan="2" style="width: auto; text-align: center;"></td>
             <td colspan="2" style="width: auto; text-align: center;">Telefono</td>
-            <td colspan="2" style="width: auto; text-align: center;">Avayaj128</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->Clave_Telefonica}}</td>
         </tr>
         <tr>
-            <td colspan="2" style="width: auto; text-align: center;">Windows defender</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->Antivirus}}</td>
             <td colspan="2" style="width: auto; text-align: center;"></td>
             <td colspan="2" style="width: auto; text-align: center;"></td>
             <td colspan="2" style="width: auto; text-align: center;"></td>
         </tr>
         <tr>
-            <td colspan="2" style="width: auto; text-align: center;">version de oficce</td>
-            <td colspan="2" style="width: auto; text-align: center;">microsoft office profesional plus 2016</td>
+            <td colspan="2" style="width: auto; text-align: center;">version de office</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->OFFICE}}</td>
             <td colspan="2" style="width: auto; text-align: center;"></td>
             <td colspan="2" style="width: auto; text-align: center;"></td>
         </tr>
@@ -190,11 +190,11 @@
             <td colspan="2" style="width: auto; text-align: center;"></td>
             <td colspan="2" style="width: auto; text-align: center;"></td>
             <td colspan="2" style="width: auto; text-align: center;">Factura</td>
-            <td colspan="2" style="width: auto; text-align: center;">Propia</td>
+            <td colspan="2" style="width: auto; text-align: center;">{{$inventario->FACTURA}}</td>
         </tr>
         <tr>
             <td class="tit" colspan="2" style="width: auto; text-align: center;">Observaciones</td>
-            <td class="tit" colspan="6" style="width: auto; text-align: center;"></td>
+            <td class="tit" colspan="6" style="width: auto; text-align: center;">{{$inventario->ADICIONAL}}</td>
         </tr>
         <tr>
      <th colspan="8" style="width: auto;font-size:19px">Me comprometo a cuidar la integridad y buen estado del

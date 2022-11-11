@@ -85,6 +85,12 @@
             <th style="text-align: center;">Monitor</th>
             <th style="text-align: center;">Marca</th>
             <th style="text-align: center;">Modelo</th>
+            <th style="text-align: center;">Teclado serie</th>
+            <th style="text-align: center;">Teclado Marca</th>
+            <th style="text-align: center;">Teclado modelo</th>
+            <th style="text-align: center;">raton serie</th>
+            <th style="text-align: center;">raton marca</th>
+            <th style="text-align: center;">raton modelo</th>
             <th style="text-align: center;">Adicional</th>
             <th style="text-align: center;">Nomenclatura</th>
             <th style="text-align: center;">I-Portal</th>
@@ -134,6 +140,12 @@
     <th style="text-align: center;">{{$dato->Monitor}}</th>
     <th style="text-align: center;">{{$dato->Marca_Monitor}}</th>
     <th style="text-align: center;">{{$dato->Modelo_Monitor}}</th>
+    <th style="text-align: center;">{{$dato->teclado_serie}}</th>
+    <th style="text-align: center;">{{$dato->teclado_marca}}</th>
+    <th style="text-align: center;">{{$dato->teclado_modelo}}</th>
+    <th style="text-align: center;">{{$dato->raton_serie}}</th>
+    <th style="text-align: center;">{{$dato->raton_marca}}</th>
+    <th style="text-align: center;">{{$dato->raton_modelo}}</th>
     <th style="text-align: center;">{{$dato->ADICIONAL}}</th>
     <th style="text-align: center;">{{$dato->Nomenclatura}}</th>
     <th style="text-align: center;">{{$dato->I_Portal}}</th>
@@ -356,6 +368,40 @@
                     <input type="text" name="no_serie" class="form-control">
                 </div>
             </div>
+            </div>
+
+            <label for="" style="padding: 10px 0 0px 0">Accesorios Equipo</label>
+            <div style="background-color: #8080808c; border-radius: 5px">
+            <div class="row" style="padding: 0 10px 0 10px">
+             <div class="col-md-4">
+                <label for="">Teclado Serie</label>
+                <input type="text" name="tec_ser" class="form-control">
+             </div>
+             <div class="col-md-4">
+                <label for="">Teclado Marca</label>
+                <input type="text" name="tec_mar" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label for="">Teclado Modelo</label>
+                <input type="text" name="tec_mod" class="form-control">
+            </div>
+            </div>
+
+            <div class="row" style="padding: 0 10px 10px 10px">
+                <div class="col-md-4">
+                <label for="">Raton Serie</label>
+                <input type="text" name="rat_ser" class="form-control">
+                </div>
+                <div class="col-md-4">
+                <label for="">Raton Marca</label>
+                <input type="text" name="rat_mar" class="form-control">
+               </div>
+               <div class="col-md-4">
+                <label for="">Raton Modelo</label>
+                <input type="text" name="rat_mod" class="form-control">
+               </div>
+               </div>
+
             </div>
 
             <label for="" style="padding: 10px 0 0px 0">Caracteristicas del equipo</label>
@@ -634,6 +680,40 @@
         <input type="text" name="no_serie" id="no_serie" class="form-control">
     </div>
 </div>
+</div>
+
+<label for="" style="padding: 10px 0 0px 0">Accesorios Equipo</label>
+<div style="background-color: #8080808c; border-radius: 5px">
+<div class="row" style="padding: 0 10px 0 10px">
+ <div class="col-md-4">
+    <label for="">Teclado Serie</label>
+    <input type="text" name="tec_ser" id="tec_ser" class="form-control">
+ </div>
+ <div class="col-md-4">
+    <label for="">Teclado Marca</label>
+    <input type="text" name="tec_mar" id="tec_mar" class="form-control">
+</div>
+<div class="col-md-4">
+    <label for="">Teclado Modelo</label>
+    <input type="text" name="tec_mod" id="tec_mod" class="form-control">
+</div>
+</div>
+
+<div class="row" style="padding: 0 10px 10px 10px">
+    <div class="col-md-4">
+    <label for="">Raton Serie</label>
+    <input type="text" name="rat_ser" id="rat_ser" class="form-control">
+    </div>
+    <div class="col-md-4">
+    <label for="">Raton Marca</label>
+    <input type="text" name="rat_mar" id="rat_mar" class="form-control">
+   </div>
+   <div class="col-md-4">
+    <label for="">Raton Modelo</label>
+    <input type="text" name="rat_mod" id="rat_mod" class="form-control">
+   </div>
+   </div>
+
 </div>
 
 <label for="" style="padding: 10px 0 0px 0">Caracteristicas del equipo</label>
@@ -1106,6 +1186,12 @@ $.ajax({
     document.getElementById("user_gds").value=null;
     document.getElementById("regulador").value=null;
     document.getElementById("marca_modelo").value=null;
+    document.getElementById("tec_ser").value=null;
+    document.getElementById("tec_mar").value=null;
+    document.getElementById("tec_mod").value=null;
+    document.getElementById("rat_ser").value=null;
+    document.getElementById("rat_mar").value=null;
+    document.getElementById("rat_mod").value=null;
   }else{
     document.getElementById("id_invE").value=datoinv.id;
     document.getElementById("nombre_user").value=datoinv.Nombre_de_Usuario;
@@ -1152,6 +1238,12 @@ $.ajax({
     document.getElementById("user_gds").value=datoinv.USUARIO_DE_GDS;
     document.getElementById("regulador").value=datoinv.REGULADOR;
     document.getElementById("marca_modelo").value=datoinv.MARCA_MODELO;
+    document.getElementById("tec_ser").value=datoinv.teclado_serie;
+    document.getElementById("tec_mar").value=datoinv.teclado_marca;
+    document.getElementById("tec_mod").value=datoinv.teclado_modelo;
+    document.getElementById("rat_ser").value=datoinv.raton_serie;
+    document.getElementById("rat_mar").value=datoinv.raton_marca;
+    document.getElementById("rat_mod").value=datoinv.raton_modelo;
   }
 
 });
