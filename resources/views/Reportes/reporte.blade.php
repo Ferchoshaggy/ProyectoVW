@@ -358,8 +358,8 @@
 @endif
 
   <button class="btn btn-info form-control" style="margin-bottom: 10px; font-weight: bold;" onclick="ver_tickte();" >
-    <i class="fas fa-eye"></i>
-    Ver
+    <i class="fas fa-comments"></i>
+    Responder
   </button>
   <br>
 
