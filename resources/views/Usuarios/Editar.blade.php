@@ -121,17 +121,17 @@
     <div class="row">
         <div class="col-md-4">
             <label for="correo">Contraseña Actual</label>
-            <input type="password" class="form-control" name="passAA" id="passAA" value="{{old('passAA')}}" onchange="passVerficar();">
+            <input type="password" class="form-control" name="passAA" id="passAA" value="{{old('passAA')}}" onkeyup="passVerficar();">
         </div>
 
         <div class="col-md-4">
             <label for="correo">Nueva Contraseña</label>
-            <input type="password" class="form-control" name="passN" id="passN" value="{{old('passN')}}" onchange="passVerficar();">
+            <input type="password" class="form-control" name="passN" id="passN" value="{{old('passN')}}" onkeyup="passVerficar();">
         </div>
 
         <div class="col-md-4">
             <label for="correo">Repetir Contraseña</label>
-            <input type="password" class="form-control" name="passRN" id="passRN" value="{{old('passRN')}}" onchange="passVerficar();">
+            <input type="password" class="form-control" name="passRN" id="passRN" value="{{old('passRN')}}" onkeyup="passVerficar();">
         </div>
 
     </div>

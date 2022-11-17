@@ -87,7 +87,7 @@
 <div class="row">
     <div class="col-md-12">
     <label for="Nombre">Nombre Completo</label>
-    <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre')}}" onchange="validar();" >
+    <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre')}}" onkeyup="validar();" >
     </div>
 </div>
 
@@ -147,7 +147,7 @@
     <span class="input-group-append">
         <button class="btn btn-default" type="button" onclick="passRun(); validar();"><span class="fa fa-random"></span></button>
       </span>
-        <input type="password" class="form-control" name="contraseña" id="contraseña" onchange="validar();">
+        <input type="password" class="form-control" name="contraseña" id="contraseña" onkeyup="validar();">
         <span class="input-group-append">
             <button class="btn btn-default" type="button" id="show_password" onclick="mostrarPassword()"><span class="fa fa-eye-slash icon"></span></button>
           </span>
@@ -163,7 +163,7 @@
     <span class="input-group-append">
         <button class="btn btn-default" type="button" onclick="passRun(); validar();"><span class="fa fa-random"></span></button>
       </span>
-        <input type="password" class="form-control" name="Rcontraseña" id="Rcontraseña" onchange="validar();">
+        <input type="password" class="form-control" name="Rcontraseña" id="Rcontraseña" onkeyup="validar();">
         <span class="input-group-append">
             <button class="btn btn-default" type="button" id="R_show_password" onclick="mostrarPassword2()"><span class="fa fa-eye-slash icon2"></span></button>
           </span>
@@ -285,7 +285,7 @@
 
 <div class="input-group">
 
-    <input type="password" name="nue_pass" id="nue_pass" class="form-control" onchange="resetval()">
+    <input type="password" name="nue_pass" id="nue_pass" class="form-control" onkeyup="resetval()">
         <span class="input-group-append">
             <button class="btn btn-default" type="button" onclick="mostrarPassword3()"><span class="fa fa-eye-slash icon3"></span></button>
         </span>
@@ -296,7 +296,7 @@
     <label for="Nueva">Repetir Contraseña</label>
     <div class="input-group">
 
-        <input type="password" name="re_nue_pass" id="re_nue_pass" class="form-control" onchange="resetval()">
+        <input type="password" name="re_nue_pass" id="re_nue_pass" class="form-control" onkeyup="resetval()">
             <span class="input-group-append">
                 <button class="btn btn-default" type="button" onclick="mostrarPassword4()"><span class="fa fa-eye-slash icon4"></span></button>
             </span>

@@ -291,12 +291,12 @@ value="{{ Auth::user()->id}}">
             </div>
             <div>
         <label for="Tema">Tema</label>
-        <input type="text" class="form-control" name="tema" id="tema" onchange="validarT();">
+        <input type="text" class="form-control" name="tema" id="tema" onkeyup="validarT();">
             </div>
 
         <div>
         <label for="descripcion">Descripcion</label>
-        <textarea name="descripcion" id="descripcion"  rows="1" class="form-control" onchange="validarT();"></textarea>
+        <textarea name="descripcion" id="descripcion"  rows="1" class="form-control" onkeyup="validarT();"></textarea>
         </div>
 
         <div class="row" style="padding-top:15px">
