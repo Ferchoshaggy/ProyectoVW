@@ -30,7 +30,9 @@ if($this->modulo=="users"){
 if($this->modulo=="ticket"){
 return $this->view('emails.ticket_levantado');
 }
-
+if($this->modulo=="Cerrado"){
+    return $this->view('emails.ticket_cerrado');
+    }
 
     }
 }

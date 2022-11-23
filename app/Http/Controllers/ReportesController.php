@@ -75,7 +75,6 @@ $users=DB::table('users')->select('*')->get();
         "opcion3"=>$request['op3'],
         "opcion4"=>$request['op4'],
         "usuario"=>$request['idPerfil'],
-        //"fuente"=>$request['fuente'],
         "tipo"=>$request['tipo'],
         "prioridad"=>$request['prioridad'],
         "tema"=>$request['tema'],
@@ -103,9 +102,16 @@ $users=DB::table('users')->select('*')->get();
     }
 function cambiar_status(Request $request){
 try{
+
+    $email=DB::table("users")->where("id",$request["id_usuario"])->first();
+    $datos=DB::table("tickets")->where("id",$request["id_ticket"])->first();
+    $fecha=Carbon::now();
     DB::table("tickets")->where("id",$request["id_ticket"])->update([
         "status"=> "Cerrado",
     ]);
+    $data=["codigo"=>$datos->codigo,"fechaA"=>$datos->created_at,"fechaF"=>$fecha->toDateTimeString()];
+    Mail::to($email->email)->send(new MessageReceived("Ticket Cerrado",$data,"Cerrado"));
+
     return redirect()->back()->with(['message' => "Se Cambio el Ticket Correctamente", 'color' => 'success']);
 }catch(\Throwable $th) {
     //throw $th;

@@ -418,6 +418,7 @@
               </div>
               <div class="modal-footer">
                   <input type="hidden" name="id_ticket" id="id_ticket2">
+                  <input type="hidden" name="id_usuario" id="id_usuario">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                   <button class="btn btn-danger" >Cambiar</button>
               </div>
@@ -567,11 +568,13 @@ function cambiar_ticket(){
     document.getElementById("labeltema2").innerHTML=null;
     document.getElementById("labelstatus").innerHTML=null;
     document.getElementById("id_ticket2").value=null;
+    document.getElementById("id_usuario").value=null;
   }else{
     document.getElementById("labelcambiar").innerHTML=datosTicket.codigo;
     document.getElementById("labeltema2").innerHTML=datosTicket.tema;
     document.getElementById("labelstatus").innerHTML="El tickets esta: "+datosTicket.status;
     document.getElementById("id_ticket2").value=datosTicket.id;
+    document.getElementById("id_usuario").value=datosTicket.usuario;
 
   }
 });
