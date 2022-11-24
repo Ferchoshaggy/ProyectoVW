@@ -109,7 +109,7 @@ try{
     DB::table("tickets")->where("id",$request["id_ticket"])->update([
         "status"=> "Cerrado",
     ]);
-    $data=["codigo"=>$datos->codigo,"fechaA"=>$datos->created_at,"fechaF"=>$fecha->toDateTimeString()];
+    $data=["codigo"=>$datos->codigo,"fechaA"=>$datos->created_at,"fechaF"=>$fecha->toDateTimeString(),"concesionaria"=>$email->concesionaria];
     Mail::to($email->email)->send(new MessageReceived("Ticket Cerrado",$data,"Cerrado"));
 
     return redirect()->back()->with(['message' => "Se Cambio el Ticket Correctamente", 'color' => 'success']);

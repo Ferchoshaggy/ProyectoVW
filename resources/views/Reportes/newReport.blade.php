@@ -143,7 +143,7 @@
 <div id="op3s" style="display:none">
     <hr>
     <label for="Software"><i class="fas fa-microchip"></i>Software</label><br>
-    <div class="op">
+    <div class="op row">
         <div class="caja">
             <input type="radio" id="DB" name="op3" value="Base de Datos" onclick="MostrarForm(this.value);">
             <label for="DB"><i class="fas fa-database"></i>Base de Datos</label>
@@ -262,7 +262,7 @@ value="{{ Auth::user()->id}}">
 
                 <div class="col-md-4">
         <label for="Usuario">Usuario</label>
-        <input type="text" class="form-control" name="usuario" id="usuario" value="{{$user->name}}">
+        <input type="text" class="form-control" name="usuario" id="usuario" value="{{$user->name}}" @if($user->tipo_user!=1) readonly @endif>
                 </div>
 @endforeach
 
@@ -555,7 +555,8 @@ if(tipo && prioridad && tema && descripcion){
         document.getElementById("DB").checked=false;
         document.getElementById("correo").checked=false;
         document.getElementById("Sala").checked=false;
-        document.getElementById("Sap").checked=false;
+        document.getElementById("dms").checked=false;
+        document.getElementById("adp").checked=false;
         document.getElementById("otro").checked=false;
 
         document.getElementById('op3hn').style.display="none";
