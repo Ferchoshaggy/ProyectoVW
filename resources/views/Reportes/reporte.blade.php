@@ -401,7 +401,7 @@
 
   <!-- modal de cambiar ticket-->
 <div class="modal fade" id="cerrar_ticket" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
           <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Cambiar Status</h5>
@@ -415,12 +415,13 @@
                       <label style="font-family: cursive; font-size: 25px;" id="labeltema2"></label><br>
                       <label style="font-family: cursive; font-size: 25px;" id="labelstatus"></label>
                   </div>
+                  <textarea name="soluciones" cols="30" class="form-control" placeholder="Soluciones"></textarea>
               </div>
               <div class="modal-footer">
                   <input type="hidden" name="id_ticket" id="id_ticket2">
                   <input type="hidden" name="id_usuario" id="id_usuario">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                  <button class="btn btn-danger" >Cambiar</button>
+                  <button class="btn btn-success" id="btnCam">Cambiar</button>
               </div>
           </form>
       </div>
@@ -575,8 +576,16 @@ function cambiar_ticket(){
     document.getElementById("labelstatus").innerHTML="El tickets esta: "+datosTicket.status;
     document.getElementById("id_ticket2").value=datosTicket.id;
     document.getElementById("id_usuario").value=datosTicket.usuario;
-
   }
+
+let a=value=datosTicket.status;
+
+if(a=="Cerrado"){
+document.getElementById("btnCam").disabled=true;
+}else{
+    document.getElementById("btnCam").disabled=false;
+}
+
 });
 }
 

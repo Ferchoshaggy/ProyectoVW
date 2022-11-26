@@ -232,7 +232,7 @@
     Editar
   </button>
   <br>
-<button class="btn btn-danger form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#eliminar_usuario" onclick="datos_delete();" >
+<button class="btn btn-danger form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#eliminar_usuario" onclick="datos_delete();">
     <i class="fas fa-trash"></i>
     Eliminar
   </button>
@@ -263,7 +263,7 @@
               <div class="modal-footer">
                   <input type="hidden" name="id_user" id="id_user">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                  <button class="btn btn-danger" >Eliminar</button>
+                  <button class="btn btn-danger" id="btnEl">Eliminar</button>
               </div>
           </form>
       </div>
@@ -337,7 +337,7 @@
 <div class="col-md-12">
     <label for="Cconcesionaria">Concesionaria</label>
 <select class="form-control" name="concesionaria" id="concesionaria" onchange="veriEdit();">
-    <option selected="true" value="" >Seleccione Concesionaria...</option>
+    <option selected="true" value="" disabled="disabled">Seleccione Concesionaria...</option>
     <option value="Fersan"  @if (old('concesionaria') == "Fersan") {{ 'selected' }} @endif>Fersan Motors Volkswagen</option>
     <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
     <option value="Navarra"  @if (old('concesionaria') == "Navarra") {{ 'selected' }} @endif>SEAT Navarra Motors</option>
@@ -345,11 +345,11 @@
 </div>
  </div>
 
- <div class="row" >
+ <div class="row" id="tadm">
     <div class="col-md-12">
         <label for="Tipo">Tipo de Usuario</label>
         <select name="tipo" id="tipo" class="form-control" onchange="veriEdit();">
-        <option selected="true" value="">Seleccione Tipo...</option>
+        <option selected="true" value="" disabled="disabled">Seleccione Tipo...</option>
         <option value="1" @if (old('tipo') == "1") {{ 'selected' }} @endif>Administrador</option>
         <option value="2" @if (old('tipo') == "2") {{ 'selected' }} @endif>Usuario</option>
         </select>
@@ -620,8 +620,15 @@ $.ajax({
     document.getElementById("labeleliminar").innerHTML=datosUser.name;
     document.getElementById("labelcorreo").innerHTML=datosUser.email;
     document.getElementById("id_user").value=datosUser.id;
-
   }
+
+  let a=value=datosUser.id;
+
+if(a==1){
+document.getElementById("btnEl").style.display="none";
+}else{
+document.getElementById("btnEl").style.display="block";
+}
 
 });
 }
@@ -639,6 +646,13 @@ $.ajax({
   }else{
     document.getElementById("id_user_edit").value=datosUser.id;
   }
+  let a=value=datosUser.id;
+
+  if(a==1){
+document.getElementById("tadm").style.display="none";
+}else{
+document.getElementById("tadm").style.display="block";
+}
 
 });
 }
