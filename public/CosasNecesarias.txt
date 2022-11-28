@@ -9,3 +9,12 @@ MAIL_FROM_NAME="SISTEMAS"
 
 Syst3m.VW404@outlook.com
 $yst3m32
+
+MAIL_MAILER=smtp
+MAIL_HOST=mail.grupofersan.mx
+MAIL_PORT=465
+MAIL_USERNAME=sistemas@grupofersan.mx
+MAIL_PASSWORD=System47621w
+MAIL_ENCRYPTION=SSL
+MAIL_FROM_ADDRESS=sistemas@grupofersan.mx
+MAIL_FROM_NAME="Departamento de Sistemas"

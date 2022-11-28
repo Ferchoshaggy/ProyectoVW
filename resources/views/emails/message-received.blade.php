@@ -16,15 +16,13 @@
  @if($datos['empresa']=="Navarra") src="{{url('img/imgemail/EncaNM.png')}}" @endif
 style="width: 100%; height: auto; border-radius: 15px;">
 
-<div style="margin-bottom: 30px; text-align: center;font-size: 20px">
+<div style="margin-top: 100px;margin-bottom: 100px; text-align: center;font-size: 20px">
     <h1>Bienvenido al Sistema de tickets</h1>
     <label>Hola {{$datos['name']}} Bienvenid@ al Sistema de levantamiento de incidencias y soporte tecnico del area de sistemas</label><br>
     <label for="">Este es tu correo: {{$datos['email']}} </label><br>
     <label for="">Esta es tu contraseña: {{$datos['password']}} </label><br>
     <label for="">Para ingresar al sistemas coloca la informacion enviada</label>
-    <div style="margin-bottom: 20px; text-aling:center;">
 <a href="{{url('/')}}" style="background-color:green;color:white; border-radius:20px; width:55%px;height:30px;">link del Sistema</a>
-           </div>
         </div>
 
         <img

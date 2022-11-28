@@ -15,7 +15,7 @@
         @if($datos['empresa']=="Navarra") src="{{url('img/imgemail/EncaNM.png')}}" @endif
        style="width: 100%; height: auto; border-radius: 15px;">
 
-        <div style="margin-bottom: 30px; text-align: center;font-size: 20px">
+        <div style="margin-top: 100px;margin-bottom: 100px;text-align: center;font-size: 20px">
         <label for="">Estimad@ {{$datos['name']}} su ticket con el codigo: {{$datos['codigo']}} ha sido cerrado</label><br>
         <label for="">El dia {{$datos['fechaF']}}</label><br>
         <label for="">La solucion Fue:</label><br>

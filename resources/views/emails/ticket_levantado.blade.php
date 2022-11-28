@@ -18,7 +18,6 @@
    <div style="margin-top: 100px;margin-bottom: 100px; text-align: center;font-size:15px">
  <h4>Alguien a levantado un ticket</h4>
  El usuario {{$datos['name']}} Ha levantado un ticket el dia {{$datos['fecha']}}<br>
-
    </div>
 
    <img
