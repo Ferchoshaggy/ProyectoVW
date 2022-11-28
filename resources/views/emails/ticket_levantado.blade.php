@@ -15,9 +15,10 @@
     @if($datos['empresa']=="Navarra") src="{{url('img/imgemail/EncaNM.png')}}" @endif
    style="width: 100%; height: auto; border-radius: 15px;">
 
-   <div style="margin-bottom: 30px; text-align: center;">
- <h5>Alguien a levantado un ticket</h5>
- El usuario {{$datos['name']}} Ha levantado un ticket el dia {{$datos['fecha']}}
+   <div style="margin-top: 100px;margin-bottom: 100px; text-align: center;font-size:15px">
+ <h4>Alguien a levantado un ticket</h4>
+ El usuario {{$datos['name']}} Ha levantado un ticket el dia {{$datos['fecha']}}<br>
+
    </div>
 
    <img
