@@ -8,10 +8,8 @@ use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
-
 class InventoryController extends Controller
 {
-
 
     function vista_inventario(){
 

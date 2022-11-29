@@ -295,9 +295,6 @@ return [
     'menu' => [
         // Navbar items:
         [
-          'header' => 'MENU',
-        ],
-        [
             'text' => '',
             'icon' => 'fas fa-solid fa-plus link-nav fa-xs',
             'route' => 'vista_newReport',

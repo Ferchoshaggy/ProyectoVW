@@ -33,7 +33,6 @@ class UsuariosController extends Controller
         $maxId = DB::table('users')->max('id');
         DB::statement('ALTER TABLE users AUTO_INCREMENT=' . intval($maxId + 1) . ';');
 
-
         DB::table('users')->insert([
         "name"=>$request['nombre'],
         "id_inventario"=>$request['correo'],
@@ -42,7 +41,6 @@ class UsuariosController extends Controller
         "concesionaria"=>$request['concesionaria'],
         "tipo_user"=>$request['tipo'],
         "password"=>bcrypt($request['contraseña']),
-
         ]);
 
         $data=["name"=>$request['nombre'] ,"email"=>$request['correo2'],"password"=>$request['contraseña'],"empresa"=>$request['concesionaria']];
@@ -67,7 +65,6 @@ class UsuariosController extends Controller
         } catch (\Throwable $th) {
             //throw $th;
         }
-
             }
 
 function res_pass(Request $request){
@@ -80,7 +77,6 @@ DB::table('users')->where("id",$request["id_userp"])->update([
 return redirect()->back()->with(['message' => "Contraseña Restaurada con Exito", 'color' => 'success']);
 }
 return redirect()->back()->with(['message' => "Error la contraseña Debe Tener minimo 8 caracteres", 'color' => 'warning']);
-
 }
 
    function cambiar_users(Request $request){

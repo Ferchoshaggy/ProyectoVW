@@ -8,13 +8,11 @@ use Carbon\Carbon;
 use File;
 use PDF;
 
-
 use PhpParser\Node\Stmt\Catch_;
 use PhpParser\Node\Stmt\TryCatch;
 
 use App\Exports\TicketsExport;
 use Maatwebsite\Excel\Facades\Excel;
-
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MessageReceived;
@@ -68,7 +66,6 @@ $users=DB::table('users')->select('*')->get();
             $inic="NMIT-";
         }
 
-
         DB::table("tickets")->insert([
         "opcion1"=>$request['op1'],
         "opcion2"=>$request['op2'],
@@ -93,11 +90,9 @@ $users=DB::table('users')->select('*')->get();
         $fec=DB::table("tickets")->where("id",$ticketId)->select("created_at")->first();
 
         $data=["name"=>$users->name,"fecha"=>$fec->created_at,"empresa"=>$users->concesionaria];
-        Mail::to("sistemas@grupofersan.mx")->send(new MessageReceived("Ticket Creado",$data,"ticket"));
+        Mail::to(env('MAIL_USERNAME'))->send(new MessageReceived("Ticket Creado",$data,"ticket"));
 
         return redirect()->back()->with(['message' => "Ticket Levantado Con Exito", 'color' => 'success']);
-
-
 
     }
 function cambiar_status(Request $request){
@@ -159,7 +154,6 @@ public function reply_report($id){
 function ticket_reply(Request $request){
 try{
 
-
     if($request['archivo']!=null){
         $file = $request->file('archivo');
         $nombre = $file->getClientOriginalName();
@@ -172,7 +166,6 @@ try{
         $file_image = $request->file('archivo');
         $file_image->move($destinationPath,$nombre2);
     }
-
 
 DB::table('replytickets')->insert([
 'replica'=>$request['descripcion'],
@@ -187,7 +180,6 @@ DB::table('tickets')->where('id',$request['tickid'])->update([
 
 return redirect()->back()->with(['message' => "Se Mando la Contestacion con Exito", 'color' => 'success']);
 
-
 }catch(\Throwable $th) {
 
 }
@@ -200,12 +192,6 @@ function descargarA($id){
 }
 
 function report_pdf(Request $request){
-/*
-    fechamin
-fechamax
-diseño
-filtracion
-*/
 
     if ($request['filtracion']=="todos") {
         $tickets=DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->get();
@@ -225,12 +211,6 @@ filtracion
 }
 
 function report_excel(Request $request){
-/*
-    fechamin
-fechamax
-diseño
-filtracion
-*/
 
     if ($request['filtracion']=="todos") {
         $tickets=DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->get();
@@ -248,5 +228,4 @@ filtracion
     //return $pdf->stream('ejemplo.pdf');
 
 }
-
 }

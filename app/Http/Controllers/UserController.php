@@ -75,12 +75,9 @@ class UserController extends Controller
                 "genero"=>$request['genero'],
 
             ]);
-
-
         }
 
  return redirect()->back()->with(['message' => "Datos Actualizados con Exito", 'color' => 'success']);
 
     }
-
 }
