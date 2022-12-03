@@ -28,7 +28,6 @@ for($i=0;$i<count($usuario);$i++){
             'tipo' => $usuario[$i],
 
         ]);
-
 }
 
         DB::table('users')->insert([
@@ -36,17 +35,9 @@ for($i=0;$i<count($usuario);$i++){
             'tipo_user' => 1,
             'genero'=>'Masculino',
             'concesionaria'=>'Fersan',
-            'email'     => 'admin@gmail.com',
-            'password'  => bcrypt('12345678'),
+            'email'     => 'sistemas@grupofersan.mx',
+            'password'  => bcrypt('System47621w'),
         ]);
 
-        DB::table('users')->insert([
-            'name'  => 'Usuario',
-            'tipo_user' => 2,
-            'genero'=>'Masculino',
-            'concesionaria'=>'Navarra',
-            'email'     => 'usuario@gmail.com',
-            'password'  => bcrypt('12345678'),
-        ]);
     }
 }

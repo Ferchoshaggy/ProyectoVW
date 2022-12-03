@@ -211,6 +211,12 @@
                 <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z"/>
               </svg>Revicion de Camaras</label>
         </div>
+        <div class="caja">
+<input type="radio" id="sistemaOP" name="op4" value="Sistema Operativo" onclick="MostrarForm(this.value);">
+       <label for="sistemaOP"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cpu" viewBox="0 0 16 16">
+        <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0zm-.5 3A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3h-7zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3zM6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+      </svg>Sistema Operativo</label>
+</div>
     </div>
 </div>
 
@@ -236,23 +242,6 @@
         <br>
             <h5 id="demo"></h5>
     </div>
-<!--
-    <div class="col align-self-end">
-        <label for="Fuente">Fuente</label>
-        <div style="border: 1px solid rgb(185, 184, 184); border-radius:0.4em;">
-        <input type="radio" id="web" name="fuente" value="WEB" onchange="validarT();">
-        <label for="web"><i class="fas fa-globe"></i>WEB</label>
-        <input type="radio" id="tel" name="fuente" value="Telefono" onchange="validarT();">
-        <label for="tel"><i class="fas fa-phone"></i>Telefono</label>
-        <input type="radio" id="email" name="fuente" value="Email" onchange="validarT();">
-        <label for="email"><i class="fas fa-envelope"></i>Email</label>
-        <input type="radio" id="smg" name="fuente" value="SMG" onchange="validarT();">
-        <label for="smg"><i class="fas  fa-comments"></i>SMG</label>
-        <input type="radio" id="person" name="fuente" value="En Persona" onchange="validarT();">
-        <label for="person"><i class="fas fa-users"></i>En Persona</label>
-    </div>
-    </div>
--->
 </div>
             <div class="row">
 @foreach ($usuario as $user)
@@ -536,6 +525,7 @@ if(tipo && prioridad && tema && descripcion){
         document.getElementById("seat").checked=false;
         document.getElementById("Suzuki").checked=false;
         document.getElementById("camaras").checked=false;
+        document.getElementById("sistemaOP").checked=false;
             }
 
      if(dato=="Solicitar Equipo"){
@@ -577,6 +567,7 @@ if(tipo && prioridad && tema && descripcion){
         document.getElementById("seat").checked=false;
         document.getElementById("Suzuki").checked=false;
         document.getElementById("camaras").checked=false;
+        document.getElementById("sistemaOP").checked=false;
      }
 
     }
@@ -597,6 +588,7 @@ if(tipo && prioridad && tema && descripcion){
 
         document.getElementById("op4o").style.display="none";
         document.getElementById("camaras").checked=false;
+        document.getElementById("sistemaOP").checked=false;
 
         document.getElementById("op4a").style.display="none";
         document.getElementById("vw").checked=false;
@@ -625,6 +617,7 @@ if(tipo && prioridad && tema && descripcion){
 
         document.getElementById("op4o").style.display="none";
         document.getElementById("camaras").checked=false;
+        document.getElementById("sistemaOP").checked=false;
 
         document.getElementById("op4a").style.display="none";
         document.getElementById("vw").checked=false;
@@ -714,6 +707,9 @@ document.getElementById("EquipoDered").checked=false;
     if(dato=="Camaras"){
         document.getElementById("formularioN").style.display="block";
     }
+    if(dato=="Sistema Operativo"){
+        document.getElementById("formularioN").style.display="block";
+    }
    }
 
 function  MostrarOP4(dato){
@@ -732,9 +728,11 @@ function  MostrarOP4(dato){
     if(dato=="Otro"){
         document.getElementById("op4o").style.display="block";
         document.getElementById("camaras").checked=false;
+        document.getElementById("sistemaOP").checked=false;
     }else{
         document.getElementById("op4o").style.display="none";
         document.getElementById("camaras").checked=false;
+        document.getElementById("sistemaOP").checked=false;
         document.getElementById("formularioN").style.display="none";
     }
 }

@@ -324,6 +324,7 @@ const chart = Highcharts.chart('container3', {
         'Apoyo Tecnico>Software>Aplicaciones de Planta>SEAT',
         'Apoyo Tecnico>Software>Aplicaciones de Planta>Suzuki',
         'Apoyo Tecnico>Software>Otros>Revicion de Camaras',
+        'Apoyo Tecnico>Software>Otros>Sistema Operativo',
         'Solicitar Equipo>Harware Nuevo>Escritorio/Portatil',
         'Solicitar Equipo>Harware Nuevo>Equipo de Red',
         'Solicitar Equipo>Nuevo Software',
@@ -348,6 +349,7 @@ $asapv=0;
 $asaps=0;
 $asadps=0;
 $asorc=0;
+$asosop=0;
 $shnep=0;
 $shne=0;
 $sns=0;
@@ -380,6 +382,8 @@ $asaps++;
 $asadps++;
     }else if($ticket->opcion4=="Camaras"){
 $asorc++;
+    }else if($ticket->opcion4=="Sistema Operativo"){
+$asosop++;
     }else if($ticket->opcion3=="Escritorio/Portatil"){
 $shnep++;
     }else if($ticket->opcion3=="Equipo de Red"){
@@ -395,7 +399,7 @@ $sas++;
     }
 
  }
-    echo" [$ahe, $ahrt, $ahi, $asbd, $ase, $asos, $asd, $asapv,$asaps, $asadps, $asorc, $shnep, $shne,$sns,$src,$ssa,$sas],";
+    echo" [$ahe, $ahrt, $ahi, $asbd, $ase, $asos, $asd, $asapv,$asaps, $asadps, $asorc,$asosop, $shnep, $shne,$sns,$src,$ssa,$sas],";
 
     echo"  showInLegend: false
 
