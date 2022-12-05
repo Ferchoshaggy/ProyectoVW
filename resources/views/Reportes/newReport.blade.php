@@ -81,7 +81,7 @@
 
         <div class="caja">
             <input type="radio" id="Llave" name="op2" value="Restablecimiento Contraseña" onclick="MostrarOP3(this.value);">
-            <label for="Llave"><i class="fas fa-key"></i>Restablecimineto de Contraseña</label>
+            <label for="Llave"><i class="fas fa-key"></i>Restablecimiento de Contraseña</label>
         </div>
 
         <div class="caja">
@@ -217,6 +217,16 @@
         <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0zm-.5 3A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3h-7zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3zM6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
       </svg>Sistema Operativo</label>
 </div>
+<div class="caja">
+    <input type="radio" id="internet" name="op4" value="Internet" onclick="MostrarForm(this.value);">
+    <label for="internet"><i class='fas fa-wifi'></i>Internet</label>
+    </div>
+
+<div class="caja">
+<input type="radio" id="otros" name="op4" value="Otros" onclick="MostrarForm(this.value);">
+<label for="otros"><i class="fas fa-tools"></i>Otros</label>
+</div>
+
     </div>
 </div>
 
@@ -526,6 +536,8 @@ if(tipo && prioridad && tema && descripcion){
         document.getElementById("Suzuki").checked=false;
         document.getElementById("camaras").checked=false;
         document.getElementById("sistemaOP").checked=false;
+        document.getElementById("otros").checked=false;
+        document.getElementById("internet").checked=false;
             }
 
      if(dato=="Solicitar Equipo"){
@@ -568,6 +580,8 @@ if(tipo && prioridad && tema && descripcion){
         document.getElementById("Suzuki").checked=false;
         document.getElementById("camaras").checked=false;
         document.getElementById("sistemaOP").checked=false;
+        document.getElementById("otros").checked=false;
+        document.getElementById("internet").checked=false;
      }
 
     }
@@ -589,6 +603,8 @@ if(tipo && prioridad && tema && descripcion){
         document.getElementById("op4o").style.display="none";
         document.getElementById("camaras").checked=false;
         document.getElementById("sistemaOP").checked=false;
+        document.getElementById("otros").checked=false;
+        document.getElementById("internet").checked=false;
 
         document.getElementById("op4a").style.display="none";
         document.getElementById("vw").checked=false;
@@ -618,6 +634,8 @@ if(tipo && prioridad && tema && descripcion){
         document.getElementById("op4o").style.display="none";
         document.getElementById("camaras").checked=false;
         document.getElementById("sistemaOP").checked=false;
+        document.getElementById("otros").checked=false;
+        document.getElementById("internet").checked=false;
 
         document.getElementById("op4a").style.display="none";
         document.getElementById("vw").checked=false;
@@ -710,6 +728,12 @@ document.getElementById("EquipoDered").checked=false;
     if(dato=="Sistema Operativo"){
         document.getElementById("formularioN").style.display="block";
     }
+    if(dato=="Internet"){
+        document.getElementById("formularioN").style.display="block";
+    }
+    if(dato=="Otros"){
+        document.getElementById("formularioN").style.display="block";
+    }
    }
 
 function  MostrarOP4(dato){
@@ -729,6 +753,8 @@ function  MostrarOP4(dato){
         document.getElementById("op4o").style.display="block";
         document.getElementById("camaras").checked=false;
         document.getElementById("sistemaOP").checked=false;
+        document.getElementById("otros").checked=false;
+        document.getElementById("internet").checked=false;
     }else{
         document.getElementById("op4o").style.display="none";
         document.getElementById("camaras").checked=false;
