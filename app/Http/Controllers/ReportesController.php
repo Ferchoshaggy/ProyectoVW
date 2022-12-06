@@ -72,6 +72,7 @@ $users=DB::table('users')->select('*')->get();
         "opcion3"=>$request['op3'],
         "opcion4"=>$request['op4'],
         "usuario"=>$request['idPerfil'],
+        //"userasignado"=>$request["usuario"],
         "tipo"=>$request['tipo'],
         "prioridad"=>$request['prioridad'],
         "tema"=>$request['tema'],
