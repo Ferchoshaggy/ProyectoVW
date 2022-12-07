@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reporte {{$diseno}}</title>
+    <link rel="icon" type="image/jpg" href="{{url('favicon.ico')}}"/>
 </head>
 <body>
 <style>
   *{
       margin: 0;
       padding: 0;
-      font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
     }
 
     .tit{
@@ -19,58 +19,65 @@
     }
     @if($diseno=="Fersan")
   body{
-        font-size: 45px;
+        font-size: 15px;
         background-color: red;
-        width: 2550px;
-        height: 3300px;
-        padding-top: 350px;
-        padding-bottom: 215px;
+        padding-top: 70px;
+        padding-bottom: 5px;
+        padding-right:0px;
+        padding-left:0px;
         margin: 0;
         background-color: rgb(255, 255, 255);
         background-image: url(./formatos/responsiva/FORMATO13.png);
+        background-size:cover;
         background-repeat: no-repeat;
+        background-position:center center;
+        background-attachment:fixed;
     }
 @elseif($diseno=="Chaixtsu")
   body{
-        font-size: 45px;
+    font-size: 15px;
         background-color: red;
-        width: 2550px;
-        height: 3300px;
-        padding-top: 350px;
-        padding-bottom: 215px;
+        padding-top: 70px;
+        padding-bottom: 5px;
+        padding-right:0px;
+        padding-left:0px;
         margin: 0;
         background-color: rgb(255, 255, 255);
         background-image: url(./formatos/responsiva/FORMATO12.png);
+        background-size:cover;
         background-repeat: no-repeat;
+        background-position:center center;
+        background-attachment:fixed;
     }
 @elseif($diseno=="Navarra")
   body{
-        font-size: 45px;
+    font-size: 15px;
         background-color: red;
-        width: 2550px;
-        height: 3300px;
-        padding-top: 350px;
-        padding-bottom: 215px;
+        padding-top: 70px;
+        padding-bottom: 5px;
+        padding-right:0px;
+        padding-left:0px;
         margin: 0;
         background-color: rgb(255, 255, 255);
         background-image: url(./formatos/responsiva/FORMATO11.png);
+        background-size:cover;
         background-repeat: no-repeat;
+        background-position:center center;
+        background-attachment:fixed;
     }
 @endif
 </style>
 
 
-
-
-<div style="margin-top:130px;">
-    <div style="float: right; font-size: 35px; font-weight: bold; width: 50%; text-align:right; padding: 50px;">{{$fecha}}<br>
+<div style="margin-top:30px;">
+    <div style="float: right; font-size: 15px; font-weight: bold; width: 50%; text-align:right; padding: 50px;">{{$fecha}}<br>
       Fecha de Elaboracion<br>
     </div>
   </div>
   <br>
 
-<div style="margin: 100px;">
-    <table border="1" style="width: 100%; margin-top: 150px; border: black 3px solid;" cellspacing="0" cellpadding="0">
+<div style="margin: 20px;">
+    <table border="1" style="width: 100%; margin-top: 85px; border: black 3px solid;" cellspacing="0" cellpadding="0">
 
         <tr>
             <td class="tit" colspan="4" style="width: auto;text-align: center;">Nombre</td>
@@ -197,7 +204,7 @@
             <td class="tit" colspan="6" style="width: auto; text-align: center;">{{$inventario->ADICIONAL}}</td>
         </tr>
         <tr>
-     <th colspan="8" style="width: auto;font-size:19px">Me comprometo a cuidar la integridad y buen estado del
+     <th colspan="8" style="width: auto;font-size:9px">Me comprometo a cuidar la integridad y buen estado del
          equipo y accesorios recibidos, clave de teléfono, claves de portales, los cuales son propiedad de
          @if($diseno=="Fersan")<b>FERSAN MOTORS,S.A DE C.V</b>,@elseif($diseno=="Chaixtsu")<b>CHAIXTSU MOTORS,S.A DE C.V</b>,@elseif($diseno=="Navarra")<b>NAVARRA MOTORS,S.A DE C.V</b>, @endif manifiesto mi conformidad para utilizarlos en beneficio de la empresa.
         Asimismo, los programas instalados al recibir el equipo son los definidos por los estándares corporativos,
@@ -210,7 +217,7 @@
         técnico efectuara auditorias periódicas a mi equipo de cómputo y, en caso de que encuentre software
         diferente al corporativo sin licencias, genera un reporte de sanción a partir del cual Recursos Humanos
         tomara las acciones correspondientes. Acepto que toda la información almacenada en el equipo pertenece a
-        @if($diseno=="Fersan")<b>FERSAN MOTORS,S.A DE C.V</b>,@elseif($diseno=="Chaixtsu")<b>CHAIXTSU MOTORS,S.A DE C.V</b>,@elseif($diseno=="Navarra")<b>NAVARRA MOTORS,S.A DE C.V</b>, @endif y podrá serme requerida en cualquier momento. Estoy consciente de que los
+        @if($diseno=="Fersan")<b> FERSAN MOTORS,S.A DE C.V</b>,@elseif($diseno=="Chaixtsu")<b>CHAIXTSU MOTORS,S.A DE C.V</b>,@elseif($diseno=="Navarra")<b>NAVARRA MOTORS,S.A DE C.V</b>, @endif y podrá serme requerida en cualquier momento. Estoy consciente de que los
         respaldos y confidencialidad de la información mencionada son responsabilidad mía, así como el uso que le
         proporcione al equipo y en caso de descompostura, daño o robo, deberé dar aviso inmediatamente a los
         departamentos de sistemas y seguridad (este último en caso de robo o daño provocado por terceros) con el fin

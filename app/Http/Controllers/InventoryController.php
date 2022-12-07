@@ -176,7 +176,7 @@ public function responsive_pdf(Request $request){
 $fecha=date('d-m-Y');
     $diseno=$request['diseño'];
     $inventario=DB::table('inventories')->where("id",$request['id_userI'])->first();
-    $pdf = PDF::loadView('Responsiva.InventarioPDF',compact('inventario','diseno','fecha'))->setPaper(array(0,0,1910,2450));
+    $pdf = PDF::loadView('Responsiva.InventarioPDF',compact('inventario','diseno','fecha'))->setPaper(array(0,0,612.00,792.00));
     return $pdf->stream("PDF_".$diseno.'.pdf');
 }
 
