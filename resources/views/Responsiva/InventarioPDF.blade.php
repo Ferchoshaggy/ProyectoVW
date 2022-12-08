@@ -23,8 +23,8 @@
         background-color: red;
         padding-top: 70px;
         padding-bottom: 5px;
-        padding-right:0px;
-        padding-left:0px;
+        padding-right:25px;
+        padding-left:25px;
         margin: 0;
         background-color: rgb(255, 255, 255);
         background-image: url(./formatos/responsiva/FORMATO13.png);
@@ -39,8 +39,8 @@
         background-color: red;
         padding-top: 70px;
         padding-bottom: 5px;
-        padding-right:0px;
-        padding-left:0px;
+        padding-right:25px;
+        padding-left:25px;
         margin: 0;
         background-color: rgb(255, 255, 255);
         background-image: url(./formatos/responsiva/FORMATO12.png);
@@ -55,8 +55,8 @@
         background-color: red;
         padding-top: 70px;
         padding-bottom: 5px;
-        padding-right:0px;
-        padding-left:0px;
+        padding-right:25px;
+        padding-left:25px;
         margin: 0;
         background-color: rgb(255, 255, 255);
         background-image: url(./formatos/responsiva/FORMATO11.png);
@@ -204,7 +204,7 @@
             <td class="tit" colspan="6" style="width: auto; text-align: center;">{{$inventario->ADICIONAL}}</td>
         </tr>
         <tr>
-     <th colspan="8" style="width: auto;font-size:9px">Me comprometo a cuidar la integridad y buen estado del
+     <th colspan="8" style="width: auto;font-size:8px">Me comprometo a cuidar la integridad y buen estado del
          equipo y accesorios recibidos, clave de teléfono, claves de portales, los cuales son propiedad de
          @if($diseno=="Fersan")<b>FERSAN MOTORS,S.A DE C.V</b>,@elseif($diseno=="Chaixtsu")<b>CHAIXTSU MOTORS,S.A DE C.V</b>,@elseif($diseno=="Navarra")<b>NAVARRA MOTORS,S.A DE C.V</b>, @endif manifiesto mi conformidad para utilizarlos en beneficio de la empresa.
         Asimismo, los programas instalados al recibir el equipo son los definidos por los estándares corporativos,
