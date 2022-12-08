@@ -108,7 +108,6 @@ return $th;
     }
 }
 
-
 public function edit_invdate(Request $request){
 try{
 
