@@ -369,3 +369,10 @@ function customInput (el) {
 </script>
 
 @stop
+
+@section('footer')
+
+<strong>
+    Copyright © 2022-<?php echo date("Y");?> <a href="https://vw-fersan.com.mx/" target="_blank">Fersan Motors</a>
+</strong>
+@stop

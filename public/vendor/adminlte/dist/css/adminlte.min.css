@@ -36,6 +36,8 @@ background: linear-gradient(90deg,rgb(90, 86, 86),#00A1D8);
 .brand-link {
     background:rgb(90, 86, 86) !important;
 }
-
+.main-footer{
+    padding:0;
+}
 
 

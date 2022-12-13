@@ -996,6 +996,13 @@
 </style>
 @stop
 
+@section('footer')
+
+<strong>
+    Copyright © 2022-<?php echo date("Y");?> <a href="https://vw-fersan.com.mx/" target="_blank">Fersan Motors</a>
+</strong>
+@stop
+
 @section('js')
 <!-- estos son para la tabla-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
