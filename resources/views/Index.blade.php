@@ -325,6 +325,8 @@ const chart = Highcharts.chart('container3', {
         'Apoyo Tecnico>Software>Aplicaciones de Planta>Suzuki',
         'Apoyo Tecnico>Software>Otros>Revicion de Camaras',
         'Apoyo Tecnico>Software>Otros>Sistema Operativo',
+        'Apoyo Tecnico>Software>Otros>Internet',
+        'Apoyo Tecnico>Software>Otros>Otros',
         'Solicitar Equipo>Harware Nuevo>Escritorio/Portatil',
         'Solicitar Equipo>Harware Nuevo>Equipo de Red',
         'Solicitar Equipo>Nuevo Software',
@@ -350,6 +352,8 @@ $asaps=0;
 $asadps=0;
 $asorc=0;
 $asosop=0;
+$asoint=0;
+$asootr=0;
 $shnep=0;
 $shne=0;
 $sns=0;
@@ -384,6 +388,10 @@ $asadps++;
 $asorc++;
     }else if($ticket->opcion4=="Sistema Operativo"){
 $asosop++;
+    }else if($ticket->opcion4=="Internet"){
+$asoint++;
+    }else if($ticket->opcion4=="Otros"){
+$asootr++;
     }else if($ticket->opcion3=="Escritorio/Portatil"){
 $shnep++;
     }else if($ticket->opcion3=="Equipo de Red"){
@@ -399,7 +407,7 @@ $sas++;
     }
 
  }
-    echo" [$ahe, $ahrt, $ahi, $asbd, $ase, $asos, $asd, $asapv,$asaps, $asadps, $asorc,$asosop, $shnep, $shne,$sns,$src,$ssa,$sas],";
+    echo" [$ahe, $ahrt, $ahi, $asbd, $ase, $asos, $asd, $asapv,$asaps, $asadps, $asorc,$asosop,$asoint,$asootr,$shnep, $shne,$sns,$src,$ssa,$sas],";
 
     echo"  showInLegend: false
 
