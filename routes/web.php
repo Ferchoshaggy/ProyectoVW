@@ -75,5 +75,5 @@ Route::post("/new_inventorie",[InventoryController::class,'save_inve'])->name('s
 Route::post("/pdf_responsive",[InventoryController::class,'responsive_pdf'])->name('responsive_pdf');
 
 route::get("/alv",function(){
-return view("Responsiva.InventarioPDF");
+return view("auth.forgot-password");
 });
