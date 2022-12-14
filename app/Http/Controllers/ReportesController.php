@@ -92,10 +92,10 @@ dd($usuario);
         ]);
 
         $fec=DB::table("tickets")->where("id",$ticketId)->select("created_at")->first();
-/*
+
         $data=["name"=>$usuario,"fecha"=>$fec->created_at,"empresa"=>$request["concesionaria"]];
         Mail::to(env('MAIL_USERNAME'))->send(new MessageReceived("Ticket Creado",$data,"ticket"));
-*/
+
         return redirect()->back()->with(['message' => "Ticket Levantado Con Exito", 'color' => 'success']);
 
     }
