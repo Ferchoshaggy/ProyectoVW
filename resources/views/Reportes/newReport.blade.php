@@ -619,7 +619,6 @@ if(tipo && prioridad && tema && descripcion && fue){
         document.getElementById("otros").checked=false;
         document.getElementById("internet").checked=false;
      }
-
     }
 
    function MostrarOP3(dato){
@@ -692,7 +691,6 @@ document.getElementById("EquipoDered").checked=false;
     if(dato=="Nuevo Software"){
         document.getElementById("formularioN").style.display="block";
     }
-
     if(dato=="Restablecimiento Contraseña"){
         document.getElementById("formularioN").style.display="block";
     }
@@ -710,7 +708,6 @@ document.getElementById("EquipoDered").checked=false;
     if(dato=="Escritorio/Portatil"){
         document.getElementById("formularioN").style.display="block";
     }
-
     if(dato=="Equipo de Red"){
         document.getElementById("formularioN").style.display="block";
     }

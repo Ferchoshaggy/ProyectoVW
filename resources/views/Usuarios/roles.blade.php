@@ -204,7 +204,7 @@
                     @foreach ($users as $user)
                     @foreach ($tipos as $tipo)
                     @if ($user->tipo_user==$tipo->id)
-                    <tr class="marca" @if(Auth::user()->tipo_user==1) onclick="pasar_id({{$user->id}});" @endif>
+                     <tr class="marca" @if(Auth::user()->tipo_user==1) onclick="pasar_id({{$user->id}});" @endif>
                         <td style="text-align: center;">{{$user->name}}</td>
                         <td style="text-align: center;">{{$user->email}}</td>
                         <td style="text-align: center;">{{$tipo->tipo}}</td>
