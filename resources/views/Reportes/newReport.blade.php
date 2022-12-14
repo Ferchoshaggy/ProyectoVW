@@ -190,7 +190,7 @@
 
         <div class="caja">
             <input type="radio" id="seat" name="op4" value="SEAT" onclick="MostrarForm(this.value);">
-            <label for="seat"><i><img src="{{asset('img/logotipos/seat.png')}}" alt="Seat" height="25px" width="25px"></i>SEAT</label>
+            <label for="seat"><i><img src="{{asset('img/logotipos/seat.png')}}" alt="Seat" height="25px" width="25px"></i>Seat</label>
         </div>
 
         <div class="caja">
@@ -304,15 +304,15 @@
 <div class="row" >
     <div class="col-md-4" style="display: flex; align-items: center; justify-content: center">
         <input type="radio" name="concesionaria" class="form-control" value="Fersan" id="Fersan2" onclick="validarT();">
-        <label for="Fersan2"><i><img src="{{asset('img/logotipos/volk.png')}}" alt="volkswagen" height="25px" width="25px"></i>Fersan</label>
+        <label for="Fersan2"><i><img src="{{asset('img/logos/LOGOS_FERSAN_ISOTIPO.png')}}" alt="volkswagen" height="27px" width="27px"></i>Fersan</label>
     </div>
     <div class="col-md-4" style="display: flex; align-items: center; justify-content: center">
         <input type="radio" name="concesionaria" class="form-control" value="Chaixtsu" id="Chaixtsu2" onclick="validarT();">
-        <label for="Chaixtsu2"><i><img src="{{asset('img/logotipos/suzuki.png')}}" alt="Suzuki" height="25px" width="25px"></i>Chaixtsu</label>
+        <label for="Chaixtsu2"><i><img src="{{asset('img/logos/LOGOS_CHAIXTSU_ISOTIPO.png')}}" alt="Suzuki" height="27px" width="27px"></i>Chaixtsu</label>
     </div>
     <div class="col-md-4" style="display: flex; align-items: center; justify-content: center">
         <input type="radio" name="concesionaria" class="form-control" value="Navarra" id="Navarra2" onclick="validarT();">
-        <label for="Navarra2"><i><img src="{{asset('img/logotipos/seat.png')}}" alt="Seat" height="25px" width="25px"></i></i>Navarra</label>
+        <label for="Navarra2"><i><img src="{{asset('img/logos/LOGOS_NAVARRA_ISOTIPO.png')}}" alt="Seat" height="27px" width="27px"></i></i>Navarra</label>
     </div>
 </div>
 
