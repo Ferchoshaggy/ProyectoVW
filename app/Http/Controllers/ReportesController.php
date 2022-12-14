@@ -36,12 +36,15 @@ $users=DB::table('users')->select('*')->get();
     }
     public function vista_newReport(){
         $usuario=DB::table("users")->where("id",Auth::user()->id)->get();
-        return view('Reportes.newReport',compact("usuario"));
+        $datos=DB::table('users')->select('*')->get();
+        return view('Reportes.newReport',compact("usuario","datos"));
     }
      public function report_save(Request $request){
-        $users=DB::table("users")->where("id",Auth::user()->id)->select("concesionaria","name")->first();
 
 
+$usuario=DB::table("users")->where("id",$request['idPerfil'])->select("name")->first();
+
+dd($usuario);
         if($request['archivo']!=null){
             $file = $request->file('archivo');
             $nombre = $file->getClientOriginalName();
@@ -58,11 +61,11 @@ $users=DB::table('users')->select('*')->get();
         $rand=rand(0000000,9999999);
        // $hora = now("America/Mexico_City")->isoFormat('Hmm');
 
-        if($users->concesionaria=="Fersan"){
+        if($request["concesionaria"]=="Fersan"){
           $inic="FMIT-";
-        }else if($users->concesionaria=="Chaixtsu"){
+        }else if($request["concesionaria"]=="Chaixtsu"){
             $inic="CMIT-";
-        }else if($users->concesionaria=="Navarra"){
+        }else if($request["concesionaria"]=="Navarra"){
             $inic="NMIT-";
         }
 
@@ -89,10 +92,10 @@ $users=DB::table('users')->select('*')->get();
         ]);
 
         $fec=DB::table("tickets")->where("id",$ticketId)->select("created_at")->first();
-
-        $data=["name"=>$users->name,"fecha"=>$fec->created_at,"empresa"=>$users->concesionaria];
+/*
+        $data=["name"=>$usuario,"fecha"=>$fec->created_at,"empresa"=>$request["concesionaria"]];
         Mail::to(env('MAIL_USERNAME'))->send(new MessageReceived("Ticket Creado",$data,"ticket"));
-
+*/
         return redirect()->back()->with(['message' => "Ticket Levantado Con Exito", 'color' => 'success']);
 
     }

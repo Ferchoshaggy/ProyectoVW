@@ -203,7 +203,7 @@
 <!-- opcion 4 a elegir otros-->
 <div id="op4o" style="display:none">
     <hr>
-    <label for="Apoyo Tecnico"><i class="fas fa-cog"></i>Otros</label><br>
+    <label for="otr"><i class="fas fa-cog"></i>Otros</label><br>
     <div class="op">
         <div class="caja">
             <input type="radio" id="camaras" name="op4" value="Camaras" onclick="MostrarForm(this.value);">
@@ -254,16 +254,27 @@
     </div>
 </div>
             <div class="row">
-@foreach ($usuario as $user)
-
-<input class="form-control" type="hidden" name="idPerfil"
-value="{{ Auth::user()->id}}">
 
                 <div class="col-md-4">
         <label for="Usuario">Usuario</label>
-        <input type="text" class="form-control" name="usuario" id="usuario" value="{{$user->name}}" @if($user->tipo_user!=1) readonly @endif>
+        @foreach ($usuario as $user)
+
+@if ($user->tipo_user==1)
+    <div>
+        <select class="form-control" name="idPerfil" id="idPerfil" @if($user->tipo_user!=1) disabled="true" @endif>
+        @foreach ($datos as $dato)
+        <option value="{{$dato->id}}">{{$dato->name}}</option>
+         @endforeach
+        </select>
+    </div>
+@else
+<input type="text" value="{{$user->name}}" class="form-control" readonly>
+<input type="hidden" class="form-control" name="idPerfil" value="{{$user->id}}" @if($user->tipo_user!=2) disabled="true" @endif>
+@endif
+
+        @endforeach
                 </div>
-@endforeach
+
 
                 <div class="col-md-4">
                     <label for="type">Tipo</label>
@@ -288,6 +299,22 @@ value="{{ Auth::user()->id}}">
                 </div>
 
             </div>
+            <label for="Concecionaria">Concecionaria Asignada al Ticket</label><br>
+<div class="row" >
+    <div class="col-md-4" style="display: flex; align-items: center; justify-content: center">
+        <input type="radio" name="concesionaria" class="form-control" value="Fersan" id="Fersan2" onclick="validarT();">
+        <label for="Fersan2"><i><img src="{{asset('img/logotipos/volk.png')}}" alt="volkswagen" height="25px" width="25px"></i>Fersan</label>
+    </div>
+    <div class="col-md-4" style="display: flex; align-items: center; justify-content: center">
+        <input type="radio" name="concesionaria" class="form-control" value="Chaixtsu" id="Chaixtsu2" onclick="validarT();">
+        <label for="Chaixtsu2"><i><img src="{{asset('img/logotipos/suzuki.png')}}" alt="Suzuki" height="25px" width="25px"></i>Chaixtsu</label>
+    </div>
+    <div class="col-md-4" style="display: flex; align-items: center; justify-content: center">
+        <input type="radio" name="concesionaria" class="form-control" value="Navarra" id="Navarra2" onclick="validarT();">
+        <label for="Navarra2"><i><img src="{{asset('img/logotipos/seat.png')}}" alt="Seat" height="25px" width="25px"></i></i>Navarra</label>
+    </div>
+</div>
+
             <div>
         <label for="Tema">Tema</label>
         <input type="text" class="form-control" name="tema" id="tema" onkeyup="validarT();">
@@ -476,20 +503,20 @@ $(".alert").fadeTo(2000, 500).slideUp(500, function(){
 });
 
 function validarT(){
- /*
-let fuente=document.getElementsByName('fuente');
+
+let fuente=document.getElementsByName('concesionaria');
 
 for(i = 0; i < fuente.length; i++) {
                 if(fuente[i].checked)
         var fue=fuente[i].value;
             }
-*/
+
 let tipo=document.getElementById('tipo').value;
 let prioridad=document.getElementById('prioridad').value;
 let tema=document.getElementById('tema').value;
 let descripcion=document.getElementById('descripcion').value;
 
-if(tipo && prioridad && tema && descripcion){
+if(tipo && prioridad && tema && descripcion && fue){
     document.getElementById('btnsave').disabled=false;
 }else{
     document.getElementById('btnsave').disabled=true;
