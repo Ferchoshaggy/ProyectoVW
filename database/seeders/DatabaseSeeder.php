@@ -35,8 +35,8 @@ for($i=0;$i<count($usuario);$i++){
             'tipo_user' => 1,
             'genero'=>'Masculino',
             'concesionaria'=>'Fersan',
-            'email'     => 'sistemas@grupofersan.mx',
-            'password'  => bcrypt('System47621w'),
+            'email'     => env('MAIL_USERNAME'),
+            'password'  => bcrypt(env('MAIL_PASSWORD')),
         ]);
 
     }

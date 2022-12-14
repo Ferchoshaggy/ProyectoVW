@@ -1,6 +1,5 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashController;
 use App\Http\Controllers\ReportesController;
@@ -51,7 +50,6 @@ Route::post('/change_status',[ReportesController::class,'cambiar_status'])->name
 Route::delete('/delete_ticket',[ReportesController::class,'ticket_delete'])->name('ticket_delete');
 Route::post('/ticket/{id}/download', [ReportesController::class,'descargarA'])->name('descargarA');
 Route::post('/ticket_reply',[ReportesController::class,'ticket_reply'])->name('ticket_reply');
-
 
 //Usuarios
 Route::post('/save_user',[UsuariosController::class,'guardar_usuario'])->name('save_users');
