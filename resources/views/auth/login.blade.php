@@ -64,20 +64,18 @@
 
                 <div class="mb-0">
                     <div class="d-flex justify-content-end align-items-baseline">
-                        <!--
+
                         @if (Route::has('password.request'))
                             <a class="text-muted me-3" href="{{ route('password.request') }}">
                                 {{ __('Olvidades tu contraseña?') }}
                             </a>
                         @endif
-                        -->
-
-<button class="btn btn-dark" style="width: 100%; color:white">
-                            {{ __('Ingresar') }}
-</button>
 
                     </div>
                 </div>
+                <button class="btn btn-dark" style="width: 100%; color:white">
+                    {{ __('Ingresar') }}
+</button>
             </form>
         </div>
     </x-jet-authentication-card>

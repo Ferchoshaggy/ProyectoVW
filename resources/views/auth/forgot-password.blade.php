@@ -22,7 +22,7 @@
                 @csrf
 
                 <div class="mb-3">
-                    <x-jet-label value="Email" style="color:white;"/>
+                    <x-jet-label value="Correo:" style="color:white;"/>
                     <x-jet-input type="email" name="email" :value="old('email')" required autofocus />
                 </div>
 
