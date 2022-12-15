@@ -64,6 +64,7 @@
 
                 <div class="mb-0">
                     <div class="d-flex justify-content-end align-items-baseline">
+
  <!--
                         @if (Route::has('password.request'))
                             <a class="me-3" href="{{ route('password.request') }}" style="color: white">

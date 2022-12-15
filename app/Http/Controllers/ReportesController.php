@@ -44,7 +44,7 @@ $users=DB::table('users')->select('*')->get();
 
 $usuario=DB::table("users")->where("id",$request['idPerfil'])->select("name")->first();
 
-dd($usuario);
+
         if($request['archivo']!=null){
             $file = $request->file('archivo');
             $nombre = $file->getClientOriginalName();
@@ -93,7 +93,7 @@ dd($usuario);
 
         $fec=DB::table("tickets")->where("id",$ticketId)->select("created_at")->first();
 
-        $data=["name"=>$usuario,"fecha"=>$fec->created_at,"empresa"=>$request["concesionaria"]];
+        $data=["name"=>$usuario->name,"fecha"=>$fec->created_at,"empresa"=>$request["concesionaria"]];
         Mail::to(env('MAIL_USERNAME'))->send(new MessageReceived("Ticket Creado",$data,"ticket"));
 
         return redirect()->back()->with(['message' => "Ticket Levantado Con Exito", 'color' => 'success']);
