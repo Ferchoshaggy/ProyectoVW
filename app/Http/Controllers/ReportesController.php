@@ -44,7 +44,7 @@ $users=DB::table('users')->select('*')->get();
 
 $usuario=DB::table("users")->where("id",$request['idPerfil'])->select("name")->first();
 
-dd($usuario);
+
         if($request['archivo']!=null){
             $file = $request->file('archivo');
             $nombre = $file->getClientOriginalName();
