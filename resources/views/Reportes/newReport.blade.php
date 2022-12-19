@@ -255,7 +255,7 @@
     </div>
     <br>
     <div class="col align-self-end" @if(Auth::user()->tipo_user==1) @else style="display: none" @endif>
-        <input type="checkbox" name="enviar" id="enviar" value="SI" checked><label for="enviar">Enviar Correo</label>
+        <input type="checkbox" name="enviar" id="enviar" value="SI" checked><label style="margin-left: 5px" for="enviar">Enviar Correo</label>
     </div>
 </div>
             <div class="row">
