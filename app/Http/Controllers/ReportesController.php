@@ -209,7 +209,7 @@ function report_pdf(Request $request){
     $fechamax=$request['fechamax'];
     $filtracion=$request['filtracion'];
 
-    $pdf = PDF::loadView('Reportes.Reporte_PDF',compact('tickets','users','diseno','fechamin','fechamax','filtracion'))->setPaper(array(0,0,1537,1989));
+    $pdf = PDF::loadView('Reportes.Reporte_PDF',compact('tickets','users','diseno','fechamin','fechamax','filtracion'))->setPaper(array(0,0,612.00,792.00));
     return $pdf->stream("PDF_".$diseno."_".$filtracion.'.pdf');
 
 }
