@@ -253,6 +253,10 @@
         <br>
             <h5 id="demo"></h5>
     </div>
+    <br>
+    <div class="col align-self-end" @if(Auth::user()->tipo_user==1) @else style="display: none" @endif>
+        <input type="checkbox" name="enviar" id="enviar" value="SI" checked><label for="enviar">Enviar Correo</label>
+    </div>
 </div>
             <div class="row">
 
