@@ -21,8 +21,8 @@ style="width: 100%; height: auto; border-radius: 15px;">
     <label>Hola {{$datos['name']}} Bienvenid@ al Sistema de levantamiento de incidencias y soporte tecnico del area de sistemas</label><br>
     <label for="">Este es tu correo: {{$datos['email']}} </label><br>
     <label for="">Esta es tu contraseña: {{$datos['password']}} </label><br>
-    <label for="">Para ingresar al sistemas coloca la informacion enviada</label>
-<a href="{{url('/')}}" style="background-color:green;color:white; border-radius:20px; width:55%px;height:30px;">link del Sistema</a>
+    <label for="">Para ingresar al sistemas coloca la informacion enviada</label><br>
+<a href="{{url('/')}}" style="background-color:green;color:white; border-radius:20px; width:80%;height:30px;">link del Sistema</a>
         </div>
 
         <img
