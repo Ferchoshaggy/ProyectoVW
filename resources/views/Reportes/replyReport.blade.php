@@ -223,9 +223,7 @@
   </div>
 </div>
 
-</div>
-
-<div class="col-12">
+<div class="col-12" style="margin-top: 10px">
     <input type="hidden" name="tickid" value="{{$ticket->id}}">
     <input type="hidden" name="userid" value="{{Auth::user()->id}}">
 
@@ -373,6 +371,6 @@ function customInput (el) {
 @section('footer')
 
 <strong>
-    Copyright © 2022-<?php echo date("Y");?> <a href="https://vw-fersan.com.mx/" target="_blank">Fersan Motors</a>
-</strong>
+    © 2022-<?php echo date("Y");?> <a href="https://vw-fersan.com.mx/" target="_blank">Volkswagen Fersan Motors S.A de C.V.,</a> todos los derechos reservados.
+    </strong>
 @stop

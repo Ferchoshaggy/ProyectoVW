@@ -415,7 +415,7 @@
                       <label style="font-family: cursive; font-size: 25px;" id="labeltema2"></label><br>
                       <label style="font-family: cursive; font-size: 25px;" id="labelstatus"></label>
                   </div>
-                  <textarea name="soluciones" cols="30" class="form-control" placeholder="Soluciones"></textarea>
+                  <textarea name="soluciones" id="solucion" cols="30" class="form-control" placeholder="Soluciones"></textarea>
               </div>
               <div class="modal-footer">
                   <input type="hidden" name="id_ticket" id="id_ticket2">
@@ -586,6 +586,8 @@ document.getElementById("btnCam").disabled=true;
     document.getElementById("btnCam").disabled=false;
 }
 
+document.getElementById("solucion").value=null;
+
 });
 }
 
@@ -622,6 +624,6 @@ if(fecmin && fecmax && diseño && filtro){
 @section('footer')
 
 <strong>
-    Copyright © 2022-<?php echo date("Y");?> <a href="https://vw-fersan.com.mx/" target="_blank">Fersan Motors</a>
+© 2022-<?php echo date("Y");?> <a href="https://vw-fersan.com.mx/" target="_blank">Volkswagen Fersan Motors S.A de C.V.,</a> todos los derechos reservados.
 </strong>
 @stop
