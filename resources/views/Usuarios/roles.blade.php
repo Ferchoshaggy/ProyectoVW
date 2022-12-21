@@ -87,7 +87,7 @@
 <div class="row">
     <div class="col-md-12">
     <label for="Nombre">Nombre Completo</label>
-    <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre')}}" onkeyup="validar();" >
+    <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre')}}" onkeyup="validar();" readonly>
     </div>
 </div>
 
@@ -735,6 +735,8 @@ url: "{{url('/inv_search')}}"+'/'+$id_correo,
   }else{
     document.getElementById("nombre").value=datoinv.Nombre_de_Usuario;
   }
+
+  validar();
 
 });
 }
