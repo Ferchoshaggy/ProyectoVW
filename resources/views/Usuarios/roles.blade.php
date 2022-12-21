@@ -116,7 +116,7 @@
 
 <div class="col-md-6" style="margin-bottom: 10px;">
     <label class="form-label">Correo</label>
-        <select name="correo" id="correo" class="js-example-basic-single form-control" style="width: 100%; height: 15px;" onchange="validar();">
+        <select name="correo" id="correo" class="js-example-basic-single form-control" style="width: 100%; height: 15px;" onchange="validar();cnombre(this.value);">
             <option selected disabled>Selecciona Correo...</option>
             @foreach ($inventarios as $inv)
             <option value="{{$inv->id}}">{{$inv->Correo_Institucional}}</option>
@@ -722,6 +722,23 @@ if(contrasIgual){
 document.getElementById("correo2").value=$('#correo option:selected').text();
 
 })
+
+ function cnombre($id_correo){
+    $.ajax({
+url: "{{url('/inv_search')}}"+'/'+$id_correo,
+  dataType: "json",
+  //context: document.body
+}).done(function(datoinv) {
+
+  if(datoinv==null){
+    document.getElementById("nombre").value=null;
+  }else{
+    document.getElementById("nombre").value=datoinv.Nombre_de_Usuario;
+  }
+
+});
+}
+
 
   </script>
 @stop

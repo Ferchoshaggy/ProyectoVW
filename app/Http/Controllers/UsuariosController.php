@@ -33,6 +33,7 @@ class UsuariosController extends Controller
         $maxId = DB::table('users')->max('id');
         DB::statement('ALTER TABLE users AUTO_INCREMENT=' . intval($maxId + 1) . ';');
 
+
         DB::table('users')->insert([
         "name"=>$request['nombre'],
         "id_inventario"=>$request['correo'],
