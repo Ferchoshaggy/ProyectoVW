@@ -63,7 +63,7 @@
         <div class="row">
             <div class="col-md-12">
                 <label for="Nombre">Nombre Completo</label>
-                <input type="text" name="nombre" id="nombre" class="form-control" value="{{$usuario->name}}" readonly>
+                <input type="text" name="nombre" id="nombre" class="form-control" value="{{$usuario->name}}">
                 </div>
         </div>
 

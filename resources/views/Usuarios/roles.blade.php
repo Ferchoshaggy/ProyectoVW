@@ -336,11 +336,11 @@
                   <div class="row" >
 <div class="col-md-12">
     <label for="Cconcesionaria">Concesionaria</label>
-<select class="form-control" name="concesionaria" id="concesionaria" onchange="veriEdit();">
+<select class="form-control" name="concesionaria" id="concesionaria2" onchange="veriEdit();">
     <option selected="true" value="" disabled="disabled">Seleccione Concesionaria...</option>
-    <option value="Fersan"  @if (old('concesionaria') == "Fersan") {{ 'selected' }} @endif>Fersan Motors Volkswagen</option>
-    <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
-    <option value="Navarra"  @if (old('concesionaria') == "Navarra") {{ 'selected' }} @endif>SEAT Navarra Motors</option>
+    <option value="Fersan"  @if (old('concesionaria2') == "Fersan") {{ 'selected' }} @endif>Fersan Motors Volkswagen</option>
+    <option value="Chaixtsu"  @if (old('concesionaria2') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
+    <option value="Navarra"  @if (old('concesionaria2') == "Navarra") {{ 'selected' }} @endif>SEAT Navarra Motors</option>
 </select>
 </div>
  </div>
@@ -348,10 +348,10 @@
  <div class="row" id="tadm">
     <div class="col-md-12">
         <label for="Tipo">Tipo de Usuario</label>
-        <select name="tipo" id="tipo" class="form-control" onchange="veriEdit();">
+        <select name="tipo" id="tipo2" class="form-control" onchange="veriEdit();">
         <option selected="true" value="" disabled="disabled">Seleccione Tipo...</option>
-        <option value="1" @if (old('tipo') == "1") {{ 'selected' }} @endif>Administrador</option>
-        <option value="2" @if (old('tipo') == "2") {{ 'selected' }} @endif>Usuario</option>
+        <option value="1" @if (old('tipo2') == "1") {{ 'selected' }} @endif>Administrador</option>
+        <option value="2" @if (old('tipo2') == "2") {{ 'selected' }} @endif>Usuario</option>
         </select>
     </div>
      </div>
@@ -654,12 +654,17 @@ document.getElementById("tadm").style.display="none";
 document.getElementById("tadm").style.display="block";
 }
 
+ $("#concesionaria2")[0].selectedIndex = "";
+ $("#tipo2")[0].selectedIndex = "";
+
+ document.getElementById("buttonA").disabled=true;
+
 });
 }
 
 function veriEdit(){
-let tipo=document.getElementById("tipo").value;
-let con=document.getElementById("concesionaria").value;
+let tipo=document.getElementById("tipo2").value;
+let con=document.getElementById("concesionaria2").value;
 
 if(tipo || con){
 document.getElementById("buttonA").disabled=true;
