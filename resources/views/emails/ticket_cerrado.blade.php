@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ticket Cerrado</title>
 </head>
-<body style="background-color: #E8E7E2; padding-top: 10px; padding-bottom: 10px;">
+<body style="background-color: #E8E7E2; padding-top: 10px; padding-bottom: 10px; width: 100%">
     <div style="margin-right: 15%; margin-left: 15%; margin-top: 10px; margin-bottom:10px; border-radius: 10px; background-color: white;">
 
         <img
