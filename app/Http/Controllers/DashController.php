@@ -24,16 +24,20 @@ class DashController extends Controller
         }
     }
 
-    public function vista_dash(Request $request){
+  public function vista_dash(Request $request){
 
-        if($request['fechaMin'] && $request['fechaMax']){
-            $tickets=DB::table('tickets')->whereDate("created_at",">=",$request['fechaMin'])->whereDate("created_at","<=",$request['fechaMax'])->get();
-        }else{
-            $tickets=DB::table('tickets')->select('*')->get();
+    if($request['fechaMin'] && $request['fechaMax']){
+     $tickets=DB::table('tickets')->whereDate("created_at",">=",$request['fechaMin'])->whereDate("created_at","<=",$request['fechaMax'])->get();
+    }else{
+
+$mes=date("m");
+$año=date("Y");
+$ultimo_dia = cal_days_in_month(CAL_GREGORIAN, $mes, $año);
+
+$tickets=DB::table('tickets')->whereDate("created_at",">=","$año/$mes/1")->whereDate("created_at","<=","$año/$mes/$ultimo_dia")->get();
+           // $tickets=DB::table('tickets')->select('*')->get();
         }
 return view('Index',compact('tickets'));
     }
-
-
 
 }
