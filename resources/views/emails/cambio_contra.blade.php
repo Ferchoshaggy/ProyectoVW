@@ -20,7 +20,7 @@
            <label>Hola {{$datos['name']}} Su Contraseña Ha Sido cambiada por el Departamento de sistemas de Grupo Fersan</label><br>
            <label for="">Esta es tu contraseña Nueva: {{$datos['password']}} </label><br>
            <label for="">Para ingresar al sistemas coloca la Nueva contraseña enviada</label><br>
-           <a href="{{url('/')}}" style="background-color:green;color:white; border-radius:20px; width:100%;height:35px;padding:10px;text-decoration:none;">link del Sistema</a>
+           <a href="{{url('/')}}" style="border:green 3px solid;color:black; border-radius:20px;padding:10px;text-decoration:none;font-size:20px">link del Sistema</a>
                </div>
 
                <img

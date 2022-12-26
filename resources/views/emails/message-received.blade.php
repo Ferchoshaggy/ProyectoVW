@@ -22,7 +22,7 @@ style="width: 100%; height: auto; border-radius: 15px;">
     <label for="">Este es tu correo: {{$datos['email']}} </label><br>
     <label for="">Esta es tu contraseña: {{$datos['password']}} </label><br>
     <label for="">Para ingresar al sistemas coloca la informacion enviada</label><br>
-    <a href="{{url('/')}}" style="background-color:green;color:white; border-radius:20px; width:100%;height:35px;padding:10px;text-decoration:none;">link del Sistema</a>
+    <a href="{{url('/')}}" style="border:green 3px solid;color:black; border-radius:20px;padding:10px;text-decoration:none;font-size:20px">link del Sistema</a>
         </div>
 
         <img

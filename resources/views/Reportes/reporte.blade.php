@@ -623,7 +623,7 @@ if(fecmin && fecmax && diseño && filtro){
 
 @section('footer')
 
-<strong>
-© 2022-<?php echo date("Y");?> <a href="https://vw-fersan.com.mx/" target="_blank">Volkswagen Fersan Motors S.A de C.V.,</a> todos los derechos reservados.
-</strong>
+<p style="margin: 0px">
+    © 2022-<?php echo date("Y");?> <a href="https://vw-fersan.com.mx/" target="_blank">Volkswagen Fersan Motors S.A de C.V.,</a>
+</p>
 @stop
