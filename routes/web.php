@@ -73,3 +73,4 @@ Route::delete('/delete_invdate',[InventoryController::class,'delete_inv'])->name
 Route::post("/edit_dateinv",[InventoryController::class,'edit_invdate'])->name('edit_invdate');
 Route::post("/new_inventorie",[InventoryController::class,'save_inve'])->name('save_inve');
 Route::post("/pdf_responsive",[InventoryController::class,'responsive_pdf'])->name('responsive_pdf');
+Route::get("/excel_inventory",[InventoryController::class,'expor_inventory'])->name('expor_inventory');

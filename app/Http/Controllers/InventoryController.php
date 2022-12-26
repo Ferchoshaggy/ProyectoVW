@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
+use App\Exports\InventoryExport;
 
 class InventoryController extends Controller
 {
@@ -179,6 +180,8 @@ $fecha=date('d-m-Y');
     return $pdf->stream("PDF_".$diseno.'.pdf');
 }
 
-
+public function expor_inventory(){
+    return Excel::download(new InventoryExport, 'Inventario.xlsx');
+}
 
 }
