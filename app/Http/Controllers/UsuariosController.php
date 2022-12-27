@@ -90,6 +90,7 @@ return redirect()->back()->with(['message' => "Error la contraseña Debe Tener m
    function cambiar_users(Request $request){
         try {
 
+
 if($request["consecionaria"]!=null && $request["tipo"]!=null){
 
       DB::table("users")->where("id",$request["id_user_edit"])->update([
@@ -98,18 +99,25 @@ if($request["consecionaria"]!=null && $request["tipo"]!=null){
                 ]);
     }
 
-if($request["concesionaria"]==null){
+if($request["tipo"]!==null){
     DB::table("users")->where("id",$request["id_user_edit"])->update([
         "tipo_user"=> $request["tipo"],
     ]);
 }
-if($request["tipo"]==null){
+
+if($request["concesionaria"]!==null){
     DB::table("users")->where("id",$request["id_user_edit"])->update([
         "concesionaria"=> $request["concesionaria"],
     ]);
-
 }
-            return redirect()->back()->with(['message' => "Se cambio Al Usuario con Exito", 'color' => 'success']);
+
+DB::table('users')->where("id",$request["id_user_edit"])->update([
+"name"=>$request["nombre"],
+"email"=>$request["correo"],
+
+]);
+
+    return redirect()->back()->with(['message' => "Se cambio Al Usuario con Exito", 'color' => 'success']);
         } catch (\Throwable $th) {
             //throw $th;
         }
