@@ -44,8 +44,10 @@ class UsuariosController extends Controller
         "password"=>bcrypt($request['contraseña']),
         ]);
 
+    if($request["enviar"]=="SI"){
         $data=["name"=>$request['nombre'] ,"email"=>$request['correo2'],"password"=>$request['contraseña'],"empresa"=>$request['concesionaria']];
         Mail::to($request['correo2'])->send(new MessageReceived("Usuario Creado",$data,"users"));
+    }
 
         return redirect()->back()->with(['message' => 'Usuario Guardado con Éxito', 'color' => 'success']);
 
