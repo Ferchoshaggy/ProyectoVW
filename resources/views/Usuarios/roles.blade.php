@@ -337,10 +337,10 @@
               @csrf
               <div class="modal-body">
 
-<div class="row">
+<div class="row" id="cadm">
 <div class="col-md-12">
 <label for="Correo">Correo</label>
-<input type="text" name="correo" id="Ecorreo" class="form-control">
+<input type="email" name="correo" id="Ecorreo" class="form-control">
 </div>
 </div>
 
@@ -673,8 +673,10 @@ $.ajax({
 
   if(a==1){
 document.getElementById("tadm").style.display="none";
+document.getElementById("cadm").style.display="none";
 }else{
 document.getElementById("tadm").style.display="block";
+document.getElementById("cadm").style.display="block";
 }
 
  $("#concesionaria2")[0].selectedIndex = "";
