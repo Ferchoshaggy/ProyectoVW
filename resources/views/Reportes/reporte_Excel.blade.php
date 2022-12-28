@@ -57,11 +57,12 @@
                 <tr>
                   <th style="text-align: center; background-color: #17a2b8; font-weight: bold; width: 250px; font-size: 20px; border: 1px solid black;">Ticket ID</th>
                   <th style="text-align: center; background-color: #17a2b8; font-weight: bold; width: 250px; font-size: 20px; border: 1px solid black;">Solicita</th>
+                  <th style="text-align: center; background-color: #17a2b8; font-weight: bold; width: 250px; font-size: 20px; border: 1px solid black;">Asignado</th>
                   <th style="text-align: center; background-color: #17a2b8; font-weight: bold; width: 250px; font-size: 20px; border: 1px solid black;">Tipo</th>
-                  <th style="text-align: center; background-color: #17a2b8; font-weight: bold; width: 250px; font-size: 20px; border: 1px solid black;">Prioridad</th>
-                  <th style="text-align: center; background-color: #17a2b8; font-weight: bold; width: 250px; font-size: 20px; border: 1px solid black;">Tema</th>
+                  <th style="text-align: center; background-color: #17a2b8; font-weight: bold; width: 200px; font-size: 20px; border: 1px solid black;">Prioridad</th>
+                  <th style="text-align: center; background-color: #17a2b8; font-weight: bold; width: 350px; font-size: 20px; border: 1px solid black;">Tema</th>
                   @if($filtracion=="todos")
-                  <th style="text-align: center; background-color: #17a2b8; font-weight: bold; width: 250px; font-size: 20px; border: 1px solid black;">Status</th>
+                  <th style="text-align: center; background-color: #17a2b8; font-weight: bold; width: 200px; font-size: 20px; border: 1px solid black;">Status</th>
                   @endif
                   <th style="text-align: center; background-color: #17a2b8; font-weight: bold; width: 250px; font-size: 20px; border: 1px solid black;">Creacion</th>
                 </tr>
@@ -73,6 +74,7 @@
                 <tr class="marca" onclick="pasar_id({{$reporte->id}});">
                   <td style="text-align: center; font-size: 15px;">{{$reporte->codigo}}</td>
                   <td style="text-align: center; font-size: 15px;">{{$user->name}}</td>
+                  <td style="text-align: center; font-size: 15px;">{{$reporte->fuente}}</td>
                   <td style="text-align: center; font-size: 15px;">{{$reporte->tipo}}</td>
                   <td style="text-align: center; font-size: 15px;">{{$reporte->prioridad}}</td>
                   <td style="text-align: center; font-size: 15px;">{{$reporte->tema}}</td>

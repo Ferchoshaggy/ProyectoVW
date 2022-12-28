@@ -8,6 +8,11 @@
 </head>
 
 <style>
+tbody tr:nth-child(odd) {
+
+background-color:#4e4e4e3f;
+
+}
 
   *{
       margin: 0;
@@ -19,8 +24,8 @@
   body{
         font-size: 15px;
         background-color: red;
-        padding-top: 70px;
-        padding-bottom: 5px;
+        padding-top: 120px;
+        padding-bottom: 75px;
         padding-right:25px;
         padding-left:25px;
         margin: 0;
@@ -69,7 +74,7 @@
 <body >
   <header>
 
-    <div style="margin-top: 20px;">
+    <div style="margin-top: 0px;">
       <div style="float: left; font-size: 20px; font-weight: bold; width: 50%;  padding: 50px;">IT</div>
       <div style="float: right; font-size: 15px; font-weight: bold; width: 50%; text-align: right; padding: 50px;">
         REPORTE DE TICKETS "{{$fechamin}}" AL "{{$fechamax}}" <br>
@@ -78,12 +83,13 @@
     </div>
     <br><br>
 
-    <div style="margin: 0px;">
-      <table class="table" style=" width: 100%; margin-top: 60px; border: black 3px solid;" cellspacing="0" cellpadding="0">
+    <div style="">
+      <table class="table" style=" width: 100%; margin-top: 50px; border: black 3px solid;" cellspacing="0" cellpadding="0">
           <thead >
             <tr>
               <th style="text-align: center; font-size: 15px; font-weight: bold; border: black 3px solid; padding: 10px;">Ticket ID</th>
               <th style="text-align: center; font-size: 15px; font-weight: bold; border: black 3px solid;">Solicita</th>
+              <th style="text-align: center; font-size: 15px; font-weight: bold; border: black 3px solid;">Asignado</th>
               <th style="text-align: center; font-size: 15px; font-weight: bold; border: black 3px solid;">Tipo</th>
               <th style="text-align: center; font-size: 15px; font-weight: bold; border: black 3px solid;">Prioridad</th>
               <th style="text-align: center; font-size: 15px; font-weight: bold; border: black 3px solid; ">Tema</th>
@@ -100,6 +106,7 @@
             <tr class="marca" onclick="pasar_id({{$reporte->id}});">
               <td style="text-align: center; font-size: 15px;">{{$reporte->codigo}}</td>
               <td style="text-align: center; font-size: 15px;">{{$user->name}}</td>
+              <td style="text-align: center; font-size: 15px;">{{$reporte->fuente}}</td>
               <td style="text-align: center; font-size: 15px;">{{$reporte->tipo}}</td>
               <td style="text-align: center; font-size: 15px;">{{$reporte->prioridad}}</td>
               <td style="text-align: center; font-size: 15px;  width: 100px;">
