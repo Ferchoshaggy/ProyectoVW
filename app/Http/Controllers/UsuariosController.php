@@ -114,7 +114,14 @@ if($request["concesionaria"]!==null){
 DB::table('users')->where("id",$request["id_user_edit"])->update([
 "name"=>$request["nombre"],
 "email"=>$request["correo"],
+]);
 
+$idUP=DB::table('users')->where("id",$request["id_user_edit"])->select("*")->first();
+
+
+DB::table('inventories')->where("id",$idUP->id_inventario)->update([
+    "Nombre_de_Usuario"=>$request["nombre"],
+    "Correo_Institucional"=>$request["correo"],
 ]);
 
     return redirect()->back()->with(['message' => "Se cambio Al Usuario con Exito", 'color' => 'success']);
