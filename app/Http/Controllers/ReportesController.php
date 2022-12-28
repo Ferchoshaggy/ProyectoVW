@@ -202,6 +202,9 @@ function descargarA($id){
 
 function report_pdf(Request $request){
 
+    $filterData = DB::table('tickets')->where('codigo','LIKE','%'.'CMIT'.'%')->get();
+
+
     if ($request['filtracion']=="todos") {
         $tickets=DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->get();
     }else{

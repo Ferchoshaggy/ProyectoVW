@@ -40,8 +40,8 @@ background-color:#4e4e4e3f;
   body{
     font-size: 15px;
         background-color: red;
-        padding-top: 70px;
-        padding-bottom: 5px;
+        padding-top: 120px;
+        padding-bottom: 75px;
         padding-right:25px;
         padding-left:25px;
         margin: 0;
@@ -56,8 +56,8 @@ background-color:#4e4e4e3f;
   body{
     font-size: 15px;
         background-color: red;
-        padding-top: 70px;
-        padding-bottom: 5px;
+        padding-top: 120px;
+        padding-bottom: 75px;
         padding-right:25px;
         padding-left:25px;
         margin: 0;
