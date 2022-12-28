@@ -202,7 +202,14 @@ function descargarA($id){
 
 function report_pdf(Request $request){
 
-    $filterData = DB::table('tickets')->where('codigo','LIKE','%'.'CMIT'.'%')->get();
+
+    if($request["codigos"]=="CMIT"){
+        $filterData = DB::table('tickets')->where('codigo','LIKE','%'.'CMIT'.'%')->get();
+    }elseif($request["codigos"]=="FMIT"){
+        $filterData = DB::table('tickets')->where('codigo','LIKE','%'.'FMIT'.'%')->get();
+    }elseif($request["codigos"]=="NMIT"){
+        $filterData = DB::table('tickets')->where('codigo','LIKE','%'.'NMIT'.'%')->get();
+    }
 
 
     if ($request['filtracion']=="todos") {
