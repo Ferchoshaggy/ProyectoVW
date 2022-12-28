@@ -349,14 +349,14 @@
 </div>
 
 <!--menu de opciones de la tabla-->
-<div id="menu_opciones" class="visible_off " style=" padding: 25px; background-color: #6e82c2bd;">
+<div id="menu_opciones" class="visible_off " style="padding:15px; background-color: #6e82c2bd;">
 
-    <button type="button" class="close" style="margin-right: -17px; margin-top: -20px;" onclick="cerrar_menu();">
-       <i class="fas fa-times fa-xs" style="width: 22; height:22;"></i>
+    <button type="button" class="close" style="margin-right: -10px; margin-top: -10px;" onclick="cerrar_menu();">
+       <i class="fas fa-times fa-xs" style="width: 15; height:15;"></i>
     </button>
 
     @if(Auth::user()->tipo_user==1)
-  <button type="button" class="btn btn-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#cerrar_ticket" onclick="cambiar_ticket();">
+  <button type="button" class="btn-sm btn-warning btn3" data-toggle="modal" data-target="#cerrar_ticket" onclick="cambiar_ticket();">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
         <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
       </svg>
@@ -365,14 +365,14 @@
   <br>
 @endif
 
-  <button class="btn btn-info form-control" style="margin-bottom: 10px; font-weight: bold;" onclick="ver_tickte();" >
+  <button class="btn-sm btn-info btn3" onclick="ver_tickte();" >
     <i class="fas fa-comments"></i>
     Responder
   </button>
   <br>
 
   @if(Auth::user()->tipo_user==1)
-  <button class="btn btn-danger form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#borrar_ticket" onclick="tickte_delete();" >
+  <button class="btn-sm btn-danger btn3" data-toggle="modal" data-target="#borrar_ticket" onclick="tickte_delete();" >
     <i class="fas fa-trash"></i>
     Borrar
   </button>
@@ -490,7 +490,15 @@ align-items: center;
 .paginate_button{
     position:sticky;
 }
-
+.btn3{
+  font-weight: bold;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin: 5px;
+}
 </style>
 
 @stop

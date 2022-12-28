@@ -225,23 +225,23 @@
 </div>
 
   <!--menu de opciones de la tabla-->
-  <div id="menu_opciones" class="visible_off " style=" padding: 25px; background-color: #6e82c2bd;">
+  <div id="menu_opciones" class="visible_off " style=" padding: 15px; background-color: #6e82c2bd;">
 
-<button type="button" class="close" style="margin-right: -17px; margin-top: -20px;" onclick="cerrar_menu();">
-    <i class="fas fa-times fa-xs"></i>
+<button type="button" class="close" style="margin-right: -10px; margin-top: -10px;" onclick="cerrar_menu();">
+    <i class="fas fa-times fa-xs" style="width: 15; height:15;"></i>
 </button>
 
-<button class="btn btn-warning form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#editar_usuario" onclick="cambiar_user();">
+<button class="btn-sm btn-warning btn3" data-toggle="modal" data-target="#editar_usuario" onclick="cambiar_user();">
     <i class="fas fa-edit"></i>
     Editar
   </button>
   <br>
-<button class="btn btn-danger form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#eliminar_usuario" onclick="datos_delete();">
+<button class="btn-sm btn-danger btn3" data-toggle="modal" data-target="#eliminar_usuario" onclick="datos_delete();">
     <i class="fas fa-trash"></i>
     Eliminar
   </button>
   <br>
-<button class="btn btn-info form-control" style="margin-bottom: 10px; font-weight: bold;" data-toggle="modal" data-target="#reset_pass" onclick="reset_pass();" >
+<button class="btn-sm btn-info btn3" data-toggle="modal" data-target="#reset_pass" onclick="reset_pass();" >
     <i class="fas fa-trash"></i>
     Resetear Password
   </button>
@@ -459,6 +459,15 @@
     .select2-selection__rendered{
         margin-top: -5px !important;
     }
+    .btn3{
+  font-weight: bold;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin: 5px;
+}
   </style>
 
 @stop
