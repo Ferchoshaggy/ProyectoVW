@@ -190,6 +190,7 @@
           <tr>
             <th style="text-align: center;">Ticket ID</th>
             <th style="text-align: center;">Solicita</th>
+            <th style="text-align: center">Asignado</th>
             <th style="text-align: center;">Tipo</th>
             <th style="text-align: center;">Prioridad</th>
             <th style="text-align: center;">Tema</th>
@@ -204,6 +205,7 @@
           <tr class="marca" onclick="pasar_id({{$reporte->id}});">
             <td style="text-align: center;">{{$reporte->codigo}}</td>
             <td style="text-align: center;">{{$user->name}}</td>
+            <td style="text-align: center;">{{$reporte->fuente}}</td>
             <td style="text-align: center;">{{$reporte->tipo}}</td>
             <td style="text-align: center;">{{$reporte->prioridad}}</td>
             <td style="text-align: center;">{{$reporte->tema}}</td>
@@ -233,6 +235,7 @@
           <tr>
             <th style="text-align: center;">Ticket ID</th>
             <th style="text-align: center;">Solicita</th>
+            <th style="text-align: center">Asignado</th>
             <th style="text-align: center;">Tipo</th>
             <th style="text-align: center;">Prioridad</th>
             <th style="text-align: center;">Tema</th>
@@ -248,6 +251,7 @@
           <tr class="marca" onclick="pasar_id({{$reporte->id}});">
             <td style="text-align: center;">{{$reporte->codigo}}</td>
             <td style="text-align: center;">{{$user->name}}</td>
+            <td style="text-align: center;">{{$reporte->fuente}}</td>
             <td style="text-align: center;">{{$reporte->tipo}}</td>
             <td style="text-align: center;">{{$reporte->prioridad}}</td>
             <td style="text-align: center;">{{$reporte->tema}}</td>
@@ -271,6 +275,7 @@
                   <tr>
                     <th style="text-align: center;">Ticket ID</th>
                     <th style="text-align: center;">Solicita</th>
+                    <th style="text-align: center">Asignado</th>
                     <th style="text-align: center;">Tipo</th>
                     <th style="text-align: center;">Prioridad</th>
                     <th style="text-align: center;">Tema</th>
@@ -286,6 +291,7 @@
                   <tr class="marca" onclick="pasar_id({{$reporte->id}});">
                     <td style="text-align: center;">{{$reporte->codigo}}</td>
                     <td style="text-align: center;">{{$user->name}}</td>
+                    <td style="text-align: center;">{{$reporte->fuente}}</td>
                     <td style="text-align: center;">{{$reporte->tipo}}</td>
                     <td style="text-align: center;">{{$reporte->prioridad}}</td>
                     <td style="text-align: center;">{{$reporte->tema}}</td>
@@ -309,6 +315,7 @@
           <tr>
             <th style="text-align: center;">Ticket ID</th>
             <th style="text-align: center;">Solicita</th>
+            <th style="text-align: center">Asignado</th>
             <th style="text-align: center;">Tipo</th>
             <th style="text-align: center;">Prioridad</th>
             <th style="text-align: center;">Tema</th>
@@ -324,6 +331,7 @@
           <tr class="marca" onclick="pasar_id({{$reporte->id}});">
             <td style="text-align: center;">{{$reporte->codigo}}</td>
             <td style="text-align: center;">{{$user->name}}</td>
+            <td style="text-align: center;">{{$reporte->fuente}}</td>
             <td style="text-align: center;">{{$reporte->tipo}}</td>
             <td style="text-align: center;">{{$reporte->prioridad}}</td>
             <td style="text-align: center;">{{$reporte->tema}}</td>

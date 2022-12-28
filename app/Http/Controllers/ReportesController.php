@@ -74,7 +74,7 @@ $usuario=DB::table("users")->where("id",$request['idPerfil'])->select("*")->firs
         "opcion3"=>$request['op3'],
         "opcion4"=>$request['op4'],
         "usuario"=>$request['idPerfil'],
-        //"userasignado"=>$request["usuario"],
+        "fuente"=>Auth::user()->name,
         "tipo"=>$request['tipo'],
         "prioridad"=>$request['prioridad'],
         "tema"=>$request['tema'],
@@ -104,6 +104,7 @@ $usuario=DB::table("users")->where("id",$request['idPerfil'])->select("*")->firs
     }
 function cambiar_status(Request $request){
 try{
+
 
     $email=DB::table("users")->where("id",$request["id_usuario"])->first();
     $datos=DB::table("tickets")->where("id",$request["id_ticket"])->first();
