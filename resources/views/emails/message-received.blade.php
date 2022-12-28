@@ -10,12 +10,6 @@
 
     <div style="margin-right: 15%; margin-left: 15%; margin-top: 10px; margin-bottom:10px; border-radius: 10px; background-color: white;">
 
- <img
- @if($datos['empresa']=="Fersan") src="{{url('img/imgemail/EncaFM.png')}}" @endif
- @if($datos['empresa']=="Chaixtsu") src="{{url('img/imgemail/EncaCM.png')}}" @endif
- @if($datos['empresa']=="Navarra") src="{{url('img/imgemail/EncaNM.png')}}" @endif
-style="width: 100%; height: auto; border-radius: 15px;">
-
 <div style="margin-top: 100px;margin-bottom: 100px; text-align: center;font-size: 20px">
     <h1>Bienvenido al Sistema de tickets</h1>
     <label>Hola {{$datos['name']}} Bienvenid@ al Sistema de levantamiento de incidencias y soporte tecnico del area de sistemas</label><br>
@@ -24,12 +18,6 @@ style="width: 100%; height: auto; border-radius: 15px;">
     <label for="">Para ingresar al sistemas coloca la informacion enviada</label><br>
     <a href="{{url('/')}}" style="border:green 3px solid;color:black; border-radius:20px;padding:10px;text-decoration:none;font-size:20px">link del Sistema</a>
         </div>
-
-        <img
-        @if($datos['empresa']=="Fersan") src="{{url('img/imgemail/SupFM.png')}}" @endif
-        @if($datos['empresa']=="Chaixtsu") src="{{url('img/imgemail/SupCM.png')}}" @endif
-        @if($datos['empresa']=="Navarra") src="{{url('img/imgemail/SupNM.png')}}" @endif
-       style="width: 100%; height: auto; border-radius: 15px;">
 
         </div>
 

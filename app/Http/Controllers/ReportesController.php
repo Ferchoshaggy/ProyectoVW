@@ -95,7 +95,7 @@ $usuario=DB::table("users")->where("id",$request['idPerfil'])->select("name")->f
         $fec=DB::table("tickets")->where("id",$ticketId)->select("created_at")->first();
 
     if($request["enviar"]=="SI"){
-        $data=["name"=>$usuario->name,"fecha"=>$fec->created_at,"empresa"=>$request["concesionaria"]];
+        $data=["name"=>$usuario->name,"tema"=>$request["tema"],"fecha"=>$fec->created_at,"empresa"=>$request["concesionaria"]];
         Mail::to(env('MAIL_USERNAME'))->send(new MessageReceived("Ticket Creado",$data,"ticket"));
        }
         return redirect()->back()->with(['message' => "Ticket Levantado Con Exito", 'color' => 'success']);
@@ -110,7 +110,8 @@ try{
     DB::table("tickets")->where("id",$request["id_ticket"])->update([
         "status"=> "Cerrado",
     ]);
-    $data=["name"=>$email->name,"codigo"=>$datos->codigo,"fechaF"=>$fecha->toDateTimeString(),"empresa"=>$email->concesionaria,"solucion"=>$request['soluciones']];
+
+    $data=["name"=>$email->name,"codigo"=>$datos->codigo,"tema"=>$datos->tema,"descripcion"=>$datos->descripcion,"fechaF"=>$fecha->toDateTimeString(),"empresa"=>$email->concesionaria,"solucion"=>$request['soluciones']];
     Mail::to($email->email)->send(new MessageReceived("Ticket Cerrado",$data,"Cerrado"));
 
     return redirect()->back()->with(['message' => "Se Cambio el Ticket Correctamente", 'color' => 'success']);
