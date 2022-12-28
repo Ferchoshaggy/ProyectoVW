@@ -42,9 +42,7 @@ $users=DB::table('users')->select('*')->get();
      public function report_save(Request $request){
 
 
-$usuario=DB::table("users")->where("id",$request['idPerfil'])->select("name")->first();
-
-
+$usuario=DB::table("users")->where("id",$request['idPerfil'])->select("*")->first();
 
         if($request['archivo']!=null){
             $file = $request->file('archivo');
@@ -95,9 +93,12 @@ $usuario=DB::table("users")->where("id",$request['idPerfil'])->select("name")->f
         $fec=DB::table("tickets")->where("id",$ticketId)->select("created_at")->first();
 
     if($request["enviar"]=="SI"){
-        $data=["name"=>$usuario->name,"tema"=>$request["tema"],"fecha"=>$fec->created_at,"empresa"=>$request["concesionaria"]];
+        $data=["name"=>$usuario->name,"tema"=>$request["tema"],"fecha"=>$fec->created_at,"empresa"=>$request["concesionaria"],"codigo"=>$clave];
         Mail::to(env('MAIL_USERNAME'))->send(new MessageReceived("Ticket Creado",$data,"ticket"));
-       }
+
+        Mail::to($usuario->email)->send(new MessageReceived("Ticket Levantado",$data,"ticketlevantado"));
+
+    }
         return redirect()->back()->with(['message' => "Ticket Levantado Con Exito", 'color' => 'success']);
 
     }

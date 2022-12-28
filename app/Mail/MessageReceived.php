@@ -36,6 +36,9 @@ if($this->modulo=="Cerrado"){
 if($this->modulo=="contra"){
     return $this->view('emails.cambio_contra');
 }
+if($this->modulo=="ticketlevantado"){
+    return $this->view('emails.ticket_enviado');
+}
 
     }
 }
