@@ -512,7 +512,7 @@
             @csrf
         <div class="modal-body">
 
-<select name="asignacion" id="asignacion2" class="js-example-basic-single form-control" style="width: 100%; height: 15px;" onchange="validar_soli()">
+<select name="asignacion" id="asignacion2" class="js-example-basic-single2 form-control" style="width: 100%; height: 15px;" onchange="validar_soli()">
     <option selected="true" value="" disabled="disabled">Seleccione un Usuario...</option>
     @foreach ($users as $user)
 <option value="{{$user->id}}">{{$user->name}}</option>
@@ -616,7 +616,7 @@ $('.js-example-basic-single').select2({
             dropdownParent: $('#asignar_ticket') //este se agrega para que se despliegue bien en el modal.
         });
 
-        $('.js-example-basic-single').select2({
+$('.js-example-basic-single2').select2({
             dropdownParent: $('#solicita_ticket') //este se agrega para que se despliegue bien en el modal.
         });
 
