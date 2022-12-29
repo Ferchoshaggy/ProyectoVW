@@ -266,4 +266,18 @@ return redirect()->back()->with(['message' => "El ticket Fue asignado", 'color' 
 }
 }
 
+public function solicita_ticket(Request $request){
+    try{
+        DB::table('tickets')->where('id',$request['id_ticket'])->update([
+            "usuario"=>$request['asignacion'],
+
+            ]);
+
+return redirect()->back()->with(['message' => "El ticket Fue asignado", 'color' => 'success']);
+
+    }catch(\Throwable $th) {
+
+    }
+}
+
 }

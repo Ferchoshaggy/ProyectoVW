@@ -377,6 +377,13 @@
 @endif
 
 @if(Auth::user()->tipo_user==1)
+<button class="btn-sm btn-secondary btn3" data-toggle="modal" data-target="#solicita_ticket" onclick="tickte_solicita();" >
+    <i class='fas fa-user-check'></i>
+  Solicita
+</button>
+@endif
+
+@if(Auth::user()->tipo_user==1)
 <button class="btn-sm btn-success btn3" data-toggle="modal" data-target="#asignar_ticket" onclick="tickte_asignado();" >
     <i class='fas fa-user-edit'></i>
   Asignar
@@ -458,7 +465,6 @@
   </div>
 
   <!-- modal de asignar ticket-->
-
   <div class="modal fade" id="asignar_ticket" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -491,6 +497,39 @@
       </div>
     </div>
   </div>
+
+  <!-- modal de cambiar solica ticket-->
+  <div class="modal fade" id="solicita_ticket" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Persona que solicita Ticket</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{Route("solicita_ticket")}}" method="POST">
+            @csrf
+        <div class="modal-body">
+
+<select name="asignacion" id="asignacion2" class="js-example-basic-single form-control" style="width: 100%; height: 15px;" onchange="validar_soli()">
+    <option selected="true" value="" disabled="disabled">Seleccione un Usuario...</option>
+    @foreach ($users as $user)
+<option value="{{$user->id}}">{{$user->name}}</option>
+@endforeach
+</select>
+
+      </div>
+        <div class="modal-footer">
+            <input type="hidden" name="id_ticket" id="id_ticketS">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button class="btn btn-success" id="SolTick" disabled>Guardar</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+
 
 </div>
 </div>
@@ -577,6 +616,10 @@ $('.js-example-basic-single').select2({
             dropdownParent: $('#asignar_ticket') //este se agrega para que se despliegue bien en el modal.
         });
 
+        $('.js-example-basic-single').select2({
+            dropdownParent: $('#solicita_ticket') //este se agrega para que se despliegue bien en el modal.
+        });
+
 //funcion de la tabla de boostrap tenga paginador y buscador
   $(document).ready(function() {
     $('.table').DataTable({
@@ -611,6 +654,16 @@ var id_ticket=null;
         menu_opciones.classList.remove("visible_on");
         menu_opciones.classList.add("visible_off");
     }
+
+function validar_soli(){
+    $select=document.getElementById("asignacion2").value
+
+if($select){
+document.getElementById("SolTick").disabled=false;
+}else{
+document.getElementById("SolTick").disabled=true;
+}
+}
 
 function validar_asig(){
 
@@ -647,6 +700,23 @@ $.ajax({
 
 function ver_tickte(){
  location.href ="{{url('/replyreport')}}/"+id_ticket;
+}
+
+function tickte_solicita(){
+    $.ajax({
+  url: "{{url('/ticket_search')}}"+'/'+id_ticket,
+  dataType: "json",
+  //context: document.body
+}).done(function(datosTicket) {
+
+  if(datosTicket==null){
+    document.getElementById("id_ticketS").value=null;
+  }else{
+    document.getElementById("id_ticketS").value=datosTicket.id;
+  }
+  $("#asignacion2").val('').trigger('change')
+
+});
 }
 
 function tickte_asignado(){
