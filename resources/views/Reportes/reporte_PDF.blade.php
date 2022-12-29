@@ -93,9 +93,7 @@ background-color:#4e4e4e3f;
               <th style="text-align: center; font-size: 15px; font-weight: bold; border: black 3px solid;">Tipo</th>
               <th style="text-align: center; font-size: 15px; font-weight: bold; border: black 3px solid;">Prioridad</th>
               <th style="text-align: center; font-size: 15px; font-weight: bold; border: black 3px solid; ">Tema</th>
-              @if($filtracion=="todos")
               <th style="text-align: center; font-size: 15px; font-weight: bold; border: black 3px solid;">Status</th>
-              @endif
               <th style="text-align: center; font-size: 15px; font-weight: bold; border: black 3px solid;">Creacion</th>
             </tr>
           </thead>
@@ -112,14 +110,12 @@ background-color:#4e4e4e3f;
               <td style="text-align: center; font-size: 15px;  width: 100px;">
                 <div style="word-wrap: break-word; width: 230px;">{{$reporte->tema}}</div>
               </td>
-              @if($filtracion=="todos")
               @if($reporte->status=="Abierto")
               <td style="text-align: center; background-color: #AAD5A6; font-weight: bold; font-size: 15px;">{{$reporte->status}}</td>
               @elseif($reporte->status=="Cerrado")
               <td style="text-align: center; background-color: #D5A6A6; font-weight: bold; font-size: 15px;">{{$reporte->status}}</td>
               @elseif($reporte->status=="Contestado")
               <td style="text-align: center; background-color: #E3E3E3; font-weight: bold; font-size: 15px;">{{$reporte->status}}</td>
-              @endif
               @endif
               <td style="text-align: center; font-size: 15px;">{{$reporte->created_at}}</td>
             </tr>
@@ -130,13 +126,16 @@ background-color:#4e4e4e3f;
       </table>
     </div>
 
-<!--
-    <div style="background-color: red;">
-      @for($i=0; $i<=300; $i++)
-      asdas<br>
-      @endfor
+
+<div style="margin-top: 10px">
+<?php $total_registros=0; ?>
+@foreach ($tickets as $ticket)
+<?php $total_registros++; ?>
+@endforeach
+<h2>Total de Registros: {{$total_registros}}</h2>
+
     </div>
--->
+
   </header>
 
 </body>

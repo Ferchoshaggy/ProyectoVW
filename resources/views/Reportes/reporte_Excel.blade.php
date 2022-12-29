@@ -61,9 +61,7 @@
                   <th style="text-align: center; background-color: #17a2b8; font-weight: bold; width: 250px; font-size: 20px; border: 1px solid black;">Tipo</th>
                   <th style="text-align: center; background-color: #17a2b8; font-weight: bold; width: 200px; font-size: 20px; border: 1px solid black;">Prioridad</th>
                   <th style="text-align: center; background-color: #17a2b8; font-weight: bold; width: 350px; font-size: 20px; border: 1px solid black;">Tema</th>
-                  @if($filtracion=="todos")
                   <th style="text-align: center; background-color: #17a2b8; font-weight: bold; width: 200px; font-size: 20px; border: 1px solid black;">Status</th>
-                  @endif
                   <th style="text-align: center; background-color: #17a2b8; font-weight: bold; width: 250px; font-size: 20px; border: 1px solid black;">Creacion</th>
                 </tr>
               </thead>
@@ -78,14 +76,12 @@
                   <td style="text-align: center; font-size: 15px;">{{$reporte->tipo}}</td>
                   <td style="text-align: center; font-size: 15px;">{{$reporte->prioridad}}</td>
                   <td style="text-align: center; font-size: 15px;">{{$reporte->tema}}</td>
-                  @if($filtracion=="todos")
                   @if($reporte->status=="Abierto")
                   <td style="text-align: center; background-color: #AAD5A6; font-weight: bold; font-size: 18px;">{{$reporte->status}}</td>
                   @elseif($reporte->status=="Cerrado")
                   <td style="text-align: center; background-color: #D5A6A6; font-weight: bold; font-size: 18px;">{{$reporte->status}}</td>
                   @elseif($reporte->status=="Contestado")
                   <td style="text-align: center; background-color: #E3E3E3; font-weight: bold; font-size: 18px;">{{$reporte->status}}</td>
-                  @endif
                   @endif
                   <td style="text-align: center; font-size: 15px;">{{$reporte->created_at}}</td>
                 </tr>
@@ -94,6 +90,20 @@
                 @endforeach
               </tbody>
           </table>
+       </div>
+       <div>
+        <table style="border-collapse: collapse; width: 100%; font-weight: bold; margin-top: 35px;   font-size: 10px;  text-align: center;">
+            <tbody>
+            <tr>
+                <td style="text-align: center; font-size: 15px;">
+        <?php $total_registros=0; ?>
+@foreach ($tickets as $ticket)
+<?php $total_registros++; ?>
+@endforeach
+Total de Registros: {{$total_registros}}</td>
+            </tr>
+        </tbody>
+        </table>
        </div>
    </div>
 </body>

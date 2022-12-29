@@ -103,9 +103,9 @@
     <select class="form-control" name="filtracion" id="filtracion1" onchange="validar_pdf()">
         <option selected="true" value="" disabled="disabled">Seleccione La filtracion...</option>
         <option value="todos">Sin filtracion</option>
-        <option value="Abierto">Status Abierto</option>
-        <option value="Cerrado">Status Cerrado</option>
-        <option value="Contestado">Status Contestado</option>
+        <option value="FMIT">Codigos Fersan</option>
+        <option value="CMIT">Codigos Chaixtsu</option>
+        <option value="NMIT">Codigos Navarra</option>
     </select>
     </div>
 </div>
@@ -163,9 +163,9 @@
     <select class="form-control" name="filtracion" id="filtracion2" onchange="validar_xls()">
         <option selected="true" value="" disabled="disabled">Seleccione La filtracion...</option>
         <option value="todos">Sin filtracion</option>
-        <option value="Abierto">Status Abierto</option>
-        <option value="Cerrado">Status Cerrado</option>
-        <option value="Contestado">Status Contestado</option>
+        <option value="FMIT">Codigos Fersan</option>
+        <option value="CMIT">Codigos Chaixtsu</option>
+        <option value="NMIT">Codigos Navarra</option>
     </select>
     </div>
     </div>

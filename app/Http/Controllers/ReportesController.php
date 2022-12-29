@@ -68,13 +68,19 @@ $usuario=DB::table("users")->where("id",$request['idPerfil'])->select("*")->firs
             $inic="NMIT-";
         }
 
+if(Auth::user()->tipo_user==1){
+$asignado=Auth::user()->name;
+}else{
+$asignado="Esperando Asignacion";
+}
+
         DB::table("tickets")->insert([
         "opcion1"=>$request['op1'],
         "opcion2"=>$request['op2'],
         "opcion3"=>$request['op3'],
         "opcion4"=>$request['op4'],
         "usuario"=>$request['idPerfil'],
-        "fuente"=>Auth::user()->name,
+        "fuente"=>$asignado,
         "tipo"=>$request['tipo'],
         "prioridad"=>$request['prioridad'],
         "tema"=>$request['tema'],
@@ -202,21 +208,16 @@ function descargarA($id){
 
 function report_pdf(Request $request){
 
-
-    if($request["codigos"]=="CMIT"){
-        $filterData = DB::table('tickets')->where('codigo','LIKE','%'.'CMIT'.'%')->get();
-    }elseif($request["codigos"]=="FMIT"){
-        $filterData = DB::table('tickets')->where('codigo','LIKE','%'.'FMIT'.'%')->get();
-    }elseif($request["codigos"]=="NMIT"){
-        $filterData = DB::table('tickets')->where('codigo','LIKE','%'.'NMIT'.'%')->get();
+    if($request["filtracion"]=="todos"){
+        $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->get();
+    }elseif($request["filtracion"]=="CMIT"){
+         $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'CMIT'.'%')->get();
+    }elseif($request["filtracion"]=="FMIT"){
+         $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'FMIT'.'%')->get();
+    }elseif($request["filtracion"]=="NMIT"){
+         $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'NMIT'.'%')->get();
     }
 
-
-    if ($request['filtracion']=="todos") {
-        $tickets=DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->get();
-    }else{
-        $tickets=DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where("status",$request['filtracion'])->get();
-    }
 
     $users=DB::table('users')->select('*')->get();
     $diseno=$request['diseño'];
@@ -231,10 +232,14 @@ function report_pdf(Request $request){
 
 function report_excel(Request $request){
 
-    if ($request['filtracion']=="todos") {
-        $tickets=DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->get();
-    }else{
-        $tickets=DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where("status",$request['filtracion'])->get();
+    if($request["filtracion"]=="todos"){
+        $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->get();
+    }elseif($request["filtracion"]=="CMIT"){
+         $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'CMIT'.'%')->get();
+    }elseif($request["filtracion"]=="FMIT"){
+         $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'FMIT'.'%')->get();
+    }elseif($request["filtracion"]=="NMIT"){
+         $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'NMIT'.'%')->get();
     }
 
     $users=DB::table('users')->select('*')->get();
