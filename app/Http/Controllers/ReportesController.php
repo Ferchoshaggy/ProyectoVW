@@ -108,7 +108,7 @@ $asignado="Esperando Asignacion";
         return redirect()->back()->with(['message' => "Ticket Levantado Con Exito", 'color' => 'success']);
 
     }
-function cambiar_status(Request $request){
+public function cambiar_status(Request $request){
 try{
 
 
@@ -128,7 +128,7 @@ try{
 }
 }
 
-function ticket_delete(Request $request){
+public function ticket_delete(Request $request){
     try {
 
         if($request["id_ticket"]!=0){
@@ -166,7 +166,7 @@ public function reply_report($id){
   return view('Reportes.replyReport',compact('ticket','users','replys'));
 }
 
-function ticket_reply(Request $request){
+public function ticket_reply(Request $request){
 try{
 
     if($request['archivo']!=null){
@@ -200,13 +200,13 @@ return redirect()->back()->with(['message' => "Se Mando la Contestacion con Exit
 }
 }
 
-function descargarA($id){
+public function descargarA($id){
     $doc=DB::table("tickets")->where('id',$id)->first();
     $pahtToFile=public_path("imgTicket/". $doc->archivo);
     return response()->download($pahtToFile);
 }
 
-function report_pdf(Request $request){
+public function report_pdf(Request $request){
 
     if($request["filtracion"]=="todos"){
         $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->get();
@@ -230,7 +230,7 @@ function report_pdf(Request $request){
 
 }
 
-function report_excel(Request $request){
+public function report_excel(Request $request){
 
     if($request["filtracion"]=="todos"){
         $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->get();
@@ -252,4 +252,18 @@ function report_excel(Request $request){
     //return $pdf->stream('ejemplo.pdf');
 
 }
+
+public function asignar_ticket(Request $request){
+    try{
+DB::table('tickets')->where('id',$request['id_ticket'])->update([
+"fuente"=>$request['asignacion'],
+
+]);
+
+return redirect()->back()->with(['message' => "El ticket Fue asignado", 'color' => 'success']);
+}catch(\Throwable $th) {
+
+}
+}
+
 }

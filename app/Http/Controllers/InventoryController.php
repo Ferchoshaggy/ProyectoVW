@@ -11,8 +11,12 @@ use App\Exports\InventoryExport;
 
 class InventoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-    function vista_inventario(){
+    public function vista_inventario(){
 
     $datos=DB::table('inventories')->select("*")->get();
     return view("Inventario.inventory",compact('datos'));

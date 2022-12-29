@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 @section('content')
 <br>
@@ -66,7 +67,8 @@
 <!--Boton de nuevo usuarios -->
 
 <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#agregarUser">
-    Nuevo Usuario
+    <i class='fas fa-user-plus'></i>
+  Nuevo Usuario
   </button>
   <br><br>
 
@@ -232,17 +234,17 @@
 </button>
 
 <button class="btn-sm btn-warning btn3" data-toggle="modal" data-target="#editar_usuario" onclick="cambiar_user();">
-    <i class="fas fa-edit"></i>
+    <i class='fas fa-user-cog'></i>
     Editar
   </button>
   <br>
 <button class="btn-sm btn-danger btn3" data-toggle="modal" data-target="#eliminar_usuario" onclick="datos_delete();">
-    <i class="fas fa-trash"></i>
+    <i class='fas fa-user-times'></i>
     Eliminar
   </button>
   <br>
 <button class="btn-sm btn-info btn3" data-toggle="modal" data-target="#reset_pass" onclick="reset_pass();" >
-    <i class="fas fa-trash"></i>
+    <i class='fas fa-user-shield'></i>
     Resetear Password
   </button>
 </div>

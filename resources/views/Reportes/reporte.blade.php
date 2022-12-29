@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 @section('content')
 <br>
@@ -36,6 +37,16 @@
     </button>
 </div>
 @endif
+
+@if(Session::get('message')== "El ticket Fue asignado")
+<div class="alert alert-{{ Session::get('color') }}" role="alert" style="font-family: cursive;">
+    {{ Session::get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
 @endif
 
         <ul class="nav cajaP">
@@ -365,6 +376,13 @@
   <br>
 @endif
 
+@if(Auth::user()->tipo_user==1)
+<button class="btn-sm btn-success btn3" data-toggle="modal" data-target="#asignar_ticket" onclick="tickte_asignado();" >
+    <i class='fas fa-user-edit'></i>
+  Asignar
+</button>
+@endif
+
   <button class="btn-sm btn-info btn3" onclick="ver_tickte();" >
     <i class="fas fa-comments"></i>
     Responder
@@ -432,6 +450,41 @@
                   <button class="btn btn-success" id="btnCam">Cambiar</button>
               </div>
           </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal de asignar ticket-->
+
+  <div class="modal fade" id="asignar_ticket" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Asignar Personal al Ticket</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{Route("asignar_ticket")}}" method="POST">
+            @csrf
+        <div class="modal-body">
+
+<select name="asignacion" id="asignacion" class="js-example-basic-single form-control" style="width: 100%; height: 15px;" onchange="validar_asig()">
+    <option selected="true" value="" disabled="disabled">Seleccione un Tecnico...</option>
+    @foreach ($users as $user)
+@if ($user->tipo_user==1)
+<option value="{{$user->name}}">{{$user->name}}</option>
+@endif
+@endforeach
+</select>
+
+      </div>
+        <div class="modal-footer">
+            <input type="hidden" name="id_ticket" id="id_ticketA">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button class="btn btn-success" id="asigTick" disabled>Guardar</button>
+        </div>
+    </form>
       </div>
     </div>
   </div>
@@ -511,7 +564,14 @@ align-items: center;
 <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
 
+<!-- este es para el selected2-->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 <script type="text/javascript">
+
+$('.js-example-basic-single').select2({
+            dropdownParent: $('#asignar_ticket') //este se agrega para que se despliegue bien en el modal.
+        });
 
 //funcion de la tabla de boostrap tenga paginador y buscador
   $(document).ready(function() {
@@ -548,6 +608,18 @@ var id_ticket=null;
         menu_opciones.classList.add("visible_off");
     }
 
+function validar_asig(){
+
+$select=document.getElementById("asignacion").value
+
+if($select){
+document.getElementById("asigTick").disabled=false;
+}else{
+document.getElementById("asigTick").disabled=true;
+}
+
+}
+
 function tickte_delete(){
 
 $.ajax({
@@ -572,6 +644,24 @@ $.ajax({
 function ver_tickte(){
  location.href ="{{url('/replyreport')}}/"+id_ticket;
 }
+
+function tickte_asignado(){
+    $.ajax({
+  url: "{{url('/ticket_search')}}"+'/'+id_ticket,
+  dataType: "json",
+  //context: document.body
+}).done(function(datosTicket) {
+
+  if(datosTicket==null){
+    document.getElementById("id_ticketA").value=null;
+  }else{
+    document.getElementById("id_ticketA").value=datosTicket.id;
+  }
+  $("#asignacion").val('').trigger('change')
+
+});
+}
+
 
 function cambiar_ticket(){
     $.ajax({

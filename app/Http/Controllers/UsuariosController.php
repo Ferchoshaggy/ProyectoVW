@@ -70,7 +70,7 @@ class UsuariosController extends Controller
         }
             }
 
-function res_pass(Request $request){
+            public function res_pass(Request $request){
 if(strlen($request["nue_pass"])>=8){
 
 $nombre=DB::table('users')->where("id",$request["id_userp"])->select("*")->first();
@@ -87,7 +87,7 @@ return redirect()->back()->with(['message' => "Contraseña Restaurada con Exito"
 return redirect()->back()->with(['message' => "Error la contraseña Debe Tener minimo 8 caracteres", 'color' => 'warning']);
 }
 
-   function cambiar_users(Request $request){
+public function cambiar_users(Request $request){
         try {
 
 

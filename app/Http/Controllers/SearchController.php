@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function userSearch($id){
 
         $datosUser=DB::table("users")->where("id",$id)->first();

@@ -50,6 +50,7 @@ Route::post('/change_status',[ReportesController::class,'cambiar_status'])->name
 Route::delete('/delete_ticket',[ReportesController::class,'ticket_delete'])->name('ticket_delete');
 Route::post('/ticket/{id}/download', [ReportesController::class,'descargarA'])->name('descargarA');
 Route::post('/ticket_reply',[ReportesController::class,'ticket_reply'])->name('ticket_reply');
+Route::post('/asignar_ticket',[ReportesController::class,'asignar_ticket'])->name('asignar_ticket');
 
 //Usuarios
 Route::post('/save_user',[UsuariosController::class,'guardar_usuario'])->name('save_users');
