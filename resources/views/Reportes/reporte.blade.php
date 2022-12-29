@@ -430,16 +430,19 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Cambiar Status</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Cerrar Ticket</h5>
           </div>
           <form action="{{Route('cambiar_status')}}" method="POST">
               @csrf
               <div class="modal-body">
-                <label style="font-family: cursive; font-size: 25px; display:flex; justify-content: center;align-items: center; height: 100%;">¿Quieres Cambiar el Status del Ticket?</label><br>
+                <label style="font-family: cursive; font-size: 25px; display:flex; justify-content: center;align-items: center; height: 100%;">¿Quieres Cerrar el Ticket?</label><br>
                   <div style="text-align: center;">
                       <label style="font-family: cursive; font-size: 25px;" id="labelcambiar"></label><br>
+                      <label style="font-family: cursive; font-size: 25px;">Tema: </label>
                       <label style="font-family: cursive; font-size: 25px;" id="labeltema2"></label><br>
-                      <label style="font-family: cursive; font-size: 25px;" id="labelstatus"></label>
+                      <label style="font-family: cursive; font-size: 25px;" id="labelstatus"></label><br>
+                      <label style="font-family: cursive; font-size: 25px;">Descripcion: </label>
+                      <label style="font-family: cursive; font-size: 25px;" id="labeldescripcion2"></label><br>
                   </div>
                   <textarea name="soluciones" id="solucion" cols="30" class="form-control" placeholder="Soluciones"></textarea>
               </div>
@@ -675,12 +678,14 @@ function cambiar_ticket(){
     document.getElementById("labelcambiar").innerHTML=null;
     document.getElementById("labeltema2").innerHTML=null;
     document.getElementById("labelstatus").innerHTML=null;
+    document.getElementById("labeldescripcion2").value=null;
     document.getElementById("id_ticket2").value=null;
     document.getElementById("id_usuario").value=null;
   }else{
     document.getElementById("labelcambiar").innerHTML=datosTicket.codigo;
     document.getElementById("labeltema2").innerHTML=datosTicket.tema;
     document.getElementById("labelstatus").innerHTML="El tickets esta: "+datosTicket.status;
+    document.getElementById("labeldescripcion2").innerHTML=datosTicket.descripcion;
     document.getElementById("id_ticket2").value=datosTicket.id;
     document.getElementById("id_usuario").value=datosTicket.usuario;
   }
@@ -731,6 +736,6 @@ if(fecmin && fecmax && diseño && filtro){
 @section('footer')
 
 <p style="margin: 0px">
-    © 2022-<?php echo date("Y");?> <a href="https://vw-fersan.com.mx/" target="_blank">Volkswagen Fersan Motors S.A de C.V.,</a>
+    © 2022-<?php echo date("Y");?> <a href="https://vw-fersan.com.mx/" target="_blank">Volkswagen Fersan Motors S.A de C.V.</a>
 </p>
 @stop
