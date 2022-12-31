@@ -73,6 +73,8 @@ $asignado=Auth::user()->name;
 }else{
 $asignado="Esperando Asignacion";
 }
+$maxId = DB::table('tickets')->max('id');
+        DB::statement('ALTER TABLE tickets AUTO_INCREMENT=' . intval($maxId + 1) . ';');
 
         DB::table("tickets")->insert([
         "opcion1"=>$request['op1'],
