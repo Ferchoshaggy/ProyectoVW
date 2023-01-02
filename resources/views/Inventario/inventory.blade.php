@@ -351,7 +351,11 @@
             <div class="row" style="padding: 0 10px 0px 10px">
                 <div class="col-md-4">
                     <label for="cpulaptop">Cpu o Laptop:</label>
-                    <input type="text" name="cpu_lap" class="form-control">
+                    <select name="cpu_lap" class="form-control">
+<option value="N/A">N/A</option>
+<option value="CPU">CPU</option>
+<option value="Laptop">Laptop</option>
+                    </select>
                     </div>
                     <div class="col-md-4">
                         <label for="marca_cpu">Marca:</label>
@@ -441,11 +445,17 @@
             <div class="row" style="padding: 0 10px 0 10px">
                 <div class="col-md-4">
                     <label for="vnc">VNC:</label>
-                    <input type="text" name="vnc" class="form-control">
+                    <select name="vnc" class="form-control">
+                        <option value="N/A">N/A</option>
+                        <option value="VNC">VNC</option>
+                    </select>
                 </div>
                 <div class="col-md-4">
                     <label for="adobe">Adobe:</label>
-                    <input type="text" name="adobe" class="form-control">
+                    <select name="adobe" class="form-control">
+                        <option value="N/A">N/A</option>
+                        <option value="Adobe">Adobe</option>
+                    </select>
                     </div>
                     <div class="col-md-4">
                         <label for="gds">GDS:</label>

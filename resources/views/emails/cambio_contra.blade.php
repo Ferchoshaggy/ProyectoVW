@@ -8,16 +8,11 @@
 </head>
 <body style="background-color: #E8E7E2; padding-top: 10px; padding-bottom: 10px; width: 100%">
 
-    <div style="margin-right: 15%; margin-left: 15%; margin-top: 10px; margin-bottom:10px; border-radius: 10px; background-color: white;">
-
-
        <div style="margin-top: 100px;margin-bottom: 100px; text-align: center;font-size: 20px">
            <label>Hola {{$datos['name']}} Su Contraseña Ha Sido cambiada por el Departamento de sistemas de Grupo Fersan</label><br>
            <label for="">Esta es tu contraseña Nueva: {{$datos['password']}} </label><br>
            <label for="">Para ingresar al sistemas coloca la Nueva contraseña enviada</label><br>
            <a href="{{url('/')}}" style="border:green 3px solid;color:black; border-radius:20px;padding:10px;text-decoration:none;font-size:20px">link del Sistema</a>
-               </div>
-
                </div>
 
 </body>

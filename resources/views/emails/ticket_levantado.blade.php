@@ -7,9 +7,6 @@
 </head>
 <body style="background-color: #E8E7E2; padding-top: 10px; padding-bottom: 10px; width: 100%">
 
-    <div style="margin-right: 15%; margin-left: 15%; margin-top: 10px; margin-bottom:10px; border-radius: 10px; background-color: white;">
-
-
    <div style="margin-top: 100px;margin-bottom: 100px; text-align: center;font-size:25px">
  <h4>Han levantado un ticket</h4>
  El usuario {{$datos['name']}} Ha levantado un ticket el dia {{$datos['fecha']}}<br>
@@ -17,6 +14,5 @@
    </div>
 
 
-    </div>
 </body>
 </html>
