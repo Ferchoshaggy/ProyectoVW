@@ -18,3 +18,5 @@ MAIL_PASSWORD=System47621w
 MAIL_ENCRYPTION=SSL
 MAIL_FROM_ADDRESS=sistemas@grupofersan.mx
 MAIL_FROM_NAME="Sistemas Grupo Fersan"
+
+UBICACION_MYSQLDUMP ='C:\laragon\bin\mysql\mysql-8.0.30-winx64\bin\mysqldump.exe'

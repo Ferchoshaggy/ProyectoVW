@@ -76,3 +76,17 @@ Route::post("/edit_dateinv",[InventoryController::class,'edit_invdate'])->name('
 Route::post("/new_inventorie",[InventoryController::class,'save_inve'])->name('save_inve');
 Route::post("/pdf_responsive",[InventoryController::class,'responsive_pdf'])->name('responsive_pdf');
 Route::get("/excel_inventory",[InventoryController::class,'expor_inventory'])->name('expor_inventory');
+
+/*
+Route::get("/Respaldo",function(){
+    $ubicacionArchivoTemporal = getcwd() . DIRECTORY_SEPARATOR . "Respaldo_" . uniqid(date("Y-m-d") . "_", true) . ".sql";
+$salida = "";
+$codigoSalida = 0;
+$comando = sprintf("%s --user=\"%s\" --password=\"%s\" %s > %s", env("UBICACION_MYSQLDUMP"), env("DB_USERNAME"), env("DB_PASSWORD"), env("DB_DATABASE"), $ubicacionArchivoTemporal);
+exec($comando, $salida, $codigoSalida);
+if ($codigoSalida !== 0) {
+    return "Código de salida distinto de 0, se obtuvo código (" . $codigoSalida . "). Revise los ajustes e intente de nuevo";
+}
+return response()->download($ubicacionArchivoTemporal)->deleteFileAfterSend(true);
+});
+*/

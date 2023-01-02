@@ -276,15 +276,23 @@ return redirect()->back()->with(['message' => "El ticket Fue asignado", 'color' 
 
 public function solicita_ticket(Request $request){
     try{
+
         DB::table('tickets')->where('id',$request['id_ticket'])->update([
             "usuario"=>$request['asignacion'],
 
             ]);
 
+       $usuario=DB::table("users")->where("id",$request['asignacion'])->select("*")->first();
+       $tic=DB::table('tickets')->where("id",$request['id_ticket'])->select("*")->first();
+
+
+            $data=["name"=>$usuario->name,"tema"=>$tic->tema,"codigo"=>$tic->codigo];
+            Mail::to($usuario->email)->send(new MessageReceived("Ticket Levantado",$data,"ticketlevantado"));
+
 return redirect()->back()->with(['message' => "El ticket Fue asignado", 'color' => 'success']);
 
     }catch(\Throwable $th) {
-        return redirect()->back()->with();
+        return redirect()->back();
     }
 }
 
