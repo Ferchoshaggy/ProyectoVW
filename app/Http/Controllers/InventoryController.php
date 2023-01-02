@@ -29,7 +29,6 @@ class InventoryController extends Controller
             return redirect()->back()->with(['message' => "Se Importo el Excel con exito", 'color' => 'success']);
 
         }catch (\Exception $e) {
-          return $e;
             return redirect()->back()->with(['message' => "Algo salio mal, Revisa tu excel con las reglas", 'color' => 'warning']);
         }
         }
@@ -46,7 +45,7 @@ DB::table('inventories')->where("id",$request['id_inv'])->delete();
 return redirect()->back()->with(['message' => "Registro Eliminado con Exito", 'color' => 'success']);
 
 } catch (\Throwable $th) {
-    //throw $th;
+    return redirect()->back()->with();
 }
 }
 
@@ -109,7 +108,7 @@ DB::table('inventories')->insert([
 return redirect()->back()->with(['message' => "Registro Guardado con Exito", 'color' => 'success']);
 
     }catch(\Throwable $th){
-return $th;
+        return redirect()->back()->with();
     }
 }
 
@@ -172,7 +171,7 @@ try{
  return redirect()->back()->with(['message' => "Registro Editado con Exito", 'color' => 'success']);
 
 }catch(\Throwable $th){
-
+    return redirect()->back()->with();
 }
 }
 

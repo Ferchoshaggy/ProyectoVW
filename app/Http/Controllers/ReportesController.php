@@ -34,13 +34,15 @@ class ReportesController extends Controller
 $users=DB::table('users')->select('*')->get();
         return view('Reportes.reporte',compact("reportes","users"));
     }
+
+
     public function vista_newReport(){
         $usuario=DB::table("users")->where("id",Auth::user()->id)->get();
         $datos=DB::table('users')->select('*')->get();
         return view('Reportes.newReport',compact("usuario","datos"));
     }
      public function report_save(Request $request){
-
+try{
 
 $usuario=DB::table("users")->where("id",$request['idPerfil'])->select("*")->first();
 
@@ -73,8 +75,11 @@ $asignado=Auth::user()->name;
 }else{
 $asignado="Esperando Asignacion";
 }
-$maxId = DB::table('tickets')->max('id');
-        DB::statement('ALTER TABLE tickets AUTO_INCREMENT=' . intval($maxId + 1) . ';');
+
+
+$max = DB::table('tickets')->max('id') + 1;
+DB::statement("ALTER TABLE tickets AUTO_INCREMENT =  $max");
+
 
         DB::table("tickets")->insert([
         "opcion1"=>$request['op1'],
@@ -108,11 +113,13 @@ $maxId = DB::table('tickets')->max('id');
 
     }
         return redirect()->back()->with(['message' => "Ticket Levantado Con Exito", 'color' => 'success']);
+    }catch(\Throwable $th) {
+        return redirect()->back()->with();
+    }
 
     }
 public function cambiar_status(Request $request){
 try{
-
 
     $email=DB::table("users")->where("id",$request["id_usuario"])->first();
     $datos=DB::table("tickets")->where("id",$request["id_ticket"])->first();
@@ -126,7 +133,7 @@ try{
 
     return redirect()->back()->with(['message' => "Se Cambio el Ticket Correctamente", 'color' => 'success']);
 }catch(\Throwable $th) {
-    //throw $th;
+    return redirect()->back()->with();
 }
 }
 
@@ -155,7 +162,7 @@ if($replys_delete->image_url!=null){
       return redirect()->back()->with(['message' => "Se Elimino correctamente el Ticket", 'color' => 'success']);
 
     } catch (\Throwable $th) {
-        //throw $th;
+        return redirect()->back()->with(['message' => "Error", 'color' => 'danger']);
     }
 }
 
@@ -198,7 +205,7 @@ DB::table('tickets')->where('id',$request['tickid'])->update([
 return redirect()->back()->with(['message' => "Se Mando la Contestacion con Exito", 'color' => 'success']);
 
 }catch(\Throwable $th) {
-
+    return redirect()->back()->with();
 }
 }
 
@@ -219,7 +226,6 @@ public function report_pdf(Request $request){
     }elseif($request["filtracion"]=="NMIT"){
          $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'NMIT'.'%')->get();
     }
-
 
     $users=DB::table('users')->select('*')->get();
     $diseno=$request['diseño'];
@@ -264,7 +270,7 @@ DB::table('tickets')->where('id',$request['id_ticket'])->update([
 
 return redirect()->back()->with(['message' => "El ticket Fue asignado", 'color' => 'success']);
 }catch(\Throwable $th) {
-
+    return redirect()->back()->with();
 }
 }
 
@@ -278,7 +284,7 @@ public function solicita_ticket(Request $request){
 return redirect()->back()->with(['message' => "El ticket Fue asignado", 'color' => 'success']);
 
     }catch(\Throwable $th) {
-
+        return redirect()->back()->with();
     }
 }
 
