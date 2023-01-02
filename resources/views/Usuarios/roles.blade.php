@@ -620,8 +620,8 @@ var id_user=null;
         id_user=$id_tr;
         var coordenadas_y=event.clientY; //odtenemos el valor de la posicion del boton
         var coordenadas_x=event.clientX; //odtenemos el valor de la posicion del boton
-        menu_opciones.style.top=coordenadas_y-50+"px";
-        menu_opciones.style.left=coordenadas_x-50+"px";
+        menu_opciones.style.top=coordenadas_y-150+"px";
+        menu_opciones.style.left=coordenadas_x-100+"px";
         menu_opciones.classList.add("visible_on");
         menu_opciones.classList.remove("visible_off");
       //alert($id_tr);
