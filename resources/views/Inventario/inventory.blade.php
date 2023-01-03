@@ -65,7 +65,7 @@
 
 <button class="btn btn-outline-info" data-toggle="modal" data-target="#ModalNew">Agregar Registro</button>
 <button class="btn btn-outline-warning" data-toggle="modal" data-target="#ModalCarga">Importar Excel</button>
-<a href="{{Route("expor_inventory")}}" target="_blank" class="btn btn-outline-success">Exportar Excel</a>
+<a href="{{Route("expor_inventory")}}" target="_blank" class="btn btn-outline-success"><i class='fas fa-cloud-download-alt'></i>Exportar Excel</a>
 <br><br>
 
 <div class="table-responsive">
