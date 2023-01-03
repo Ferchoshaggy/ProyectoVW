@@ -63,9 +63,9 @@
 
 @endif
 
-<button class="btn btn-outline-info" data-toggle="modal" data-target="#ModalNew">Agregar Registro</button>
-<button class="btn btn-outline-warning" data-toggle="modal" data-target="#ModalCarga">Importar Excel</button>
-<a href="{{Route("expor_inventory")}}" target="_blank" class="btn btn-outline-success"><i class='fas fa-cloud-download-alt'></i>Exportar Excel</a>
+<button class="btn btn-outline-info" data-toggle="modal" data-target="#ModalNew"><i class='fas fa-file-alt'></i>Agregar Registro</button>
+<button class="btn btn-outline-warning" data-toggle="modal" data-target="#ModalCarga"><i class='fas fa-file-import'></i>Importar Excel</button>
+<a href="{{Route("expor_inventory")}}" target="_blank" class="btn btn-outline-success"><i class='fas fa-file-export'></i>Exportar Excel</a>
 <br><br>
 
 <div class="table-responsive">
@@ -1012,6 +1012,9 @@
   font-size: 14px;
   line-height: 1.42857143;
   margin: 5px;
+}
+i{
+    padding-right: 5px;
 }
 </style>
 @stop
