@@ -25,11 +25,35 @@ class ReportesController extends Controller
         $this->middleware('auth');
     }
 
-    public function vista_report(){
+    public function vista_report(Request $request){
       if(Auth::user()->tipo_user===1){
-        $reportes=DB::table('tickets')->select('*')->get();
+
+        if($request['fechaMin'] && $request['fechaMax']){
+            $reportes=DB::table('tickets')->whereDate("created_at",">=",$request['fechaMin'])->whereDate("created_at","<=",$request['fechaMax'])->select("*")->get();
+           }else{
+
+       $mes=date("m");
+       $año=date("Y");
+       $ultimo_dia = cal_days_in_month(CAL_GREGORIAN, $mes, $año);
+
+       $reportes=DB::table('tickets')->whereDate("created_at",">=","$año/$mes/1")->whereDate("created_at","<=","$año/$mes/$ultimo_dia")->select("*")->get();
+
+               }
+
+
 }else if(Auth::user()->tipo_user===2){
-    $reportes=DB::table('tickets')->where("usuario",Auth::user()->id)->get();
+
+    if($request['fechaMin'] && $request['fechaMax']){
+        $reportes=DB::table('tickets')->whereDate("created_at",">=",$request['fechaMin'])->whereDate("created_at","<=",$request['fechaMax'])->where("usuario",Auth::user()->id)->select("*")->get();
+       }else{
+
+   $mes=date("m");
+   $año=date("Y");
+   $ultimo_dia = cal_days_in_month(CAL_GREGORIAN, $mes, $año);
+
+   $reportes=DB::table('tickets')->whereDate("created_at",">=","$año/$mes/1")->whereDate("created_at","<=","$año/$mes/$ultimo_dia")->where("usuario",Auth::user()->id)->select("*")->get();
+
+           }
 }
 $users=DB::table('users')->select('*')->get();
         return view('Reportes.reporte',compact("reportes","users"));
