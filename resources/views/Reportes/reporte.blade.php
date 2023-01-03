@@ -833,9 +833,7 @@ document.getElementById("btnCam").disabled=true;
 }else{
     document.getElementById("btnCam").disabled=false;
 }
-
 document.getElementById("solucion").value=null;
-
 });
 }
 

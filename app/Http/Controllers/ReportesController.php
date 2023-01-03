@@ -37,9 +37,7 @@ class ReportesController extends Controller
        $ultimo_dia = cal_days_in_month(CAL_GREGORIAN, $mes, $año);
 
        $reportes=DB::table('tickets')->whereDate("created_at",">=","$año/$mes/1")->whereDate("created_at","<=","$año/$mes/$ultimo_dia")->select("*")->get();
-
                }
-
 
 }else if(Auth::user()->tipo_user===2){
 
@@ -52,7 +50,6 @@ class ReportesController extends Controller
    $ultimo_dia = cal_days_in_month(CAL_GREGORIAN, $mes, $año);
 
    $reportes=DB::table('tickets')->whereDate("created_at",">=","$año/$mes/1")->whereDate("created_at","<=","$año/$mes/$ultimo_dia")->where("usuario",Auth::user()->id)->select("*")->get();
-
            }
 }
 $users=DB::table('users')->select('*')->get();
@@ -281,7 +278,6 @@ public function report_excel(Request $request){
     $filtracion=$request['filtracion'];
 
     return Excel::download(new TicketsExport($fechamin,$fechamax,$diseno,$filtracion,$tickets,$users),"EXCEL_".$diseno."_".$filtracion.".xlsx");
-    //return $pdf->stream('ejemplo.pdf');
 
 }
 
