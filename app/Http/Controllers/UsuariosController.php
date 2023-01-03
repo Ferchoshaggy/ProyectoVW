@@ -66,7 +66,7 @@ class UsuariosController extends Controller
                 return redirect()->back()->with(['message' => "Se Elimino correctamente el Usuario", 'color' => 'success']);
 
         } catch (\Throwable $th) {
-            return redirect()->back()->with();
+            return redirect()->back()->with(['message' => "Error", 'color' => 'danger']);
         }
             }
 
@@ -125,7 +125,7 @@ DB::table('inventories')->where("id",$idUP->id_inventario)->update([
 
     return redirect()->back()->with(['message' => "Se cambio Al Usuario con Exito", 'color' => 'success']);
         } catch (\Throwable $th) {
-            return redirect()->back()->with();
+            return redirect()->back()->with(['message' => "Error", 'color' => 'danger']);
         }
 
     }

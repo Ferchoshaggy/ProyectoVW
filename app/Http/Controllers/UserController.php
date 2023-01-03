@@ -22,7 +22,7 @@ class UserController extends Controller
     }
 
     public function actualizar_user(Request $request){
-
+try{
         $foto_delete=DB::table("users")->where("id",Auth::user()->id)->first();
 
         $time = date("d-m-Y")."-".time();
@@ -78,6 +78,9 @@ class UserController extends Controller
         }
 
  return redirect()->back()->with(['message' => "Datos Actualizados con Exito", 'color' => 'success']);
+} catch (\Throwable $th){
+    return redirect()->back()->with(['message' => "Error", 'color' => 'danger']);
+}
 
     }
 }

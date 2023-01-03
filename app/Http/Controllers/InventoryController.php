@@ -45,7 +45,7 @@ DB::table('inventories')->where("id",$request['id_inv'])->delete();
 return redirect()->back()->with(['message' => "Registro Eliminado con Exito", 'color' => 'success']);
 
 } catch (\Throwable $th) {
-    return redirect()->back()->with();
+    return redirect()->back()->with(['message' => "Error", 'color' => 'danger']);
 }
 }
 
@@ -108,7 +108,7 @@ DB::table('inventories')->insert([
 return redirect()->back()->with(['message' => "Registro Guardado con Exito", 'color' => 'success']);
 
     }catch(\Throwable $th){
-        return redirect()->back()->with();
+        return redirect()->back()->with(['message' => "Error", 'color' => 'danger']);
     }
 }
 
@@ -171,7 +171,7 @@ try{
  return redirect()->back()->with(['message' => "Registro Editado con Exito", 'color' => 'success']);
 
 }catch(\Throwable $th){
-    return redirect()->back()->with();
+    return redirect()->back()->with(['message' => "Error", 'color' => 'danger']);
 }
 }
 

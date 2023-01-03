@@ -114,7 +114,7 @@ DB::statement("ALTER TABLE tickets AUTO_INCREMENT =  $max");
     }
         return redirect()->back()->with(['message' => "Ticket Levantado Con Exito", 'color' => 'success']);
     }catch(\Throwable $th) {
-        return redirect()->back()->with();
+        return redirect()->back()->with(['message' => "Error", 'color' => 'danger']);
     }
 
     }
@@ -133,7 +133,7 @@ try{
 
     return redirect()->back()->with(['message' => "Se Cambio el Ticket Correctamente", 'color' => 'success']);
 }catch(\Throwable $th) {
-    return redirect()->back()->with();
+    return redirect()->back()->with(['message' => "Error", 'color' => 'danger']);
 }
 }
 
@@ -205,7 +205,7 @@ DB::table('tickets')->where('id',$request['tickid'])->update([
 return redirect()->back()->with(['message' => "Se Mando la Contestacion con Exito", 'color' => 'success']);
 
 }catch(\Throwable $th) {
-    return redirect()->back()->with();
+    return redirect()->back()->with(['message' => "Error", 'color' => 'danger']);
 }
 }
 
@@ -270,7 +270,7 @@ DB::table('tickets')->where('id',$request['id_ticket'])->update([
 
 return redirect()->back()->with(['message' => "El ticket Fue asignado", 'color' => 'success']);
 }catch(\Throwable $th) {
-    return redirect()->back()->with();
+    return redirect()->back()->with(['message' => "Error", 'color' => 'danger']);
 }
 }
 
@@ -292,7 +292,7 @@ public function solicita_ticket(Request $request){
 return redirect()->back()->with(['message' => "El ticket Fue asignado", 'color' => 'success']);
 
     }catch(\Throwable $th) {
-        return redirect()->back();
+        return redirect()->back()->with(['message' => "Error", 'color' => 'danger']);
     }
 }
 
