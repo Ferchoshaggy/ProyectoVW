@@ -947,7 +947,7 @@
         <div class="modal-footer">
             <input type="hidden" name="id_inv" id="id_inv">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button class="btn btn-danger">Eliminar</button>
+          <button class="btn btn-danger" id="EleInv">Eliminar</button>
         </div>
     </form>
       </div>
@@ -1127,7 +1127,7 @@ $.ajax({
   url: "{{url('/inv_search')}}"+'/'+id_dato,
   dataType: "json",
   //context: document.body
-}).done(function(datoinv) {
+}).done(function([datoinv,datosUser]) {
 
   if(datoinv==null){
     document.getElementById("labelnombre").innerHTML=null;
@@ -1141,6 +1141,15 @@ $.ajax({
     document.getElementById("id_inv").value=datoinv.id;
 
   }
+  document.getElementById("EleInv").disabled=false;
+
+var a=datosUser.id_inventario;
+
+var b=datoinv.id;
+
+if(a && b){
+    document.getElementById("EleInv").disabled=true;
+}
 
 });
 }

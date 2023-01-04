@@ -23,6 +23,7 @@ class SearchController extends Controller
     }
     public function inventorySearch($id){
         $datoinv=DB::table('inventories')->where("id",$id)->first();
-        return json_encode($datoinv);
+        $datosUser=DB::table("users")->where("id_inventario",$id)->first();
+        return json_encode([$datoinv,$datosUser]);
     }
 }
