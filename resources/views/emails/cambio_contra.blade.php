@@ -11,8 +11,8 @@
        <div style="margin-top: 100px;margin-bottom: 100px; text-align: center;font-size: 20px">
            <label>Hola {{$datos['name']}} Su Contraseña Ha Sido cambiada por el Departamento de sistemas de Grupo Fersan</label><br>
            <label for="">Esta es tu contraseña Nueva: {{$datos['password']}} </label><br>
-           <label for="">Para ingresar al sistemas coloca la Nueva contraseña enviada</label><br>
-           <a href="{{url('/')}}" style="border:green 3px solid;color:black; border-radius:20px;padding:10px;text-decoration:none;font-size:20px">link del Sistema</a>
+           <label for="">Para ingresar al sistemas coloca la Nueva contraseña enviada</label><br><br>
+           <a href="{{url('/')}}" style="border:green 3px solid;color:black; border-radius:20px;padding:10px;text-decoration:none;font-size:20px;margin-top:5px">link del Sistema</a>
                </div>
 
 </body>

@@ -1160,7 +1160,7 @@ $.ajax({
   url: "{{url('/inv_search')}}"+'/'+id_dato,
   dataType: "json",
   //context: document.body
-}).done(function(datoinv) {
+}).done(function([datoinv]) {
 
   if(datoinv==null){
     document.getElementById("id_userI").value=null;
@@ -1177,7 +1177,7 @@ $.ajax({
   url: "{{url('/inv_search')}}"+'/'+id_dato,
   dataType: "json",
   //context: document.body
-}).done(function(datoinv) {
+}).done(function([datoinv]) {
 
   if(datoinv==null){
     document.getElementById("id_invE").value=null;

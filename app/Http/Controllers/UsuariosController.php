@@ -25,7 +25,7 @@ class UsuariosController extends Controller
 
     public function guardar_usuario(Request $request){
 
-        try {
+    try {
         $request->validate([
             'contraseña'=>'min:8',
             ]);
@@ -79,8 +79,10 @@ DB::table('users')->where("id",$request["id_userp"])->update([
 "password"=>bcrypt($request["nue_pass"]),
 ]);
 
+if($request["enviar"]=="SI"){
 $data=["name"=>$nombre->name,"password"=>$request['nue_pass'],"empresa"=>$request['concesionaria']];
 Mail::to($nombre->email)->send(new MessageReceived("Contraseña Cambiada",$data,"contra"));
+}
 
 return redirect()->back()->with(['message' => "Contraseña Restaurada con Exito", 'color' => 'success']);
 }

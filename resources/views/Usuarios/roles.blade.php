@@ -319,6 +319,10 @@
 
               </div>
               <div class="modal-footer">
+                <div class="col align-right" @if(Auth::user()->tipo_user==1) @else style="display: none" @endif>
+                    <input type="checkbox" name="enviar" id="enviar" value="SI" checked><label style="margin-left: 5px" for="enviar">Enviar Correo</label>
+                </div>
+
                   <input type="hidden" name="id_userp" id="id_userp">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                   <button class="btn btn-success" id="passrest" disabled>Restablecer</button>
@@ -753,7 +757,7 @@ document.getElementById("correo2").value=$('#correo option:selected').text();
 url: "{{url('/inv_search')}}"+'/'+$id_correo,
   dataType: "json",
   //context: document.body
-}).done(function(datoinv) {
+}).done(function([datoinv]) {
 
   if(datoinv==null){
     document.getElementById("nombre").value=null;

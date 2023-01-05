@@ -13,8 +13,8 @@
     <label>Hola {{$datos['name']}} Bienvenid@ al Sistema de levantamiento de incidencias y soporte tecnico del area de sistemas</label><br>
     <label for="">Este es tu correo: {{$datos['email']}} </label><br>
     <label for="">Esta es tu contraseña: {{$datos['password']}} </label><br>
-    <label for="">Para ingresar al sistemas coloca la informacion enviada</label><br>
-    <a href="{{url('/')}}" style="border:green 3px solid;color:black; border-radius:20px;padding:10px;text-decoration:none;font-size:20px">link del Sistema</a>
+    <label for="">Para ingresar al sistemas coloca la informacion enviada</label><br><br>
+    <a href="{{url('/')}}" style="border:green 3px solid;color:black; border-radius:20px;padding:10px;text-decoration:none;font-size:20px;margin-top: 5px">link del Sistema</a>
         </div>
 
 </body>
