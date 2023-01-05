@@ -89,6 +89,10 @@ $usuario=DB::table("users")->where("id",$request['idPerfil'])->select("*")->firs
             $inic="CMIT-";
         }else if($request["concesionaria"]=="Navarra"){
             $inic="NMIT-";
+        }else if($request["concesionaria"]=="SEV"){
+            $inic="SEVIT-";
+        }else if($request["concesionaria"]=="Harley"){
+            $inic="HDIT-";
         }
 
 if(Auth::user()->tipo_user==1){
