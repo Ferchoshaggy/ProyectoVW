@@ -148,10 +148,10 @@ try{
     DB::table("tickets")->where("id",$request["id_ticket"])->update([
         "status"=> "Cerrado",
     ]);
-
+    if($request["enviar"]=="SI"){
     $data=["name"=>$email->name,"codigo"=>$datos->codigo,"tema"=>$datos->tema,"descripcion"=>$datos->descripcion,"fechaF"=>$fecha->toDateTimeString(),"empresa"=>$email->concesionaria,"solucion"=>$request['soluciones']];
     Mail::to($email->email)->send(new MessageReceived("Ticket Cerrado",$data,"Cerrado"));
-
+}
     return redirect()->back()->with(['message' => "Se Cambio el Ticket Correctamente", 'color' => 'success']);
 }catch(\Throwable $th) {
     return redirect()->back()->with(['message' => "Error", 'color' => 'danger']);

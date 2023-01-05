@@ -454,7 +454,7 @@
     </div>
   </div>
 
-  <!-- modal de cambiar ticket-->
+  <!-- modal de cerrar ticket-->
 <div class="modal fade" id="cerrar_ticket" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
@@ -476,6 +476,9 @@
                   <textarea name="soluciones" id="solucion" cols="30" class="form-control" placeholder="Soluciones"></textarea>
               </div>
               <div class="modal-footer">
+                <div class="col align-right" @if(Auth::user()->tipo_user==1) @else style="display: none" @endif>
+                    <input type="checkbox" name="enviar" id="enviar" value="SI" checked><label style="margin-left: 5px" for="enviar">Enviar Correo</label>
+                </div>
                   <input type="hidden" name="id_ticket" id="id_ticket2">
                   <input type="hidden" name="id_usuario" id="id_usuario">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

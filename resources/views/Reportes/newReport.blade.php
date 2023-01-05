@@ -254,9 +254,7 @@
             <h5 id="demo"></h5>
     </div>
     <br>
-    <div class="col align-self-end" @if(Auth::user()->tipo_user==1) @else style="display: none" @endif>
-        <input type="checkbox" name="enviar" id="enviar" value="SI" checked><label style="margin-left: 5px" for="enviar">Enviar Correo</label>
-    </div>
+
 </div>
             <div class="row">
 
@@ -345,6 +343,9 @@
 
         </div>
         <div class="modal-footer">
+            <div class="col align-right" @if(Auth::user()->tipo_user==1) @else style="display: none" @endif>
+                <input type="checkbox" name="enviar" id="enviar" value="SI" checked><label style="margin-left: 5px" for="enviar">Enviar Correo</label>
+            </div>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
           <button type="submit" class="btn btn-success" id="btnsave" disabled>Guardar</button>
         </div>
