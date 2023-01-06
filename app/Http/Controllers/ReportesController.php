@@ -250,6 +250,10 @@ public function report_pdf(Request $request){
          $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'FMIT'.'%')->get();
     }elseif($request["filtracion"]=="NMIT"){
          $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'NMIT'.'%')->get();
+    }elseif($request["filtracion"]=="HDIT"){
+        $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'DHIT'.'%')->get();
+    }elseif($request["filtracion"]=="SEVIT"){
+    $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'SEVIT'.'%')->get();
     }
 
     $users=DB::table('users')->select('*')->get();
@@ -273,6 +277,10 @@ public function report_excel(Request $request){
          $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'FMIT'.'%')->get();
     }elseif($request["filtracion"]=="NMIT"){
          $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'NMIT'.'%')->get();
+    }elseif($request["filtracion"]=="HDIT"){
+        $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'DHIT'.'%')->get();
+    }elseif($request["filtracion"]=="SEVIT"){
+    $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'SEVIT'.'%')->get();
     }
 
     $users=DB::table('users')->select('*')->get();

@@ -126,6 +126,8 @@
     <option value="Fersan"  @if (old('concesionaria') == "Fersan") {{ 'selected' }} @endif>Fersan Motors Volkswagen</option>
     <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
     <option value="Navarra"  @if (old('concesionaria') == "Navarra") {{ 'selected' }} @endif>SEAT Navarra Motors</option>
+    <option value="Harley"  @if (old('concesionaria') == "Harley") {{ 'selected' }} @endif>Harley Davidson</option>
+    <option value="SEV"  @if (old('concesionaria') == "SEV") {{ 'selected' }} @endif>SEV</option>
 </select>
 </div>
 </div>
@@ -139,6 +141,8 @@
         <option value="FMIT">Codigos Fersan</option>
         <option value="CMIT">Codigos Chaixtsu</option>
         <option value="NMIT">Codigos Navarra</option>
+        <option value="HDIT">Codigos Harley</option>
+        <option value="SEVIT">Codigos SEV</option>
     </select>
     </div>
 </div>
@@ -186,6 +190,8 @@
     <option value="Fersan"  @if (old('concesionaria') == "Fersan") {{ 'selected' }} @endif>Fersan Motors Volkswagen</option>
     <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
     <option value="Navarra"  @if (old('concesionaria') == "Navarra") {{ 'selected' }} @endif>SEAT Navarra Motors</option>
+    <option value="Harley"  @if (old('concesionaria') == "Harley") {{ 'selected' }} @endif>Harley Davidson</option>
+    <option value="SEV"  @if (old('concesionaria') == "SEV") {{ 'selected' }} @endif>SEV</option>
 </select>
 </div>
 </div>
@@ -199,6 +205,8 @@
         <option value="FMIT">Codigos Fersan</option>
         <option value="CMIT">Codigos Chaixtsu</option>
         <option value="NMIT">Codigos Navarra</option>
+        <option value="HDIT">Codigos Harley</option>
+        <option value="SEVIT">Codigos SEV</option>
     </select>
     </div>
     </div>
