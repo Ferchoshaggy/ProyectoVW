@@ -251,7 +251,7 @@ public function report_pdf(Request $request){
     }elseif($request["filtracion"]=="NMIT"){
          $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'NMIT'.'%')->get();
     }elseif($request["filtracion"]=="HDIT"){
-        $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'DHIT'.'%')->get();
+        $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'HDIT'.'%')->get();
     }elseif($request["filtracion"]=="SEVIT"){
     $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'SEVIT'.'%')->get();
     }
@@ -278,9 +278,9 @@ public function report_excel(Request $request){
     }elseif($request["filtracion"]=="NMIT"){
          $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'NMIT'.'%')->get();
     }elseif($request["filtracion"]=="HDIT"){
-        $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'DHIT'.'%')->get();
+        $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'HDIT'.'%')->get();
     }elseif($request["filtracion"]=="SEVIT"){
-    $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'SEVIT'.'%')->get();
+      $tickets = DB::table('tickets')->whereDate("created_at",">=",$request['fechamin'])->whereDate("created_at","<=",$request['fechamax'])->where('codigo','LIKE','%'.'SEVIT'.'%')->get();
     }
 
     $users=DB::table('users')->select('*')->get();
