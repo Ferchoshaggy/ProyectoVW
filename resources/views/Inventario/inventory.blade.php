@@ -281,7 +281,7 @@
       </div>
       <div class="modal-footer">
         <input type="hidden" id="id_userI" name="id_userI">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         <button class="btn btn-primary" id="viewPDF" disabled>Generar</button>
       </div>
     </form>
