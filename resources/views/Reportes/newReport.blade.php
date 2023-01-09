@@ -304,23 +304,23 @@
             </div>
             <label for="Concecionaria">Concecionaria Asignada al Ticket</label><br>
 <div class="row">
-    <div class="col-md-2" style="display: flex; align-items: center; justify-content: center">
+    <div class="col" style="display: flex; align-items: center; justify-content: center">
         <input type="radio" name="concesionaria" class="form-control" value="Fersan" id="Fersan2" onclick="validarT();">
         <label for="Fersan2"><i><img src="{{asset('img/logos/LOGOS_FERSAN_ISOTIPO.png')}}" alt="volkswagen" height="40px" width="40px"></i>Fersan</label>
     </div>
-    <div class="col-md-2" style="display: flex; align-items: center; justify-content: center">
+    <div class="col" style="display: flex; align-items: center; justify-content: center">
         <input type="radio" name="concesionaria" class="form-control" value="Chaixtsu" id="Chaixtsu2" onclick="validarT();">
         <label for="Chaixtsu2"><i><img src="{{asset('img/logos/LOGOS_CHAIXTSU_ISOTIPO.png')}}" alt="Suzuki" height="40px" width="40px"></i>Chaixtsu</label>
     </div>
-    <div class="col-md-2" style="display: flex; align-items: center; justify-content: center">
+    <div class="col" style="display: flex; align-items: center; justify-content: center">
         <input type="radio" name="concesionaria" class="form-control" value="Navarra" id="Navarra2" onclick="validarT();">
         <label for="Navarra2"><i><img src="{{asset('img/logos/LOGOS_NAVARRA_ISOTIPO.png')}}" alt="Seat" height="40px" width="40px"></i></i>Navarra</label>
     </div>
-    <div class="col-md-2" style="display: flex; align-items: center; justify-content: center">
+    <div class="col" style="display: flex; align-items: center; justify-content: center">
         <input type="radio" name="concesionaria" class="form-control" value="SEV" id="SEV" onclick="validarT();">
         <label for="SEV"><i><img src="{{asset('img/logos/LogoSEV.png')}}" alt="SEV" height="40px" width="40px"></i></i>SEV</label>
     </div>
-    <div class="col-md-2" style="display: flex; align-items: center; justify-content: center">
+    <div class="col" style="display: flex; align-items: center; justify-content: center">
         <input type="radio" name="concesionaria" class="form-control" value="Harley" id="Harley" onclick="validarT();">
         <label for="Harley"><i><img src="{{asset('img/logos/LogoHarley.png')}}" alt="Harley" height="40px" width="40px"></i></i>Harley Davidson</label>
     </div>
