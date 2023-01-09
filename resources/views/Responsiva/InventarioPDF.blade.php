@@ -65,6 +65,38 @@
         background-position:center center;
         background-attachment:fixed;
     }
+    @elseif($diseno=="Harley")
+  body{
+    font-size: 15px;
+        background-color: red;
+        padding-top: 70px;
+        padding-bottom: 5px;
+        padding-right:25px;
+        padding-left:25px;
+        margin: 0;
+        background-color: rgb(255, 255, 255);
+        background-image: url(./formatos/responsiva/FORMATO14.png);
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position:center center;
+        background-attachment:fixed;
+    }
+    @elseif($diseno=="SEV")
+  body{
+    font-size: 15px;
+        background-color: red;
+        padding-top: 70px;
+        padding-bottom: 5px;
+        padding-right:25px;
+        padding-left:25px;
+        margin: 0;
+        background-color: rgb(255, 255, 255);
+        background-image: url(./formatos/responsiva/FORMATO15.png);
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position:center center;
+        background-attachment:fixed;
+    }
 @endif
 </style>
 

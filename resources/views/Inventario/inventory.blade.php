@@ -273,6 +273,8 @@
                 <option value="Fersan"  @if (old('concesionaria') == "Fersan") {{ 'selected' }} @endif>Fersan Motors Volkswagen</option>
                 <option value="Chaixtsu"  @if (old('concesionaria') == "Chaixtsu") {{ 'selected' }} @endif>Chaixtsu Motors Suzuki</option>
                 <option value="Navarra"  @if (old('concesionaria') == "Navarra") {{ 'selected' }} @endif>SEAT Navarra Motors</option>
+                <option value="Harley"  @if (old('concesionaria') == "Harley") {{ 'selected' }} @endif>Harley Davidson</option>
+                <option value="SEV"  @if (old('concesionaria') == "SEV") {{ 'selected' }} @endif>SEV</option>
             </select>
             </div>
             </div>
