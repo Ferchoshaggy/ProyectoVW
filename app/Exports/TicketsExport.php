@@ -15,7 +15,7 @@ class TicketsExport implements FromView,WithDrawings  //todo esto es para poder 
     */
     //public function collection()
     //{
-        
+
     //}
     public $fechamin;
     public $fechamax;
@@ -65,6 +65,24 @@ class TicketsExport implements FromView,WithDrawings  //todo esto es para poder 
             $drawing3->setHeight(130);
             $drawing3->setCoordinates('A1');
 
+        }else if($this->diseno=="Harley"){
+
+            $drawing3 = new Drawing();
+            $drawing3->setName('cimiclogo');
+            $drawing3->setDescription('This is logo');
+            $drawing3->setPath(public_path('img/logos/LogoHarley.png'));
+            $drawing3->setHeight(130);
+            $drawing3->setCoordinates('A1');
+
+        }else if($this->diseno=="SEV"){
+
+            $drawing3 = new Drawing();
+            $drawing3->setName('cimiclogo');
+            $drawing3->setDescription('This is logo');
+            $drawing3->setPath(public_path('img/logos/LogoSEV.png'));
+            $drawing3->setHeight(130);
+            $drawing3->setCoordinates('A1');
+
         }
 
          return [$drawing3];
@@ -73,7 +91,7 @@ class TicketsExport implements FromView,WithDrawings  //todo esto es para poder 
     public function view(): View{
         $fechamin=$this->fechamin;
         $fechamax=$this->fechamax;
-        $diseno=$this->diseno; 
+        $diseno=$this->diseno;
         $filtracion=$this->filtracion;
         $tickets=$this->tickets;
         $users=$this->users;
